@@ -6,7 +6,7 @@ addons:
   sonarcloud:
     organisation: "kevindelcourt-github"
   token:
-    secure: ••••••••••••••••
+    secure: ${SONAR_TOKEN}
 cache:
   directories:
     - node_modules
