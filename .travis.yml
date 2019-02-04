@@ -9,6 +9,7 @@ addons:
   token:
     secure: ${SONAR_TOKEN}
 cache:
+  - npm
   directories:
     - node_modules
 before_install:
