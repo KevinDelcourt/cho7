@@ -9,6 +9,4 @@ const Cadre = styled.div`
   display: inline-block;
 `;
 
-
-
 export default Cadre;
