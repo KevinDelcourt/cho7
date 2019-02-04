@@ -10,8 +10,6 @@ addons:
     secure: ${SONAR_TOKEN}
 cache:
   - npm
-  directories:
-    - node_modules
 before_install:
   - mysql -e 'CREATE DATABASE cho7;'
   - cd client
