@@ -12,4 +12,4 @@ script:
   - cd ../server
   - npm install
   - echo '{"host":"127.0.0.1","user":"root","database":"cho7"}' > db.json
-  - node init_db.js 
+  - node db/init_db.js 
