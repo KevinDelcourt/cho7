@@ -5,6 +5,8 @@ services: mysql
 addons:
   sonarcloud:
     organisation: "kevindelcourt-github"
+  token:
+    secure: ••••••••••••••••
 cache:
   directories:
     - node_modules
