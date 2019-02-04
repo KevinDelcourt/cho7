@@ -11,5 +11,5 @@ before_install:
 script:
   - cd ../server
   - npm install
-  - echo '{"host":"127.0.0.1","user":"root","database":"cho7"}' > db.json
+  - echo '{"host":"127.0.0.1","user":"root","database":"cho7"}' > db/db-identifiants.json
   - node db/init_db.js 
