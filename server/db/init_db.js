@@ -1,7 +1,7 @@
 const mysql = require('mysql')
 const fs = require('fs');
 
-const credentials = require('./db.json')
+const credentials = require('./db-identifiants.json')
 credentials.multipleStatements = true
 const connection = mysql.createConnection(credentials)
 
