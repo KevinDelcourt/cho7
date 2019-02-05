@@ -4,7 +4,8 @@
 /.scannerwork
 
 # dependencies
-/node_modules
+/server/node_modules
+/client/node_modules
 /.pnp
 .pnp.js
 
@@ -14,7 +15,8 @@ db-identifiants.json
 
 
 # production
-/build
+/client/build
+/server/build
 
 # misc
 .DS_Store
