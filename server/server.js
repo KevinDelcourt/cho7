@@ -1,12 +1,11 @@
 const mysql = require('mysql')
 const express = require('express')
-const bodyParser = require('body-parser')
+const passport = require('passport');
+const Strategy = require('passport-local').Strategy;
+const db = require('./db');
 
-const sql = require('./functions/sql_functions')
 const credentials = require('./db/db-identifiants.json')
 
-const app = express();
-app.use(bodyParser.json())
 
 
 const connection = mysql.createConnection(credentials);
@@ -16,21 +15,45 @@ connection.connect((err) => {
   console.log('Connected to database!');
 });
 
-app.post('/profil/createur', function(req, res,next) {
-  sql.setUsernameCreateur(connection,req,res)
-});
+passport.use(new Strategy(
+  (username,password,cb)=>db.findByUsername(username,
+    (err,user)=>{
+      if(err) cb(err)
+      if(!user) cb(null,false)
+      if(user.password != password) cb(null,false)
+      cb(null,user)
+    }))
+)
 
-app.get('/profil/createur', function(req, res) {
-  sql.getProfilCreateur(connection,res)
-});
+passport.serializeUser((user,cb)=>cb(null,user.id))
 
-app.get('/status',function(req,res){
+passport.deserializeUser((id,cb)=>db.findById(id,(err,user)=>{
+  if(err) cb(err)
+  cb(null,user)
+}))
+
+const app = express();
+app.use(require('morgan')('combined'));
+app.use(require('express-session')({ secret: 'keyboard cat', resave: false, saveUninitialized: false }));
+app.use(require('body-parser').json())
+app.use(require('cookie-parser')())
+
+app.use(passport.initialize())
+
+app.post('/login', 
+  passport.authenticate('local', { failureRedirect: '/login' }),
+  function(req, res) {
+    res.redirect('/');
+  });
+
+app.get('/',function(req,res){
   res.setHeader('Content-Type', 'text/plain');
   connection.ping(function (err) {
     if (err) throw err;
     res.send('online')
   })
 })
+
 
 console.log('Server online!');
 console.log(credentials.host+':8180');
