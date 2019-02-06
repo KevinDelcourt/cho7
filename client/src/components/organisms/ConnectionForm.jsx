@@ -38,9 +38,11 @@ const ConnectionForm = () => {
     return (
         <div>
             <TitleConnectionContainer>Titre connexion</TitleConnectionContainer>
+            
             <AuthentificationContainer>
                 <Authentification />
             </AuthentificationContainer>
+
             <LoginButtonContainer>Se connecter</LoginButtonContainer>
             <LabelForgottenPasswordContainer>Mot de passe oublié</LabelForgottenPasswordContainer>
         </div>
