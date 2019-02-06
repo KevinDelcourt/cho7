@@ -24,11 +24,11 @@ const SiteTitleContainer = styled.div`
 
 const ConnectionFormContainer = styled.div`
     border: 2px dotted black;
-    width: 25vw;
-    height: 50vh;
-    margin-left: 35vw;
-    margin-top: 10vh;
-    display: inline-block;
+    width: 26vw;
+    height: 60vh;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 6vh 4vw;
 `;
 
 const ConnectionPage = () => {
