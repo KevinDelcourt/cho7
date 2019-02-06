@@ -3,24 +3,7 @@ import styled from "styled-components";
 import logo from './../../assets/images/logo.png';
 import Logo from '../atoms/Logo';
 import ConnectionForm from './../organisms/ConnectionForm';
-import SiteTitle from './../atoms/SiteTitle';
-
-const LogoContainer = styled.div`
-    width: 126px;
-    height: 126px;
-    margin-left: 5vw;
-    margin-top: 1vh;
-    display: inline-block;
-`;
-
-const SiteTitleContainer = styled.div`
-    border: 2px dotted black;
-    width: 30vw;
-    height: 5vh;
-    margin-left: 45vw;
-    margin-top: 2vh;
-    display: inline-block;
-`;
+import SiteTitle from '../atoms/SiteTitle';
 
 const ConnectionFormContainer = styled.div`
     border: 2px dotted black;
@@ -31,15 +14,21 @@ const ConnectionFormContainer = styled.div`
     display: inline-block;
 `;
 
+const ConnectionHeader = styled.div`
+    width: 100vw;
+    height: 25vh;
+    margin-top: 5vh;
+    display: flex;
+    justify-content: space-around;
+`;
+
 const ConnectionPage = () => {
     return (
         <div>
-            <LogoContainer>
+            <ConnectionHeader>
                 <Logo src={logo} alt="logo" />
-            </LogoContainer>
-            <SiteTitleContainer>
-                <SiteTitle>La Compagnie de l'Aventure</SiteTitle>
-            </SiteTitleContainer>  
+                <SiteTitle>La Compagnie de l ' Aventure</SiteTitle> 
+            </ConnectionHeader> 
             <ConnectionFormContainer>   
                 <ConnectionForm />
             </ConnectionFormContainer>
