@@ -1,5 +1,5 @@
 # cho7
-PTUT LP DQL
+PTUT LP DQL https://travis-ci.org/KevinDelcourt/cho7.svg?branch=master
 
 Le serveur d'intégration continue est disponible ici: https://travis-ci.org/KevinDelcourt/cho7
 
