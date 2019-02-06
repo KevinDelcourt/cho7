@@ -1,12 +1,11 @@
 import React from 'react';
-import Cadre from ''
-
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { linkTo } from '@storybook/addon-links';
-
 import { Button, Welcome } from '@storybook/react/demo';
-import Logo from '../components/Logo';
+
+import Logo from '../components/atoms/Logo';
+import SiteTitle from '../components/atoms/SiteTitle';
 
 storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
 
@@ -19,5 +18,10 @@ storiesOf('Button', module)
       <span role="img" aria-label="so cool">
         😀 😎 👍 💯
       </span>
-    </Button>
-  ));
+    </Button>));
+
+storiesOf('atoms/SiteTitle', module)
+  .add('default', () => (
+      <SiteTitle />
+  )
+);
