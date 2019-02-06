@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import React from 'react';
+import SiteTitle from "../atoms/SiteTitle";
 
 const TitleConnectionContainer = styled.div`
     border: 2px dotted black;
@@ -67,7 +68,7 @@ const LabelForgottenPasswordContainer = styled.div`
 const ConnectionForm = () => {
     return (
         <div>
-            <TitleConnectionContainer>Titre connexion</TitleConnectionContainer>
+            <TitleConnectionContainer> <SiteTitle /> </TitleConnectionContainer>
             <LabelPseudoContainer>Label Pseudo</LabelPseudoContainer>
             <FieldPseudoContainer>Pseudo</FieldPseudoContainer>
             <LabelPasswordContainer>Label Mot de passe</LabelPasswordContainer>
