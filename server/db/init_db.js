@@ -1,5 +1,5 @@
 const mysql = require('mysql')
-const fs = require('fs');
+const fs = require('fs')
 
 const credentials = require('./db-identifiants.json')
 credentials.multipleStatements = true
