@@ -29,7 +29,7 @@ const ConnectionPage = () => {
                 <Logo src={logo} alt="logo" />
                 <SiteTitle>La Compagnie de l ' Aventure</SiteTitle> 
             </ConnectionHeader> 
-            <ConnectionFormContainer>   
+            <ConnectionFormContainer>  
                 <ConnectionForm />
             </ConnectionFormContainer>
         </div>
