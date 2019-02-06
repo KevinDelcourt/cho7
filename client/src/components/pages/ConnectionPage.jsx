@@ -31,7 +31,7 @@ const ConnectionFormContainer = styled.div`
     display: inline-block;
 `;
 
-const ConnexionPage = () => {
+const ConnectionPage = () => {
     return (
         <div>
             <LogoContainer>
@@ -47,4 +47,4 @@ const ConnexionPage = () => {
     );
 };
 
-export default ConnexionPage;
+export default ConnectionPage;
