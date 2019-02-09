@@ -1,5 +1,5 @@
 import React from 'react';
-import Cadre from ''
+import { AxiosTestGet,AxiosTestPost } from '../components/AxiosTest.js'
 
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
@@ -18,3 +18,9 @@ storiesOf('Button', module)
       </span>
     </Button>
   ));
+
+storiesOf('Axios', module)
+  .add('Envoi Requête GET', () => <AxiosTestGet/>)
+  .add('Envoi Requête POST', () => <AxiosTestPost/>)
+
+

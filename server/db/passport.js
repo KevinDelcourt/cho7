@@ -21,19 +21,18 @@ module.exports = function(passport) {
     passport.use(new LocalStrategy({
             usernameField : 'username',
             passwordField : 'password',
-            passReqToCallback : true 
         },
-        function(req, username, password, done) { 
+        function(username, password, done) { 
+
             console.log('login in')
             connection.query("SELECT * FROM users WHERE username = ?",[username], function(err, rows){
                 if (err)
                     return done(err);
-                if (!rows.length) {
-                    return done(null, false, req.flash('loginMessage', 'No user found.')); 
-                }
-
+                if (!rows.length) 
+                    return done(null, false); 
+                
                 if (password != rows[0].password)
-                    return done(null, false, req.flash('loginMessage', 'Oops! Wrong password.')); 
+                    return done(null, false); 
 
                 return done(null, rows[0]);
             });
