@@ -28,10 +28,7 @@ export const logout = () => axios.get('http://localhost:8180/logout',{withCreden
 export const hasRole = (role) => axios.get('http://localhost:8180/has_role/'+role,{withCredentials:true})
 .then((response) => {
     console.log(response)
-    if(response.data === true)
-        return true   
-    else
-        return false
+    return response.data
 }).catch((error)=>{
     console.log(error)
     return false
