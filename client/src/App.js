@@ -20,7 +20,7 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <Link to="/">Acceuil</Link>
+          <Link to="/">Accueil</Link>
           {!this.state.auth?<Link to="/login">Connexion</Link>:<span />}
           {this.state.auth?<Link to="/login" onClick={logout}>Déconnexion</Link>:<span />}
           {this.state.auth?<Link to="/upload">Upload</Link>:<span />}

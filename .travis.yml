@@ -18,5 +18,9 @@ script:
   - npm install
   - echo '{"host":"127.0.0.1","user":"root","database":"cho7"}' > db/db-identifiants.json
   - node db/init_db.js 
+  - node server.js & wait-on http://localhost:8180
+  - cd ../client
+  - yarn start & wait-on http://localhost:3000
+  - cypress run
   - cd ..
   - sonar-scanner
