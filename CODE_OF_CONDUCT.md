@@ -29,7 +29,7 @@ Tout membre peut prendre une décision concernant le projet à condition de suiv
 - Ces horaires sont données à titre indicatif. Un retard est constaté si il a lieu après 9h30, autrement ce n'est pas un retard. EXCEPTION: le premier jour du sprint, chacun ets tenu d'arriver à l'heure prévue.
 
 #L'heure de départ et la durée de présence
-- Chacun est équitablement responsable de l'évolution du projet. Cela signifie que chacun doit estimer la durée nécessaire pour que toutes les tâches soient finies, en connaissance du backlog à réaliser pour le sprint, et de la productivité de l'équipe. 
+- Chacun est responsable de l'évolution du projet. Cela signifie que chacun est responsable de la durée nécessaire pour que toutes les tâches soient finies, en connaissance du backlog à réaliser pour le sprint, et de la productivité de l'équipe. 
 
 - Compte tenu de ce qui est énoncé ci-dessus, chacun peut partir à l'heure qu'il souhaite, tant que l'équipe estime que le travail fourni est suffisant pour réussir à terminer toutes les tâches du backlog de sprint dans la durée du sprint.
 
