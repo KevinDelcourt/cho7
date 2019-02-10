@@ -9,7 +9,7 @@ module.exports = (app, passport) => {
 
 	app.get('/denied', (req, res) => {
 		res.setHeader('Content-Type', 'text/plain')
-		res.send('Mauvais login ou mot de passe') 
+		res.send('false') 
 	})
 
 	app.post('/login', passport.authenticate('local',{failureRedirect:"/denied"}),

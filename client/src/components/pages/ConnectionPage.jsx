@@ -4,6 +4,7 @@ import logo from './../../assets/images/logo.png';
 import Logo from '../atoms/Logo';
 import ConnectionForm from './../organisms/ConnectionForm';
 import SiteTitle from '../atoms/SiteTitle';
+import { hasRole } from '../../modules/auth';
 
 const ConnectionFormContainer = styled.div`
     border: 2px dotted black;
@@ -22,18 +23,30 @@ const ConnectionHeader = styled.div`
     justify-content: space-around;
 `;
 
-const ConnectionPage = () => {
-    return (
-        <div>
-            <ConnectionHeader>
-                <Logo src={logo} alt="logo" />
-                <SiteTitle>La Compagnie de l ' Aventure</SiteTitle> 
-            </ConnectionHeader> 
-            <ConnectionFormContainer>   
-                <ConnectionForm />
-            </ConnectionFormContainer>
-        </div>
-    );
-};
+
+class ConnectionPage extends React.Component {
+    state={auth:false}
+
+    async componentDidMount(){
+        this.setState({auth:await hasRole("CREATEUR")})
+    }
+
+    render(){
+        if(this.state.auth)
+            window.location="/"
+            
+        return (
+            <div>
+                <ConnectionHeader>
+                    <Logo src={logo} alt="logo" />
+                    <SiteTitle>La Compagnie de l ' Aventure</SiteTitle> 
+                </ConnectionHeader> 
+                <ConnectionFormContainer>   
+                    <ConnectionForm />
+                </ConnectionFormContainer>
+            </div>
+        )
+    }
+}
 
 export default ConnectionPage;

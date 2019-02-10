@@ -21,26 +21,29 @@ const styleAuth = {
     height: '100%'
 };
 
-const Authentification = () => {
-    return (
-        <div style={styleAuth}>
-            <LabelContainer>
-                <LabelConnection for="login">Pseudo</LabelConnection>
-            </LabelContainer>
+class Authentification extends React.Component{
 
-            <FieldContainer>
-                <FieldConnection type="text" name="login" />
-            </FieldContainer>
-
-            <LabelContainer>
-               <LabelConnection for="password">Mot de Passe</LabelConnection>
-            </LabelContainer>
-
-            <FieldContainer>
-                <FieldConnection type="password" name="password" />
-            </FieldContainer>
-        </div>
-    );
-};
+    render(){
+        return (
+            <div style={styleAuth}>
+                <LabelContainer>
+                    <LabelConnection for="login">Pseudo</LabelConnection>
+                </LabelContainer>
+    
+                <FieldContainer>
+                    <FieldConnection type="text" onChange={(evt)=>this.props.setUsername(evt.target.value)} />
+                </FieldContainer>
+    
+                <LabelContainer>
+                   <LabelConnection for="password">Mot de Passe</LabelConnection>
+                </LabelContainer>
+    
+                <FieldContainer>
+                    <FieldConnection type="password" onChange={(evt)=>this.props.setPassword(evt.target.value)} />
+                </FieldContainer>
+            </div>
+        )
+    }
+}
 
 export default Authentification;

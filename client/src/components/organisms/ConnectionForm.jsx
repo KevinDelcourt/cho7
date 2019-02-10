@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import React from 'react';
 import Authentification from "./../molecules/Authentification";
+import { login } from '../../modules/auth';
+
 
 const TitleConnectionContainer = styled.div`
     border: 2px dotted black;
@@ -34,19 +36,39 @@ const AuthentificationContainer = styled.div`
     height: 15vh;
 `;
 
-const ConnectionForm = () => {
-    return (
-        <div>
-            <TitleConnectionContainer>Titre connexion</TitleConnectionContainer>
-            
-            <AuthentificationContainer>
-                <Authentification />
-            </AuthentificationContainer>
+class ConnectionForm extends React.Component {
+    state = {
+        username:"",
+        password:"",
+    }
 
-            <LoginButtonContainer>Se connecter</LoginButtonContainer>
-            <LabelForgottenPasswordContainer>Mot de passe oublié</LabelForgottenPasswordContainer>
-        </div>
-    );
-};
+    setPassword = (password) => this.setState({password:password})
+    setUsername = (username) => this.setState({username:username})
+
+    connect = async()=>{
+        if(await login(this.state.username,this.state.password))
+            window.location="/"
+        else
+            console.log("oh no")
+    }
+
+    render(){
+
+        return (
+            <div>
+                <TitleConnectionContainer>Titre connexion</TitleConnectionContainer>
+                
+                <AuthentificationContainer>
+                    <Authentification setPassword={this.setPassword} setUsername={this.setUsername}/>
+                </AuthentificationContainer>
+    
+                <LoginButtonContainer>
+                    <button onClick={this.connect}>Se connecter</button>
+                </LoginButtonContainer>
+                <LabelForgottenPasswordContainer>Mot de passe oublié</LabelForgottenPasswordContainer>
+            </div>
+        )
+    }
+}
 
 export default ConnectionForm;
