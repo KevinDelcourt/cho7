@@ -1,24 +1,19 @@
-const signature = require('cookie-signature')
+const sign = require('cookie-signature').sign
 
-module.exports = function(app, passport) {
+module.exports = (app, passport) => {
 
-	app.get('/',function(req,res){
-		res.setHeader('Content-Type', 'text/plain');
-		res.send('server online')
+	app.get('/',(req,res) => {
+		res.setHeader('Content-Type', 'text/plain')
+		res.send('Server online')
 	  })
 
-	app.get('/login', function(req, res) {
-		res.setHeader('Content-Type', 'text/plain');
-		res.send('login: ' + req.flash('loginMessage') )
-	});
-
-	app.get('/denied', function(req, res) {
-		res.setHeader('Content-Type', 'text/plain');
+	app.get('/denied', (req, res) => {
+		res.setHeader('Content-Type', 'text/plain')
 		res.send('Mauvais login ou mot de passe') 
-	});
+	})
 
 	app.post('/login', passport.authenticate('local',{failureRedirect:"/denied"}),
-        function(req, res) {
+        (req, res) => {
             console.log("logged in")
 						console.log(req.user)
             if (req.body.remember) {
@@ -26,23 +21,26 @@ module.exports = function(app, passport) {
             } else {
               req.session.cookie.expires = false
             }
-        res.send('s:'+signature.sign(req.sessionID,'a'));
+        res.send('s:'+sign(req.sessionID,'a'));
     })
 
-	app.get('/profile', isLoggedIn, function(req, res) {
-		res.setHeader('Content-Type', 'text/plain');
-		res.send('secured')
-	});
+	app.get('/has_role/:role', isLoggedIn, (req, res) => {
+		res.setHeader('Content-Type', 'text/plain')
+		if(req.user.role === 'ROLE_'+req.params.role.toUpperCase())
+			res.send('true')
+		else
+			res.send('false')
+	})
 
-	app.get('/logout', function(req, res) {
+	app.get('/logout', (req, res) => {
 		console.log('login out...')
-		res.cookie("connect.sid", "", { expires: new Date() });
-		res.send('logged out');
+		res.cookie("connect.sid", "", { expires: new Date()})
+		res.send('logged out')
 		req.logout()
-	});
-};
+	})
+}
 
-function isLoggedIn(req, res, next) {
+const isLoggedIn = (req, res, next) =>{
 	console.log('Auth check...')
 	console.log(req.cookies)
 	if (req.isAuthenticated()){
@@ -50,5 +48,5 @@ function isLoggedIn(req, res, next) {
 		return next();
 	}
 	console.log('denied! Redirecting...')
-	res.redirect('/');
+	res.redirect('/denied');
 }

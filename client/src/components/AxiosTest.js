@@ -3,7 +3,7 @@ import axios from 'axios'
 import cookies from 'browser-cookies'
 
 export class AxiosTestGet extends Component {
-    state = { status: "vide", adresse: "profile" }
+    state = { status: "vide", adresse: "HAS_ROLE/CREATEUR" }
   
     sendRequest = ()=>axios.get('http://localhost:8180/'+this.state.adresse,{withCredentials:true})
     .then((response)=>{
