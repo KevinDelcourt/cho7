@@ -39,7 +39,7 @@ describe('Un utilisateur connecté',()=>{
     })
 
     afterEach(()=>{
-        cy.get('[href="/login"]').click()
+        cy.contains('Déconnexion').click()
     })
 
     it('affiche les liens réservés aux utilisateurs connectés',()=>{
@@ -51,23 +51,16 @@ describe('Un utilisateur connecté',()=>{
         cy.get('#root > :nth-child(1)').should('not.contain','Connexion')
     })
 
+    it('ne peut pas aller sur la page de conexion',()=>{
+        cy.visit('/login')
+        cy.get('#root > :nth-child(1)').should('contain','Accueil')
+    })
+
     it('peut aller sur la page d\'upload',()=>{
         cy.visit('/upload')
         cy.get('h2').should('contain','Upload')
     })
 })
 
-describe('Un utilisateur connecté',()=>{
-    beforeEach(()=>{
-        cy.visit('/login')
-        cy.get(':nth-child(2) > .sc-htpNat').type('Admin')
-        cy.get(':nth-child(4) > .sc-htpNat').type('Admin')
-        cy.get('button').click()
-    })
 
-    it('ne peut pas aller sur la page de conexion',()=>{
-        cy.visit('/login')
-        cy.get('#root > :nth-child(1)').should('contain','Accueil')
-    })
-})
 
