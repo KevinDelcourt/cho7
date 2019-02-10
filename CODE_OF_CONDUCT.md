@@ -26,7 +26,7 @@ Tout membre peut prendre une décision concernant le projet à condition de suiv
 ##L'heure d'arrivée
 - L'heure d'arrivée est décidée collectivement. Si rien n'est décidé concernant les horaires, les horaires sont par défaut 8h30-17h30.
 
-- Ces horaires sont données à titre indicatif. Un retard est constaté si il a lieu après 9h30, autrement ce n'est pas un retard. EXCEPTION: le premier jour du sprint, chacun ets tenu d'arriver à l'heure prévue.
+- Ces horaires sont données à titre indicatif. Un retard est constaté si il a lieu après 9h30, autrement ce n'est pas un retard. EXCEPTION: le premier jour du sprint, chacun est tenu d'arriver à l'heure prévue.
 
 #L'heure de départ et la durée de présence
 - Chacun est responsable de l'évolution du projet. Cela signifie que chacun est responsable de la durée nécessaire pour que toutes les tâches soient finies, en connaissance du backlog à réaliser pour le sprint, et de la productivité de l'équipe. 
