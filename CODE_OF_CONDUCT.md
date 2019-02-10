@@ -5,6 +5,7 @@ Si un membre constate une violation de ce code de conduite, il est tenu d'en inf
 Ce code de conduite est rédigé pour l'équipe et par l'équipe qui s'auto-gère 
 elle-même. 
 Chaque membre a la même importance vis à vis de ce code de conduite.
+Le rôle du scrum master est d'aider au respect de ce code de conduite.
 
 ##général
 
@@ -20,15 +21,15 @@ Tout membre peut prendre une décision concernant le projet à condition de suiv
 
 - Pour une meilleure synchronisation, tout membre a le devoir de se tenir au courant des décisions à prendre pour être à jour au commencement des heures de PTUT.
 
-- Toute décision concernant le projet est prise collectivement. Cela implique l'avis d'au moins deux personnes dans le groupe. Les membres n'ayant pas donné leur avis doivent alors suivre ce qui a été décidé.
+- Toute décision concernant le projet est prise collectivement. Cela implique l'avis d'au moins deux membres éclairés dans le groupe(deux membres parfaitement conscients de ce qu'ils font et qui sauront expliquer pourquoi ils ont approuvé cette décision). Les membres n'ayant pas donné leur avis doivent alors suivre ce qui a été décidé.
 
 ##L'heure d'arrivée
 - L'heure d'arrivée est décidée collectivement. Si rien n'est décidé concernant les horaires, les horaires sont par défaut 8h30-17h30.
 
-- Ces horaires sont données à titre indicatif. Un retard est constaté si il a lieu après 9h30, autrement ce n'est pas un retard. 
+- Ces horaires sont données à titre indicatif. Un retard est constaté si il a lieu après 9h30, autrement ce n'est pas un retard. EXCEPTION: le premier jour du sprint, chacun ets tenu d'arriver à l'heure prévue.
 
 #L'heure de départ et la durée de présence
-- Chacun est équitablement responsable de l'évolution du projet. Cela signifie que chacun doit estimer la durée nécessaire pour que toutes les tâches soient finies, en connaissance du backlog à réaliser pour le sprint, et de la productivité de l'équipe.
+- Chacun est équitablement responsable de l'évolution du projet. Cela signifie que chacun doit estimer la durée nécessaire pour que toutes les tâches soient finies, en connaissance du backlog à réaliser pour le sprint, et de la productivité de l'équipe. 
 
 - Compte tenu de ce qui est énoncé ci-dessus, chacun peut partir à l'heure qu'il souhaite, tant que l'équipe estime que le travail fourni est suffisant pour réussir à terminer toutes les tâches du backlog de sprint dans la durée du sprint.
 
@@ -41,6 +42,8 @@ Tout membre peut prendre une décision concernant le projet à condition de suiv
 - toute tâche doit être rédigée sur un post-it et mise à jour sur Trello, avec une estimation de sa complexité collective, et la Business Value précisée par le PO.
 
 - toute tâche est terminée lorsqu'elle respecte la définition de FINI.
+
+- Chaque membre doit s'assurer que la charge de travail est juste pour chacun. Il s'agit d'un projet collaboratif, pas d'un projet solo. Les membres doivent être solidaires.
 
 - les heures de PTUT étant peu nombreuses, celles-ci sont réservées à la production de valeur métier. L'apprentissage des technos, de javascript, React, NodeJS doit se faire en dehors des heures de PTUT, autant que possible. 
 
