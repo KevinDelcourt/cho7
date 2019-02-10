@@ -19,7 +19,7 @@ Tout membre peut prendre une décision concernant le projet à condition de suiv
 
 - Tout membre a le droit d'être déconnecté du projet en dehors des heures de PTUT. 
 
-- Pour une meilleure synchronisation, tout membre a le devoir de se tenir au courant des décisions à prendre pour être à jour au commencement des heures de PTUT, ceci avant 22h la veille du PTUT.
+- Pour une meilleure synchronisation, tout membre a le devoir de se tenir au courant des décisions à prendre pour être à jour au commencement des heures de PTUT, ceci avant 21h la veille du PTUT.
 
 - Toute décision concernant le projet est prise collectivement. Cela implique l'avis d'au moins deux membres éclairés dans le groupe(deux membres parfaitement conscients de ce qu'ils font et qui sauront expliquer pourquoi ils ont approuvé cette décision). Les membres n'ayant pas donné leur avis doivent alors suivre ce qui a été décidé.
 
