@@ -1,13 +1,15 @@
 import React from 'react';
-import { AxiosTestGet,AxiosTestPost } from '../components/AxiosTest.js'
-
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { linkTo } from '@storybook/addon-links';
-
 import { Button, Welcome } from '@storybook/react/demo';
 
+import Logo from '../components/atoms/Logo';
+import SiteTitle from '../components/atoms/SiteTitle';
+
 storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
+
+storiesOf('Logo', module).add('Avec une image', () => <Logo />);
 
 storiesOf('Button', module)
   .add('with text', () => <Button onClick={action('clicked')}>Hello Button</Button>)
@@ -16,11 +18,10 @@ storiesOf('Button', module)
       <span role="img" aria-label="so cool">
         😀 😎 👍 💯
       </span>
-    </Button>
-  ));
+    </Button>));
 
-storiesOf('Axios', module)
-  .add('Envoi Requête GET', () => <AxiosTestGet/>)
-  .add('Envoi Requête POST', () => <AxiosTestPost/>)
-
-
+storiesOf('atoms/SiteTitle', module)
+  .add('default', () => (
+      <SiteTitle />
+  )
+);
