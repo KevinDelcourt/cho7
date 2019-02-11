@@ -6,6 +6,7 @@ import { Button, Welcome } from '@storybook/react/demo';
 
 import Logo from '../components/atoms/Logo';
 import SiteTitle from '../components/atoms/SiteTitle';
+import Footer from '../components/organisms/Footer';
 
 storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
 
@@ -20,8 +21,8 @@ storiesOf('Button', module)
       </span>
     </Button>));
 
-storiesOf('atoms/SiteTitle', module)
-  .add('default', () => (
-      <SiteTitle />
+storiesOf('organisms/Footer', module)
+  .add('Footer', () => (
+      <Footer />
   )
 );
