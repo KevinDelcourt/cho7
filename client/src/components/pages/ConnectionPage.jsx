@@ -27,7 +27,7 @@ const ConnectionPage = () => {
         <div>
             <ConnectionHeader>
                 <Logo src={logo} alt="logo" />
-                <SiteTitle>La Compagnie de l ' Aventure</SiteTitle> 
+                <SiteTitle children="La Compagnie de l ' Aventure" />
             </ConnectionHeader> 
             <ConnectionFormContainer>   
                 <ConnectionForm />
