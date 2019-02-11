@@ -1,14 +1,10 @@
 import styled from "styled-components";
 import React from 'react';
 import Authentification from "./../molecules/Authentification";
+import TitleConnection from "./../atoms/TitleConnection";
 
 const TitleConnectionContainer = styled.div`
-    border: 2px dotted black;
-    width: 15vw;
-    height: 5vh;
-    margin-left: 5vw;
-    margin-top: 1vh;
-    display: inline-block;
+    text-align: center;
 `;
 
 const LoginButtonContainer = styled.div`
@@ -37,14 +33,16 @@ const AuthentificationContainer = styled.div`
 const ConnectionForm = () => {
     return (
         <div>
-            <TitleConnectionContainer>Titre connexion</TitleConnectionContainer>
+            <TitleConnectionContainer>
+                <TitleConnection children="Connexion" />
+            </TitleConnectionContainer>
             
             <AuthentificationContainer>
                 <Authentification />
             </AuthentificationContainer>
 
-            <LoginButtonContainer>Se connecter</LoginButtonContainer>
-            <LabelForgottenPasswordContainer>Mot de passe oublié</LabelForgottenPasswordContainer>
+            <LoginButtonContainer children="Se connecter" />
+            <LabelForgottenPasswordContainer children="Mot de passe oublié" />
         </div>
     );
 };

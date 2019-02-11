@@ -6,17 +6,17 @@ import ConnectionForm from './../organisms/ConnectionForm';
 import SiteTitle from '../atoms/SiteTitle';
 
 const ConnectionFormContainer = styled.div`
-    border: 2px dotted black;
     width: 26vw;
     height: 60vh;
     margin-left: auto;
     margin-right: auto;
     padding: 6vh 4vw;
+    background: #EAEAEA;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
 `;
 
 const ConnectionHeader = styled.div`
     width: 100vw;
-    height: 25vh;
     margin-top: 5vh;
     display: flex;
     justify-content: space-around;
@@ -27,7 +27,7 @@ const ConnectionPage = () => {
         <div>
             <ConnectionHeader>
                 <Logo src={logo} alt="logo" />
-                <SiteTitle>La Compagnie de l ' Aventure</SiteTitle> 
+                <SiteTitle children="La Compagnie de l ' Aventure" />
             </ConnectionHeader> 
             <ConnectionFormContainer>   
                 <ConnectionForm />
