@@ -1,30 +1,13 @@
 import styled from "styled-components";
-import React from 'react';
+import React, {Component} from 'react';
 import Authentification from "./../molecules/Authentification";
+import ConnectionButton from "./../atoms/ConnectionButton";
 import { login } from '../../modules/auth';
 import TitleConnection from "./../atoms/TitleConnection";
 
 
 const TitleConnectionContainer = styled.div`
-    text-align: center;
-`;
-
-const LoginButtonContainer = styled.div`
-    border: 2px dotted black;
-    width: 10vw;
-    height: 5vh;
-    margin-left: 7vw;
-    margin-top: 12vh;
-    display: inline-block;
-`;
-
-const LabelForgottenPasswordContainer = styled.div`
-    border: 2px dotted black;
-    width: 10vw;
-    height: 2.5 vh;
-    margin-left: 2vw;
-    margin-top: 1vh;
-    display: block;
+	text-align: center;
 `;
 
 const AuthentificationContainer = styled.div`
@@ -32,9 +15,16 @@ const AuthentificationContainer = styled.div`
     height: 15vh;
 `;
 
+const FooterConnection = styled.div`
+    display: flex;
+    flex-direction: column;
+    margin-top: 15vh;
+`;
+
+
 class ConnectionForm extends React.Component {
     state = {
-        username:"",
+    	username:"",
         password:"",
     }
 
@@ -48,26 +38,22 @@ class ConnectionForm extends React.Component {
             console.log("oh no")
     }
 
-    render(){
-
+    render() {
         return (
             <div>
                 <TitleConnectionContainer>
-                    <TitleConnection children="Connexion"/>
+                    <TitleConnection children="Connexion" />
                 </TitleConnectionContainer>
                 
                 <AuthentificationContainer>
                     <Authentification setPassword={this.setPassword} setUsername={this.setUsername}/>
                 </AuthentificationContainer>
-    
-                <LoginButtonContainer>
-                    <button onClick={this.connect}>Se connecter</button>
-                </LoginButtonContainer>
-                <LabelForgottenPasswordContainer>Mot de passe oublié</LabelForgottenPasswordContainer>
+                
+                <FooterConnection>
+                    <ConnectionButton onClick={this.connect}>Se connecter</ConnectionButton>
+                </FooterConnection>
             </div>
-        )
+        );
     }
 }
-
-
 export default ConnectionForm;
