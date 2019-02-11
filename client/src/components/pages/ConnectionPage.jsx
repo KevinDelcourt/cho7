@@ -6,6 +6,7 @@ import ConnectionForm from './../organisms/ConnectionForm';
 import SiteTitle from '../atoms/SiteTitle';
 import { hasRole } from '../../modules/auth';
 
+
 const ConnectionFormContainer = styled.div`
     border: 2px dotted black;
     width: 26vw;
@@ -22,7 +23,6 @@ const ConnectionHeader = styled.div`
     display: flex;
     justify-content: space-around;
 `;
-
 
 class ConnectionPage extends React.Component {
     state={auth:false}
@@ -48,5 +48,6 @@ class ConnectionPage extends React.Component {
         )
     }
 }
+
 
 export default ConnectionPage;

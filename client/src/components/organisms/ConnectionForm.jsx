@@ -3,7 +3,6 @@ import React from 'react';
 import Authentification from "./../molecules/Authentification";
 import { login } from '../../modules/auth';
 
-
 const TitleConnectionContainer = styled.div`
     border: 2px dotted black;
     width: 15vw;
@@ -70,5 +69,6 @@ class ConnectionForm extends React.Component {
         )
     }
 }
+
 
 export default ConnectionForm;
