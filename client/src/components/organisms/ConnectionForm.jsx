@@ -52,7 +52,9 @@ class ConnectionForm extends React.Component {
 
         return (
             <div>
-                <TitleConnectionContainer>Titre connexion</TitleConnectionContainer>
+                <TitleConnectionContainer>
+                    <TitleConnection children="Connexion"/>
+                </TitleConnectionContainer>
                 
                 <AuthentificationContainer>
                     <Authentification setPassword={this.setPassword} setUsername={this.setUsername}/>

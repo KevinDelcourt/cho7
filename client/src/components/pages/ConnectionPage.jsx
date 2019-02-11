@@ -28,6 +28,7 @@ class ConnectionPage extends React.Component {
     state={auth:false}
 
     async componentDidMount(){
+        document.title = "Connexion";
         this.setState({auth:await hasRole("CREATEUR")})
     }
 
@@ -39,7 +40,7 @@ class ConnectionPage extends React.Component {
             <div>
                 <ConnectionHeader>
                     <Logo src={logo} alt="logo" />
-                    <SiteTitle>La Compagnie de l ' Aventure</SiteTitle> 
+                    <SiteTitle children="La Compagnie de l ' Aventure" />
                 </ConnectionHeader> 
                 <ConnectionFormContainer>   
                     <ConnectionForm />
