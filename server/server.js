@@ -1,37 +1,42 @@
-const mysql = require('mysql')
+const session  = require('express-session');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const morgan = require('morgan');
 const express = require('express')
-const bodyParser = require('body-parser')
+const passport = require('passport');
+const flash    = require('connect-flash');
 
-const sql = require('./functions/sql_functions')
-const credentials = require('./db/db-identifiants.json')
 
 const app = express();
-app.use(bodyParser.json())
 
+app.use(morgan('dev')); 
+app.use(cookieParser()); 
+app.use(bodyParser.urlencoded({
+	extended: true
+}));
+app.use(bodyParser.json());
 
-const connection = mysql.createConnection(credentials);
-
-connection.connect((err) => {
-  if (err) throw err;
-  console.log('Connected to database!');
+app.use(session({
+	secret: 'a',
+	resave: true,
+	saveUninitialized: false
+ } )); 
+ app.use(function (req, res, next) {
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+	res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    next();
 });
+app.use(passport.initialize());
+app.use(passport.session()); 
+app.use(flash()); 
 
-app.post('/profil/createur', function(req, res,next) {
-  sql.setUsernameCreateur(connection,req,res)
-});
+require('./db/passport')(passport); 
 
-app.get('/profil/createur', function(req, res) {
-  sql.getProfilCreateur(connection,res)
-});
-
-app.get('/status',function(req,res){
-  res.setHeader('Content-Type', 'text/plain');
-  connection.ping(function (err) {
-    if (err) throw err;
-    res.send('online')
-  })
-})
+require('./app/routes.js')(app, passport); 
 
 console.log('Server online!');
-console.log(credentials.host+':8180');
+console.log('localhost:8180');
+
 app.listen(8180);

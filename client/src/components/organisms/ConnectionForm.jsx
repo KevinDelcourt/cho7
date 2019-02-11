@@ -3,10 +3,12 @@ import React, {Component} from 'react';
 import Authentification from "./../molecules/Authentification";
 import ForgottenPassword from "./../atoms/ForgottenPassword";
 import ConnectionButton from "./../atoms/ConnectionButton";
+import { login } from '../../modules/auth';
 import TitleConnection from "./../atoms/TitleConnection";
 
+
 const TitleConnectionContainer = styled.div`
-    text-align: center;
+	text-align: center;
 `;
 
 const AuthentificationContainer = styled.div`
@@ -21,15 +23,20 @@ const FooterConnection = styled.div`
 `;
 
 
-class ConnectionForm extends Component {
-    constructor(props){
-        super(props);
-        this.userLogin = '';
-        this.userPwd = '';
+class ConnectionForm extends React.Component {
+    state = {
+    	username:"",
+        password:"",
     }
 
-    getUserProperties(){
-        
+    setPassword = (password) => this.setState({password:password})
+    setUsername = (username) => this.setState({username:username})
+
+    connect = async()=>{
+        if(await login(this.state.username,this.state.password))
+            window.location="/"
+        else
+            console.log("oh no")
     }
 
     render() {
@@ -40,11 +47,11 @@ class ConnectionForm extends Component {
                 </TitleConnectionContainer>
                 
                 <AuthentificationContainer>
-                    <Authentification />
+                    <Authentification setPassword={this.setPassword} setUsername={this.setUsername}/>
                 </AuthentificationContainer>
                 
                 <FooterConnection>
-                    <ConnectionButton children="Se Connecter" />
+                    <ConnectionButton onClick={this.connect}>Se connecter</ConnectionButton>
                     <ForgottenPassword>Mot de passe oublié</ForgottenPassword>
                 </FooterConnection>
             </div>

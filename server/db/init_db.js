@@ -1,4 +1,5 @@
 const mysql = require('mysql')
+
 const fs = require('fs')
 
 const credentials = require('./db-identifiants.json')
