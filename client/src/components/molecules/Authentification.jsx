@@ -27,7 +27,7 @@ class Authentification extends React.Component{
         return (
             <div style={styleAuth}>
                 <LabelContainer>
-                    <LabelConnection for="login">Pseudo</LabelConnection>
+                    <LabelConnection for="login" children="Pseudo" />
                 </LabelContainer>
     
                 <FieldContainer>
@@ -35,7 +35,7 @@ class Authentification extends React.Component{
                 </FieldContainer>
     
                 <LabelContainer>
-                   <LabelConnection for="password">Mot de Passe</LabelConnection>
+                   <LabelConnection for="password" children="Mot de Passe" />
                 </LabelContainer>
     
                 <FieldContainer>
