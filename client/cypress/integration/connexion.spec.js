@@ -61,6 +61,3 @@ describe('Un utilisateur connecté',()=>{
         cy.get('h2').should('contain','Upload')
     })
 })
-
-
-
