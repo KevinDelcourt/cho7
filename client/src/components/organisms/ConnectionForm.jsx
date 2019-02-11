@@ -3,14 +3,10 @@ import React, {Component} from 'react';
 import Authentification from "./../molecules/Authentification";
 import ForgottenPassword from "./../atoms/ForgottenPassword";
 import ConnectionButton from "./../atoms/ConnectionButton";
+import TitleConnection from "./../atoms/TitleConnection";
 
 const TitleConnectionContainer = styled.div`
-    border: 2px dotted black;
-    width: 15vw;
-    height: 5vh;
-    margin-left: 5vw;
-    margin-top: 1vh;
-    display: inline-block;
+    text-align: center;
 `;
 
 const AuthentificationContainer = styled.div`
@@ -39,7 +35,9 @@ class ConnectionForm extends Component {
     render() {
         return (
             <div>
-                <TitleConnectionContainer>Titre connexion</TitleConnectionContainer>
+                <TitleConnectionContainer>
+                    <TitleConnection children="Connexion" />
+                </TitleConnectionContainer>
                 
                 <AuthentificationContainer>
                     <Authentification />
@@ -52,6 +50,5 @@ class ConnectionForm extends Component {
             </div>
         );
     }
-};
-
+}
 export default ConnectionForm;
