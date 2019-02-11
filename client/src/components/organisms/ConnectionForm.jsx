@@ -2,14 +2,11 @@ import styled from "styled-components";
 import React from 'react';
 import Authentification from "./../molecules/Authentification";
 import { login } from '../../modules/auth';
+import TitleConnection from "./../atoms/TitleConnection";
+
 
 const TitleConnectionContainer = styled.div`
-    border: 2px dotted black;
-    width: 15vw;
-    height: 5vh;
-    margin-left: 5vw;
-    margin-top: 1vh;
-    display: inline-block;
+    text-align: center;
 `;
 
 const LoginButtonContainer = styled.div`

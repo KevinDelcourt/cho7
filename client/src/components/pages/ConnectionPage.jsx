@@ -8,17 +8,17 @@ import { hasRole } from '../../modules/auth';
 
 
 const ConnectionFormContainer = styled.div`
-    border: 2px dotted black;
     width: 26vw;
     height: 60vh;
     margin-left: auto;
     margin-right: auto;
     padding: 6vh 4vw;
+    background: #EAEAEA;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
 `;
 
 const ConnectionHeader = styled.div`
     width: 100vw;
-    height: 25vh;
     margin-top: 5vh;
     display: flex;
     justify-content: space-around;
@@ -48,6 +48,7 @@ class ConnectionPage extends React.Component {
         )
     }
 }
+
 
 
 export default ConnectionPage;
