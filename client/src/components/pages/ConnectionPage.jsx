@@ -5,11 +5,11 @@ import Logo from '../atoms/Logo';
 import ConnectionForm from './../organisms/ConnectionForm';
 import SiteTitle from '../atoms/SiteTitle';
 import { hasRole } from '../../modules/auth';
+import { Link } from 'react-router-dom';
 
 
 const ConnectionFormContainer = styled.div`
     width: 26vw;
-    height: 60vh;
     margin-left: auto;
     margin-right: auto;
     padding: 6vh 4vw;
@@ -38,10 +38,12 @@ class ConnectionPage extends React.Component {
             
         return (
             <div>
-                <ConnectionHeader>
-                    <Logo src={logo} alt="logo" />
-                    <SiteTitle children="La Compagnie de l ' Aventure" />
-                </ConnectionHeader> 
+                <Link to="/" title="Accueil">
+                    <ConnectionHeader>
+                        <Logo src={logo} alt="logo" />
+                        <SiteTitle children="La Compagnie de l ' Aventure" />
+                    </ConnectionHeader>
+                </Link>
                 <ConnectionFormContainer>   
                     <ConnectionForm />
                 </ConnectionFormContainer>
