@@ -6,6 +6,7 @@
 # dependencies
 /server/node_modules
 /client/node_modules
+AxiosTest.js
 /.pnp
 .pnp.js
 

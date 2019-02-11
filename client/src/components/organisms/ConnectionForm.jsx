@@ -1,7 +1,9 @@
 import styled from "styled-components";
 import React from 'react';
 import Authentification from "./../molecules/Authentification";
+import { login } from '../../modules/auth';
 import TitleConnection from "./../atoms/TitleConnection";
+
 
 const TitleConnectionContainer = styled.div`
     text-align: center;
@@ -30,21 +32,40 @@ const AuthentificationContainer = styled.div`
     height: 15vh;
 `;
 
-const ConnectionForm = () => {
-    return (
-        <div>
-            <TitleConnectionContainer>
-                <TitleConnection children="Connexion" />
-            </TitleConnectionContainer>
-            
-            <AuthentificationContainer>
-                <Authentification />
-            </AuthentificationContainer>
+class ConnectionForm extends React.Component {
+    state = {
+        username:"",
+        password:"",
+    }
 
-            <LoginButtonContainer children="Se connecter" />
-            <LabelForgottenPasswordContainer children="Mot de passe oublié" />
-        </div>
-    );
-};
+    setPassword = (password) => this.setState({password:password})
+    setUsername = (username) => this.setState({username:username})
+
+    connect = async()=>{
+        if(await login(this.state.username,this.state.password))
+            window.location="/"
+        else
+            console.log("oh no")
+    }
+
+    render(){
+
+        return (
+            <div>
+                <TitleConnectionContainer>Titre connexion</TitleConnectionContainer>
+                
+                <AuthentificationContainer>
+                    <Authentification setPassword={this.setPassword} setUsername={this.setUsername}/>
+                </AuthentificationContainer>
+    
+                <LoginButtonContainer>
+                    <button onClick={this.connect}>Se connecter</button>
+                </LoginButtonContainer>
+                <LabelForgottenPasswordContainer>Mot de passe oublié</LabelForgottenPasswordContainer>
+            </div>
+        )
+    }
+}
+
 
 export default ConnectionForm;
