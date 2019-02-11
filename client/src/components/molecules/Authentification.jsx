@@ -25,7 +25,7 @@ const Authentification = () => {
     return (
         <div style={styleAuth}>
             <LabelContainer>
-                <LabelConnection for="login">Pseudo</LabelConnection>
+                <LabelConnection>Pseudo</LabelConnection>
             </LabelContainer>
 
             <FieldContainer>
@@ -33,7 +33,7 @@ const Authentification = () => {
             </FieldContainer>
 
             <LabelContainer>
-               <LabelConnection for="password">Mot de Passe</LabelConnection>
+               <LabelConnection>Mot de Passe</LabelConnection>
             </LabelContainer>
 
             <FieldContainer>
