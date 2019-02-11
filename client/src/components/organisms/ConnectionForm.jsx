@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import React, {Component} from 'react';
 import Authentification from "./../molecules/Authentification";
-import ForgottenPassword from "./../atoms/ForgottenPassword";
 import ConnectionButton from "./../atoms/ConnectionButton";
 import { login } from '../../modules/auth';
 import TitleConnection from "./../atoms/TitleConnection";
@@ -52,7 +51,6 @@ class ConnectionForm extends React.Component {
                 
                 <FooterConnection>
                     <ConnectionButton onClick={this.connect}>Se connecter</ConnectionButton>
-                    <ForgottenPassword>Mot de passe oublié</ForgottenPassword>
                 </FooterConnection>
             </div>
         );
