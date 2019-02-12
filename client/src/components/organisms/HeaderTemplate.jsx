@@ -6,7 +6,7 @@ class HeaderTemplate extends React.Component {
     render() {
         return (
             <div>
-                <center><Banniere src={banniere} alt="banniere" /></center> 
+                <center><a href="/"><Banniere src={banniere} alt="banniere" /></a></center> 
                 <div className="navBar" />
             </div>
         );
