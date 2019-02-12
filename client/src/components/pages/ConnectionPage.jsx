@@ -27,7 +27,7 @@ const ConnectionHeader = styled.div`
 class ConnectionPage extends React.Component {
     state={auth:false}
 
-    async componentDidMount(){
+    async componentDidMount() {
         document.title = "Connexion";
         this.setState({auth:await hasRole("CREATEUR")})
     }
