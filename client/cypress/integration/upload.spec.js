@@ -1,4 +1,4 @@
-describe('Un utilisateur connecté', () => {
+describe('Un utilisateur connecté sur la page d\'Upload', () => {
     beforeEach(() => {
         cy.visit('/login')
         cy.get(':nth-child(2) > .sc-htpNat').type('Admin')
