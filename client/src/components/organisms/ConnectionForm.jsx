@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import React, {Component} from 'react';
+import React from 'react';
 import Authentification from "./../molecules/Authentification";
 import ConnectionButton from "./../atoms/ConnectionButton";
 import { login } from '../../modules/auth';
@@ -17,7 +17,7 @@ const AuthentificationContainer = styled.div`
 const FooterConnection = styled.div`
     display: flex;
     flex-direction: column;
-    margin-top: 15vh;
+    margin-top: 7vh;
 `;
 
 

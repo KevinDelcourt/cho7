@@ -28,6 +28,11 @@ describe('Un utilisateur non connecté', () => {
         cy.get('h2').should('exist')
 
     })
+
+    it('peut aller sur la page d\'accueil en cliquant sur le header', () => {
+        cy.get('.sc-gqjmRU').click()
+        cy.url().should('include', 'localhost:3000/')
+    })
 })
 
 describe('Un utilisateur connecté',()=>{
@@ -51,7 +56,7 @@ describe('Un utilisateur connecté',()=>{
         cy.get('#root > :nth-child(1)').should('not.contain','Connexion')
     })
 
-    it('ne peut pas aller sur la page de conexion',()=>{
+    it('ne peut pas aller sur la page de connexion',()=>{
         cy.visit('/login')
         cy.get('#root > :nth-child(1)').should('contain','Accueil')
     })
