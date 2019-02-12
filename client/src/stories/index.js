@@ -8,7 +8,6 @@ import { withKnobs, text} from '@storybook/addon-knobs';
 import Logo from '../components/atoms/Logo';
 import SiteTitle from '../components/atoms/SiteTitle';
 import MenuButton from '../components/atoms/MenuButton';
-import MenuLoginButton from '../components/atoms/MenuLoginButton';
 
 storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
 
@@ -33,9 +32,4 @@ const storyMenuButton = storiesOf('Storybook Knobs', module);
 storyMenuButton.addDecorator(withKnobs);
 storyMenuButton.add('Menu Button', () => (
 	<MenuButton children={text('Contenu','')}/>
-));
-
-const storyMenuLoginButton = storiesOf('Storybook Knobs', module);
-storyMenuLoginButton.add('Menu Login Button', () => (
-	<MenuLoginButton fstClick="Connection" sndClick="Nom Créateur" />
 ));

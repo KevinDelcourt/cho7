@@ -4,6 +4,7 @@ import ConnectionPage from './components/pages/ConnectionPage.jsx';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import AccueilPage from './components/pages/AccueilPage';
 import UploadPage from './components/pages/UploadPage';
+import MenuButton from './components/atoms/MenuButton';
 
 import { hasRole, logout } from './modules/auth';
 
@@ -20,10 +21,10 @@ class App extends Component {
 		return (
 			<Router>
 				<div>
-					<Link to="/">Accueil</Link>
-					{!this.state.auth?<Link to="/login">Connexion</Link>:<span />}
-					{this.state.auth?<Link to="/login" onClick={logout}>Déconnexion</Link>:<span />}
-					{this.state.auth?<Link to="/upload">Upload</Link>:<span />}
+					<Link to="/"> <MenuButton children="Accueil" /> </Link>
+					{!this.state.auth?<Link to="/login"> <MenuButton children="Connexion"/> </Link>:<span />}
+					{this.state.auth?<Link to="/login" onClick={logout}> <MenuButton children="Déconnexion"/> </Link>:<span />}
+					{this.state.auth?<Link to="/upload"> <MenuButton children="Upload"/> </Link>:<span />}
 
 					<hr/>
 					<Route exact path="/" component={AccueilPage} />
