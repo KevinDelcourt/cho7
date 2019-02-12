@@ -3,7 +3,7 @@ describe('Un utilisateur connecté', () => {
         cy.visit('/login')
         cy.get(':nth-child(2) > .sc-htpNat').type('Admin')
         cy.get(':nth-child(4) > .sc-htpNat').type('Admin')
-        cy.get('button').click()
+        cy.get('.sc-EHOje').click()
         cy.visit('/upload')
       })
 
