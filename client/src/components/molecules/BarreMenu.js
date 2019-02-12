@@ -2,6 +2,7 @@ import React from 'react';
 import MenuButton from './../atoms/MenuButton';
 
 import { logout, hasRole } from './../../modules/auth';
+import { Link } from 'react-router-dom'
 
 const styleBarreMenu = {
     background: 'rgba(213, 191, 159, 0.67)',
@@ -23,10 +24,10 @@ class BarreMenu extends React.Component {
     render(){
         return(
             <div style={styleBarreMenu}>
-                <a href='/'> <MenuButton children="Accueil" /> </a>
-                {!this.state.auth?<a href="/login"> <MenuButton children="Connexion"/> </a>:<span />}
-                {this.state.auth?<a href="/login" onClick={logout}> <MenuButton children="Déconnexion"/> </a>:<span />}
-                {this.state.auth?<a href="/upload"> <MenuButton children="Upload"/> </a>:<span />}
+                <Link to='/'> <MenuButton children="Accueil" /> </Link>
+                {!this.state.auth?<Link to="/login"> <MenuButton children="Connexion"/> </Link>:<span />}
+                {this.state.auth?<Link to="/login" onClick={logout}> <MenuButton children="Déconnexion"/> </Link>:<span />}
+                {this.state.auth?<Link to="/upload"> <MenuButton children="Upload"/> </Link>:<span />}
             </div>
         );
     }

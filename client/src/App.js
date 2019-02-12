@@ -5,7 +5,6 @@ import ConnectionPage from './components/pages/ConnectionPage.jsx';
 import AccueilPage from './components/pages/AccueilPage';
 import UploadPage from './components/pages/UploadPage';
 
-
 import { BrowserRouter as Router, Route} from "react-router-dom";
 
 
