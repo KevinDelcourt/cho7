@@ -2,9 +2,9 @@ import styled from "styled-components";
 import React, {Component} from 'react';
 
 const FooterContainer = styled.div`
-    padding: 30px;
+    padding: 4vh 3vw;
     font-size: 22px;
-    width: 95%;
+    width: 90vw;
     margin-right: auto;
     margin-left: auto;
     margin-bottom: 2vh;
