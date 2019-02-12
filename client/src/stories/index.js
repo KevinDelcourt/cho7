@@ -10,6 +10,7 @@ import { withKnobs, text} from '@storybook/addon-knobs';
 import Logo from '../components/atoms/Logo';
 import SiteTitle from '../components/atoms/SiteTitle';
 import MenuButton from '../components/atoms/MenuButton';
+import UploadForm from '../components/organisms/UploadForm';
 
 storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
 
@@ -29,5 +30,10 @@ storiesOf('organisms', module)
     .add('Footer', () => (
       <FooterTemplate left={text('Gauche','gaute')} right={text('Droite','droiche')}/>
 ))
+    .add('UploadForm', () => (
+      <UploadForm />
+))
+
+
 
 

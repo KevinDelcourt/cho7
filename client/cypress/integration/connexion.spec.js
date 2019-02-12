@@ -18,7 +18,7 @@ describe('Un utilisateur non connecté', () => {
 
     it('ne peut pas aller sur la page Upload',()=>{
         cy.visit('/upload')
-        cy.get('h2').should('not.exist')
+        cy.contains('Nouvelle Création').should('not.exist')
     })
 
     it('peut se connecter avec les bons identifiants', () => {
@@ -63,6 +63,6 @@ describe('Un utilisateur connecté',()=>{
 
     it('peut aller sur la page d\'upload',()=>{
         cy.visit('/upload')
-        cy.get('h2').should('contain','Upload')
+        cy.contains('Nouvelle Création').should('exist')
     })
 })
