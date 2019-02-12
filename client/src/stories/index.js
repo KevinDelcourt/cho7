@@ -10,6 +10,8 @@ import { withKnobs, text} from '@storybook/addon-knobs';
 import Logo from '../components/atoms/Logo';
 import SiteTitle from '../components/atoms/SiteTitle';
 import MenuButton from '../components/atoms/MenuButton';
+import LabelDescription from '../components/atoms/LabelDescription';
+import FieldDescription from '../components/atoms/FieldDescription';
 
 storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
 
@@ -23,6 +25,12 @@ storiesOf('atoms', module)
   .add('Menu Button', () => (
       <MenuButton children={text('Contenu','Bouton')}/>
   ))
+  .add('LabelDescription', () => (
+    <LabelDescription children={text('Contenu','text')}/>
+))
+.add('FieldDescription', () => (
+  <FieldDescription />
+))
 
 storiesOf('organisms', module)
     .addDecorator(withKnobs)
