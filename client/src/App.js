@@ -27,6 +27,7 @@ class App extends Component {
 					{this.state.auth?<Link to="/upload"> <MenuButton children="Upload"/> </Link>:<span />}
 
 					<hr/>
+          
 					<Route exact path="/" component={AccueilPage} />
 					<Route path="/login" component={ConnectionPage} />
 					<Route path="/upload" component={UploadPage} />
