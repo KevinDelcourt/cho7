@@ -35,7 +35,7 @@ const LeftDiv = styled.div`
     bottom: 24.79%;
 `;
 
-export default class Footer extends Component{
+export default class FooterTemplate extends Component{
     render(){
         return(
             <FooterDiv>

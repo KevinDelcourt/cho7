@@ -1,10 +1,10 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import Footer from '../components/organisms/Footer';
+import FooterTemplate from '../components/organisms/FooterTemplate';
 
 storiesOf('organisms/Footer', module)
   .add('Footer', () => (
-      <Footer left="gaute" right="droiche"/>
+      <FooterTemplate left="gaute" right="droiche"/>
   )
 );
