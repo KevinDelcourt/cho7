@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import React from 'react';
-import ConnexionButton from "../atoms/ConnectionButton";
 
 const PlacementNCreation = styled.div`
     position: absolute;

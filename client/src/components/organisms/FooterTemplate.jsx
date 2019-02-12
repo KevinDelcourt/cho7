@@ -4,18 +4,17 @@ import React, {Component} from 'react';
 const FooterContainer = styled.div`
     padding: 4vh 3vw;
     font-size: 22px;
-    width: 90vw;
+    width: 94vw;
     margin-right: auto;
     margin-left: auto;
     margin-bottom: 2vh;
 
     font-family: 'Almendra SC', Arial;
-    text-align: center;
-
     background: rgba(213, 191, 159, 0.67);
     border-radius: 10px;
     display: flex;
     justify-content: space-around;
+    align-items: center;
 `;
 
 export default class FooterTemplate extends Component{
