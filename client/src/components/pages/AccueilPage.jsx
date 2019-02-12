@@ -1,11 +1,12 @@
 import React from 'react';
-import FooterTemplate from '../organisms/FooterTemplate';
+import Template from './Template';
+
+const Body = <h1>ACCUEIL</h1>;
 
 const AccueilPage = () => (
-    <div>
-      <h2>Accueil</h2>
-      <FooterTemplate left={<a href="/">La Compagnie de l'Aventure</a>} right={<a href="/">A propos</a>}/>
-    </div>
-  )
-  
+	<div>
+		<Template children={Body} />
+	</div>
+)
+	
 export default AccueilPage

@@ -25,6 +25,7 @@
 body {
 	background: url('./assets/images/background.jpg') no-repeat;
 	background-size: cover;
+	color: black;
 }
 
 a:visited {

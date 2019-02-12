@@ -1,7 +1,8 @@
 import React from 'react';
-import HeaderTemplate from '../organisms/HeaderTemplate';
-import FooterTemplate from '../organisms/FooterTemplate';
+import Template from './Template';
 import { hasRole } from '../../modules/auth';
+
+const Body = <h2>Upload - Réservé au créateur</h2>;
 
 
 class UploadPage extends React.Component {
@@ -16,10 +17,8 @@ class UploadPage extends React.Component {
 		if(this.state.auth)
 			return(
 				<div>
-					<HeaderTemplate />
-					<h2>Upload - Réservé au créateur</h2>
-					<FooterTemplate left={<a href="/">La Compagnie de l'Aventure</a>} right={<a href="/">A propos</a>}/>
-				</div>
+					<Template children={Body} />
+				</div> 
 			)
 
 		return <span />
