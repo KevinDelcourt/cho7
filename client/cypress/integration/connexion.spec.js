@@ -24,7 +24,7 @@ describe('Un utilisateur non connecté', () => {
     it('peut se connecter avec les bons identifiants', () => {
         cy.get(':nth-child(2) > .sc-htpNat').type('Admin')
         cy.get(':nth-child(4) > .sc-htpNat').type('Admin')
-        cy.get('button').click()
+        cy.get('.sc-EHOje').click()
         cy.get('h2').should('exist')
 
     })
@@ -40,7 +40,7 @@ describe('Un utilisateur connecté',()=>{
         cy.visit('/login')
         cy.get(':nth-child(2) > .sc-htpNat').type('Admin')
         cy.get(':nth-child(4) > .sc-htpNat').type('Admin')
-        cy.get('button').click()
+        cy.get('.sc-EHOje').click()
     })
 
     afterEach(()=>{
