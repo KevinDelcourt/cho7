@@ -1,9 +1,7 @@
 import styled from 'styled-components';
 
 const Banniere = styled.img`
-    width: 150px;
-    height: 150px;
-    display: flex;
+    width: 40%;
 `;
 
 export default Banniere;
