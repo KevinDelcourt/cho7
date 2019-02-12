@@ -5,7 +5,6 @@ import ConnectionButton from "./../atoms/ConnectionButton";
 import { login } from '../../modules/auth';
 import TitleConnection from "./../atoms/TitleConnection";
 
-
 const TitleConnectionContainer = styled.div`
 	text-align: center;
 `;
