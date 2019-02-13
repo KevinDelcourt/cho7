@@ -20,3 +20,4 @@ export default class Avatar extends Component {
     );
   }
 }
+

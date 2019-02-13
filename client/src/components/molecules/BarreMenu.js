@@ -32,12 +32,15 @@ class BarreMenu extends React.Component {
     render(){
         let co;
         let upload;
+        let profil;
 
         if (!this.state.auth) {
             co =  <Link to="/login" style={{marginRight: '1vw'}}> <MenuButton children="Connexion"/> </Link>;
         }
         else {
             co = <Link to="/login" onClick={logout} style={{marginRight: '1vw'}}> <MenuButton children="Déconnexion"/> </Link>
+            profil= <Link to="/RenseignerProfilPage" > <MenuButton children="Profil"/> </Link>
+
         }   
 
         if (this.state.auth) {
@@ -50,7 +53,11 @@ class BarreMenu extends React.Component {
                     <Link to='/'> <MenuButton children="Accueil" /> </Link>
                     {upload}
                 </div>
+                <div> 
                 {co}
+                {profil}
+                </div>
+               
             </div>
         );
     }
