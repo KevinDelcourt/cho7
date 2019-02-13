@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 
 
 const ConnectionFormContainer = styled.div`
-    width: 26vw;
+    width: 28vw;
     margin-left: auto;
     margin-right: auto;
     padding: 6vh 4vw;
