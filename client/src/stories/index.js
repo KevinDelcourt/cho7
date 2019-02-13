@@ -13,6 +13,7 @@ import MenuButton from '../components/atoms/MenuButton';
 import UploadForm from '../components/organisms/UploadForm';
 import BarreMenu from '../components/molecules/BarreMenu';
 import { BrowserRouter as Router} from "react-router-dom";
+import Creation from '../components/organisms/Creation';
 
 storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
 
@@ -47,6 +48,9 @@ storiesOf('organisms', module)
   .add('UploadForm', () => (
       <UploadForm />
 ))
+  .add('Creation',()=>(
+      <Creation />
+  ))
 
 
 

@@ -31,10 +31,13 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session()); 
 app.use(flash()); 
+app.use('/public',express.static(__dirname + '/public'));
+
 
 require('./db/passport')(passport); 
 
 require('./app/routes.js')(app, passport); 
+
 
 console.log('Server online!');
 console.log('localhost:8180');
