@@ -4,7 +4,6 @@ import { storiesOf } from '@storybook/react';
 import { linkTo } from '@storybook/addon-links';
 import { Welcome } from '@storybook/react/demo';
 import { withKnobs, text, number} from '@storybook/addon-knobs';
-import { BrowserRouter as Router} from "react-router-dom";
 
 import Logo from '../components/atoms/Logo';
 import SiteTitle from '../components/atoms/SiteTitle';
@@ -13,6 +12,9 @@ import LabelDescription from '../components/atoms/LabelDescription';
 import FieldDescription from '../components/atoms/FieldDescription';
 import UploadForm from '../components/organisms/UploadForm';
 import BarreMenu from '../components/molecules/BarreMenu';
+import { BrowserRouter as Router} from "react-router-dom";
+import SubmitButton from '../components/atoms/Submitbutton';
+import CadreAvatar from '../components/atoms/CadreAvatar';
 import Creation from '../components/organisms/Creation';
 import FooterTemplate from '../components/organisms/FooterTemplate';
 import InputBase from '../components/atoms/InputBase';
@@ -100,6 +102,17 @@ Description.add('LabelDescription', () => (
 <FieldDescription />
 ))
 
+const SubmitB = storiesOf('Storybook Knobs', module);
+SubmitB.addDecorator(withKnobs);
+SubmitB.add('SubmitButton', () => (
+  <SubmitButton children={text('Contenu','')}/>
+))
+
+const CAvatar = storiesOf('Storybook Knobs', module);
+CAvatar.addDecorator(withKnobs);
+CAvatar.add('CadreAvatar', () => (
+  <CadreAvatar w={number("width",10)} h={number("height", 10)}/>
+))
 const storyMainContainer = storiesOf("molecules/Composant de base", module);
 const child = [<div style={{border: "solid 1px black"}}>hqeugrhzo</div>];
 storyMainContainer.addDecorator(withKnobs);
