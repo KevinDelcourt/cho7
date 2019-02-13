@@ -5,7 +5,7 @@ import FooterTemplate from '../components/organisms/FooterTemplate';
 
 import { linkTo } from '@storybook/addon-links';
 import { Welcome } from '@storybook/react/demo';
-import { withKnobs, text} from '@storybook/addon-knobs';
+import { withKnobs, text, number} from '@storybook/addon-knobs';
 
 import Logo from '../components/atoms/Logo';
 import SiteTitle from '../components/atoms/SiteTitle';
@@ -15,6 +15,9 @@ import FieldDescription from '../components/atoms/FieldDescription';
 import UploadForm from '../components/organisms/UploadForm';
 import BarreMenu from '../components/molecules/BarreMenu';
 import { BrowserRouter as Router} from "react-router-dom";
+import SubmitButton from '../components/atoms/Submitbutton';
+import CadreAvatar from '../components/atoms/CadreAvatar';
+
 
 storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
 
@@ -68,9 +71,20 @@ storiesOf('organisms', module)
 const Description = storiesOf('Storybook Knobs', module);
 Description.addDecorator(withKnobs);
 Description.add('LabelDescription', () => (
-
   <LabelDescription children={text('Contenu','text')}/>
 ))
 .add('FieldDescription', () => (
 <FieldDescription />
+))
+
+const SubmitB = storiesOf('Storybook Knobs', module);
+SubmitB.addDecorator(withKnobs);
+SubmitB.add('SubmitButton', () => (
+  <SubmitButton children={text('Contenu','')}/>
+))
+
+const CAvatar = storiesOf('Storybook Knobs', module);
+CAvatar.addDecorator(withKnobs);
+CAvatar.add('CadreAvatar', () => (
+  <CadreAvatar w={number("width",10)} h={number("height", 10)}/>
 ))
