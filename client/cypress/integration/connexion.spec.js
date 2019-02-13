@@ -29,10 +29,6 @@ describe('Un utilisateur non connecté', () => {
 
     })
 
-    it('peut aller sur la page d\'accueil en cliquant sur le header', () => {
-        cy.get('.sc-gqjmRU').click()
-        cy.url().should('include', 'localhost:3000/')
-    })
 })
 
 describe('Un utilisateur connecté',()=>{

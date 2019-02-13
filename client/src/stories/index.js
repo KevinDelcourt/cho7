@@ -10,13 +10,28 @@ import { withKnobs, text} from '@storybook/addon-knobs';
 import Logo from '../components/atoms/Logo';
 import SiteTitle from '../components/atoms/SiteTitle';
 import MenuButton from '../components/atoms/MenuButton';
+import LabelDescription from '../components/atoms/LabelDescription';
+import FieldDescription from '../components/atoms/FieldDescription';
 import UploadForm from '../components/organisms/UploadForm';
 import BarreMenu from '../components/molecules/BarreMenu';
 import { BrowserRouter as Router} from "react-router-dom";
+import Creation from '../components/organisms/Creation';
 
 storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
 
+
+
 storiesOf('Logo', module).add('Avec une image', () => <Logo />);
+
+storiesOf('atoms', module)
+  .addDecorator(withKnobs)
+  .add('SiteTitle', () => (
+      <SiteTitle children={text('Contenu','Titre')} />
+  ))
+  .add('Menu Button', () => (
+      <MenuButton children={text('Contenu','Bouton')}/>
+  ))
+  
 
 
 storiesOf('atoms/SiteTitle', module)
@@ -47,7 +62,19 @@ storiesOf('organisms', module)
   .add('UploadForm', () => (
       <UploadForm />
 ))
+  .add('Creation',()=>(
+      <Creation />
+  ))
 
 
 
 
+const Description = storiesOf('Storybook Knobs', module);
+Description.addDecorator(withKnobs);
+Description.add('LabelDescription', () => (
+
+  <LabelDescription children={text('Contenu','text')}/>
+))
+.add('FieldDescription', () => (
+<FieldDescription />
+))

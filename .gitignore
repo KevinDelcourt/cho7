@@ -4,9 +4,11 @@
 /.scannerwork
 
 # dependencies
+/server/public/*
+!oui.mp3
+!800pouces.mp3
 /server/node_modules
 /client/node_modules
-AxiosTest.js
 /.pnp
 .pnp.js
 
