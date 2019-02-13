@@ -1,4 +1,3 @@
-import styled from "styled-components"
 import React, {Component} from 'react'
 
 export default class Creation extends Component {

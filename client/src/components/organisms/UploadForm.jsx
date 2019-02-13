@@ -4,7 +4,7 @@ import LabelInput from "../molecules/LabelInput";
 import Submitbutton from "../atoms/Submitbutton";
 import LabelTextarea from "../molecules/LabelTextarea";
 
-const UploadFormContainer = styled.form`
+const UploadFormContainer = styled.div`
 	display: grid;	
 	grid-template-rows: repeat(4, auto);
 	grid-row-gap: 20px;
@@ -18,15 +18,17 @@ const PublishButtonContainer = styled.div`
 class UploadForm extends React.Component{
 	render() {
 		return(
-			<UploadFormContainer action="http://localhost:8180/addcreation" method="post" enctype="multipart/form-data">
-				<LabelInput name="titre" label="Titre : *" />
-				<input type="file" name="file" accept="audio/mp3, audio/wav" />
-				<LabelTextarea name="description" label="Description :" row="10" col="20" />
-				
-				<PublishButtonContainer>
-					<Submitbutton type="submit" children="Publier"/>
-				</PublishButtonContainer>
-			</UploadFormContainer>
+			<form action="http://localhost:8180/addcreation" method="post" enctype="multipart/form-data">
+				<UploadFormContainer>
+					<LabelInput name="titre" label="Titre : *" />
+					<input type="file" name="creation" accept="audio/mp3, audio/wav" />
+					<LabelTextarea name="description" label="Description :" row="10" col="20" />
+					
+					<PublishButtonContainer>
+						<Submitbutton type="submit" children="Publier"/>
+					</PublishButtonContainer>
+				</UploadFormContainer>
+			</form>
 		)
 	}
 }
