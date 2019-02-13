@@ -48,7 +48,7 @@ storyBarreMenu.addDecorator(withKnobs);
 storyBarreMenu.add('Barre de Menu', () =>(
 	<Router>
 		<BarreMenu />
-  	</Router>
+  </Router>
 ));
 
 storiesOf('organisms', module)
