@@ -4,5 +4,10 @@
         "start": "concurrently \"nodemon server/server.js\" \"cd client; yarn start\" ",
         "dev": "concurrently \"nodemon server/server.js\" \"cd client; yarn start\" \"cd client; yarn storybook\" ",
         "test": "concurrently \"nodemon server/server.js\" \"cd client; yarn start\" \"cd client; yarn cypress\" "
-      }
+    },
+    "devDependencies": {
+        "babel-cli": "^6.26.0",
+        "babel-preset-flow": "^6.23.0",
+        "flow-bin": "^0.92.1"
+    }
 }

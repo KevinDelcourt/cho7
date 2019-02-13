@@ -2,7 +2,7 @@ import React from 'react';
 import Template from './Template';
 import { hasRole } from '../../modules/auth';
 import styled from "styled-components";
-import BodyUpload from '../organisms/BodyUpload';
+import UploadForm from '../organisms/UploadForm';
 
 const UploadFormContainer = styled.div`
 	background: rgba(145, 109, 67, 0.35);
@@ -10,7 +10,7 @@ const UploadFormContainer = styled.div`
 	padding: 30px;
 `;
 
-class BodyUpload extends React.Component {
+class UploadPage extends React.Component {
 	state = {auth:false}
 
 	async componentDidMount() {
@@ -24,7 +24,7 @@ class BodyUpload extends React.Component {
 				<div>
 					<Template>
 						<UploadFormContainer>
-							<BodyUpload />
+							<UploadForm />
 						</UploadFormContainer>
 					</Template>
 				</div> 
