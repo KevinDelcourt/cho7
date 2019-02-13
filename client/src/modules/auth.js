@@ -33,3 +33,4 @@ export const hasRole = (role) => axios.get('http://localhost:8180/has_role/'+rol
     console.log(error)
     return false
 })
+//http://localhost:8180/addcreation
