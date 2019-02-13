@@ -14,7 +14,7 @@ const styleBarreMenu = {
     justifyContent: 'space-between',
     height: '5vh',
     alignItems: 'center',
-    width: '95vw',
+    width: '94vw',
     marginRight: 'auto',
     marginLeft: 'auto',
 };
