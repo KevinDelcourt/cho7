@@ -13,6 +13,7 @@ const Cadre = styled.div`
     justify-content: space-between;
     flex-direction: row;
     padding: 7vh 9vw;
+    height: 100vh;
 `;
 const AvatarContainer = styled.div`
     display: flex;
@@ -26,10 +27,11 @@ const FormContainer = styled.div`
     display: flex;
     justify-content: space-between;
     flex-direction: column;
+    margin-top: 96px;
 `;
 const RightColumn = styled.div`
     display: flex;
-    height: 50vh;
+    height: 100%;
     justify-content: space-between;
     flex-direction: column;
 `;
