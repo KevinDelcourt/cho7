@@ -1,11 +1,12 @@
-import styled from "styled-components";
-import React, {Component} from 'react';
+import styled from "styled-components"
+import React, {Component} from 'react'
 
 export default class Creation extends Component {
     render(){
+        let path = "http://localhost:8180/public/audio/" + this.props.path
         return(
             <audio controls>
-                <source src="http://localhost:8180/public/audio/oui.mp3" type="audio/mpeg"></source>
+                <source src={path} type="audio/mpeg"></source>
             </audio>
         )
     }
