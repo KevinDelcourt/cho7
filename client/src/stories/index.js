@@ -60,8 +60,8 @@ storiesOf('organisms', module)
       <UploadForm />
 ))
   .add('Creation',()=>(
-      <Creation />
-  ))
+      <Creation path="oui.mp3"/>
+	))
 
 const storyInputBase = storiesOf("atoms/Composant de base", module);
 storyInputBase.add("Input de base", () => (
