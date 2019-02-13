@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import styled from "styled-components";
 
 const AvatarWrapper = styled.div`
@@ -7,15 +7,18 @@ const AvatarWrapper = styled.div`
   width: 230px;
   height: 230px;
   margin: 30px;
-  width: ${props => props.w}vw;
-  height: ${props => props.h}vh;
 `;
 
-export default class Avatar extends Component {
+export default class Avatar extends React.Component {
   render() {
     return (
       <AvatarWrapper>
-        <img src={this.props.pathImage} alt="Avatar" />
+        <img
+          width="100%"
+          height="100%"
+          src={this.props.pathImage}
+          alt="Avatar"
+        />
       </AvatarWrapper>
     );
   }
