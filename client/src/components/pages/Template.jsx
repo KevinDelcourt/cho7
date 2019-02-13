@@ -11,7 +11,7 @@ const TemplateContainer = styled.div`
 
 const BodyContainer = styled.div`
 	min-height: 60vh;
-	width: 90vw;
+	width: 85vw;
 	margin-right: auto;
 	margin-left: auto;
 	background: rgba(145, 109, 67, 0.35);
