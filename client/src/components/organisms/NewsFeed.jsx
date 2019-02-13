@@ -3,12 +3,11 @@ import { getCreations } from '../../modules/auth';
 import Creation from "./Creation";
 import MainContainer from '../molecules/MainContainer';
 
-export default class TestFilDactu extends React.Component{
+export default class NewsFeed extends React.Component{
     state = {creations: []}
 
     async componentDidMount(){
         this.setState({creations: await getCreations()})
-        console.log(this.state.creations)
     }
 
     render(){

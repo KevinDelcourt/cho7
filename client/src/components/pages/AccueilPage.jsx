@@ -1,12 +1,14 @@
 import React from 'react';
 import Template from './Template';
-import TestFilDactu from '../organisms/TestFilDactu';
-
-const Body = <TestFilDactu />;
+import NewsFeed from '../organisms/NewsFeed';
+import Profile from '../organisms/Profile';
 
 const AccueilPage = () => (
 	<div>
-		<Template children={Body} />
+		<Template>
+			<Profile />
+			<NewsFeed />
+		</Template>
 	</div>
 )
 	
