@@ -15,8 +15,8 @@ class LabelInput extends React.Component{
     render(){
         return(
             <LabelInputContainer>
-                <LabelBase children={this.props.label} />
-                <InputBase />
+                <LabelBase children={this.props.label} for={this.props.name} />
+                <InputBase name={this.props.name} />
             </LabelInputContainer>
         );
     }

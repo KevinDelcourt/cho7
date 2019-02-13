@@ -38,7 +38,8 @@ module.exports = (app, passport) => {
 		})
 		
 	app.post('/addcreation',upload.single('file'),(req,res)=>{
-
+		console.log(req.file)
+		console.log(req.body)
 		connection.query('INSERT INTO creation (nomfichier,titre,description) VALUES (?,?,?)',[req.file.originalname,req.body.titre,req.body.description],(err,rows)=>{
 			if(err)
 				res.send("Erreur")
