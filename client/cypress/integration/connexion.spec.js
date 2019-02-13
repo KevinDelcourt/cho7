@@ -25,7 +25,7 @@ describe('Un utilisateur non connecté', () => {
         cy.get(':nth-child(2) > .sc-htpNat').type('Admin')
         cy.get(':nth-child(4) > .sc-htpNat').type('Admin')
         cy.get('.sc-EHOje').click()
-        cy.get('h2').should('exist')
+        cy.url().should('include', 'localhost:3000/')
 
     })
 
