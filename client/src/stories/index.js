@@ -13,7 +13,6 @@ import LabelDescription from '../components/atoms/LabelDescription';
 import FieldDescription from '../components/atoms/FieldDescription';
 import UploadForm from '../components/organisms/UploadForm';
 import BarreMenu from '../components/molecules/BarreMenu';
-import { BrowserRouter as Router} from "react-router-dom";
 import Creation from '../components/organisms/Creation';
 import FooterTemplate from '../components/organisms/FooterTemplate';
 import InputBase from '../components/atoms/InputBase';
