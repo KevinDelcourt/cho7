@@ -14,9 +14,9 @@ const BodyContainer = styled.div`
 	width: 85vw;
 	margin-right: auto;
 	margin-left: auto;
-	background: rgba(145, 109, 67, 0.35);
+	/* background: rgba(145, 109, 67, 0.35);
 	border-radius: 20px;
-	padding: 5vh 5vw;
+	padding: 5vh 5vw; */
 `;
 
 class Template extends React.Component {
