@@ -23,7 +23,6 @@ class UploadPage extends React.Component {
 					</Template>
 				</div> 
 			)
-
 		return <span />
 	}
 }
