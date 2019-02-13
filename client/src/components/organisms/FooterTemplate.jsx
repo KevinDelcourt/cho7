@@ -3,7 +3,6 @@ import React, {Component} from 'react';
 
 const FooterContainer = styled.div`
     padding: 4vh 3vw;
-    font-size: 22px;
     width: 94vw;
     margin-right: auto;
     margin-left: auto;
