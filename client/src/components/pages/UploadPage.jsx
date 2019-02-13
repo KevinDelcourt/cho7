@@ -17,7 +17,7 @@ class UploadPage extends React.Component {
 			return (
 				<div>
 					<Template>
-						<MainContainer children="NOUVELLE CRÉATION">
+						<MainContainer title="NOUVELLE CRÉATION">
 							<UploadForm />
 						</MainContainer>
 					</Template>

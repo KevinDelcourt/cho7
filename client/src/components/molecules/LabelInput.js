@@ -1,18 +1,23 @@
+import styled from 'styled-components';
 import InputBase from './../atoms/InputBase';
 import LabelBase from './../atoms/LabelBase';
 import React from 'react';
 
-const fontS = {
-    fontSize: "20px",
-}
+const LabelInputContainer = styled.div`
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-column-gap: 8px;
+    align-items: center;
+    justify-content: start;
+`;
 
 class LabelInput extends React.Component{
     render(){
         return(
-            <div style={fontS}>
+            <LabelInputContainer>
                 <LabelBase children={this.props.label} />
                 <InputBase />
-            </div>
+            </LabelInputContainer>
         );
     }
 }

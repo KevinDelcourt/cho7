@@ -1,20 +1,22 @@
+import styled from 'styled-components';
 import LabelBase from './../atoms/LabelBase';
 import TextareaBase from './../atoms/TextareaBase';
 import React from 'react';
 
-const fontS = {
-    fontSize: "20px",
-}
+const LabelTextareaContainer = styled.div`
+    display: grid;
+    grid-template-rows: repeat(2, auto);
+    grid-row-gap: 8px;
+    align-items: center;
+`;
 
 class LabelTextarea extends React.Component{
     render(){
         return(
-            <div>
-                <div style={fontS}>
-                    <LabelBase children={this.props.label} />
-                </div>
+            <LabelTextareaContainer>
+                <LabelBase children={this.props.label} />
                 <TextareaBase rows={this.props.row} cols={this.props.col} />
-            </div>
+            </LabelTextareaContainer>
         );
     }
 }

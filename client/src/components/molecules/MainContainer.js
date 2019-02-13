@@ -1,18 +1,19 @@
+import styled from "styled-components";
 import React from 'react';
-import LabelBase from "../atoms/LabelBase";
 
-const mainContainerStyle = {
-    fontSize: '30px',
-    padding: '10px 20px',   
-};
+const Container = styled.div`
+    background: rgba(145, 109, 67, 0.35);
+    border-radius: 20px;
+	padding: 10px 30px;
+`
 
 class MainContainer extends React.Component{
     render(){
         return(
-            <div >
-                <LabelBase children={this.props.title} style={mainContainerStyle}/>
+            <Container>
+                <h1>{this.props.title}</h1>
                 {this.props.children}
-            </div>
+            </Container>
         );
     }
 }
