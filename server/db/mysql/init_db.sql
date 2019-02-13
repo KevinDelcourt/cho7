@@ -19,5 +19,5 @@ CREATE TABLE creation (
   description varchar(2048)
 );
 
-INSERT INTO creation (nomfichier,titre)
-VALUES ('oui.mp3','oui');
+INSERT INTO creation (nomfichier,titre,description)
+VALUES ('oui.mp3','oui','abc'),('800pouces.mp3','800','description');
