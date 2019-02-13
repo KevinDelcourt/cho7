@@ -3,19 +3,21 @@ import React from "react";
 import Avatar from "./Avatar";
 import TextareaBase from "../atoms/TextareaBase";
 import MainContainer from "./MainContainer";
+import MediumTitle from "../atoms/MediumTitle";
 
-const Wrapper = styled.div`
-  padding-right: 20px;
-  width: 503px;
-  height: 100%;
+const DescriptionWrapper = styled.div`
+  width: 290px;
 `;
 
 class AvatarSummary extends React.Component {
   render() {
     return (
-      <MainContainer children={<Wrapper />}>
+      <MainContainer>
         <Avatar />
-        <MainContainer title="NomCréateur" children={<TextareaBase />} />
+        <DescriptionWrapper>
+          <MediumTitle children="nomcreateur" />
+          <TextareaBase />
+        </DescriptionWrapper>
       </MainContainer>
     );
   }

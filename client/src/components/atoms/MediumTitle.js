@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
-const TitleConnection = styled.h1`
+const MediumTitle = styled.h2`
     font-family: 'Almendra SC', Arial;
-    font-size: 50px;
+    font-size: 25px;
     margin: 0;
 `;
 
-export default TitleConnection;
+export default MediumTitle;
