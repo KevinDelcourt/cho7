@@ -6,6 +6,7 @@ const Body = <MainBody/>;
 
 const AccueilPage = () => (
 	<div>
+    <h1>ACCUEIL</h1>
 		<Template children={Body} />
 	</div>
 )
