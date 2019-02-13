@@ -1,23 +1,22 @@
 import styled from "styled-components";
 import React from "react";
+import Avatar from "./Avatar";
+import TextareaBase from "../atoms/TextareaBase";
+import MainContainer from "./MainContainer";
 
-const MainContainer = styled.div`
+const Wrapper = styled.div`
+  padding-right: 20px;
+  width: 503px;
   height: 100%;
 `;
-
-const Avatar = styled.div`
-  margin: 0 62px;
-  height: 230px;
-  width: 230px;
-  `;
 
 class AvatarSummary extends React.Component {
   render() {
     return (
-      <div>
-        <Avatar/>
-        <MainContainer />
-      </div>
+      <MainContainer children={<Wrapper />}>
+        <Avatar />
+        <MainContainer title="NomCréateur" children={<TextareaBase />} />
+      </MainContainer>
     );
   }
 }

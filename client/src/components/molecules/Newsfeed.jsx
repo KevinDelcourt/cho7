@@ -1,24 +1,14 @@
 import styled from "styled-components";
 import React from "react";
-
-const MainContainer = styled.div`
-  border-style: dashed;
-  height: 100%;
-
-`;
-
-const MainContainerPost = styled.div`
-  border-style: dashed;
-  height: 250px;
-  margin-bottom:50px;
-`;
+import MainContainer from "./MainContainer";
+import Creation from "../atoms/Creation";
 
 class Newsfeed extends React.Component {
   render() {
     return (
-      <MainContainer>
-        <MainContainerPost/>
-        <MainContainerPost/>
+      <MainContainer title="dernière création">
+        <MainContainer title="création1" children={<Creation/>}/>
+        <MainContainer title="création2" children={<Creation/>}/>
       </MainContainer>
     );
   }
