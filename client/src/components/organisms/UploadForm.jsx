@@ -1,22 +1,36 @@
 import styled from "styled-components";
 import React from 'react';
-import MainContainer from './../molecules/MainContainer';
+import LabelInput from "../molecules/LabelInput";
+import Submitbutton from "../atoms/Submitbutton";
+import LabelTextarea from "../molecules/LabelTextarea";
 
-const UploadContainer = styled.div`
-    margin-top: 8vh;
-    height: 15vh;
+const UploadFormContainer = styled.div`
+	display: grid;	
+	grid-template-rows: repeat(4, auto);
+	grid-row-gap: 20px;
+	justify-content: center;
 `;
 
-const FooterUpload = styled.div`
-    padding: 10px;
+const PublishButtonContainer = styled.div`
+	justify-self: end;
 `;
 
-export default class UploadForm extends React.Component{
-
-    render(){
-        let child = [<UploadContainer children="Formulaire Upload ici" />, <FooterUpload children="Bouton publier"/>]
-        return(
-            <MainContainer title="Nouvelle Création" children={child} />
-        )
-    }
+class UploadForm extends React.Component{
+	render() {
+		return(
+			<form action="http://localhost:8180/addcreation" method="post" enctype="multipart/form-data">
+				<UploadFormContainer>
+					<LabelInput name="titre" label="Titre : *" />
+					<input type="file" name="creation" accept="audio/mp3, audio/wav" />
+					<LabelTextarea name="description" label="Description :" row="10" col="20" />
+					
+					<PublishButtonContainer>
+						<Submitbutton type="submit" children="Publier"/>
+					</PublishButtonContainer>
+				</UploadFormContainer>
+			</form>
+		)
+	}
 }
+
+export default UploadForm

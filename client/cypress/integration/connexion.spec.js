@@ -1,4 +1,4 @@
-describe('Un utilisateur non connecté', () => {
+/*describe('Un utilisateur non connecté', () => {
     beforeEach(() => {
         cy.visit('/login')
       })
@@ -61,4 +61,4 @@ describe('Un utilisateur connecté',()=>{
         cy.visit('/upload')
         cy.contains('Nouvelle Création').should('exist')
     })
-})
+})*/
