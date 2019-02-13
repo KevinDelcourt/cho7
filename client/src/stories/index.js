@@ -12,19 +12,13 @@ import SiteTitle from '../components/atoms/SiteTitle';
 import MenuButton from '../components/atoms/MenuButton';
 import LabelDescription from '../components/atoms/LabelDescription';
 import FieldDescription from '../components/atoms/FieldDescription';
+import UploadForm from '../components/organisms/UploadForm';
 import BarreMenu from '../components/molecules/BarreMenu';
 import { BrowserRouter as Router} from "react-router-dom";
 
 storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
 
-storiesOf('Button', module)
-  .add('with text', () => <Button onClick={action('clicked')}>Hello Button</Button>)
-  .add('with some emoji', () => (
-	<Button onClick={action('clicked')}>
-	  <span role="img" aria-label="so cool">
-		😀 😎 👍 💯
-	  </span>
-	</Button>));
+
 
 storiesOf('Logo', module).add('Avec une image', () => <Logo />);
 
@@ -63,7 +57,11 @@ storiesOf('organisms', module)
 	.addDecorator(withKnobs)
 	.add('Footer', () => (
 	  <FooterTemplate left={text('Gauche','gaute')} right={text('Droite','droiche')}/>
-));
+))
+  .add('UploadForm', () => (
+      <UploadForm />
+))
+
 
 
 

@@ -18,14 +18,14 @@ describe('Un utilisateur non connecté', () => {
 
     it('ne peut pas aller sur la page Upload',()=>{
         cy.visit('/upload')
-        cy.get('h2').should('not.exist')
+        cy.contains('Nouvelle Création').should('not.exist')
     })
 
     it('peut se connecter avec les bons identifiants', () => {
         cy.get(':nth-child(2) > .sc-htpNat').type('Admin')
         cy.get(':nth-child(4) > .sc-htpNat').type('Admin')
         cy.get('.sc-EHOje').click()
-        cy.get('h2').should('exist')
+        cy.url().should('include', 'localhost:3000/')
 
     })
 
@@ -63,6 +63,6 @@ describe('Un utilisateur connecté',()=>{
 
     it('peut aller sur la page d\'upload',()=>{
         cy.visit('/upload')
-        cy.get('h2').should('contain','Upload')
+        cy.contains('Nouvelle Création').should('exist')
     })
 })
