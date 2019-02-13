@@ -6,7 +6,6 @@ height:150px;
 margin:auto; /* exemple pour centrer */
 display:block;/* pour effectivement centrer ! */
 
-
 background: #FFFFFF;
 border-radius: 20px;
 `;
