@@ -1,8 +1,56 @@
-body {
-	background: url('./assets/images/background.jpg') no-repeat;
-	background-size: cover;
+.App {
+	text-align: center;
 }
 
+.App-logo {
+	animation: App-logo-spin infinite 20s linear;
+	height: 40vmin;
+}
+
+.App-header {
+	background-color: #282c34;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	font-size: calc(10px + 2vmin);
+	color: white;
+}
+
+* {
+	font-family: 'Almendra SC', Ruluko, Arial, Sans-serif;
+	padding: 0;
+	margin: 0;
+	text-decoration: none;
+	list-style: none;
+	box-sizing: border-box;
+}
+
+body {
+	background: url('./assets/images/backgroundCropped.jpg');
+	background-size: cover;
+	background-attachment: fixed;
+	color: black;
+}
+
+a:visited {
+	color: black;
+}
+
+a:link
+{ 
+	color: black;
+} 
+
+@keyframes App-logo-spin {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
 
 @import url(https://fonts.googleapis.com/css?family=Ruluko);
 @import url(//db.onlinewebfonts.com/c/413424b043249d7d2f7c73e3c2d27ffc?family=Sevillana);
