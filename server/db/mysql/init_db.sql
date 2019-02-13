@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS users, creation;
 
 CREATE TABLE users (
   id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -11,3 +11,13 @@ CREATE TABLE users (
 
 INSERT INTO users (username,password,email,role)
 VALUES ('Admin','Admin','','ROLE_CREATEUR');
+
+CREATE TABLE creation (
+  id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  nomfichier varchar(50) UNIQUE NOT NULL,
+  titre varchar(50) NOT NULL,
+  description varchar(2048)
+);
+
+INSERT INTO creation (nomfichier,titre)
+VALUES ('oui.mp3','oui');

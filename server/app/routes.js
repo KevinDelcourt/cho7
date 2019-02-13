@@ -1,4 +1,17 @@
 const sign = require('cookie-signature').sign
+const mysql = require('mysql');
+const credentials = require('../db/db-identifiants.json')
+const connection = mysql.createConnection(credentials)
+const multer = require('multer')
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, __dirname + '/../public/audio/')
+  },
+  filename: (req, file, cb) => {
+    cb(null, file.originalname)
+  }
+})
+let upload = multer({ storage: storage });
 
 module.exports = (app, passport) => {
 
@@ -22,7 +35,17 @@ module.exports = (app, passport) => {
               req.session.cookie.expires = false
             }
         res.send('s:'+sign(req.sessionID,'a'));
-    })
+		})
+		
+	app.post('/addcreation',upload.single('file'),(req,res)=>{
+
+		connection.query('INSERT INTO creation (nomfichier,titre,description) VALUES (?,?,?)',[req.file.originalname,req.body.titre,req.body.description],(err,rows)=>{
+			if(err)
+				res.send("Erreur")
+
+			res.send("ok ok")
+		})
+	})
 
 	app.get('/has_role/:role', isLoggedIn, (req, res) => {
 		res.setHeader('Content-Type', 'text/plain')
