@@ -43,6 +43,15 @@ export const getUser = () => axios.get('http://localhost:8180/user/',{withCreden
     return false
 })
 
+export const getCreateur = () => axios.get('http://localhost:8180/createur/')
+.then((response) => {
+    console.log(response)
+    return response.data
+}).catch((error)=>{
+    console.log(error)
+    return false
+})
+
 export const getCreations = () => axios.get('http://localhost:8180/creations')
 .then((response)=>{
     console.log(response)

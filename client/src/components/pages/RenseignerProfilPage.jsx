@@ -48,7 +48,6 @@ class RenseignerProfilPage extends React.Component {
 
     async componentDidMount() {
         this.setState({user: await getUser()})
-        console.log(this.state.user)
     }
     
     render(){

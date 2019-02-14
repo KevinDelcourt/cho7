@@ -91,6 +91,13 @@ module.exports = (app, passport) => {
 		res.send(req.user)
 	})
 
+	app.get('/createur', (req, res) => {
+		connection.query("SELECT * FROM users WHERE role = 'ROLE_CREATEUR'", (err, rows)=>{
+			res.setHeader('Content-Type', 'application/json')
+			res.send(rows[0])	
+		})
+	})
+
 	app.get('/logout', (req, res) => {
 		console.log('login out...')
 		res.cookie("connect.sid", "", { expires: new Date() })
