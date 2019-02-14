@@ -2,19 +2,27 @@ import React, { Component } from "react";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
-  width: 40vw;
+    margin: 10px 0;
+    padding: 5px 10px;
+    background: rgba(255, 255, 255, 0.54);
+	border-radius: 10px;
+	overflow-wrap: break-word;
 `;
 
+
 export default class Creation extends Component {
-  render() {
-    let path = "http://localhost:8180/public/audio/" + this.props.path;
-    return (
-      <Wrapper>
-        <audio controls>
-          <source src={path} type="audio/mpeg" />
-        </audio>
-        <div>{this.props.description}</div>
-      </Wrapper>
-    );
-  }
+	render() {
+		let path = "http://localhost:8180/public/audio/" + this.props.path;
+
+		return (
+			<div>
+				<audio controls>
+				<source src={path} type="audio/mpeg" />
+				</audio>
+				<Wrapper>
+					{this.props.description}
+				</Wrapper>
+			</div>
+		);
+	}
 }

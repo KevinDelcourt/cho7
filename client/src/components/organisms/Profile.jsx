@@ -1,9 +1,24 @@
 import React from 'react';
+import styled from "styled-components";
 import { getCreator } from '../../modules/auth';
 import Avatar from '../molecules/Avatar';
 import profilPic from '../../assets/images/profil.png';
 
-export default class Profile extends React.Component{
+const Wrapper = styled.div`
+    margin-top: 15px;
+    padding: 5px 10px;
+    background: rgba(255, 255, 255, 0.54);
+    border-radius: 10px;
+`;
+
+const Container = styled.div`
+    height: max-content;
+    background: rgba(145, 109, 67, 0.35);
+    border-radius: 20px;
+    padding: 20px 30px;
+`;
+
+class Profile extends React.Component {
     state = {creations: []}
 
     async componentDidMount(){
@@ -12,15 +27,17 @@ export default class Profile extends React.Component{
 
     render(){
         return(
-            <div>
-                <Avatar pathImage={profilPic} />
+            <Container>
+                <center><Avatar src={profilPic} /></center>
                 {this.state.creations.map((u) => 
-                    <div>
+                    <Wrapper>
                         <h2>{u.username}</h2>
-                        <h3>{u.presentation}</h3>
-                    </div>
+                        <p>{u.presentation}</p>
+                    </Wrapper>
                 )}
-            </div>
+            </Container>
         )
     }
 }
+
+export default Profile;
