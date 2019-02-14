@@ -7,6 +7,7 @@ const Wrapper = styled.div`
     background: rgba(255, 255, 255, 0.54);
 	border-radius: 10px;
 	overflow-wrap: break-word;
+	font-family: 'Ruluko', Arial, Sans-serif;
 `;
 
 
