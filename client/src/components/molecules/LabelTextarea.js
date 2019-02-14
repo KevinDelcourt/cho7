@@ -15,7 +15,7 @@ class LabelTextarea extends React.Component{
         return(
             <LabelTextareaContainer>
                 <LabelBase children={this.props.label} for={this.props.name} />
-                <TextareaBase rows={this.props.row} cols={this.props.col} name={this.props.name} />
+                <TextareaBase rows={this.props.row} cols={this.props.col} name={this.props.name} value={this.props.value} onChange={this.props.onChange}/>
             </LabelTextareaContainer>
         );
     }

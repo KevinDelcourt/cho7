@@ -7,6 +7,7 @@ import Template from './Template';
 import Submitbutton from './../atoms/Submitbutton';
 import styled from 'styled-components';
 import avatar from './../../assets/images/avatar.jpg';
+import { getUser } from '../../modules/auth';
 
 const Cadre = styled.div`
     display: flex;
@@ -37,25 +38,40 @@ const RightColumn = styled.div`
 `;
 
 class RenseignerProfilPage extends React.Component {
+    state={user:{
+        username:"",
+        password:"",
+        email:"",
+        presentation:"",
+        avatar:""
+    }}
+
+    async componentDidMount() {
+        this.setState({user: await getUser()})
+        console.log(this.state.user)
+    }
+    
     render(){
 		return(
             <Template>
                 <MainContainer title="Profil">
-                    <Cadre>
-                        <FormContainer>
-                            <LabelInput label={"Pseudo"}/>
-                            <LabelInput label={"Mot de passe"}/>
-                            <LabelInput label={"Mail"}/>
-                            <LabelTextarea label={"Description"}/>
-                        </FormContainer>
-                        <RightColumn>
-                            <AvatarContainer >
-                                <Avatar pathImage={avatar}/>
-                                <Submitbutton>AJOUT IMAGE</Submitbutton>       
-                            </AvatarContainer>
-                            <Submitbutton>Modifier Profil</Submitbutton>
-                        </RightColumn>
-                    </Cadre>
+                    <form action="http://localhost:8180/renseignerprofil" method="post" enctype="multipart/form-data">
+                        <Cadre>
+                            <FormContainer>
+                                <LabelInput name="username" defaultValue={this.state.user.username} label={"Pseudo"} />
+                                <LabelInput type="password" name="password" defaultValue={this.state.user.password} label={"Mot de passe"}/>
+                                <LabelInput name="email" defaultValue={this.state.user.email} label={"Mail"} />
+                                <LabelTextarea name="presentation" value={this.state.user.presentation} label={"Description"} onChange={(evt)=>this.setState({user:{username:this.state.user.username,password:this.state.user.password,email:this.state.user.email,avatar:this.state.user.avatar,presentation:evt.target.value}})}/>
+                            </FormContainer>
+                            <RightColumn>
+                                <AvatarContainer >
+                                    <Avatar pathImage={"http://localhost:8180/public/images/"+this.state.user.avatar}/>
+                                    <input type="file" name="avatar" />      
+                                </AvatarContainer>
+                                <Submitbutton type="submit">Modifier Profil</Submitbutton>
+                            </RightColumn>
+                        </Cadre>
+                    </form>
                 </MainContainer>
             </Template>
         )

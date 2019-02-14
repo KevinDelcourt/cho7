@@ -34,6 +34,15 @@ export const hasRole = (role) => axios.get('http://localhost:8180/has_role/'+rol
     return false
 })
 
+export const getUser = () => axios.get('http://localhost:8180/user/',{withCredentials:true})
+.then((response) => {
+    console.log(response)
+    return response.data
+}).catch((error)=>{
+    console.log(error)
+    return false
+})
+
 export const getCreations = () => axios.get('http://localhost:8180/creations')
 .then((response)=>{
     console.log(response)

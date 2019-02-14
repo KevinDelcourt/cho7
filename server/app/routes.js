@@ -65,7 +65,7 @@ module.exports = (app, passport) => {
 			[req.body.username, req.body.password, req.body.email, req.body.presentation,req.file.filename], (err, rows) => {
 				if(err)
 					res.send(err)
-				res.send(rows)
+				res.redirect("http://localhost:3000/RenseignerProfilPage/");
 			})
 	})
 
