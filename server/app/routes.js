@@ -18,7 +18,7 @@ const storageImage = multer.diskStorage({
 		cb(null, __dirname + '/../public/images/')
 	},
 	filename: (req, file, cb) => {
-		cb(null, "avatar.png")
+		cb(null, Date.now()+"-"+file.originalname)
 	}
 })
 let uploadImage = multer({ storage: storageImage });
@@ -58,8 +58,9 @@ module.exports = (app, passport) => {
 
 	app.post('/renseignerprofil',
 	uploadImage.single('avatar'), (req, res) => {
-		connection.query('UPDATE users SET username = ?, password = ?, email = ?, presentation = ? WHERE role="ROLE_CREATEUR";',
-			[req.body.username, req.body.password, req.body.email, req.body.presentation], (err, rows) => {
+		console.log(req.file)
+		connection.query('UPDATE users SET username = ?, password = ?, email = ?, presentation = ?, avatar = ? WHERE role="ROLE_CREATEUR";',
+			[req.body.username, req.body.password, req.body.email, req.body.presentation,req.file.filename], (err, rows) => {
 				if(err)
 					res.send(err)
 				res.send(rows)
@@ -81,6 +82,11 @@ module.exports = (app, passport) => {
 			res.send('true')
 		else
 			res.send('false')
+	})
+
+	app.get('/user',isLoggedIn , (req, res) => {
+		res.setHeader('Content-Type', 'application/json')
+		res.send(req.user)
 	})
 
 	app.get('/logout', (req, res) => {

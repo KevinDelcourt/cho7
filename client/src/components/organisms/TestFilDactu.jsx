@@ -8,7 +8,6 @@ export default class TestFilDactu extends React.Component{
 
     async componentDidMount(){
         this.setState({creations: await getCreations()})
-        console.log(this.state.creations)
     }
 
     render(){
