@@ -1,4 +1,4 @@
-describe('Le serveur',()=>{
+/*describe('Le serveur',()=>{
     before(()=>{
         cy.exec("node ../server/db/init_db.js")
     })
@@ -27,4 +27,4 @@ describe('Le serveur',()=>{
         body = {username:"Admin",password:"Admin"}
         cy.request('POST',"http://localhost:8180/login",body).its('body').should('include','s:')
     })
-})
+})*/

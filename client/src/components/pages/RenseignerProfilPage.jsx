@@ -67,7 +67,7 @@ class RenseignerProfilPage extends React.Component {
                             </FormContainer>
                             <RightColumn>
                                 <AvatarContainer >
-                                    <Avatar pathImage={"http://localhost:8180/public/images/"+this.state.user.avatar}/>
+                                    <Avatar src={"http://localhost:8180/public/images/"+this.state.user.avatar}/>
                                     <input type="file" name="avatar" />      
                                 </AvatarContainer>
                                 <Submitbutton type="submit">Modifier Profil</Submitbutton>

@@ -78,6 +78,15 @@ module.exports = (app, passport) => {
 		})
 	})
 
+	app.get('/creator',(req, res)=>{
+		connection.query('SELECT username, presentation FROM users WHERE role = "ROLE_CREATEUR"', (err,rows)=>{
+			if(err)
+				res.send(400)
+			res.setHeader('Content-Type', 'application/json')
+			res.send(rows)
+		})
+	})
+
 	app.get('/has_role/:role', isLoggedIn, (req, res) => {
 		res.setHeader('Content-Type', 'text/plain')
 		if (req.user.role === 'ROLE_' + req.params.role.toUpperCase())
