@@ -3,9 +3,9 @@ import React from 'react';
 import Authentification from "./../molecules/Authentification";
 import ConnectionButton from "./../atoms/ConnectionButton";
 import { login } from '../../modules/auth';
-import TitleConnection from "./../atoms/TitleConnection";
+import MainTitle from "../atoms/MainTitle";
 
-const TitleConnectionContainer = styled.div`
+const MainTitleContainer = styled.div`
 	text-align: center;
 `;
 
@@ -40,9 +40,9 @@ class ConnectionForm extends React.Component {
     render() {
         return (
             <div>
-                <TitleConnectionContainer>
-                    <TitleConnection children="Connexion" />
-                </TitleConnectionContainer>
+                <MainTitleContainer>
+                    <MainTitle children="Connexion" />
+                </MainTitleContainer>
                 
                 <AuthentificationContainer>
                     <Authentification setPassword={this.setPassword} setUsername={this.setUsername}/>

@@ -46,13 +46,15 @@ module.exports = (app, passport) => {
 			}
 			res.send('s:' + sign(req.sessionID, 'a'));
 		})
+		
+	app.post('/addcreation',upload.single('creation'),(req,res)=>{
+		console.log(req.file)
+		console.log(req.body)
+		connection.query('INSERT INTO creation (nomfichier,titre,description) VALUES (?,?,?)',[req.file.originalname,req.body.titre,req.body.description],(err,rows)=>{
+			if(err)
+				res.redirect("http://localhost:3000?err=1")
 
-	app.post('/addcreation', uploadAudio.single('file'), (req, res) => {
-		connection.query('INSERT INTO creation (nomfichier,titre,description) VALUES (?,?,?)', [req.file.originalname, req.body.titre, req.body.description], (err, rows) => {
-			if (err)
-				res.send("Erreur")
-
-			res.send("ok ok")
+			res.redirect("http://localhost:3000/");
 		})
 	})
 
