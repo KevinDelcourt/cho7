@@ -8,7 +8,6 @@ const FooterContainer = styled.div`
     margin-left: auto;
     margin-bottom: 2vh;
 
-    font-family: 'Almendra SC', Arial;
     background: rgba(213, 191, 159, 0.67);
     border-radius: 10px;
     display: flex;
