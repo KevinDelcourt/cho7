@@ -47,7 +47,7 @@ module.exports = (app, passport) => {
 			res.send('s:' + sign(req.sessionID, 'a'));
 		})
 		
-	app.post('/addcreation',upload.single('creation'),(req,res)=>{
+	app.post('/addcreation',uploadAudio.single('creation'),(req,res)=>{
 		console.log(req.file)
 		console.log(req.body)
 		connection.query('INSERT INTO creation (nomfichier,titre,description) VALUES (?,?,?)',[req.file.originalname,req.body.titre,req.body.description],(err,rows)=>{
