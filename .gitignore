@@ -7,6 +7,7 @@
 /server/public/*
 !oui.mp3
 !800pouces.mp3
+!avatar.png
 /server/node_modules
 /client/node_modules
 /.pnp

@@ -6,6 +6,7 @@ CREATE TABLE users (
   password varchar(64) NOT NULL,
   email varchar(254) NOT NULL,
   presentation varchar(512),
+  avatar varchar(200),
   role varchar(20) NOT NULL
 );
 

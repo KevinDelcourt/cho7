@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from "styled-components";
-import { getCreator } from '../../modules/auth';
+import { getCreateur } from '../../modules/auth';
 import Avatar from '../molecules/Avatar';
-import profilPic from '../../assets/images/profil.png';
 
 const Wrapper = styled.div`
     margin-top: 15px;
@@ -20,22 +19,29 @@ const Container = styled.div`
 `;
 
 class Profile extends React.Component {
-    state = {creations: []}
+    state={user:{
+        username:"",
+        password:"",
+        email:"",
+        presentation:"",
+        avatar:""
+    }}
 
-    async componentDidMount(){
-        this.setState({creations: await getCreator()})
+    async componentDidMount() {
+        this.setState({user: await getCreateur()})
     }
 
     render(){
         return(
             <Container>
-                <center><Avatar src={profilPic} /></center>
-                {this.state.creations.map((u) => 
+
+                <center><Avatar src={"http://localhost:8180/public/images/"+this.state.user.avatar}/></center>
+
                     <Wrapper>
-                        <h2>{u.username}</h2>
-                        <p>{u.presentation}</p>
+                        <h2>{this.state.user.username}</h2>
+                        <p>{this.state.user.presentation}</p>
                     </Wrapper>
-                )}
+                
             </Container>
         )
     }
