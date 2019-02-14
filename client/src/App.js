@@ -18,7 +18,6 @@ class App extends Component {
                 	<Route path="/login" component={ConnectionPage} />
                 	<Route path="/upload" component={UploadPage} />
 					<Route path="/RenseignerProfilPage" component={RenseignerProfilPage} />
-
 				</div>
 			</Router>
 		)
