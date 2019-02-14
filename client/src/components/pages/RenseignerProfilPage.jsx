@@ -10,25 +10,28 @@ import avatar from './../../assets/images/avatar.jpg';
 
 const Cadre = styled.div`
     display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-    padding: 7vh 9vw;
-    height: 100vh;
+    justify-content: space-around;
+    align-items: center;
+    padding: 7vh 4vw;
+    height: 70vh;
 `;
+
 const AvatarContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     width : 20vw;
-    height: 30vh;
+    height: 45vh;
 `;
 
 const FormContainer = styled.div`
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     flex-direction: column;
-    margin-top: 96px;
+    height: 50vh;
+    min-width: 35vw;
 `;
+
 const RightColumn = styled.div`
     display: flex;
     height: 100%;
@@ -43,15 +46,15 @@ class RenseignerProfilPage extends React.Component {
                 <MainContainer title="Profil">
                     <Cadre>
                         <FormContainer>
-                            <LabelInput label={"Pseudo"}/>
-                            <LabelInput label={"Mot de passe"}/>
-                            <LabelInput label={"Mail"}/>
-                            <LabelTextarea label={"Description"}/>
+                            <LabelInput label={"Pseudo :"} wInput="25" wLabel="10" />
+                            <LabelInput label={"Mot de passe :"} wInput="25" wLabel="10" type="password"/>
+                            <LabelInput label={"Mail :"} wInput="25" wLabel="10" />
+                            <LabelTextarea label={"Description :"} row="7" col="50" />
                         </FormContainer>
                         <RightColumn>
-                            <AvatarContainer >
+                            <AvatarContainer class='AvatarContainer'>
                                 <Avatar pathImage={avatar}/>
-                                <Submitbutton>AJOUT IMAGE</Submitbutton>       
+                                <input type='file' />       
                             </AvatarContainer>
                             <Submitbutton>Modifier Profil</Submitbutton>
                         </RightColumn>
