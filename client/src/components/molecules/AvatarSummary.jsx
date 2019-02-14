@@ -7,7 +7,7 @@ import MediumTitle from "../atoms/MediumTitle";
 import { getUser, getCreateur } from "../../modules/auth";
 
 const DescriptionWrapper = styled.div`
-  width: 290px;
+	width: 290px;
 `;
 
 class AvatarSummary extends React.Component {

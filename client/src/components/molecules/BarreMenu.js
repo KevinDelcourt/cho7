@@ -54,8 +54,8 @@ class BarreMenu extends React.Component {
                     {upload}
                 </div>
                 <div> 
-                {co}
-                {profil}
+                    {co}
+                    {profil}
                 </div>
                
             </div>
