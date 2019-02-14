@@ -1,23 +1,25 @@
+import styled from 'styled-components';
 import React from 'react';
 import MenuButton from '../atoms/MenuButton';
-
 import { logout, hasRole } from '../../modules/auth';
 import { Link } from 'react-router-dom'
 
-const styleBarreMenu = {
-    background: 'rgba(213, 191, 159, 0.67)',
-    borderRadius: '20px',
-    paddingTop: '1vh',
-    paddingLeft: '2vw',
-    paddingBottom: '1vh',
-    display: 'flex',
-    justifyContent: 'space-between',
-    height: '5vh',
-    alignItems: 'center',
-    width: '94vw',
-    marginRight: 'auto',
-    marginLeft: 'auto',
-};
+const NavBarContainer = styled.div`
+    background: rgba(213, 191, 159, 0.67);
+    border-radius: 10px;
+    padding: 1vh 1vw 1vh 0.5vw;
+
+    display: flex;
+    justify-content: space-between;
+    height: 8vh;
+    align-items: center;
+    width: 94vw;
+    margin-right: auto;
+    margin-left: auto;
+`;
+
+const MenuButtonContainer = styled.div`
+`;  
 
 
 class BarreMenu extends React.Component {
@@ -38,7 +40,7 @@ class BarreMenu extends React.Component {
             co =  <Link to="/login" style={{marginRight: '1vw'}}> <MenuButton children="Connexion"/> </Link>;
         }
         else {
-            co = <Link to="/login" onClick={logout} style={{marginRight: '1vw'}}> <MenuButton children="Déconnexion"/> </Link>
+            co = <Link to="/login" onClick={logout}> <MenuButton children="Déconnexion"/> </Link>
             profil= <Link to="/RenseignerProfilPage" > <MenuButton children="Profil"/> </Link>
 
         }   
@@ -48,17 +50,17 @@ class BarreMenu extends React.Component {
         }
 
         return(
-            <div style={styleBarreMenu}>
-                <div>
+            <NavBarContainer>
+                <MenuButtonContainer>
                     <Link to='/'> <MenuButton children="Accueil" /> </Link>
                     {upload}
-                </div>
-                <div> 
-                {co}
-                {profil}
-                </div>
-               
-            </div>
+                </MenuButtonContainer>
+
+                <MenuButtonContainer>
+                    {profil}
+                    {co}
+                </MenuButtonContainer>
+            </NavBarContainer>
         );
     }
 }
