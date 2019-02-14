@@ -26,7 +26,7 @@ class AvatarSummary extends React.Component {
   render() {
     return (
       <MainContainer>
-        {this.state.user.avatar!==""?<Avatar pathImage={"http://localhost:8180/public/images/"+this.state.user.avatar}/>:<span/>}
+        <Avatar pathImage={"http://localhost:8180/public/images/"+this.state.user.avatar}/>
         <DescriptionWrapper>
           <MediumTitle children={this.state.user.username} />
           <div>{this.state.user.presentation}</div>
