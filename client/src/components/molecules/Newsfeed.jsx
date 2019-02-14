@@ -15,7 +15,7 @@ class Newsfeed extends React.Component {
     return (
       <MainContainer title="dernière création">
         {this.state.creations.map((c) =>
-          <MainContainer title={c.titre} children={<Creation path={c.nomfichier} description={c.description}/>}/>)}
+          <MainContainer title={c.titre} children={<Creation path={c.nomfichier} description={c.description} valueId={c.id}/>}/>)}
       </MainContainer>
     );
   }

@@ -1,4 +1,5 @@
 const sign = require('cookie-signature').sign
+const fs = require('fs');
 const mysql = require('mysql');
 const credentials = require('../db/db-identifiants.json')
 const connection = mysql.createConnection(credentials)
@@ -47,6 +48,31 @@ module.exports = (app, passport) => {
 			res.redirect("http://localhost:3000/");
 		})
 	})
+
+	app.post('/suprCreation',upload.none(),(req,res)=>{
+		let pathFinFichier;
+		//avant recupere les titre a suprimer dans la bdd
+		console.log(req.body)
+		console.log("okokookokokokokokokokokokookokookokokokokoko");
+		// connection.query('SELECT nomfichier FROM creation WHERE id=?', [req.body.idCreation],(err,rows)=>{
+
+		// 	if(err)
+		// 		res.redirect("http://localhost:3000?err=1")
+				
+			connection.query('DELETE FROM creation WHERE id=?',[req.body.idCreation],(err,rows)=>{
+				/* pathFinFichier= rows[0].nomfichier;
+				console(rows[0].nomfichier);
+				let pathComplet=  __dirname + '/../public/audio/'+pathFinFichier; */
+				// console.log(pathComplet);
+				// fs.unlinkSync(pathComplet)
+				res.redirect("http://localhost:3000/");
+				
+				})
+				
+				});	
+			// });
+			
+		
 
 	app.get('/creations',(req,res)=>{
 		connection.query('SELECT id, nomfichier, titre, description FROM creation ORDER BY id DESC',(err,rows)=>{
