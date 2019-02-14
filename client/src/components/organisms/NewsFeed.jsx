@@ -1,6 +1,6 @@
 import React from 'react';
 import { getCreations } from '../../modules/auth';
-import Creation from "./Creation";
+import Creation from "../atoms/Creation";
 import MainContainer from '../molecules/MainContainer';
 
 export default class NewsFeed extends React.Component{
@@ -13,12 +13,10 @@ export default class NewsFeed extends React.Component{
     render(){
         return(
             <MainContainer title="Accueil">
-                {this.state.creations.map((c) => 
-                    <div>
-                        <h2>{c.titre}</h2>
-                        <Creation path={c.nomfichier}/>
-                        <h3>{c.description}</h3>
-                    </div>
+                {this.state.creations.map((c) =>
+                    <MainContainer title={c.titre}>
+                        <Creation path={c.nomfichier} description={c.description} />
+                    </MainContainer>
                 )}
             </MainContainer>
         )
