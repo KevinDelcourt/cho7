@@ -18,10 +18,6 @@ const NavBarContainer = styled.div`
     margin-left: auto;
 `;
 
-const MenuButtonContainer = styled.div`
-`;  
-
-
 class BarreMenu extends React.Component {
     state={
 		auth:false
@@ -51,15 +47,15 @@ class BarreMenu extends React.Component {
 
         return(
             <NavBarContainer>
-                <MenuButtonContainer>
+                <div>
                     <Link to='/'> <MenuButton children="Accueil" /> </Link>
                     {upload}
-                </MenuButtonContainer>
+                </div>
 
-                <MenuButtonContainer>
+                <div> 
                     {profil}
                     {co}
-                </MenuButtonContainer>
+                </div>
             </NavBarContainer>
         );
     }

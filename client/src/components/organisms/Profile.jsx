@@ -9,6 +9,7 @@ const Wrapper = styled.div`
     padding: 5px 10px;
     background: rgba(255, 255, 255, 0.54);
     border-radius: 10px;
+    overflow-wrap: break-word;
 `;
 
 const Container = styled.div`
