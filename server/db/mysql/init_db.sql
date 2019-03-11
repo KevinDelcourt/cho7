@@ -33,5 +33,5 @@ CREATE TABLE etat_avancement (
   libelle varchar(50),
   valeuravancement int(11) DEFAULT 0,
   idcreation int(11), 
-  FOREIGN KEY (idcreation) REFERENCES creation(id)
+  FOREIGN KEY (idcreation) REFERENCES creation(id) ON DELETE CASCADE
 );
