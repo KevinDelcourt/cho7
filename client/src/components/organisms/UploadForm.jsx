@@ -9,11 +9,14 @@ const UploadFormContainer = styled.div`
 	grid-template-rows: repeat(4, auto);
 	grid-row-gap: 20px;
 	justify-content: center;
+	margin:5%;
 `;
 
-const PublishButtonContainer = styled.div`
+
+const StyledPublishButton = styled(Submitbutton)`
 	justify-self: end;
 `;
+
 
 class UploadForm extends React.Component{
 	render() {
@@ -22,11 +25,8 @@ class UploadForm extends React.Component{
 				<UploadFormContainer>
 					<LabelInput name="titre" label="Titre : *" />
 					<input type="file" name="creation" accept="audio/mp3, audio/wav" />
-					<LabelTextarea name="description" label="Description :" row="10" col="20" />
-					
-					<PublishButtonContainer>
-						<Submitbutton type="submit" children="Publier"/>
-					</PublishButtonContainer>
+					<LabelTextarea name="description" label="Description :" row="10" col="120" />	
+					<StyledPublishButton type="submit" children="Publier"/>
 				</UploadFormContainer>
 			</form>
 		)

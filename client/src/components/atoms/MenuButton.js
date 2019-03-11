@@ -5,9 +5,9 @@ const MenuButton = styled.button`
     border-radius: 5px;
     padding: 5px 15px;
     margin-left: 0.5vw;
-    height: 6vh;
+    height: 35px;
     border: 0;
-    font-size: 18px;
+    font-size:18px;
 `;
 
 export default MenuButton;

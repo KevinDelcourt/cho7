@@ -6,7 +6,6 @@ import MainContainer from './../molecules/MainContainer';
 import Template from './Template';
 import Submitbutton from './../atoms/Submitbutton';
 import styled from 'styled-components';
-import avatar from './../../assets/images/avatar.jpg';
 import { getUser } from '../../modules/auth';
 
 const Cadre = styled.div`

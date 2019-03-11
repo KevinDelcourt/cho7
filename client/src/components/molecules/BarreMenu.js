@@ -6,17 +6,12 @@ import { Link } from 'react-router-dom'
 
 const NavBarContainer = styled.div`
     background: rgba(213, 191, 159, 0.67);
-    border-radius: 10px;
-    padding: 1vh 1vw 1vh 0.5vw;
-
+    border-radius: 5px;
+    padding: 5px 1vw;
     display: flex;
     justify-content: space-between;
-    height: 8vh;
-    align-items: center;
-    width: 94vw;
-    margin-right: auto;
-    margin-left: auto;
-`;
+    margin: 0 2vw;
+    `;
 
 class BarreMenu extends React.Component {
     state={
