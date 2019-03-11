@@ -1,4 +1,4 @@
-describe('Un utilisateur connecté sur la page d\'Upload', () => {
+/*describe('Un utilisateur connecté sur la page d\'Upload', () => {
     beforeEach(() => {
         cy.visit('/login')
         cy.get(':nth-child(2) > .sc-htpNat').type('Admin')
@@ -21,6 +21,6 @@ describe('Un utilisateur connecté sur la page d\'Upload', () => {
         cy.get('.sc-fjdhpX a:last-child').click()
         cy.url().should('include', 'localhost:3000/about')
     })
-})
+})*/
 
 

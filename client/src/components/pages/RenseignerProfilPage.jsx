@@ -7,28 +7,32 @@ import Template from './Template';
 import Submitbutton from './../atoms/Submitbutton';
 import styled from 'styled-components';
 import avatar from './../../assets/images/avatar.jpg';
+import { getUser } from '../../modules/auth';
 
 const Cadre = styled.div`
     display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-    padding: 7vh 9vw;
-    height: 100vh;
+    justify-content: space-around;
+    align-items: center;
+    padding: 7vh 4vw;
+    height: 70vh;
 `;
+
 const AvatarContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     width : 20vw;
-    height: 30vh;
+    height: 45vh;
 `;
 
 const FormContainer = styled.div`
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     flex-direction: column;
-    margin-top: 96px;
+    height: 50vh;
+    min-width: 35vw;
 `;
+
 const RightColumn = styled.div`
     display: flex;
     height: 100%;
@@ -37,25 +41,39 @@ const RightColumn = styled.div`
 `;
 
 class RenseignerProfilPage extends React.Component {
+    state={user:{
+        username:"",
+        password:"",
+        email:"",
+        presentation:"",
+        avatar:""
+    }}
+
+    async componentDidMount() {
+        this.setState({user: await getUser()})
+    }
+    
     render(){
 		return(
             <Template>
                 <MainContainer title="Profil">
-                    <Cadre>
-                        <FormContainer>
-                            <LabelInput label={"Pseudo"}/>
-                            <LabelInput label={"Mot de passe"}/>
-                            <LabelInput label={"Mail"}/>
-                            <LabelTextarea label={"Description"}/>
-                        </FormContainer>
-                        <RightColumn>
-                            <AvatarContainer >
-                                <Avatar pathImage={avatar}/>
-                                <Submitbutton>AJOUT IMAGE</Submitbutton>       
-                            </AvatarContainer>
-                            <Submitbutton>Modifier Profil</Submitbutton>
-                        </RightColumn>
-                    </Cadre>
+                    <form action="http://localhost:8180/renseignerprofil" method="post" enctype="multipart/form-data">
+                        <Cadre>
+                            <FormContainer>
+                                <LabelInput name="username" defaultValue={this.state.user.username} label={"Pseudo :"} wInput="25" wLabel="10"/>
+                                <LabelInput type="password" name="password" defaultValue={this.state.user.password} label={"Mot de passe :"} wInput="25" wLabel="10"/>
+                                <LabelInput name="email" defaultValue={this.state.user.email} label={"Mail :"} wInput="25" wLabel="10"/>
+                                <LabelTextarea name="presentation" value={this.state.user.presentation} label={"Description :"} row="7" col="50" onChange={(evt)=>this.setState({user:{username:this.state.user.username,password:this.state.user.password,email:this.state.user.email,avatar:this.state.user.avatar,presentation:evt.target.value}})}/>
+                            </FormContainer>
+                            <RightColumn>
+                                <AvatarContainer >
+                                    <Avatar src={"http://localhost:8180/public/images/"+this.state.user.avatar}/>
+                                    <input type="file" name="avatar" />      
+                                </AvatarContainer>
+                                <Submitbutton type="submit">Modifier Profil</Submitbutton>
+                            </RightColumn>
+                        </Cadre>
+                    </form>
                 </MainContainer>
             </Template>
         )

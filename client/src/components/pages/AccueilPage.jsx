@@ -1,12 +1,23 @@
+import styled from "styled-components";
 import React from 'react';
 import Template from './Template';
-import MainBody from '../organisms/MainBody';
+import NewsFeed from '../organisms/NewsFeed';
+import Profile from '../organisms/Profile';
 
-const Body = <MainBody/>;
+const AccueilContainer = styled.section`
+	display: grid;
+	grid-template-columns: 26% 70%;
+	grid-column-gap: 4%;
+`;
 
 const AccueilPage = () => (
 	<div>
-		<Template children={Body} />
+		<Template>
+			<AccueilContainer>
+				<Profile />
+				<NewsFeed />
+			</AccueilContainer>
+		</Template>
 	</div>
 )
 	

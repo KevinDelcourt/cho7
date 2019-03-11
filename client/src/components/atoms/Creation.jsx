@@ -3,14 +3,18 @@ import styled from "styled-components";
 import { logout, hasRole } from '../../modules/auth';
 
 const Wrapper = styled.div`
-  width: 40vw;
+    margin: 10px 0;
+    padding: 5px 10px;
+    background: rgba(255, 255, 255, 0.54);
+	border-radius: 10px;
+	overflow-wrap: break-word;
+	font-family: 'Ruluko', Arial, Sans-serif;
 `;
 const Suprime =styled.div`
 display: flex;
 justify-content: flex-end;
 
 `;
-
 
 export default class Creation extends Component {
     state={
