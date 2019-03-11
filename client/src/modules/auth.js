@@ -65,25 +65,7 @@ export const getCreations = () => axios.get('http://localhost:8180/creations')
 export const getAvencement = () => axios.get('http://localhost:8180/avencement')
 .then((response)=>{
     console.log(response)
-    /* var nbLigne=response.data.length
-    var titre=response.data[0].titre
-    var libelle=response.data[0].libelle
-    var tab=[]
-    var projet
-    for(var i=O;i<nbLigne;i++){
-        
-        if (titre!=response.data[i].titre){
-            projet=null
-            titre=response.data[i].titre
-            libelle=response.data[i].libelle
-            projet.titre=titre
-            projet.libelle=libelle
-            var tabEtat=[]
-
-
-
-        }
-    } */
+    
     var grouped =groupBy(response.data,projet => projet.titre)
     console.log(grouped)
     console.log(response)
