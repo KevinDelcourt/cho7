@@ -5,8 +5,7 @@ import MainContainer from '../molecules/MainContainer';
 class CreationsInProgress extends React.Component{
     state = {creations: []}
 
-    async componentDidMount(){
-        document.title = "Mes créations";
+    async componentDidMount() {
         this.setState({creations: await getCreationsInProgress()})
     }
 
@@ -21,7 +20,7 @@ class CreationsInProgress extends React.Component{
                     {this.state.creations.map((c) =>
                         <tr>
                             <td>{c.titre}</td>
-                            <td><a href={"/updateCreation?id=" + c.id}>Modifier</a></td>
+                            <td><a href={"/updateCreation/" + c.id}>Modifier</a></td>
                         </tr>
                     )}
                 </table>

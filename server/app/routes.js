@@ -92,6 +92,15 @@ module.exports = (app, passport) => {
 			})
 	})
 
+	app.get('/creation/:id', (req, res) => {
+		connection.query('SELECT * FROM creation WHERE id =' + req.params.id, (err, rows) => {
+			if (err)
+				res.send(400)
+			res.setHeader('Content-Type', 'application/json')
+			res.send(rows)
+		})
+	})
+
 	app.get('/creations', (req, res) => {
 		connection.query('SELECT id, nomfichier, titre, description FROM creation WHERE nomfichier != "" ORDER BY id DESC', (err, rows) => {
 			if (err)
