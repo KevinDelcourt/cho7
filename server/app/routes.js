@@ -50,14 +50,45 @@ module.exports = (app, passport) => {
 	app.post('/addcreation',uploadAudio.single('creation'),(req,res)=>{
 		console.log(req.file)
 		console.log(req.body)
-		connection.query('INSERT INTO creation (nomfichier,titre,description) VALUES (?,?,?)',[req.file.originalname,req.body.titre,req.body.description],(err,rows)=>{
-			if(err)
-				res.redirect("http://localhost:3000?err=1")
+		if(req.file)
+			connection.query('INSERT INTO creation (nomfichier,titre,description) VALUES (?,?,?)',[req.file.originalname,req.body.titre,req.body.description],(err,rows)=>{
+				if(err)
+					res.redirect("http://localhost:3000?err=1")
 
-			res.redirect("http://localhost:3000/");
-		})
+				res.redirect("http://localhost:3000/")
+			})
+		else
+			connection.query('INSERT INTO creation (titre,description) VALUES (?,?)',[req.body.titre,req.body.description],(err,rows)=>{
+				if(err)
+					res.redirect("http://localhost:3000?err=1")
+
+				res.redirect("http://localhost:3000/")
+			})
 	})
 
+	app.post('/suprCreation',uploadAudio.none(),(req,res)=>{
+		let pathFinFichier;
+		//avant recupere les titre a suprimer dans la bdd
+		console.log(req.body)
+		console.log("okokookokokokokokokokokokookokookokokokokoko");
+		// connection.query('SELECT nomfichier FROM creation WHERE id=?', [req.body.idCreation],(err,rows)=>{
+
+		// 	if(err)
+		// 		res.redirect("http://localhost:3000?err=1")
+				
+			connection.query('DELETE FROM creation WHERE id=?',[req.body.idCreation],(err,rows)=>{
+				/* pathFinFichier= rows[0].nomfichier;
+				console(rows[0].nomfichier);
+				let pathComplet=  __dirname + '/../public/audio/'+pathFinFichier; */
+				// console.log(pathComplet);
+				// fs.unlinkSync(pathComplet)
+				res.redirect("http://localhost:3000/");
+				
+				})
+				
+				});	
+			// });
+			
 	app.post('/renseignerprofil',
 	uploadImage.single('avatar'), (req, res) => {
 		console.log(req.file)
@@ -87,6 +118,16 @@ module.exports = (app, passport) => {
 		})
 	})
 
+	app.get('/avencement',(req, res)=>{
+		connection.query('SELECT creation.titre, creation.description, etat_avancement.libelle,etat_avancement.valeuravancement, creation.miseajour FROM creation,etat_avancement WHERE etat_avancement.idcreation=creation.id AND creation.nomfichier is null', (err,rows)=>{
+			if(err)
+				res.send(400)
+
+			res.setHeader('Content-Type', 'application/json')
+			res.send(rows)
+		})
+	})
+
 	app.get('/has_role/:role', isLoggedIn, (req, res) => {
 		res.setHeader('Content-Type', 'text/plain')
 		if (req.user.role === 'ROLE_' + req.params.role.toUpperCase())
@@ -106,6 +147,8 @@ module.exports = (app, passport) => {
 			res.send(rows[0])	
 		})
 	})
+
+	
 
 	app.get('/logout', (req, res) => {
 		console.log('login out...')
