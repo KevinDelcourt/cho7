@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS users, creation;
+DROP TABLE IF EXISTS etat_avancement, users, creation;
 
 CREATE TABLE users (
   id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -15,10 +15,23 @@ VALUES ('Admin','Admin','','ROLE_CREATEUR');
 
 CREATE TABLE creation (
   id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  nomfichier varchar(50) UNIQUE NOT NULL,
+  nomfichier varchar(50),
+  fichier longblob,
   titre varchar(50) NOT NULL,
-  description varchar(2048)
+  description varchar(2048),
+  nbecoute int(11) DEFAULT 0,
+  sommenotes int(11) DEFAULT 0,
+  nbnote int(11) DEFAULT 0,
+  miseajour DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
 INSERT INTO creation (nomfichier,titre,description)
-VALUES ('oui.mp3','oui','abc'),('800pouces.mp3','800','description');
+VALUES ('oui.mp3','oui','abc');
+
+CREATE TABLE etat_avancement (
+  id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  libelle varchar(50),
+  valeuravancement int(11) DEFAULT 0,
+  idcreation int(11), 
+  FOREIGN KEY (idcreation) REFERENCES creation(id)
+);
