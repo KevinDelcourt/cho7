@@ -55,14 +55,14 @@ module.exports = (app, passport) => {
 				if(err)
 					res.redirect("http://localhost:3000?err=1")
 
-				res.redirect("http://localhost:3000/");
+				res.redirect("http://localhost:3000/")
 			})
 		else
 			connection.query('INSERT INTO creation (titre,description) VALUES (?,?)',[req.body.titre,req.body.description],(err,rows)=>{
 				if(err)
 					res.redirect("http://localhost:3000?err=1")
 
-				res.redirect("http://localhost:3000/");
+				res.redirect("http://localhost:3000/")
 			})
 	})
 
