@@ -61,6 +61,15 @@ export const getCreations = () => axios.get('http://localhost:8180/creations')
     return false
 })
 
+export const getCreationsInProgress = () => axios.get('http://localhost:8180/creationsInProgress')
+.then((response)=>{
+    console.log(response)
+    return response.data
+}).catch((error)=>{
+    console.log(error)
+    return false
+})
+
 export const getCreator = () => axios.get('http://localhost:8180/creator')
 .then((response)=>{
     console.log(response)

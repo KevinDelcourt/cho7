@@ -29,7 +29,7 @@ class BarreMenu extends React.Component {
     
     render(){
         let co;
-        let upload;
+        let creations;
         let profil;
 
         if (!this.state.auth) {
@@ -42,14 +42,14 @@ class BarreMenu extends React.Component {
         }   
 
         if (this.state.auth) {
-            upload = <Link to="/upload"> <MenuButton children="Upload" /></Link>;
+            creations = <Link to="/creations"> <MenuButton children="Mes créations" /></Link>;
         }
 
         return(
             <NavBarContainer>
                 <div>
                     <Link to='/'> <MenuButton children="Accueil" /> </Link>
-                    {upload}
+                    {creations}
                 </div>
 
                 <div> 
