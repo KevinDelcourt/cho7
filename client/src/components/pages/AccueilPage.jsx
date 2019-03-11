@@ -3,6 +3,7 @@ import React from 'react';
 import Template from './Template';
 import NewsFeed from '../organisms/NewsFeed';
 import Profile from '../organisms/Profile';
+import Projet from '../organisms/Projet';
 
 const AccueilContainer = styled.section`
 	display: grid;
@@ -14,6 +15,7 @@ const AccueilPage = () => (
 	<div>
 		<Template>
 			<AccueilContainer>
+				<Projet/>
 				<Profile />
 				<NewsFeed />
 			</AccueilContainer>
