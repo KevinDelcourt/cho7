@@ -1,8 +1,14 @@
 import styled from "styled-components";
 import React from 'react';
 import Authentification from "./../molecules/Authentification";
-import ConnectionButton from "./../atoms/ConnectionButton";
 import { login } from '../../modules/auth';
+import Button from "../atoms/Button";
+import {Fragment, Component} from 'react';
+import theme from "./../../theme.json";
+
+const StyledButton = styled(Button)`
+    margin-top: 7vh;
+    margin-left: 20%;`;
 
 const TitleContainer = styled.div`
 	text-align: center;
@@ -13,14 +19,7 @@ const AuthentificationContainer = styled.div`
     height: 15vh;
 `;
 
-const FooterConnection = styled.div`
-    display: flex;
-    flex-direction: column;
-    margin-top: 7vh;
-`;
-
-
-class ConnectionForm extends React.Component {
+class ConnectionForm extends Component {
     state = {
     	username:"",
         password:"",
@@ -38,19 +37,15 @@ class ConnectionForm extends React.Component {
 
     render() {
         return (
-            <div>
+            <Fragment>
                 <TitleContainer>
                     <h1>Connexion</h1>
                 </TitleContainer>
-                
                 <AuthentificationContainer>
                     <Authentification setPassword={this.setPassword} setUsername={this.setUsername}/>
                 </AuthentificationContainer>
-                
-                <FooterConnection>
-                    <ConnectionButton onClick={this.connect}>Se connecter</ConnectionButton>
-                </FooterConnection>
-            </div>
+                <StyledButton onClick={this.connect} children="Se connecter" bgColor={theme.connectionButton}></StyledButton>
+            </Fragment>
         );
     }
 }
