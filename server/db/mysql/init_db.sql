@@ -2,12 +2,12 @@ DROP TABLE IF EXISTS etat_avancement, users, creation;
 
 CREATE TABLE users (
   id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  username varchar(50) UNIQUE NOT NULL,
-  password varchar(64) NOT NULL,
-  email varchar(254) NOT NULL,
-  presentation varchar(512),
-  avatar varchar(200),
-  role varchar(20) NOT NULL
+  username varchar(50) UNIQUE NOT NULL COLLATE utf8_general_ci  ,
+  password varchar(64) NOT NULL COLLATE utf8_general_ci,
+  email varchar(254) NOT NULL COLLATE utf8_general_ci,
+  presentation varchar(512) COLLATE utf8_general_ci,
+  avatar varchar(200) COLLATE utf8_general_ci,
+  role varchar(20) NOT NULL COLLATE utf8_general_ci
 );
 
 INSERT INTO users (username,password,email,role)
@@ -15,10 +15,10 @@ VALUES ('Admin','Admin','','ROLE_CREATEUR');
 
 CREATE TABLE creation (
   id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  nomfichier varchar(50),
+  nomfichier varchar(50) COLLATE utf8_general_ci,
   fichier longblob,
-  titre varchar(50) NOT NULL,
-  description varchar(2048),
+  titre varchar(50) NOT NULL COLLATE utf8_general_ci,
+  description varchar(2048) COLLATE utf8_general_ci,
   nbecoute int(11) DEFAULT 0,
   sommenotes int(11) DEFAULT 0,
   nbnote int(11) DEFAULT 0,
@@ -30,7 +30,7 @@ VALUES ('oui.mp3','oui','abc');
 
 CREATE TABLE etat_avancement (
   id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  libelle varchar(50),
+  libelle varchar(50) COLLATE utf8_general_ci,
   valeuravancement int(11) DEFAULT 0,
   idcreation int(11), 
   FOREIGN KEY (idcreation) REFERENCES creation(id) ON DELETE CASCADE
