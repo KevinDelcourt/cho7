@@ -31,10 +31,11 @@ export default class Creation extends Component {
 		if (this.state.auth) {
 			return (
 				<form action="http://localhost:8180/suprCreation" method="post" enctype="multipart/form-data">
+					<audio controls>
+						<source src={path} type="audio/mpeg" />
+					</audio>
+
 					<Wrapper>
-						<audio controls>
-							<source src={path} type="audio/mpeg" />
-						</audio>
 						<div>{this.props.description}</div>
 						<Suprime>
 							<a href={"http://localhost:3000/updateCreation/audio/" + this.props.valueId}>Modifier</a>
@@ -46,12 +47,15 @@ export default class Creation extends Component {
 			);
 		} else {
 			return (
-				<Wrapper>
+				<React.Fragment>
 					<audio controls>
 						<source src={path} type="audio/mpeg" />
 					</audio>
-					<div>{this.props.description}</div>
-				</Wrapper>
+
+					<Wrapper>
+						<div>{this.props.description}</div>
+					</Wrapper>
+				</React.Fragment>
 			);
 		}
 	}
