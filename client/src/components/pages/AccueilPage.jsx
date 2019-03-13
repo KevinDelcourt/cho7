@@ -9,15 +9,16 @@ const AccueilContainer = styled.section`
 	display: grid;
 	grid-template-columns: 26% 70%;
 	grid-column-gap: 4%;
+	grid-row-gap: 4%;
 `;
 
 const AccueilPage = () => (
 	<div>
 		<Template>
-			<AccueilContainer>
-				<Projet/>
-				<Profile />
+			<AccueilContainer>	
+				<Projet />			
 				<NewsFeed />
+				<Profile />		
 			</AccueilContainer>
 		</Template>
 	</div>

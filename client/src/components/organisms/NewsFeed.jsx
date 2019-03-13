@@ -10,6 +10,14 @@ const SubContainer = styled.div`
     grid-template-columns: 100%;
 `;
 
+const Container = styled.div`
+    grid-row: span 2;
+    background: rgba(145, 109, 67, 0.35);
+    border-radius: 20px;
+    padding: 15px 30px;
+    height: max-content;
+`;
+
 class NewsFeed extends React.Component{
     state = {creations: []}
 
@@ -19,7 +27,8 @@ class NewsFeed extends React.Component{
 
     render(){
         return(
-            <MainContainer title="Accueil">
+        <Container>
+                <h2>Accueil</h2>
                 <SubContainer>
                     {this.state.creations.map((c) =>
                         <MainContainer title={c.titre}>
@@ -27,7 +36,7 @@ class NewsFeed extends React.Component{
                         </MainContainer>
                     )}
                 </SubContainer>
-            </MainContainer>
+            </Container>
         )
     }
 }
