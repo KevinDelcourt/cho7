@@ -51,6 +51,4 @@ class ConnectionPage extends React.Component {
     }
 }
 
-
-
 export default ConnectionPage;
