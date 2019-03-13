@@ -7,8 +7,8 @@ import Template from './Template';
 import Button from './../atoms/Button';
 import styled from 'styled-components';
 import { getUser } from '../../modules/auth';
-import theme from "./../../theme.json";
 import { hasRole } from '../../modules/auth';
+import theme from "./../../theme.json";
 
 const Cadre = styled.div`
 	display: flex;
@@ -68,7 +68,7 @@ class RenseignerProfilPage extends React.Component {
 									<LabelInput name="username" defaultValue={this.state.user.username} label={"Pseudo :"} wInput="25" wLabel="10"/>
 									<LabelInput type="password" name="password" defaultValue={this.state.user.password} label={"Mot de passe :"} wInput="25" wLabel="10"/>
 									<LabelInput name="email" defaultValue={this.state.user.email} label={"Mail :"} wInput="25" wLabel="10"/>
-									<LabelTextarea name="presentation" value={this.state.user.presentation} label={"Description :"} row="7" col="50" onChange={(evt)=>this.setState({user:{username:this.state.user.username,password:this.state.user.password,email:this.state.user.email,avatar:this.state.user.avatar,presentation:evt.target.value}})}/>
+									<LabelTextarea name="presentation" defaultValue={this.state.user.presentation} label={"Description :"} row="7" col="50" onChange={(evt)=>this.setState({user:{username:this.state.user.username,password:this.state.user.password,email:this.state.user.email,avatar:this.state.user.avatar,presentation:evt.target.value}})}/>
 								</FormContainer>
 								<RightColumn>
 									<AvatarContainer >

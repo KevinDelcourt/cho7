@@ -58,20 +58,26 @@ module.exports = (app, passport) => {
 				res.redirect("http://localhost:3000/")
 			})
 		else{
-			connection.query('INSERT INTO creation (titre,description) VALUES (?,?)',[req.body.titre,req.body.description],(err,rows)=>{
-				if(err)
-					res.redirect("http://localhost:3000?err=1")
-				
-				req.body.libelle.map((l,index)=>{
-					connection.query('INSERT INTO etat_avancement (libelle,valeuravancement,idcreation) VALUES (?,?,?)',[l,req.body.valeur[index],rows.insertId],(err,rows)=>{
-						if(err)
-							res.redirect("http://localhost:3000?err=1")
-					})
-				})	
+			if(req.body.libelle)
+				connection.query('INSERT INTO creation (titre,description) VALUES (?,?)',[req.body.titre,req.body.description],(err,rows)=>{
+					if(err)
+						res.redirect("http://localhost:3000?err=1")
 
-				res.redirect("http://localhost:3000/")
-			})
+				
+					req.body.libelle.map((l,index)=>{
+						connection.query('INSERT INTO etat_avancement (libelle,valeuravancement,idcreation) VALUES (?,?,?)',[l,req.body.valeur[index],rows.insertId],(err,rows)=>{
+							if(err)
+								res.redirect("http://localhost:3000?err=1")
+						})
+					})	
+
+					res.redirect("http://localhost:3000/")
+				})
+			else{
+				res.redirect("http://localhost:3000/Creation")
+			}
 		}
+			
 	})
 
 	app.post('/updateCreation/:id',uploadAudio.single('creation'),(req,res)=>{
@@ -130,16 +136,29 @@ module.exports = (app, passport) => {
 				
 				});	
 			// });
-			
-	app.post('/renseignerprofil',
-	uploadImage.single('avatar'), (req, res) => {
-		console.log(req.file)
-		connection.query('UPDATE users SET username = ?, password = ?, email = ?, presentation = ?, avatar = ? WHERE role="ROLE_CREATEUR";',
-			[req.body.username, req.body.password, req.body.email, req.body.presentation,req.file.filename], (err, rows) => {
-				if(err)
-					res.send(err)
-				res.redirect("http://localhost:3000/RenseignerProfilPage/");
-			})
+
+
+	app.post('/renseignerprofil',uploadImage.single('avatar'), (req, res) => {
+		let filename = ""
+		if(req.file){
+			filename = req.file.filename
+	
+			connection.query('UPDATE users SET username = ?, password = ?, email = ?, presentation = ?, avatar = ? WHERE role="ROLE_CREATEUR";',
+				[req.body.username, req.body.password, req.body.email, req.body.presentation,filename], (err, rows) => {
+					if(err)
+						res.send(err)
+					res.redirect("http://localhost:3000/RenseignerProfilPage/");
+				})
+		}
+
+		else {
+			connection.query('UPDATE users SET username = ?, password = ?, email = ?, presentation = ? WHERE role="ROLE_CREATEUR";',
+				[req.body.username, req.body.password, req.body.email, req.body.presentation], (err, rows) => {
+					if(err)
+						res.send(err)
+					res.redirect("http://localhost:3000/RenseignerProfilPage/");
+				})
+		}
 	})
 
 	app.get('/etatsCreation/:idCreation', (req, res) => {

@@ -23,6 +23,7 @@ class ConnectionForm extends Component {
     state = {
     	username:"",
         password:"",
+        errCo: false
     }
 
     setPassword = (password) => this.setState({password:password})
@@ -31,11 +32,17 @@ class ConnectionForm extends Component {
     connect = async()=>{
         if(await login(this.state.username,this.state.password))
             window.location="/"
-        else
+        else{
             console.log("oh no")
+            this.setState({errCo: true})
+        }
     }
 
     render() {
+        let labelErrCo = "";
+        if(this.state.errCo){
+            labelErrCo = <div><label>Erreur du pseudo ou mot de passe !</label></div>
+        }
         return (
             <Fragment>
                 <TitleContainer>
@@ -45,6 +52,7 @@ class ConnectionForm extends Component {
                     <Authentification setPassword={this.setPassword} setUsername={this.setUsername}/>
                 </AuthentificationContainer>
                 <StyledButton onClick={this.connect} children="Se connecter" bgColor={theme.connectionButton}></StyledButton>
+                {labelErrCo}
             </Fragment>
         );
     }

@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { getCreateur } from '../../modules/auth';
 import Avatar from '../molecules/Avatar';
 
+
 const Wrapper = styled.div`
     margin-top: 15px;
     padding: 5px 10px;
@@ -18,20 +19,24 @@ const Container = styled.div`
     padding: 20px 30px;
 `;
 
-class Profile extends React.Component {
+class Profile extends React.Component {   
+
     state={user:{
         username:"",
         password:"",
         email:"",
         presentation:"",
-        avatar:""
+        avatar:"",
+        
     }}
 
     async componentDidMount() {
         this.setState({user: await getCreateur()})
+        
     }
 
     render(){
+       
         return(
             <Container>
 
@@ -43,6 +48,7 @@ class Profile extends React.Component {
                     </Wrapper>
                 
             </Container>
+        
         )
     }
 }
