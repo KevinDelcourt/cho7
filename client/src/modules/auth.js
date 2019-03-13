@@ -1,5 +1,6 @@
 import axios from 'axios'
 import cookies from 'browser-cookies'
+import groupBy from 'lodash/groupBy'
 
 export const login = (username,password) => axios.post('http://localhost:8180/login',{
     username: username,
@@ -54,8 +55,26 @@ export const getCreateur = () => axios.get('http://localhost:8180/createur/')
 
 export const getCreations = () => axios.get('http://localhost:8180/creations')
 .then((response)=>{
-    console.log(response)
+    console.log(response.data)
     return response.data
+}).catch((error)=>{
+    console.log(error)
+    return false
+})
+
+export const getAvencement = () => axios.get('http://localhost:8180/avencement')
+.then((response)=>{
+    console.log(response)
+    
+    var grouped =groupBy(response.data,projet => projet.titre)
+    console.log(grouped)
+    console.log(response)
+    var retour=[]
+    for(var obj in grouped)
+        retour.push(grouped[obj])
+
+    console.log(retour)
+    return retour
 }).catch((error)=>{
     console.log(error)
     return false

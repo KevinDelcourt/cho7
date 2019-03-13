@@ -126,6 +126,16 @@ module.exports = (app, passport) => {
 		})
 	})
 
+	app.get('/avencement',(req, res)=>{
+		connection.query('SELECT creation.titre, creation.description, etat_avancement.libelle,etat_avancement.valeuravancement, creation.miseajour FROM creation,etat_avancement WHERE etat_avancement.idcreation=creation.id AND creation.nomfichier is null', (err,rows)=>{
+			if(err)
+				res.send(400)
+
+			res.setHeader('Content-Type', 'application/json')
+			res.send(rows)
+		})
+	})
+
 	app.get('/has_role/:role', isLoggedIn, (req, res) => {
 		res.setHeader('Content-Type', 'text/plain')
 		if (req.user.role === 'ROLE_' + req.params.role.toUpperCase())
@@ -145,6 +155,8 @@ module.exports = (app, passport) => {
 			res.send(rows[0])	
 		})
 	})
+
+	
 
 	app.get('/logout', (req, res) => {
 		console.log('login out...')
