@@ -7,6 +7,7 @@ import Template from './Template';
 import Submitbutton from './../atoms/Submitbutton';
 import styled from 'styled-components';
 import { getUser } from '../../modules/auth';
+import { hasRole } from '../../modules/auth';
 
 const Cadre = styled.div`
     display: flex;
@@ -46,13 +47,15 @@ class RenseignerProfilPage extends React.Component {
         email:"",
         presentation:"",
         avatar:""
-    }}
+    }, auth:false}
 
     async componentDidMount() {
         this.setState({user: await getUser()})
+        this.setState({auth:await hasRole("CREATEUR")})
     }
     
     render(){
+        if (this.state.auth)
 		return(
             <Template>
                 <MainContainer title="Profil">
@@ -76,6 +79,10 @@ class RenseignerProfilPage extends React.Component {
                 </MainContainer>
             </Template>
         )
+        
+        else 
+
+        return ("")
     }
 }
 
