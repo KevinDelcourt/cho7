@@ -60,12 +60,12 @@ module.exports = (app, passport) => {
 
 	app.post('/updateCreation/:id',uploadAudio.single('creation'),(req,res)=>{
 		const idCreation = req.params.id;
-		const originalName = ""
+		let fileName = ""
 
 		if (req.file)
-			originalName = req.file.originalname
+			fileName = req.file.originalname
 
-		connection.query('UPDATE creation SET nomfichier = ?, titre = ?, description = ? WHERE id = ?',[originalName, req.body.titre, req.body.description, idCreation],(err,rows)=>{
+		connection.query('UPDATE creation SET nomfichier = ?, titre = ?, description = ? WHERE id = ?',[fileName, req.body.titre, req.body.description, idCreation],(err,rows)=>{
 			if(err)
 				res.redirect(req.get('referer'));
 
