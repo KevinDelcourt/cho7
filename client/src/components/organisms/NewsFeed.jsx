@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import React from 'react';
 import { getCreations } from '../../modules/auth';
-import Creation from "../atoms/Creation";
+import Creation from "../molecules/Creation";
 import MainContainer from '../molecules/MainContainer';
 
 const SubContainer = styled.div`
