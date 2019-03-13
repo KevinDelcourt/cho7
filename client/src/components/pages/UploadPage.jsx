@@ -3,6 +3,11 @@ import Template from './Template';
 import { hasRole } from '../../modules/auth';
 import UploadForm from '../organisms/UploadForm';
 import MainContainer from '../molecules/MainContainer';
+import styled from "styled-components";
+
+const StyledUploadForm = styled(UploadForm)`
+	width: 90%;
+`;
 
 class UploadPage extends React.Component {
 	state = {auth:false}
@@ -18,7 +23,7 @@ class UploadPage extends React.Component {
 				<div>
 					<Template>
 						<MainContainer title="NOUVELLE CRÉATION">
-							<UploadForm />
+							<StyledUploadForm />
 						</MainContainer>
 					</Template>
 				</div> 

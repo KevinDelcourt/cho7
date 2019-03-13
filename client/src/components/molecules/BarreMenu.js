@@ -1,21 +1,22 @@
 import styled from 'styled-components';
 import React from 'react';
-import MenuButton from '../atoms/MenuButton';
+import Button from '../atoms/Button';
 import { logout, hasRole } from '../../modules/auth';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import theme from "./../../theme.json";
+
 
 const NavBarContainer = styled.div`
     background: rgba(213, 191, 159, 0.67);
-    border-radius: 10px;
-    padding: 1vh 1vw 1vh 0.5vw;
-
+    border-radius: 5px;
+    padding: 5px 1vw;
     display: flex;
     justify-content: space-between;
-    height: 8vh;
-    align-items: center;
-    width: 94vw;
-    margin-right: auto;
-    margin-left: auto;
+    margin: 0 2vw;
+`;
+const StyledButton = styled(Button)`
+    margin-left: 0.5vw;
+    background-color:${theme.menuButton}
 `;
 
 class BarreMenu extends React.Component {
@@ -33,22 +34,22 @@ class BarreMenu extends React.Component {
         let profil;
 
         if (!this.state.auth) {
-            co =  <Link to="/login" style={{marginRight: '1vw'}}> <MenuButton children="Connexion"/> </Link>;
+            co =  <Link to="/login" style={{marginRight: '1vw'}}> <StyledButton children="Connexion"/> </Link>;
         }
         else {
-            co = <a href="/" onClick={logout}> <MenuButton children="Déconnexion"/> </a>
-            profil= <Link to="/RenseignerProfilPage" > <MenuButton children="Profil"/> </Link>
+            co = <a href="/" onClick={logout}> <StyledButton children="Déconnexion"/> </a>
+            profil= <Link to="/RenseignerProfilPage" > <StyledButton children="Profil"/> </Link>
 
         }   
 
         if (this.state.auth) {
-            upload = <Link to="/Creation"> <MenuButton children="Creation" /></Link>;
+            upload = <Link to="/Creation"> <StyledButton children="Creation" /></Link>;
         }
 
         return(
             <NavBarContainer>
                 <div>
-                    <Link to='/'> <MenuButton children="Accueil" /> </Link>
+                    <Link to='/'> <StyledButton children="Accueil" /> </Link>
                     {upload}
                 </div>
 

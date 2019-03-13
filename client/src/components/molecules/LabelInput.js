@@ -7,7 +7,6 @@ const LabelInputContainer = styled.div`
     display: grid;
     grid-template-columns: repeat(2, auto);
     grid-column-gap: 8px;
-    align-items: center;
     justify-content: start;
 `;
 
@@ -16,7 +15,7 @@ class LabelInput extends React.Component{
         return(
             <LabelInputContainer>
                 <LabelBase children={this.props.label} for={this.props.name} w={this.props.wLabel}/>
-                <InputBase name={this.props.name} w={this.props.wInput} defaultValue={this.props.defaultValue} type={this.props.type} onChange={this.props.onChange}/>
+                <InputBase name={this.props.name} defaultValue={this.props.defaultValue} type={this.props.type} onChange={this.props.onChange}/>
             </LabelInputContainer>
         );
     }
