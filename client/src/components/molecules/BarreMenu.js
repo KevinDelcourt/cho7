@@ -43,7 +43,7 @@ class BarreMenu extends React.Component {
         }   
 
         if (this.state.auth) {
-            upload = <Link to="/upload"> <StyledButton children="Upload" /></Link>;
+            upload = <Link to="/Creation"> <StyledButton children="Creation" /></Link>;
         }
 
         return(

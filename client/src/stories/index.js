@@ -15,6 +15,8 @@ import TextareaBase from '../components/atoms/TextareaBase';
 import LabelTextarea from '../components/molecules/LabelTextarea';
 import MainContainer from '../components/molecules/MainContainer';
 import Button from '../components/atoms/Button';
+import LabelInputRange from "./../components/molecules/LabelInputRange";
+import AddButton from "./../components/atoms/AddButton";
 
 storiesOf('atoms', module)
   .add('Titre', () => (
@@ -88,5 +90,15 @@ const storyMainContainer = storiesOf("molecules", module);
 const child = [<div style={{backgroundColor: "white"}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>];
 storyMainContainer.addDecorator(withKnobs);
 storyMainContainer.add("MainContainer", () => (
-	<MainContainer title={text("label du titre",'Mon titre')} children={child}/>
+	<MainContainer title={text("label du titre",'MonTitre')} children={child}/>
 ))
+
+const storyLabelInputRange = storiesOf("molecules/LabelInputRange", module);
+storyLabelInputRange.add('LabelInputRange', () => (
+	<LabelInputRange />
+));
+
+const storyAddButton = storiesOf("atoms/AddButton", module);
+storyAddButton.add("AddButton", () => (
+	<AddButton type='button' value="+" />
+));
