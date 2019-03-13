@@ -3,6 +3,7 @@ import React from 'react';
 import LabelInput from "../molecules/LabelInput";
 import Submitbutton from "../atoms/Submitbutton";
 import LabelTextarea from "../molecules/LabelTextarea";
+import InputAddButton from "./InputAddButton";
 
 const UploadFormContainer = styled.div`
 	display: grid;	
@@ -22,8 +23,10 @@ class UploadForm extends React.Component{
 				<UploadFormContainer>
 					<LabelInput name="titre" label="Titre : *" />
 					<input type="file" name="creation" accept="audio/mp3, audio/wav" />
-					<LabelTextarea name="description" label="Description :" row="10" col="20" />
+
+					<InputAddButton />
 					
+					<LabelTextarea name="description" label="Description :" row="10" col="20" />
 					<PublishButtonContainer>
 						<Submitbutton type="submit" children="Publier"/>
 					</PublishButtonContainer>

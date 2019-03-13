@@ -57,13 +57,21 @@ module.exports = (app, passport) => {
 
 				res.redirect("http://localhost:3000/")
 			})
-		else
+		else{
 			connection.query('INSERT INTO creation (titre,description) VALUES (?,?)',[req.body.titre,req.body.description],(err,rows)=>{
 				if(err)
 					res.redirect("http://localhost:3000?err=1")
+				
+				req.body.libelle.map((l,index)=>{
+					connection.query('INSERT INTO etat_avancement (libelle,valeuravancement,idcreation) VALUES (?,?,?)',[l,req.body.valeur[index],rows.insertId],(err,rows)=>{
+						if(err)
+							res.redirect("http://localhost:3000?err=1")
+					})
+				})	
 
 				res.redirect("http://localhost:3000/")
 			})
+		}
 	})
 
 	app.post('/suprCreation',uploadAudio.none(),(req,res)=>{
@@ -101,7 +109,7 @@ module.exports = (app, passport) => {
 	})
 
 	app.get('/creations', (req, res) => {
-		connection.query('SELECT id, nomfichier, titre, description FROM creation ORDER BY id DESC', (err, rows) => {
+		connection.query('SELECT id, nomfichier, titre, description FROM creation WHERE nomfichier IS NOT NULL ORDER BY id DESC', (err, rows) => {
 			if (err)
 				res.send(400)
 			res.setHeader('Content-Type', 'application/json')
