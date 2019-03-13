@@ -36,7 +36,7 @@ class BarreMenu extends React.Component {
             co =  <Link to="/login" style={{marginRight: '1vw'}}> <MenuButton children="Connexion"/> </Link>;
         }
         else {
-            co = <Link to="/login" onClick={logout}> <MenuButton children="Déconnexion"/> </Link>
+            co = <a href="/" onClick={logout}> <MenuButton children="Déconnexion"/> </a>
             profil= <Link to="/RenseignerProfilPage" > <MenuButton children="Profil"/> </Link>
 
         }   
