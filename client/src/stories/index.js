@@ -25,7 +25,7 @@ storiesOf('atoms', module)
 const storyButton = storiesOf('atoms', module);
 storyButton.addDecorator(withKnobs);
 storyButton.add('Button', () => (
-	<Button bgColor={text('Background-Color','#916D43')} children={text('Value','MyButton')}/>
+	<Button bgColor={text('Background-Color','#916D43')} children={text('Value','MyButton')} border={text('Border','none')}/>
 ));
 
 const storyBarreMenu = storiesOf('molecules', module);

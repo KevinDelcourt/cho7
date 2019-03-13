@@ -13,7 +13,6 @@ const UploadFormContainer = styled.div`
 	margin:5%;
 `;
 
-
 const StyledButton = styled(Button)`
 	justify-self: end;
 `;
