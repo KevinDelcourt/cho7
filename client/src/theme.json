@@ -1,5 +1,12 @@
 {
-    "connectionButton":"#916D43",
-    "menuButton":"rgba(145, 109, 67, 0.35)",
-    "submitButton":"#C4C4C4"
+    "bgColor": {
+        "connectionButton":"#916D43",
+        "menuButton":"rgba(145, 109, 67, 0.35)",
+        "submitButton":"#C4C4C4"
+    },
+    "font-family": {
+        "label": "Ruluko"
+    }
+
+    
 }

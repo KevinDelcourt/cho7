@@ -44,7 +44,7 @@ class ConnectionForm extends Component {
                 <AuthentificationContainer>
                     <Authentification setPassword={this.setPassword} setUsername={this.setUsername}/>
                 </AuthentificationContainer>
-                <StyledButton onClick={this.connect} children="Se connecter" bgColor={theme.connectionButton}></StyledButton>
+                <StyledButton onClick={this.connect} children="Se connecter" bgColor={theme.bgColor.connectionButton}></StyledButton>
             </Fragment>
         );
     }

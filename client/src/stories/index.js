@@ -9,7 +9,7 @@ import BarreMenu from '../components/molecules/BarreMenu';
 import { BrowserRouter as Router} from "react-router-dom";
 import FooterTemplate from '../components/organisms/FooterTemplate';
 import InputBase from '../components/atoms/InputBase';
-import LabelBase from '../components/atoms/LabelBase';
+import Label from '../components/atoms/Label';
 import LabelInput from '../components/molecules/LabelInput';
 import TextareaBase from '../components/atoms/TextareaBase';
 import LabelTextarea from '../components/molecules/LabelTextarea';
@@ -52,10 +52,10 @@ storyInputBase.add("Input de base", () => (
 	<InputBase />
 ));
 
-const storyLabelBase = storiesOf('atoms', module);
-storyLabelBase.addDecorator(withKnobs);
-storyLabelBase.add("Label de base", () => (
-	<LabelBase children={text('Label children','')} />
+const storyLabel = storiesOf('atoms', module);
+storyLabel.addDecorator(withKnobs);
+storyLabel.add("Label de base", () => (
+	<Label children={text('Label children','')} />
 ));
 
 const storyLabelInput = storiesOf("molecules", module);

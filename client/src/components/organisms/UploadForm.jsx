@@ -28,7 +28,7 @@ class UploadForm extends React.Component{
 					<input type="file" name="creation" accept="audio/mp3, audio/wav" />
 					<InputAddButton />
 					<LabelTextarea name="description" label="Description :" row="10" col="120" />	
-					<StyledButton type="submit" children="Publier" bgColor={theme.submitButton}/>
+					<StyledButton type="submit" children="Publier" bgColor={theme.bgColor.submitButton}/>
 				</UploadFormContainer>
 			</form>
 		)

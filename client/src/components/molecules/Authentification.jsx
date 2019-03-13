@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import React from 'react';
-import LabelBase from './../atoms/LabelBase';
+import Label from './../atoms/Label';
 import FieldConnection from './../atoms/FieldConnection';
 
 const LabelContainer = styled.div`
@@ -26,14 +26,14 @@ class Authentification extends React.Component{
     render(){
         return (
             <div style={styleAuth}>
-                <LabelBase for="login" children="Pseudo" />
+                <Label for="login" children="Pseudo" />
     
                 <FieldContainer>
                     <FieldConnection type="text" onChange={(evt)=>this.props.setUsername(evt.target.value)} />
                 </FieldContainer>
     
                 <LabelContainer>
-                   <LabelBase for="password" children="Mot de Passe" />
+                   <Label for="password" children="Mot de Passe" />
                 </LabelContainer>
     
                 <FieldContainer>

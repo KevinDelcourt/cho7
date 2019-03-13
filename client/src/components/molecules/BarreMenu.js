@@ -16,7 +16,7 @@ const NavBarContainer = styled.div`
     `;
 const StyledButton = styled(Button)`
     margin-left: 0.5vw;
-    background-color:${theme.menuButton}
+    background-color:${theme.bgColor.menuButton}
 `;
 
 class BarreMenu extends React.Component {

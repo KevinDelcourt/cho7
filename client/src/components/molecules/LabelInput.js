@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import InputBase from './../atoms/InputBase';
-import LabelBase from './../atoms/LabelBase';
+import Label from '../atoms/Label';
 import React from 'react';
 
 const LabelInputContainer = styled.div`
@@ -14,7 +14,7 @@ class LabelInput extends React.Component{
     render(){
         return(
             <LabelInputContainer>
-                <LabelBase children={this.props.label} for={this.props.name} w={this.props.wLabel}/>
+                <Label children={this.props.label} for={this.props.name} w={this.props.wLabel}/>
                 <InputBase name={this.props.name} defaultValue={this.props.defaultValue} type={this.props.type} onChange={this.props.onChange}/>
             </LabelInputContainer>
         );
