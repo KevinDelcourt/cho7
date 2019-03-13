@@ -10,6 +10,7 @@ const Wrapper = styled.div`
 	overflow-wrap: break-word;
 	font-family: 'Ruluko', Arial, Sans-serif;
 `;
+
 const Suprime =styled.div`
 	display: flex;
 	justify-content: flex-end;
@@ -25,25 +26,33 @@ export default class Creation extends Component {
 	}    
 	 
 	render() {
-		let conex;
-		let path = "http://localhost:8180/public/audio/" + this.props.path;
+		const path = "http://localhost:8180/public/audio/" + this.props.path;
 
 		if (this.state.auth) {
-				conex = <button type="submit" class="far fa-times-circle fa-2x" ></button>;}
-		return (
-			<form action="http://localhost:8180/suprCreation" method="post" enctype="multipart/form-data">
+			return (
+				<form action="http://localhost:8180/suprCreation" method="post" enctype="multipart/form-data">
+					<Wrapper>
+						<audio controls>
+							<source src={path} type="audio/mpeg" />
+						</audio>
+						<div>{this.props.description}</div>
+						<Suprime>
+							<a href={"http://localhost:3000/updateCreation/audio/" + this.props.valueId}>Modifier</a>
+							<button type="submit" class="far fa-times-circle fa-2x" ></button>
+							<input type="hidden" name="idCreation" value={this.props.valueId}/>
+						</Suprime>
+					</Wrapper>
+				</form>
+			);
+		} else {
+			return (
 				<Wrapper>
 					<audio controls>
 						<source src={path} type="audio/mpeg" />
 					</audio>
-					<div>{this.props.description} </div>
-					<Suprime>
-						<a href={"http://localhost:3000/updateCreation/audio/" + this.props.valueId}>Modifier</a>
-						<input type="hidden" name="idCreation" value={this.props.valueId}/>
-						{conex}
-					</Suprime>
+					<div>{this.props.description}</div>
 				</Wrapper>
-			</form>
-		);
+			);
+		}
 	}
 }

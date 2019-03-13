@@ -79,6 +79,13 @@ module.exports = (app, passport) => {
 
 		if (req.file)
 			connection.query('UPDATE creation SET nomfichier = ?, titre = ?, description = ? WHERE id = ?',[req.file.originalname, req.body.titre, req.body.description, idCreation],(err,rows)=>{
+				req.body.valeur.map((val, index)=>{
+					connection.query('UPDATE etat_avancement SET valeuravancement = ? WHERE id = ?',[val, req.body.idEtat[index]],(err,rows)=>{
+						if(err)
+							res.redirect("http://localhost:3000?err=1")
+					})
+				})
+				
 				if(err)
 					res.redirect(req.get('referer'));
 
@@ -87,6 +94,13 @@ module.exports = (app, passport) => {
 			})
 		else
 			connection.query('UPDATE creation SET titre = ?, description = ? WHERE id = ?',[req.body.titre, req.body.description, idCreation],(err,rows)=>{
+				req.body.valeur.map((val, index)=>{
+					connection.query('UPDATE etat_avancement SET valeuravancement = ? WHERE id = ?',[val, req.body.idEtat[index]],(err,rows)=>{
+						if(err)
+							res.redirect("http://localhost:3000?err=1")
+					})
+				})	
+				
 				if(err)
 					res.redirect(req.get('referer'));
 
@@ -126,6 +140,15 @@ module.exports = (app, passport) => {
 					res.send(err)
 				res.redirect("http://localhost:3000/RenseignerProfilPage/");
 			})
+	})
+
+	app.get('/etatsCreation/:idCreation', (req, res) => {
+		connection.query('SELECT * FROM etat_avancement WHERE idcreation =' + req.params.idCreation, (err, rows) => {
+			if (err)
+				res.send(400)
+			res.setHeader('Content-Type', 'application/json')
+			res.send(rows)
+		})
 	})
 
 	app.get('/creation/:id', (req, res) => {
