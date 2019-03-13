@@ -74,6 +74,40 @@ module.exports = (app, passport) => {
 		}
 	})
 
+	app.post('/updateCreation/:id',uploadAudio.single('creation'),(req,res)=>{
+		const idCreation = req.params.id;
+
+		if (req.file)
+			connection.query('UPDATE creation SET nomfichier = ?, titre = ?, description = ? WHERE id = ?',[req.file.originalname, req.body.titre, req.body.description, idCreation],(err,rows)=>{
+				req.body.valeur.map((val, index)=>{
+					connection.query('UPDATE etat_avancement SET valeuravancement = ? WHERE id = ?',[val, req.body.idEtat[index]],(err,rows)=>{
+						if(err)
+							res.redirect("http://localhost:3000?err=1")
+					})
+				})
+				
+				if(err)
+					res.redirect(req.get('referer'));
+
+				//res.redirect("http://localhost:3000/updateCreation/" + idCreation);
+				res.redirect(req.get('referer'));
+			})
+		else
+			connection.query('UPDATE creation SET titre = ?, description = ? WHERE id = ?',[req.body.titre, req.body.description, idCreation],(err,rows)=>{
+				req.body.valeur.map((val, index)=>{
+					connection.query('UPDATE etat_avancement SET valeuravancement = ? WHERE id = ?',[val, req.body.idEtat[index]],(err,rows)=>{
+						if(err)
+							res.redirect("http://localhost:3000?err=1")
+					})
+				})	
+				
+				if(err)
+					res.redirect(req.get('referer'));
+
+				res.redirect(req.get('referer'));
+			})
+	})
+
 	app.post('/suprCreation',uploadAudio.none(),(req,res)=>{
 		let pathFinFichier;
 		//avant recupere les titre a suprimer dans la bdd
@@ -108,8 +142,35 @@ module.exports = (app, passport) => {
 			})
 	})
 
+	app.get('/etatsCreation/:idCreation', (req, res) => {
+		connection.query('SELECT * FROM etat_avancement WHERE idcreation =' + req.params.idCreation, (err, rows) => {
+			if (err)
+				res.send(400)
+			res.setHeader('Content-Type', 'application/json')
+			res.send(rows)
+		})
+	})
+
+	app.get('/creation/:id', (req, res) => {
+		connection.query('SELECT * FROM creation WHERE id =' + req.params.id, (err, rows) => {
+			if (err)
+				res.send(400)
+			res.setHeader('Content-Type', 'application/json')
+			res.send(rows)
+		})
+	})
+
 	app.get('/creations', (req, res) => {
 		connection.query('SELECT id, nomfichier, titre, description FROM creation WHERE nomfichier IS NOT NULL ORDER BY id DESC', (err, rows) => {
+			if (err)
+				res.send(400)
+			res.setHeader('Content-Type', 'application/json')
+			res.send(rows)
+		})
+	})
+
+	app.get('/creationsInProgress', (req, res) => {
+		connection.query('SELECT id, titre FROM creation WHERE nomfichier IS NULL ORDER BY id DESC', (err, rows) => {
 			if (err)
 				res.send(400)
 			res.setHeader('Content-Type', 'application/json')
