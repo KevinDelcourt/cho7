@@ -16,14 +16,16 @@ const PublishButtonContainer = styled.div`
 	justify-self: end;
 `;
 
+const idCreation = window.location.href.split('/').pop();
+
 class UpdateCreationForm extends React.Component{
 	render() {
 		return(
-			<form action="http://localhost:8180/updateCreation" method="post" enctype="multipart/form-data">
+			<form action={"http://localhost:8180/updateCreation/" + idCreation} method="post" enctype="multipart/form-data">
 				<UpdateCreationFormContainer>
-					<LabelInput name="titre" label="Titre : *" value={this.props.titre} />
+					<LabelInput name="titre" label="Titre : *" defaultValue={this.props.titre} />
 					<input type="file" name="creation" accept="audio/mp3, audio/wav" />
-					<LabelTextarea name="description" label="Description :" row="10" col="20" value={this.props.desc} />
+					<LabelTextarea name="description" label="Description :" row="10" col="20" defaultValue={this.props.desc} />
 					
 					<PublishButtonContainer>
 						<Submitbutton type="submit" children="Modifier"/>

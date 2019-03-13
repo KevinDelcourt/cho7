@@ -58,6 +58,22 @@ module.exports = (app, passport) => {
 		})
 	})
 
+	app.post('/updateCreation/:id',uploadAudio.single('creation'),(req,res)=>{
+		const idCreation = req.params.id;
+		const originalName = ""
+
+		if (req.file)
+			originalName = req.file.originalname
+
+		connection.query('UPDATE creation SET nomfichier = ?, titre = ?, description = ? WHERE id = ?',[originalName, req.body.titre, req.body.description, idCreation],(err,rows)=>{
+			if(err)
+				res.redirect(req.get('referer'));
+
+			//res.redirect("http://localhost:3000/updateCreation/" + idCreation);
+			res.redirect(req.get('referer'));
+		})
+	})
+
 	app.post('/suprCreation',uploadAudio.none(),(req,res)=>{
 		let pathFinFichier;
 		//avant recupere les titre a suprimer dans la bdd

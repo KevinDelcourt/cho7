@@ -5,14 +5,14 @@ import UpdateCreationForm from '../organisms/UpdateCreationForm';
 import MainContainer from '../molecules/MainContainer';
 import { getCreation } from '../../modules/auth';
 
-    const id = window.location.href.split('/').pop();
+const idCreation = window.location.href.split('/').pop();
 
 class UpdateCreationPage extends React.Component {
     state = {auth:false}
 
 	async componentDidMount() {
         document.title = "Modifier création";
-        this.setState({creation: await getCreation(id)})
+        this.setState({creation: await getCreation(idCreation)})
         this.setState({auth: await hasRole("CREATEUR")})
 	}
 
