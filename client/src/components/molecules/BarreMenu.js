@@ -14,9 +14,12 @@ const NavBarContainer = styled.div`
     justify-content: space-between;
     margin: 0 2vw;
 `;
+
 const StyledButton = styled(Button)`
     margin-left: 0.5vw;
-    background-color:${theme.menuButton}
+    background-color: ${theme.menuButton};
+    height: 6vh;
+    min-height: 43px;
 `;
 
 class BarreMenu extends React.Component {
@@ -30,7 +33,7 @@ class BarreMenu extends React.Component {
     
     render(){
         let co;
-        let upload;
+        let creations;
         let profil;
 
         if (!this.state.auth) {
@@ -43,14 +46,14 @@ class BarreMenu extends React.Component {
         }   
 
         if (this.state.auth) {
-            upload = <Link to="/Creation"> <StyledButton children="Creation" /></Link>;
+            creations = <Link to="/creations"><StyledButton children="Mes créations" /></Link>;
         }
 
         return(
             <NavBarContainer>
                 <div>
-                    <Link to='/'> <StyledButton children="Accueil" /> </Link>
-                    {upload}
+                    <Link to='/'><StyledButton children="Accueil" /></Link>
+                    {creations}
                 </div>
 
                 <div> 

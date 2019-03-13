@@ -53,9 +53,36 @@ export const getCreateur = () => axios.get('http://localhost:8180/createur/')
     return false
 })
 
+export const getEtatsCreation = (idCreation) => axios.get('http://localhost:8180/etatsCreation/' + idCreation)
+.then((response)=>{
+    console.log(response)
+    return response.data
+}).catch((error)=>{
+    console.log(error)
+    return false
+})
+
+export const getCreation = (id) => axios.get('http://localhost:8180/creation/' + id)
+.then((response)=>{
+    console.log(response)
+    return response.data
+}).catch((error)=>{
+    console.log(error)
+    return false
+})
+
 export const getCreations = () => axios.get('http://localhost:8180/creations')
 .then((response)=>{
     console.log(response.data)
+    return response.data
+}).catch((error)=>{
+    console.log(error)
+    return false
+})
+
+export const getCreationsInProgress = () => axios.get('http://localhost:8180/creationsInProgress')
+.then((response)=>{
+    console.log(response)
     return response.data
 }).catch((error)=>{
     console.log(error)

@@ -12,7 +12,6 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 }
 
-
 * {
 	font-family: 'Almendra SC', Ruluko, Arial, Sans-serif;
 	padding: 0;
@@ -44,6 +43,21 @@ p {
 	font-family: 'Ruluko', Arial, Sans-serif;
 	text-align: justify;
 }
+
+table {
+	border-collapse: collapse;
+	border-radius: 5px;
+	width: 100%;
+	font-size: 25px;
+	background-color: #c0a682ad;
+}
+  
+td, th {
+	border: 1px solid #000000;
+	text-align: center;
+	padding: 8px;
+}
+  
 
 input, textarea {
 	font-family: 'Arial', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
