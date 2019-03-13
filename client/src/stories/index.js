@@ -1,19 +1,12 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-
-import { linkTo } from '@storybook/addon-links';
-import { Welcome } from '@storybook/react/demo';
 import { withKnobs, text, number} from '@storybook/addon-knobs';
-
-import Logo from '../components/atoms/Logo';
 import SiteTitle from '../components/atoms/SiteTitle';
-import MenuButton from '../components/atoms/MenuButton';
 import LabelDescription from '../components/atoms/LabelDescription';
 import FieldDescription from '../components/atoms/FieldDescription';
 import UploadForm from '../components/organisms/UploadForm';
 import BarreMenu from '../components/molecules/BarreMenu';
 import { BrowserRouter as Router} from "react-router-dom";
-import SubmitButton from '../components/atoms/Submitbutton';
 import FooterTemplate from '../components/organisms/FooterTemplate';
 import InputBase from '../components/atoms/InputBase';
 import LabelBase from '../components/atoms/LabelBase';
@@ -21,29 +14,23 @@ import LabelInput from '../components/molecules/LabelInput';
 import TextareaBase from '../components/atoms/TextareaBase';
 import LabelTextarea from '../components/molecules/LabelTextarea';
 import MainContainer from '../components/molecules/MainContainer';
+import Button from '../components/atoms/Button';
 import LabelInputRange from "./../components/molecules/LabelInputRange";
 import AddButton from "./../components/atoms/AddButton";
 
-
-storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
-
-
-
-storiesOf('Logo', module).add('Avec une image', () => <Logo />);
-
-storiesOf('atoms/SiteTitle', module)
+storiesOf('atoms', module)
   .add('Titre', () => (
 	  <SiteTitle children="Un titre" />
   )
 );
 
-const storyMenuButton = storiesOf('Storybook Knobs', module);
-storyMenuButton.addDecorator(withKnobs);
-storyMenuButton.add('Menu Button', () => (
-	<MenuButton children={text('Contenu','')}/>
+const storyButton = storiesOf('atoms', module);
+storyButton.addDecorator(withKnobs);
+storyButton.add('Button', () => (
+	<Button bgColor={text('Background-Color','#916D43')} children={text('Value','MyButton')} border={text('Border','none')}/>
 ));
 
-const storyBarreMenu = storiesOf('Storybook Knobs', module);
+const storyBarreMenu = storiesOf('molecules', module);
 storyBarreMenu.addDecorator(withKnobs);
 storyBarreMenu.add('Barre de Menu', () =>(
 	<Router>
@@ -60,37 +47,37 @@ storiesOf('organisms', module)
       <UploadForm />
 ))
 
-const storyInputBase = storiesOf("atoms/Composant de base", module);
+const storyInputBase = storiesOf("atoms", module);
 storyInputBase.add("Input de base", () => (
 	<InputBase />
 ));
 
-const storyLabelBase = storiesOf('atoms/Composant de base', module);
+const storyLabelBase = storiesOf('atoms', module);
 storyLabelBase.addDecorator(withKnobs);
 storyLabelBase.add("Label de base", () => (
 	<LabelBase children={text('Label children','')} />
 ));
 
-const storyLabelInput = storiesOf("molecules/Composant de base", module);
+const storyLabelInput = storiesOf("molecules", module);
 storyLabelInput.addDecorator(withKnobs);
 storyLabelInput.add("Label Input", ()=> (
-	<LabelInput label={text('Label value','')} />
+	<LabelInput label={text('Label','myLabel')} input={text('Input','')} />
 ));
 
-const storyTextareaBase = storiesOf("atoms/Composant de base", module);
+const storyTextareaBase = storiesOf("atoms", module);
 storyTextareaBase.addDecorator(withKnobs);
 storyTextareaBase.add("Textarea", () =>(
 	<TextareaBase rows={number("nbLigne",5)} cols={number('NbCol',10)} />
 ));
 
 
-const storyLabelTextarea = storiesOf("molecules/Composant de base", module);
+const storyLabelTextarea = storiesOf("molecules", module);
 storyLabelTextarea.addDecorator(withKnobs);
 storyLabelTextarea.add("LabelTextarea", ()=>(
 	<LabelTextarea label={text("Label value",'')} row={number("row", 5)} col={number("col",5)} />
 ));
 
-const Description = storiesOf('Storybook Knobs', module);
+const Description = storiesOf('atoms', module);
 Description.addDecorator(withKnobs);
 Description.add('LabelDescription', () => (
   <LabelDescription children={text('Contenu','text')}/>
@@ -99,17 +86,11 @@ Description.add('LabelDescription', () => (
 <FieldDescription />
 ))
 
-const SubmitB = storiesOf('Storybook Knobs', module);
-SubmitB.addDecorator(withKnobs);
-SubmitB.add('SubmitButton', () => (
-  <SubmitButton children={text('Contenu','')}/>
-))
-
-const storyMainContainer = storiesOf("molecules/Composant de base", module);
-const child = [<div style={{border: "solid 1px black"}}>hqeugrhzo</div>];
+const storyMainContainer = storiesOf("molecules", module);
+const child = [<div style={{backgroundColor: "white"}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>];
 storyMainContainer.addDecorator(withKnobs);
 storyMainContainer.add("MainContainer", () => (
-	<MainContainer title={text("label du titre",'')} children={child}/>
+	<MainContainer title={text("label du titre",'MonTitre')} children={child}/>
 ))
 
 const storyLabelInputRange = storiesOf("molecules/LabelInputRange", module);
