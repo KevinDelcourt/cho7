@@ -7,7 +7,6 @@ import FieldDescription from '../components/atoms/FieldDescription';
 import UploadForm from '../components/organisms/UploadForm';
 import BarreMenu from '../components/molecules/BarreMenu';
 import { BrowserRouter as Router} from "react-router-dom";
-import SubmitButton from '../components/atoms/Submitbutton';
 import FooterTemplate from '../components/organisms/FooterTemplate';
 import InputBase from '../components/atoms/InputBase';
 import LabelBase from '../components/atoms/LabelBase';
@@ -15,6 +14,7 @@ import LabelInput from '../components/molecules/LabelInput';
 import TextareaBase from '../components/atoms/TextareaBase';
 import LabelTextarea from '../components/molecules/LabelTextarea';
 import MainContainer from '../components/molecules/MainContainer';
+import Button from '../components/atoms/Button';
 
 storiesOf('atoms', module)
   .add('Titre', () => (
@@ -22,17 +22,11 @@ storiesOf('atoms', module)
   )
 );
 
-const Button = storiesOf('atoms', module);
-Button.addDecorator(withKnobs);
-Button.add('Button', () => (
-	<Button children={text('Contenu','MyButton')}/>
+const storyButton = storiesOf('atoms', module);
+storyButton.addDecorator(withKnobs);
+storyButton.add('Button', () => (
+	<Button bgColor={text('Background-Color','#916D43')} children={text('Value','MyButton')}/>
 ));
-
-const SubmitB = storiesOf('atoms', module);
-SubmitB.addDecorator(withKnobs);
-SubmitB.add('SubmitButton', () => (
-  <SubmitButton children={text('Contenu','MySubmitButton')}/>
-))
 
 const storyBarreMenu = storiesOf('molecules', module);
 storyBarreMenu.addDecorator(withKnobs);

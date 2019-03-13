@@ -4,9 +4,9 @@ import Authentification from "./../molecules/Authentification";
 import { login } from '../../modules/auth';
 import Button from "../atoms/Button";
 import {Fragment, Component} from 'react';
+import theme from "./../../theme.json";
 
 const StyledButton = styled(Button)`
-    background-color: #916D43;
     margin-top: 7vh;
     margin-left: 20%;`;
 
@@ -44,7 +44,7 @@ class ConnectionForm extends Component {
                 <AuthentificationContainer>
                     <Authentification setPassword={this.setPassword} setUsername={this.setUsername}/>
                 </AuthentificationContainer>
-                <StyledButton onClick={this.connect}>Se connecter</StyledButton>
+                <StyledButton onClick={this.connect} children="Se connecter" bgColor={theme.connectionButton}></StyledButton>
             </Fragment>
         );
     }
