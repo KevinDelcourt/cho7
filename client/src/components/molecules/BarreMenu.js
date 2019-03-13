@@ -13,10 +13,13 @@ const NavBarContainer = styled.div`
     display: flex;
     justify-content: space-between;
     margin: 0 2vw;
-    `;
+`;
+
 const StyledButton = styled(Button)`
     margin-left: 0.5vw;
-    background-color:${theme.menuButton}
+    background-color: ${theme.menuButton};
+    height: 6vh;
+    min-height: 43px;
 `;
 
 class BarreMenu extends React.Component {

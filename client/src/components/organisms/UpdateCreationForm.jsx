@@ -2,9 +2,10 @@ import styled from "styled-components";
 import React from 'react';
 import LabelInput from "../molecules/LabelInput";
 import LabelInputRange from "../molecules/LabelInputRange";
-import Submitbutton from "../atoms/Submitbutton";
+import Button from '../atoms/Button';
 import LabelTextarea from "../molecules/LabelTextarea";
 import { getEtatsCreation } from '../../modules/auth';
+import theme from "./../../theme.json";
 
 const UpdateCreationFormContainer = styled.div`
 	display: grid;	
@@ -16,6 +17,10 @@ const UpdateCreationFormContainer = styled.div`
 
 const PublishButtonContainer = styled.div`
 	justify-self: end;
+`;
+
+const StyledButton = styled(Button)`
+	background-color:${theme.submitButton}
 `;
 
 class UpdateCreationForm extends React.Component {
@@ -39,7 +44,7 @@ class UpdateCreationForm extends React.Component {
 					<LabelTextarea name="description" label="Description :" row="10" col="20" defaultValue={this.props.desc} />
 
 					<PublishButtonContainer>
-						<Submitbutton type="submit" children="Modifier"/>
+						<StyledButton type="submit" children="Modifier"/>
 					</PublishButtonContainer>
 				</UpdateCreationFormContainer>
 			</form>
