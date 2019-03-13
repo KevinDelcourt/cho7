@@ -59,9 +59,6 @@ storiesOf('organisms', module)
   .add('UploadForm', () => (
       <UploadForm />
 ))
-  .add('Creation',()=>(
-      <Creation path="oui.mp3"/>
-	))
 
 const storyInputBase = storiesOf("atoms/Composant de base", module);
 storyInputBase.add("Input de base", () => (
@@ -106,12 +103,6 @@ const SubmitB = storiesOf('Storybook Knobs', module);
 SubmitB.addDecorator(withKnobs);
 SubmitB.add('SubmitButton', () => (
   <SubmitButton children={text('Contenu','')}/>
-))
-
-const CAvatar = storiesOf('Storybook Knobs', module);
-CAvatar.addDecorator(withKnobs);
-CAvatar.add('CadreAvatar', () => (
-  <CadreAvatar w={number("width",10)} h={number("height", 10)}/>
 ))
 
 const storyMainContainer = storiesOf("molecules/Composant de base", module);
