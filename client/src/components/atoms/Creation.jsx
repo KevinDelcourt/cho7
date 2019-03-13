@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { logout, hasRole } from '../../modules/auth';
+import { hasRole } from '../../modules/auth';
 
 const Wrapper = styled.div`
     margin: 10px 0;

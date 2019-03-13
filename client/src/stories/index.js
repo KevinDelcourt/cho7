@@ -21,6 +21,8 @@ import LabelInput from '../components/molecules/LabelInput';
 import TextareaBase from '../components/atoms/TextareaBase';
 import LabelTextarea from '../components/molecules/LabelTextarea';
 import MainContainer from '../components/molecules/MainContainer';
+import LabelInputRange from "./../components/molecules/LabelInputRange";
+import AddButton from "./../components/atoms/AddButton";
 
 
 storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
@@ -109,3 +111,13 @@ storyMainContainer.addDecorator(withKnobs);
 storyMainContainer.add("MainContainer", () => (
 	<MainContainer title={text("label du titre",'')} children={child}/>
 ))
+
+const storyLabelInputRange = storiesOf("molecules/LabelInputRange", module);
+storyLabelInputRange.add('LabelInputRange', () => (
+	<LabelInputRange />
+));
+
+const storyAddButton = storiesOf("atoms/AddButton", module);
+storyAddButton.add("AddButton", () => (
+	<AddButton type='button' value="+" />
+));
