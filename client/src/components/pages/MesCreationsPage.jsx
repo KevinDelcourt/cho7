@@ -12,11 +12,12 @@ const SubContainer = styled.div`
 `;
 
 class MesCreationsPage extends React.Component {
-    state = {auth:false}
+    state = {auth:false, loaded:false}
 
     async componentDidMount(){
         document.title = "Mes créations";
         this.setState({auth:await hasRole("CREATEUR")})
+        this.setState({loaded: true})
     }
 
     render() {
@@ -33,7 +34,10 @@ class MesCreationsPage extends React.Component {
                     </Template>
                 </div>
             )
-        return <span />
+            
+        if (this.state.loaded)
+            window.location="/"
+            return <React.Fragment />
     }
 }
 	
