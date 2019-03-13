@@ -60,18 +60,22 @@ module.exports = (app, passport) => {
 
 	app.post('/updateCreation/:id',uploadAudio.single('creation'),(req,res)=>{
 		const idCreation = req.params.id;
-		let fileName = ""
 
 		if (req.file)
-			fileName = req.file.originalname
+			connection.query('UPDATE creation SET nomfichier = ?, titre = ?, description = ? WHERE id = ?',[req.file.originalname, req.body.titre, req.body.description, idCreation],(err,rows)=>{
+				if(err)
+					res.redirect(req.get('referer'));
 
-		connection.query('UPDATE creation SET nomfichier = ?, titre = ?, description = ? WHERE id = ?',[fileName, req.body.titre, req.body.description, idCreation],(err,rows)=>{
-			if(err)
+				//res.redirect("http://localhost:3000/updateCreation/" + idCreation);
 				res.redirect(req.get('referer'));
+			})
+		else
+			connection.query('UPDATE creation SET titre = ?, description = ? WHERE id = ?',[req.body.titre, req.body.description, idCreation],(err,rows)=>{
+				if(err)
+					res.redirect(req.get('referer'));
 
-			//res.redirect("http://localhost:3000/updateCreation/" + idCreation);
-			res.redirect(req.get('referer'));
-		})
+				res.redirect(req.get('referer'));
+			})
 	})
 
 	app.post('/suprCreation',uploadAudio.none(),(req,res)=>{
@@ -118,7 +122,7 @@ module.exports = (app, passport) => {
 	})
 
 	app.get('/creations', (req, res) => {
-		connection.query('SELECT id, nomfichier, titre, description FROM creation WHERE nomfichier != "" ORDER BY id DESC', (err, rows) => {
+		connection.query('SELECT id, nomfichier, titre, description FROM creation WHERE nomfichier IS NOT NULL ORDER BY id DESC', (err, rows) => {
 			if (err)
 				res.send(400)
 			res.setHeader('Content-Type', 'application/json')
@@ -127,7 +131,7 @@ module.exports = (app, passport) => {
 	})
 
 	app.get('/creationsInProgress', (req, res) => {
-		connection.query('SELECT id, titre FROM creation WHERE nomfichier = "" ORDER BY id DESC', (err, rows) => {
+		connection.query('SELECT id, titre FROM creation WHERE nomfichier IS NULL ORDER BY id DESC', (err, rows) => {
 			if (err)
 				res.send(400)
 			res.setHeader('Content-Type', 'application/json')
