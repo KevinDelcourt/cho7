@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
-const Submitbutton = styled.button`
-    background: #C4C4C4;
+const Button = styled.button`
     border-radius: 5px;
     border: none;
     padding: 5px 15px;
@@ -9,4 +8,4 @@ const Submitbutton = styled.button`
     font-size:18px;
 `;
 
-export default Submitbutton;
+export default Button;

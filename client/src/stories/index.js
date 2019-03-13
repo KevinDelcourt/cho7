@@ -1,13 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-
-import { linkTo } from '@storybook/addon-links';
-import { Welcome } from '@storybook/react/demo';
 import { withKnobs, text, number} from '@storybook/addon-knobs';
-
-import Logo from '../components/atoms/Logo';
 import SiteTitle from '../components/atoms/SiteTitle';
-import MenuButton from '../components/atoms/MenuButton';
 import LabelDescription from '../components/atoms/LabelDescription';
 import FieldDescription from '../components/atoms/FieldDescription';
 import UploadForm from '../components/organisms/UploadForm';
@@ -28,10 +22,10 @@ storiesOf('atoms', module)
   )
 );
 
-const storyMenuButton = storiesOf('atoms', module);
-storyMenuButton.addDecorator(withKnobs);
-storyMenuButton.add('Menu Button', () => (
-	<MenuButton children={text('Contenu','MyMenuButton')}/>
+const Button = storiesOf('atoms', module);
+Button.addDecorator(withKnobs);
+Button.add('Button', () => (
+	<Button children={text('Contenu','MyButton')}/>
 ));
 
 const SubmitB = storiesOf('atoms', module);
