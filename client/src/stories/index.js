@@ -14,8 +14,6 @@ import UploadForm from '../components/organisms/UploadForm';
 import BarreMenu from '../components/molecules/BarreMenu';
 import { BrowserRouter as Router} from "react-router-dom";
 import SubmitButton from '../components/atoms/Submitbutton';
-import CadreAvatar from '../components/atoms/CadreAvatar';
-import Creation from '../components/organisms/Creation';
 import FooterTemplate from '../components/organisms/FooterTemplate';
 import InputBase from '../components/atoms/InputBase';
 import LabelBase from '../components/atoms/LabelBase';
@@ -23,6 +21,8 @@ import LabelInput from '../components/molecules/LabelInput';
 import TextareaBase from '../components/atoms/TextareaBase';
 import LabelTextarea from '../components/molecules/LabelTextarea';
 import MainContainer from '../components/molecules/MainContainer';
+import LabelInputRange from "./../components/molecules/LabelInputRange";
+import AddButton from "./../components/atoms/AddButton";
 
 
 storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
@@ -59,9 +59,6 @@ storiesOf('organisms', module)
   .add('UploadForm', () => (
       <UploadForm />
 ))
-  .add('Creation',()=>(
-      <Creation path="oui.mp3"/>
-	))
 
 const storyInputBase = storiesOf("atoms/Composant de base", module);
 storyInputBase.add("Input de base", () => (
@@ -108,14 +105,19 @@ SubmitB.add('SubmitButton', () => (
   <SubmitButton children={text('Contenu','')}/>
 ))
 
-const CAvatar = storiesOf('Storybook Knobs', module);
-CAvatar.addDecorator(withKnobs);
-CAvatar.add('CadreAvatar', () => (
-  <CadreAvatar w={number("width",10)} h={number("height", 10)}/>
-))
 const storyMainContainer = storiesOf("molecules/Composant de base", module);
 const child = [<div style={{border: "solid 1px black"}}>hqeugrhzo</div>];
 storyMainContainer.addDecorator(withKnobs);
 storyMainContainer.add("MainContainer", () => (
 	<MainContainer title={text("label du titre",'')} children={child}/>
 ))
+
+const storyLabelInputRange = storiesOf("molecules/LabelInputRange", module);
+storyLabelInputRange.add('LabelInputRange', () => (
+	<LabelInputRange />
+));
+
+const storyAddButton = storiesOf("atoms/AddButton", module);
+storyAddButton.add("AddButton", () => (
+	<AddButton type='button' value="+" />
+));

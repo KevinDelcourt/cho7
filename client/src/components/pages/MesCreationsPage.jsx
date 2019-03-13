@@ -26,7 +26,7 @@ class MesCreationsPage extends React.Component {
                     <Template>
                         <SubContainer>
                             <MainContainer>
-                                <center><a href="/upload" style={{fontSize: 35 + 'px'}}>NOUVELLE CRÉATION</a></center>
+                                <center><a href="/newCreation" style={{fontSize: 35 + 'px'}}>NOUVELLE CRÉATION</a></center>
                             </MainContainer>
                             <CreationsInProgress />
                         </SubContainer>

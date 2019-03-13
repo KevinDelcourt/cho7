@@ -50,12 +50,28 @@ module.exports = (app, passport) => {
 	app.post('/addcreation',uploadAudio.single('creation'),(req,res)=>{
 		console.log(req.file)
 		console.log(req.body)
-		connection.query('INSERT INTO creation (nomfichier,titre,description) VALUES (?,?,?)',[req.file.originalname,req.body.titre,req.body.description],(err,rows)=>{
-			if(err)
-				res.redirect("http://localhost:3000?err=1")
+		if(req.file)
+			connection.query('INSERT INTO creation (nomfichier,titre,description) VALUES (?,?,?)',[req.file.originalname,req.body.titre,req.body.description],(err,rows)=>{
+				if(err)
+					res.redirect("http://localhost:3000?err=1")
 
-			res.redirect("http://localhost:3000/");
-		})
+				res.redirect("http://localhost:3000/")
+			})
+		else{
+			connection.query('INSERT INTO creation (titre,description) VALUES (?,?)',[req.body.titre,req.body.description],(err,rows)=>{
+				if(err)
+					res.redirect("http://localhost:3000?err=1")
+				
+				req.body.libelle.map((l,index)=>{
+					connection.query('INSERT INTO etat_avancement (libelle,valeuravancement,idcreation) VALUES (?,?,?)',[l,req.body.valeur[index],rows.insertId],(err,rows)=>{
+						if(err)
+							res.redirect("http://localhost:3000?err=1")
+					})
+				})	
+
+				res.redirect("http://localhost:3000/")
+			})
+		}
 	})
 
 	app.post('/updateCreation/:id',uploadAudio.single('creation'),(req,res)=>{

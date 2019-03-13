@@ -17,7 +17,7 @@ class App extends Component {
 				<div>
 					<Route exact path="/" component={AccueilPage} />
                 	<Route path="/login" component={ConnectionPage} />
-                	<Route path="/upload" component={UploadPage} />
+                	<Route path="/newCreation" component={UploadPage} />
 					<Route path="/updateCreation/:id" component={UpdateCreationPage} />
 					<Route path="/creations" component={MesCreationsPage} />
 					<Route path="/RenseignerProfilPage" component={RenseignerProfilPage} />
