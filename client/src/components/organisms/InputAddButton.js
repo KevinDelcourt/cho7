@@ -19,13 +19,25 @@ class InputAddButton extends React.Component {
         this.setState({nameEtat: tab});
     }
 
+    removeState(index){
+        console.log(index);
+        const tab = this.state.nameEtat;
+        tab.splice(index, 1);
+        this.setState({nameEtat: tab});
+    }
+
     render(){
         return(
             <div>
                 <InputBase id="inputStateName"/>
                 <AddButton type="button" value="+" onClick={this.getStateName} />
                 <div>
-                    {this.state.nameEtat.map((name, index) => (<LabelInputRange label={name+": "} index={index}/> ))}
+                    {this.state.nameEtat.map((name, index) => (
+                        <div>
+                            <LabelInputRange label={name+": "} index={index} />
+                            <AddButton type="button" value="-" onClick={() => this.removeState(index)} />
+                        </div>
+                    ))}
                 </div>
             </div>
         );
