@@ -7,7 +7,7 @@ const FooterContainer = styled.div`
     margin-right: auto;
     margin-left: auto;
     margin-bottom: 2vh;
-
+    margin-top : 4vh;
     background: rgba(213, 191, 159, 0.67);
     border-radius: 10px;
     display: flex;
