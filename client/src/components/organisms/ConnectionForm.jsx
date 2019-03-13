@@ -32,9 +32,10 @@ class ConnectionForm extends Component {
     connect = async()=>{
         if(await login(this.state.username,this.state.password))
             window.location="/"
-        else
+        else{
             console.log("oh no")
             this.setState({errCo: true})
+        }
     }
 
     render() {
