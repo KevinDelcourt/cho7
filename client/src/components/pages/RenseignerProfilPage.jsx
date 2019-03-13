@@ -9,7 +9,6 @@ import styled from 'styled-components';
 import { getUser } from '../../modules/auth';
 import { hasRole } from '../../modules/auth';
 import theme from "./../../theme.json";
-import { hasRole } from '../../modules/auth';
 
 const Cadre = styled.div`
 	display: flex;
