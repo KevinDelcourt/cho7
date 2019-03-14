@@ -32,13 +32,13 @@ class UpdateCreationForm extends React.Component {
 
 	render() {
 		return(
-			<form action={"http://localhost:8180/updateCreation/" + this.props.idCreation} method="post" enctype="multipart/form-data">
+			<form action={"http://localhost:8180/updateCreation/" + this.props.idCreation} method="post" encType="multipart/form-data">
 				<UpdateCreationFormContainer>
 					<LabelInput name="titre" label="Titre : *" defaultValue={this.props.titre} />
 					<input type="file" name="creation" accept="audio/mp3, audio/wav" />
 					
 					{this.state.etats.map((e, index) =>
-						<LabelInputRange label={e.libelle} index={index} idEtat={e.id} value={e.valeuravancement} />
+						<LabelInputRange label={e.libelle} index={index} idEtat={e.id} value={e.valeuravancement} key={index}/>
 					)}
 
 					<LabelTextarea name="description" label="Description :" row="10" col="20" defaultValue={this.props.desc} />

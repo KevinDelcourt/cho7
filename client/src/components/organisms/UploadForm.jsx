@@ -22,7 +22,7 @@ const StyledButton = styled(Button)`
 class UploadForm extends React.Component{
 	render() {
 		return(
-			<form action="http://localhost:8180/addcreation" method="post" enctype="multipart/form-data">
+			<form action="http://localhost:8180/addcreation" method="post" encType="multipart/form-data">
 				<UploadFormContainer>
 					<LabelInput name="titre" label="Titre : *" />
 					<input type="file" name="creation" accept="audio/mp3, audio/wav" />

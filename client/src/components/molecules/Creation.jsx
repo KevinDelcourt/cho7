@@ -30,7 +30,7 @@ export default class Creation extends Component {
 
 		if (this.state.auth) {
 			return (
-				<form action="http://localhost:8180/suprCreation" method="post" enctype="multipart/form-data">
+				<form action="http://localhost:8180/suprCreation" method="post" encType="multipart/form-data">
 					<audio controls>
 						<source src={path} type="audio/mpeg" />
 					</audio>
@@ -39,7 +39,7 @@ export default class Creation extends Component {
 						<div>{this.props.description}</div>
 						<Suprime>
 							<a href={"http://localhost:3000/updateCreation/audio/" + this.props.valueId}>Modifier</a>
-							<button type="submit" class="far fa-times-circle fa-2x" ></button>
+							<button type="submit" className="far fa-times-circle fa-2x" ></button>
 							<input type="hidden" name="idCreation" value={this.props.valueId}/>
 						</Suprime>
 					</Wrapper>

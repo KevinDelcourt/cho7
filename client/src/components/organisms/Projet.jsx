@@ -39,11 +39,11 @@ class Projet extends React.Component{
         return(
             <MainContainer title="Projets en cours">
                 <SubContainer>
-                    {this.state.avencement.map((c) =>
-                        <MainContainer>
+                    {this.state.avencement.map((c,index) =>
+                        <MainContainer key={index}>
                             <h2>{c[0].titre}</h2>                          
-                            {c.map((etat)=> 
-                                <StateContainer>
+                            {c.map((etat,index)=> 
+                                <StateContainer key={index}>
                                     <label>{etat.libelle}</label>
                                     {etat.valeuravancement+"%"}
                                 </StateContainer>

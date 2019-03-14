@@ -23,9 +23,11 @@ class UpdateCreationPage extends React.Component {
 				<div>
 					<Template>
                         <MainContainer title="MODIFIER CRÉATION">
-                            {this.state.creation.map((c) =>
-							    <UpdateCreationForm titre={c.titre} fichier={c.nomfichier} desc={c.description} idCreation={idCreation} />
-                            )}
+							{this.state.creation?
+								<UpdateCreationForm titre={this.state.creation.titre} fichier={this.state.creation.nomfichier} desc={this.state.creation.description} idCreation={idCreation} />
+								:""
+							}
+
 						</MainContainer>
 					</Template>
 				</div> 

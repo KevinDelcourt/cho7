@@ -33,7 +33,7 @@ class InputAddButton extends React.Component {
                 <AddButton type="button" value="+" onClick={this.getStateName} />
                 <div>
                     {this.state.nameEtat.map((name, index) => (
-                        <div>
+                        <div key={index}>
                             <LabelInputRange label={name+": "} index={index} />
                             <AddButton type="button" value="-" onClick={() => this.removeState(index)} />
                         </div>

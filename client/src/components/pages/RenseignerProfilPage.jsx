@@ -62,7 +62,7 @@ class RenseignerProfilPage extends React.Component {
 			return(
 				<Template>
 					<MainContainer title="Profil">
-						<form action="http://localhost:8180/renseignerprofil" method="post" enctype="multipart/form-data">
+						<form action="http://localhost:8180/renseignerprofil" method="post" encType="multipart/form-data">
 							<Cadre>
 								<FormContainer>
 									<LabelInput name="username" defaultValue={this.state.user.username} label={"Pseudo :"} wInput="25" wLabel="10"/>

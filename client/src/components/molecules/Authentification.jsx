@@ -26,14 +26,14 @@ class Authentification extends React.Component{
     render(){
         return (
             <div style={styleAuth}>
-                <LabelBase for="login" children="Pseudo" />
+                <LabelBase htmlFor="login" children="Pseudo" />
     
                 <FieldContainer>
                     <FieldConnection type="text" onChange={(evt)=>this.props.setUsername(evt.target.value)} />
                 </FieldContainer>
     
                 <LabelContainer>
-                   <LabelBase for="password" children="Mot de Passe" />
+                   <LabelBase htmlFor="password" children="Mot de Passe" />
                 </LabelContainer>
     
                 <FieldContainer>

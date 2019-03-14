@@ -21,14 +21,7 @@ const Container = styled.div`
 
 class Profile extends React.Component {   
 
-    state={user:{
-        username:"",
-        password:"",
-        email:"",
-        presentation:"",
-        avatar:"",
-        
-    }}
+    state={ }
 
     async componentDidMount() {
         this.setState({user: await getCreateur()})
@@ -36,20 +29,21 @@ class Profile extends React.Component {
     }
 
     render(){
-       
-        return(
-            <Container>
+        if(this.state.user)
+            return(
+                <Container>
 
-                <center><Avatar src={"http://localhost:8180/public/images/"+this.state.user.avatar}/></center>
+                    <center><Avatar src={"http://localhost:8180/public/images/"+this.state.user.avatar}/></center>
 
-                    <Wrapper>
-                        <h2>{this.state.user.username}</h2>
-                        <p>{this.state.user.presentation}</p>
-                    </Wrapper>
-                
-            </Container>
-        
-        )
+                        <Wrapper>
+                            <h2>{this.state.user.username}</h2>
+                            <p>{this.state.user.presentation}</p>
+                        </Wrapper>
+                    
+                </Container>
+            
+            )
+        return("")
     }
 }
 

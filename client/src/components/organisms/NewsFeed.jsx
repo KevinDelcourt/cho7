@@ -30,8 +30,8 @@ class NewsFeed extends React.Component{
         <Container>
                 <h2>Accueil</h2>
                 <SubContainer>
-                    {this.state.creations.map((c) =>
-                        <MainContainer title={c.titre}>
+                    {this.state.creations.map((c,index) =>
+                        <MainContainer title={c.titre} key={index}>
                             <Creation path={c.nomfichier} description={c.description} valueId={c.id}/>
                         </MainContainer>
                     )}

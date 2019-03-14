@@ -16,7 +16,6 @@ VALUES ('Admin','Admin','','ROLE_CREATEUR');
 CREATE TABLE creation (
   id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   nomfichier varchar(50) COLLATE utf8_general_ci,
-  fichier longblob,
   titre varchar(50) NOT NULL COLLATE utf8_general_ci,
   description varchar(2048) COLLATE utf8_general_ci,
   nbecoute int(11) DEFAULT 0,

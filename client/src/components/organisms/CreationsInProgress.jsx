@@ -13,16 +13,18 @@ class CreationsInProgress extends React.Component{
         return(
             <MainContainer title="Mes créations en cours">
                 <table>
-                    <tr>
-                        <th>Titre</th>
-                        <th></th>
-                    </tr>
-                    {this.state.creations.map((c) =>
+                    <tbody>
                         <tr>
-                            <td>{c.titre}</td>
-                            <td><a href={"/updateCreation/" + c.id}>Modifier</a></td>
+                            <th>Titre</th>
+                            <th></th>
                         </tr>
-                    )}
+                        {this.state.creations.map((c,index) =>
+                            <tr key={index}>
+                                <td>{c.titre}</td>
+                                <td><a href={"/updateCreation/" + c.id}>Modifier</a></td>
+                            </tr>
+                        )}
+                    </tbody>
                 </table>
             </MainContainer>
         )
