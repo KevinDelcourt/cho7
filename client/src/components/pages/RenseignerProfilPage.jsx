@@ -6,8 +6,8 @@ import MainContainer from './../molecules/MainContainer';
 import Template from './Template';
 import Button from './../atoms/Button';
 import styled from 'styled-components';
-import { getUser } from '../../modules/auth';
-import { hasRole } from '../../modules/auth';
+import { getUser } from '../../modules/api';
+import { hasRole } from '../../modules/api';
 import theme from "./../../theme.json";
 
 const Cadre = styled.div`

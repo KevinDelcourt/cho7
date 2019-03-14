@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import React from 'react';
-import { getCreations } from '../../modules/auth';
+import { getCreations } from '../../modules/api';
 import Creation from "../molecules/Creation";
 import MainContainer from '../molecules/MainContainer';
 

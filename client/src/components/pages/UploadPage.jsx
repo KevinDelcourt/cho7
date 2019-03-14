@@ -1,6 +1,6 @@
 import React from 'react';
 import Template from './Template';
-import { hasRole } from '../../modules/auth';
+import { hasRole } from '../../modules/api';
 import UploadForm from '../organisms/UploadForm';
 import MainContainer from '../molecules/MainContainer';
 import styled from "styled-components";

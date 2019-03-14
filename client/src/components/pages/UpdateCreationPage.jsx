@@ -1,9 +1,9 @@
 import React from 'react';
 import Template from './Template';
-import { hasRole } from '../../modules/auth';
+import { hasRole } from '../../modules/api';
 import UpdateCreationForm from '../organisms/UpdateCreationForm';
 import MainContainer from '../molecules/MainContainer';
-import { getCreation } from '../../modules/auth';
+import { getCreation } from '../../modules/api';
 
 const idCreation = window.location.href.split('/').pop();
 

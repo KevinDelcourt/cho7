@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import React from 'react';
 import Authentification from "./../molecules/Authentification";
-import { login } from '../../modules/auth';
+import { login } from '../../modules/api';
 import Button from "../atoms/Button";
 import {Fragment, Component} from 'react';
 import theme from "./../../theme.json";

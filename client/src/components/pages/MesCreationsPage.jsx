@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import React from 'react';
 import Template from './Template';
-import { hasRole } from '../../modules/auth';
+import { hasRole } from '../../modules/api';
 import CreationsInProgress from '../organisms/CreationsInProgress';
 import MainContainer from '../molecules/MainContainer';
 

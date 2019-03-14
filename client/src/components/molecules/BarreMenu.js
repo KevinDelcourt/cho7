@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import React from 'react';
 import Button from '../atoms/Button';
-import { logout, hasRole } from '../../modules/auth';
+import { logout, hasRole } from '../../modules/api';
 import { Link } from 'react-router-dom';
 import theme from "./../../theme.json";
 

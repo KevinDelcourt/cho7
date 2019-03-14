@@ -4,7 +4,7 @@ import logo from './../../assets/images/logo.png';
 import Logo from '../atoms/Logo';
 import ConnectionForm from './../organisms/ConnectionForm';
 import SiteTitle from '../atoms/SiteTitle';
-import { hasRole } from '../../modules/auth';
+import { hasRole } from '../../modules/api';
 import { Link } from 'react-router-dom';
 
 const ConnectionFormContainer = styled.div`

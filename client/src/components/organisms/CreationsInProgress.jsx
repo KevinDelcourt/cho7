@@ -1,5 +1,5 @@
 import React from 'react';
-import { getCreationsInProgress } from '../../modules/auth';
+import { getCreationsInProgress } from '../../modules/api';
 import MainContainer from '../molecules/MainContainer';
 
 class CreationsInProgress extends React.Component{

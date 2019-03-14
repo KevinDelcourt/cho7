@@ -4,7 +4,7 @@ import LabelInput from "../molecules/LabelInput";
 import LabelInputRange from "../molecules/LabelInputRange";
 import Button from '../atoms/Button';
 import LabelTextarea from "../molecules/LabelTextarea";
-import { getEtatsCreation } from '../../modules/auth';
+import { getEtatsCreation } from '../../modules/api';
 import theme from "./../../theme.json";
 
 const UpdateCreationFormContainer = styled.div`

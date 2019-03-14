@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from "styled-components";
-import { getCreateur } from '../../modules/auth';
+import { getCreateur } from '../../modules/api';
 import Avatar from '../molecules/Avatar';
 
 
