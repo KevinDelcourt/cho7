@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import { hasRole } from '../../modules/api';
+import { getAudioUrl } from '../../modules/apiURL'
 
 const Wrapper = styled.div`
 	margin: 10px 0;
@@ -26,7 +27,7 @@ export default class Creation extends Component {
 	}    
 	 
 	render() {
-		const path = "http://localhost:8180/public/audio/" + this.props.path;
+		const path = getAudioUrl() + this.props.path;
 
 		if (this.state.auth) {
 			return (

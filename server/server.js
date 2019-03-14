@@ -5,9 +5,9 @@ const morgan = require('morgan');
 const express = require('express')
 const passport = require('passport');
 const flash    = require('connect-flash');
-
-
+const ip = require('ip')
 const app = express();
+
 
 app.use(morgan('dev')); 
 app.use(cookieParser()); 
@@ -22,10 +22,14 @@ app.use(session({
 	saveUninitialized: false
  } )); 
  app.use(function (req, res, next) {
-    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-	res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+	let referrer = '*'
+	if(req.get('referrer'))
+		 referrer = "http://"+req.get('referrer').split('/')[2]
+		 
+	res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+	res.setHeader('Access-Control-Allow-Credentials', true);
+	res.setHeader('Access-Control-Allow-Origin', referrer);
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-    res.setHeader('Access-Control-Allow-Credentials', true);
     next();
 });
 app.use(passport.initialize());
@@ -40,6 +44,6 @@ require('./app/routes.js')(app, passport);
 
 
 console.log('Server online!');
-console.log('localhost:8180');
+console.log(ip.address() + ':8180');
 
 app.listen(8180);

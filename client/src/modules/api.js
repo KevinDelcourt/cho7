@@ -1,8 +1,8 @@
 import axios from 'axios'
 import cookies from 'browser-cookies'
 import groupBy from 'lodash/groupBy'
-
-const baseUrl = "http://localhost:8180"
+import getApiUrl from "./apiURL";
+const baseUrl = getApiUrl()
 
 const axiosDefault = (request, callback, errorHandler) => request().then((response)=>{
     if(callback)

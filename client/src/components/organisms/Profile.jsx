@@ -2,7 +2,7 @@ import React from 'react';
 import styled from "styled-components";
 import { getCreateur } from '../../modules/api';
 import Avatar from '../molecules/Avatar';
-
+import { getImageUrl } from '../../modules/apiURL';
 
 const Wrapper = styled.div`
     margin-top: 15px;
@@ -33,7 +33,7 @@ class Profile extends React.Component {
             return(
                 <Container>
 
-                    <center><Avatar src={"http://localhost:8180/public/images/"+this.state.user.avatar}/></center>
+                    <center><Avatar src={getImageUrl()+this.state.user.avatar}/></center>
 
                         <Wrapper>
                             <h2>{this.state.user.username}</h2>

@@ -6,8 +6,8 @@ import MainContainer from './../molecules/MainContainer';
 import Template from './Template';
 import Button from './../atoms/Button';
 import styled from 'styled-components';
-import { getUser } from '../../modules/api';
-import { hasRole } from '../../modules/api';
+import { getUser , hasRole } from '../../modules/api';
+import { getImageUrl } from '../../modules/apiURL';
 import theme from "./../../theme.json";
 
 const Cadre = styled.div`
@@ -72,7 +72,7 @@ class RenseignerProfilPage extends React.Component {
 								</FormContainer>
 								<RightColumn>
 									<AvatarContainer >
-										<Avatar src={"http://localhost:8180/public/images/"+this.state.user.avatar}/>
+										<Avatar src={getImageUrl()+this.state.user.avatar}/>
 										<input type="file" name="avatar" />      
 									</AvatarContainer>
 									<Button type="submit" children="Modifier Profil" bgColor={theme.submitButton}></Button>
