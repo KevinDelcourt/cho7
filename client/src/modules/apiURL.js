@@ -14,14 +14,18 @@ const getApiUrl = () => {
         
 }
 
-export const getAudioUrl = () => {
-    let baseUrl = getApiUrl()
-    return baseUrl + '/public/audio/'
+export const getAudioUrl = (filename) => {
+    let url = getApiUrl() + '/public/audio/'
+    if(filename)
+        url += filename
+    return url
 }
 
-export const getImageUrl = () => {
-    let baseUrl = getApiUrl()
-    return baseUrl + '/public/images/'
+export const getImageUrl = (filename) => {
+    let url = getApiUrl() + '/public/images/'
+    if(filename)
+        url += filename
+    return url
 }
 
 export default getApiUrl

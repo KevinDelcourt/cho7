@@ -22,6 +22,14 @@ const defaultGet = (url,options) => axiosDefault(
     () => axios.get(baseUrl + url, options)
 )
 
+const defaultPost = (url,data) => axiosDefault(
+    () => axios(baseUrl + url, {
+        method: "post",
+        data: data,
+        withCredentials: true
+    })
+)
+
 export const login = (username, password) => axiosDefault(
     () => axios.post(baseUrl + '/login',{
         username: username,
@@ -51,9 +59,9 @@ export const getEtatsCreation = (idCreation) => defaultGet('/etatsCreation/' + i
 
 export const getCreation = (id) => defaultGet('/creation/' + id)
 
-export const getCreations = () => defaultGet('/creations')
+export const getCreations = () => defaultGet('/creations/done')
 
-export const getCreationsInProgress = () => defaultGet('/creationsInProgress')
+export const getCreationsInProgress = () => defaultGet('/creations/inprogress')
 
 export const getAvencement = () => axiosDefault(
     () => axios.get(baseUrl + '/avencement'),
@@ -65,3 +73,7 @@ export const getAvencement = () => axiosDefault(
         return data
     }
 )
+
+export const postProfilCreateur = (formData) => defaultPost("/renseignerprofil/",formData)
+
+export const deleteCreation = (id) => defaultPost("/suprCreation",{id: id})

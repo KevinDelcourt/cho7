@@ -9,12 +9,10 @@ const connection = mysql.createConnection(credentials);
 module.exports = function(passport) {
 
     passport.serializeUser(function(user, done) {
-        console.log('serializing')
         done(null, user.id);
     })
 
     passport.deserializeUser(function(id, done) {
-        console.log('deserializing')
         connection.query("SELECT * FROM users WHERE id = ? ",[id], function(err, rows){
             done(err, rows[0]);
         });
@@ -25,7 +23,6 @@ module.exports = function(passport) {
             passwordField : 'password',
         },
         function(username, password, done) { 
-            console.log('login in')
             connection.query("SELECT * FROM users WHERE username = ?",[username], (err, rows)=>{
                 if (err)
                     return done(err);

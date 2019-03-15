@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { hasRole } from '../../modules/api';
+import { hasRole , deleteCreation} from '../../modules/api';
 import { getAudioUrl } from '../../modules/apiURL'
 
 const Wrapper = styled.div`
@@ -31,7 +31,7 @@ export default class Creation extends Component {
 
 		if (this.state.auth) {
 			return (
-				<form action="http://localhost:8180/suprCreation" method="post" encType="multipart/form-data">
+				<React.Fragment>
 					<audio controls>
 						<source src={path} type="audio/mpeg" />
 					</audio>
@@ -40,11 +40,11 @@ export default class Creation extends Component {
 						<div>{this.props.description}</div>
 						<Suprime>
 							<a href={"http://localhost:3000/updateCreation/audio/" + this.props.valueId}>Modifier</a>
-							<button type="submit" className="far fa-times-circle fa-2x" ></button>
-							<input type="hidden" name="idCreation" value={this.props.valueId}/>
+							<button className="far fa-times-circle fa-2x" onClick={()=>deleteCreation(this.props.valueId)} ></button>
 						</Suprime>
 					</Wrapper>
-				</form>
+				</React.Fragment>
+
 			);
 		} else {
 			return (

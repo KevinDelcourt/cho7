@@ -3,26 +3,24 @@
 /sonar-scanner
 /.scannerwork
 
-# dependencies
-/server/public/*
-!oui.mp3
-!800pouces.mp3
-!avatar.png
+
+/server/public/audio/*
+!/server/public/audio/oui.mp3
+
+/server/public/images/*
+!/server/public/images/avatar_createur.png
+
 /server/node_modules
 /client/node_modules
 /.pnp
 .pnp.js
 
-# testing
 /coverage
 db-identifiants.json
 
-
-# production
 /client/build
 /server/build
 
-# misc
 .DS_Store
 .env.local
 .env.development.local

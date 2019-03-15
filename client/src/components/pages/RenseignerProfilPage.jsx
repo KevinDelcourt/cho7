@@ -6,7 +6,7 @@ import MainContainer from './../molecules/MainContainer';
 import Template from './Template';
 import Button from './../atoms/Button';
 import styled from 'styled-components';
-import { getUser , hasRole } from '../../modules/api';
+import { getUser , hasRole , postProfilCreateur } from '../../modules/api';
 import { getImageUrl } from '../../modules/apiURL';
 import theme from "./../../theme.json";
 
@@ -42,13 +42,12 @@ const RightColumn = styled.div`
 `;
 
 class RenseignerProfilPage extends React.Component {
-	state={auth:false, loaded:false, user:{
-		username:"",
-		password:"",
-		email:"",
-		presentation:"",
-		avatar:""
-	}}
+	
+	state={
+		auth:false, 
+		loaded:false, 
+		user:{}
+	}
 
 	async componentDidMount() {
 		document.title = "Modifier Profil";
@@ -56,24 +55,44 @@ class RenseignerProfilPage extends React.Component {
 		this.setState({auth: await hasRole("CREATEUR")})
         this.setState({loaded: true})
 	}
+
+	fileSelect = (evt) => {
+		if(evt.target.files[0]){
+			this.setUserProperty('fichierAvatar',evt.target.files[0])
+			this.setUserProperty('avatar',evt.target.files[0].name)
+		}	
+	}
+
+	setUserProperty = (propName,value) => {
+		let user = this.state.user
+		user[propName] = value
+		this.setState({user: user})
+	}
 	
+	onSubmit = (e) => {
+		e.preventDefault()//action="http://localhost:8180/renseignerprofil"
+		let formData = new FormData()
+		for(let obj in this.state.user)
+			formData.append(obj,this.state.user[obj])
+		postProfilCreateur(formData)
+	}
 	render() {
 		if (this.state.auth)
 			return(
 				<Template>
 					<MainContainer title="Profil">
-						<form action="http://localhost:8180/renseignerprofil" method="post" encType="multipart/form-data">
+						<form onSubmit={this.onSubmit}>
 							<Cadre>
 								<FormContainer>
-									<LabelInput name="username" defaultValue={this.state.user.username} label={"Pseudo :"} wInput="25" wLabel="10"/>
-									<LabelInput type="password" name="password" defaultValue={this.state.user.password} label={"Mot de passe :"} wInput="25" wLabel="10"/>
-									<LabelInput name="email" defaultValue={this.state.user.email} label={"Mail :"} wInput="25" wLabel="10"/>
-									<LabelTextarea name="presentation" defaultValue={this.state.user.presentation} label={"Description :"} row="7" col="50" onChange={(evt)=>this.setState({user:{username:this.state.user.username,password:this.state.user.password,email:this.state.user.email,avatar:this.state.user.avatar,presentation:evt.target.value}})}/>
+									<LabelInput defaultValue={this.state.user.username} label={"Pseudo :"} wInput="25" wLabel="10" onChange={(evt)=>this.setUserProperty("username",evt.target.value)}/>
+									<LabelInput type="password" defaultValue={this.state.user.password} label={"Mot de passe :"} wInput="25" wLabel="10" onChange={(evt)=>this.setUserProperty("password",evt.target.value)}/>
+									<LabelInput defaultValue={this.state.user.email} label={"Mail :"} wInput="25" wLabel="10" onChange={(evt)=>this.setUserProperty("email",evt.target.value)}/>
+									<LabelTextarea defaultValue={this.state.user.presentation} label="Description :" row="7" col="50" onChange={(evt)=>this.setUserProperty("presentation",evt.target.value)}/>
 								</FormContainer>
 								<RightColumn>
 									<AvatarContainer >
-										<Avatar src={getImageUrl()+this.state.user.avatar}/>
-										<input type="file" name="avatar" />      
+										<Avatar src={this.state.user.fichierAvatar? URL.createObjectURL(this.state.user.fichierAvatar) : getImageUrl(this.state.user.avatar)}/>
+										<input type="file" onChange={this.fileSelect}/>      
 									</AvatarContainer>
 									<Button type="submit" children="Modifier Profil" bgColor={theme.submitButton}></Button>
 								</RightColumn>
@@ -84,8 +103,10 @@ class RenseignerProfilPage extends React.Component {
 			)
 		
 		if (this.state.loaded)
-            window.location="/"
-            return <React.Fragment />
+			window.location="/"
+			
+        return <React.Fragment />
+		
 	}
 }
 

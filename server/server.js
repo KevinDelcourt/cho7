@@ -8,13 +8,13 @@ const flash    = require('connect-flash');
 const ip = require('ip')
 const app = express();
 
-
 app.use(morgan('dev')); 
 app.use(cookieParser()); 
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
 	extended: true
 }));
-app.use(bodyParser.json());
+
 
 app.use(session({
 	secret: 'a',
@@ -29,7 +29,8 @@ app.use(session({
 	res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
 	res.setHeader('Access-Control-Allow-Credentials', true);
 	res.setHeader('Access-Control-Allow-Origin', referrer);
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+	res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+	res.setHeader('Content-Type', 'application/json')
     next();
 });
 app.use(passport.initialize());
