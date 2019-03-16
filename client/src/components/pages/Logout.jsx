@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import { logout } from '../../modules/api'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { msgAction } from '../../modules/appMsg'
+import { userLogoutAction } from '../../modules/actionsAndReducers'
 import { Redirect } from 'react-router-dom'
 
 class Logout extends Component {
@@ -11,17 +11,14 @@ class Logout extends Component {
 
     componentDidMount = async() =>
         this.setState({logout: await logout()},()=>{
-            if(this.state.logout)
-                this.props.msgAction("Déconnexion effectuée avec succès")
-            else
-            this.props.msgAction("Erreur dans la déconnexion")
+            this.props.userLogoutAction( this.state.logout)
         })
     
     render = () => this.state.logout?<Redirect to="/" />:""
 }
 
 const mapDispatchToProps = (dispatch) => {
-    return bindActionCreators({msgAction},dispatch)
+    return bindActionCreators({userLogoutAction},dispatch)
 }
 
 export default connect(null,mapDispatchToProps)(Logout);

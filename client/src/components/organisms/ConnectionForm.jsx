@@ -1,9 +1,8 @@
 import styled from "styled-components";
 import React from 'react';
-import Authentification from "./../molecules/Authentification";
 import { login } from '../../modules/api';
 import Button from "../atoms/Button";
-import {Fragment, Component} from 'react';
+import { Component} from 'react';
 import theme from "./../../theme.json";
 import { Field, reduxForm } from 'redux-form'
 import FieldConnection from "../atoms/FieldConnection";
@@ -21,14 +20,6 @@ const AuthentificationContainer = styled.div`
     margin-top: 8vh;
     height: 15vh;
 `;
-
-const styleAuth = {
-    display: 'grid',
-    gridTemplateColumns: '40% 57%',
-    gridTemplateRows: 'repeat(2, 35%)', 
-    gridGap: '14% 3%',
-    height: '100%'
-};
 
 class ConnectionForm extends Component {
     state = {

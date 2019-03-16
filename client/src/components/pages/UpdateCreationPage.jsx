@@ -1,6 +1,5 @@
 import React from 'react';
 import Template from './Template';
-import { hasRole } from '../../modules/api';
 import UpdateCreationForm from '../organisms/UpdateCreationForm';
 import MainContainer from '../molecules/MainContainer';
 import { getCreation } from '../../modules/api';

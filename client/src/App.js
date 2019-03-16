@@ -9,13 +9,17 @@ import UpdateCreationPage from './components/pages/UpdateCreationPage';
 import Logout from './components/pages/Logout'
 import { hasRole } from './modules/api'
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { userLoginAction } from './modules/actionsAndReducers'
 
 class App extends Component {
 
 	state = { }
 
 	componentDidMount = async () => {
-		this.setState({role_createur: await hasRole("CREATEUR"), loaded: true})
+		this.props.userLoginAction(await hasRole("CREATEUR"),true)
+		this.setState({loaded: true})
 	}
 
 	getRedirect = () => this.state.loaded ? <Redirect to="/" /> : ""
@@ -33,14 +37,25 @@ class App extends Component {
 			<Fragment>
 				<Route exact path="/" component={AccueilPage} />
 				<Route path="/logout" component={Logout} />
-				<this.PrivateRoute path="/login" component={ConnectionPage} condition={!this.state.role_createur}/>
-				<this.PrivateRoute path="/newCreation" component={UploadPage} condition={this.state.role_createur} />
-				<this.PrivateRoute path="/updateCreation/:id" component={UpdateCreationPage} condition={this.state.role_createur} />
-				<this.PrivateRoute path="/creations" component={MesCreationsPage} condition={this.state.role_createur} />
-				<this.PrivateRoute path="/RenseignerProfilPage" component={RenseignerProfilPage} condition={this.state.role_createur} />
+				<Route path="/accueil" component={this.getRedirect} />
+				<this.PrivateRoute path="/login" component={ConnectionPage} condition={!this.props.role_createur}/>
+				<this.PrivateRoute path="/newCreation" component={UploadPage} condition={this.props.role_createur} />
+				<this.PrivateRoute path="/updateCreation/:id" component={UpdateCreationPage} condition={this.props.role_createur} />
+				<this.PrivateRoute path="/creations" component={MesCreationsPage} condition={this.props.role_createur} />
+				<this.PrivateRoute path="/RenseignerProfilPage" component={RenseignerProfilPage} condition={this.props.role_createur} />
 			</Fragment>
 		</Router>
 
 }
 
-export default App;
+const mapStateToProps = (state) => {
+    return {
+        role_createur: state.app.role_createur
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return bindActionCreators({userLoginAction},dispatch)
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(App)

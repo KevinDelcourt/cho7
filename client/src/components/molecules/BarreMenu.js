@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import React from 'react';
 import Button from '../atoms/Button';
-import { logout, hasRole } from '../../modules/api';
 import { Link } from 'react-router-dom';
 import theme from "./../../theme.json";
+import { connect } from 'react-redux'
 
 
 const NavBarContainer = styled.div`
@@ -23,20 +23,13 @@ const StyledButton = styled(Button)`
 `;
 
 class BarreMenu extends React.Component {
-    state={
-		auth:false
-    }
-
-    async componentDidMount() {
-		this.setState({auth:await hasRole("CREATEUR")})
-    }
     
     render(){
         let co;
         let creations;
         let profil;
 
-        if (!this.state.auth) {
+        if (!this.props.role_createur) {
             co =  <Link to="/login" style={{marginRight: '1vw'}}> <StyledButton children="Connexion"/> </Link>;
         }
         else {
@@ -45,7 +38,7 @@ class BarreMenu extends React.Component {
 
         }   
 
-        if (this.state.auth) {
+        if (this.props.role_createur) {
             creations = <Link to="/creations"><StyledButton children="Mes créations" /></Link>;
         }
 
@@ -65,4 +58,10 @@ class BarreMenu extends React.Component {
     }
 }
 
-export default BarreMenu;
+const mapStateToProps = (state) => {
+    return {
+        role_createur: state.app.role_createur
+    }
+}
+
+export default connect(mapStateToProps)(BarreMenu)

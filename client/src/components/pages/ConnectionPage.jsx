@@ -9,7 +9,7 @@ import { SubmissionError } from 'redux-form'
 import { login } from '../../modules/api';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { msgAction } from '../../modules/appMsg'
+import { userLoginAction } from '../../modules/actionsAndReducers'
 
 const ConnectionFormContainer = styled.div`
     width: 28vw;
@@ -35,7 +35,7 @@ class ConnectionPage extends React.Component {
 
     submit = async values => {
         if(await login(values.username,values.password)){
-            this.props.msgAction("Connexion effectuée avec succès")
+            this.props.userLoginAction(true)
             this.setState({redirect: <Redirect to="/" />})
         }
         else{
@@ -63,7 +63,7 @@ class ConnectionPage extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch) => {
-    return bindActionCreators({msgAction},dispatch)
+    return bindActionCreators({userLoginAction},dispatch)
 }
 
 export default connect(null,mapDispatchToProps)(ConnectionPage);

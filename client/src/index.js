@@ -6,12 +6,12 @@ import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux'
 import { createStore, combineReducers } from 'redux'
 import { reducer as formReducer } from 'redux-form'
-import { msgReducer } from './modules/appMsg'
+import { appReducer } from './modules/actionsAndReducers'
 import AppMsgDisplay from './components/molecules/AppMsgDisplay'
 
 const reducers = {
     form: formReducer,
-    msg: msgReducer
+    app: appReducer
 }
 const reducer = combineReducers(reducers)
 

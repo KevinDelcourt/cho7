@@ -2,6 +2,10 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { hasRole , deleteCreation} from '../../modules/api';
 import { getAudioUrl } from '../../modules/apiURL'
+import { Link, Redirect } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { msgAction } from '../../modules/actionsAndReducers'
 
 const Wrapper = styled.div`
 	margin: 10px 0;
@@ -17,7 +21,7 @@ const Suprime =styled.div`
 	justify-content: flex-end;
 `;
 
-export default class Creation extends Component {
+class Creation extends Component {
 	state={
 		auth:false
 	}
@@ -26,6 +30,13 @@ export default class Creation extends Component {
 		this.setState({auth:await hasRole("CREATEUR")})
 	}    
 	 
+	delete = async () => {
+		if(await deleteCreation(this.props.valueId))
+			this.props.msgAction("Supression effectuée avec succès")
+		else
+			this.props.msgAction("Erreur dans la suppression")
+		this.setState({redirect: <Redirect to="/accueil" />})
+	}
 	render() {
 		const path = getAudioUrl() + this.props.path;
 
@@ -39,10 +50,11 @@ export default class Creation extends Component {
 					<Wrapper>
 						<div>{this.props.description}</div>
 						<Suprime>
-							<a href={"http://localhost:3000/updateCreation/audio/" + this.props.valueId}>Modifier</a>
-							<button className="far fa-times-circle fa-2x" onClick={()=>deleteCreation(this.props.valueId)} ></button>
+							<Link to={"/updateCreation/audio/" + this.props.valueId}>Modifier</Link>
+							<button className="far fa-times-circle fa-2x" onClick={this.delete} ></button>
 						</Suprime>
 					</Wrapper>
+					{this.state.redirect}
 				</React.Fragment>
 
 			);
@@ -61,3 +73,9 @@ export default class Creation extends Component {
 		}
 	}
 }
+
+const mapDispatchToProps = (dispatch) => {
+    return bindActionCreators({msgAction},dispatch)
+}
+
+export default connect(null,mapDispatchToProps)(Creation);
