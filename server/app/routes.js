@@ -24,7 +24,10 @@ const storageImage = multer.diskStorage({
 let uploadImage = multer({ storage: storageImage });
 
 module.exports = (app, passport) => {
-		
+	app.get('/',(req,res)=>{
+		res.send(true)
+	})
+	
 	app.post('/addcreation',uploadAudio.single('creation'),(req,res)=>{
 		console.log(req.file)
 		console.log(req.body)

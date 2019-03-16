@@ -45,7 +45,7 @@ export const login = (username, password) => axiosDefault(
 )
 
 export const logout = () => axiosDefault(
-    axios.get(baseUrl + '/logout',{withCredentials: true}),
+    () => axios.get(baseUrl + '/logout',{withCredentials: true}),
     () => true
 )
 

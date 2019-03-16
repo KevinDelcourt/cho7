@@ -4,6 +4,7 @@ import Template from './Template';
 import { hasRole } from '../../modules/api';
 import CreationsInProgress from '../organisms/CreationsInProgress';
 import MainContainer from '../molecules/MainContainer';
+import { Link } from 'react-router-dom';
 
 const SubContainer = styled.div`
     display: grid;
@@ -21,13 +22,13 @@ class MesCreationsPage extends React.Component {
     }
 
     render() {
-        if (this.state.auth)
+       
             return(
                 <div>
                     <Template>
                         <SubContainer>
                             <MainContainer>
-                                <center><a href="/newCreation" style={{fontSize: 35 + 'px'}}>NOUVELLE CRÉATION</a></center>
+                                <center><Link to="/newCreation" style={{fontSize: 35 + 'px'}}>NOUVELLE CRÉATION</Link></center>
                             </MainContainer>
                             <CreationsInProgress />
                         </SubContainer>
@@ -35,9 +36,7 @@ class MesCreationsPage extends React.Component {
                 </div>
             )
             
-        if (this.state.loaded)
-            window.location="/"
-            return <React.Fragment />
+
     }
 }
 	

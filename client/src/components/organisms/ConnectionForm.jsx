@@ -5,6 +5,9 @@ import { login } from '../../modules/api';
 import Button from "../atoms/Button";
 import {Fragment, Component} from 'react';
 import theme from "./../../theme.json";
+import { Field, reduxForm } from 'redux-form'
+import FieldConnection from "../atoms/FieldConnection";
+import { required } from "../../modules/validation"
 
 const StyledButton = styled(Button)`
     margin-top: 7vh;
@@ -18,6 +21,14 @@ const AuthentificationContainer = styled.div`
     margin-top: 8vh;
     height: 15vh;
 `;
+
+const styleAuth = {
+    display: 'grid',
+    gridTemplateColumns: '40% 57%',
+    gridTemplateRows: 'repeat(2, 35%)', 
+    gridGap: '14% 3%',
+    height: '100%'
+};
 
 class ConnectionForm extends Component {
     state = {
@@ -37,24 +48,44 @@ class ConnectionForm extends Component {
             this.setState({errCo: true})
         }
     }
-
+    //<Authentification setPassword={this.setPassword} setUsername={this.setUsername}/>
     render() {
         let labelErrCo = "";
         if(this.state.errCo){
             labelErrCo = <div><label>Erreur du pseudo ou mot de passe !</label></div>
         }
         return (
-            <Fragment>
+            <form onSubmit={this.props.handleSubmit}>
                 <TitleContainer>
                     <h1>Connexion</h1>
                 </TitleContainer>
                 <AuthentificationContainer>
-                    <Authentification setPassword={this.setPassword} setUsername={this.setUsername}/>
+                        <Field 
+                            name="username"
+                            component={FieldConnection}
+                            type="text"
+                            label="Pseudo *"
+                            placeholder="Pseudo"
+                            validate={[required]}
+                            />
+                        
+                        <Field 
+                            name="password"
+                            component={FieldConnection}
+                            type="password"
+                            label="Mot de passe *"
+                            validate={[required]}
+                            />
                 </AuthentificationContainer>
-                <StyledButton onClick={this.connect} children="Se connecter" bgColor={theme.connectionButton}></StyledButton>
+                <StyledButton children="Se connecter" bgColor={theme.connectionButton}></StyledButton>
                 {labelErrCo}
-            </Fragment>
+            </form>
         );
     }
 }
+
+ConnectionForm = reduxForm({
+    form: "connection"
+})(ConnectionForm)
+
 export default ConnectionForm;
