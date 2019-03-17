@@ -34,64 +34,57 @@ module.exports = (app, passport) => {
 		if(req.file)
 			connection.query('INSERT INTO creation (nomfichier,titre,description) VALUES (?,?,?)',[req.file.originalname,req.body.titre,req.body.description],(err,rows)=>{
 				if(err)
-					res.redirect("http://localhost:3000?err=1")
+					res.send(err)
 
-				res.redirect("http://localhost:3000/")
+				res.send(true)
 			})
 		else{
 			if(req.body.libelle)
 				connection.query('INSERT INTO creation (titre,description) VALUES (?,?)',[req.body.titre,req.body.description],(err,rows)=>{
 					if(err)
-						res.redirect("http://localhost:3000?err=1")
+						res.send(err)
 
 				
 					req.body.libelle.map((l,index)=>{
 						connection.query('INSERT INTO etat_avancement (libelle,valeuravancement,idcreation) VALUES (?,?,?)',[l,req.body.valeur[index],rows.insertId],(err,rows)=>{
 							if(err)
-								res.redirect("http://localhost:3000?err=1")
+								res.send(err)
 						})
 					})	
 
-					res.redirect("http://localhost:3000/")
+					res.send(true)
 				})
 			else{
-				res.redirect("http://localhost:3000/Creation")
+				res.send(false)
 			}
 		}
 			
 	})
 
-	app.post('/updateCreation/:id',uploadAudio.single('creation'),(req,res)=>{
-		const idCreation = req.params.id;
+	app.post('/updateCreation/',uploadAudio.single('creation'),(req,res)=>{
+		const idCreation = req.body.id;
 
 		if (req.file)
 			connection.query('UPDATE creation SET nomfichier = ?, titre = ?, description = ? WHERE id = ?',[req.file.originalname, req.body.titre, req.body.description, idCreation],(err,rows)=>{
-				req.body.valeur.map((val, index)=>{
-					connection.query('UPDATE etat_avancement SET valeuravancement = ? WHERE id = ?',[val, req.body.idEtat[index]],(err,rows)=>{
-						if(err)
-							res.redirect("http://localhost:3000?err=1")
-					})
-				})
-				
 				if(err)
-					res.redirect(req.get('referer'));
-
-				//res.redirect("http://localhost:3000/updateCreation/" + idCreation);
-				res.redirect(req.get('referer'));
+					res.send(err)
+				
+				res.send(true)
 			})
-		else
+		else 
 			connection.query('UPDATE creation SET titre = ?, description = ? WHERE id = ?',[req.body.titre, req.body.description, idCreation],(err,rows)=>{
-				req.body.valeur.map((val, index)=>{
-					connection.query('UPDATE etat_avancement SET valeuravancement = ? WHERE id = ?',[val, req.body.idEtat[index]],(err,rows)=>{
-						if(err)
-							res.redirect("http://localhost:3000?err=1")
-					})
-				})	
+				if(req.body.valeur)
+					req.body.valeur.map((val, index)=>{
+						connection.query('UPDATE etat_avancement SET valeuravancement = ?, libelle = ? WHERE id = ?',[val, req.body.libelle[index], req.body.idEtat[index]],(err,rows)=>{
+							if(err)
+								res.send(err)
+						})
+					})	
 				
 				if(err)
-					res.redirect(req.get('referer'));
+					res.send(err)
 
-				res.redirect(req.get('referer'));
+				res.send(true)
 			})
 	})
 
@@ -129,7 +122,7 @@ module.exports = (app, passport) => {
 				[req.body.username, req.body.password, req.body.email, req.body.presentation,filename], (err, rows) => {
 					if(err)
 						res.send(err)
-					res.send('ok')
+					res.send(true)
 				})
 		}
 		else {
@@ -137,7 +130,7 @@ module.exports = (app, passport) => {
 				[req.body.username, req.body.password, req.body.email, req.body.presentation], (err, rows) => {
 					if(err)
 						res.send(err)
-					res.send('ok')
+					res.send(true)
 				})
 		}
 	})

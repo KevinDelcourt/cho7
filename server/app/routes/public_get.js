@@ -11,15 +11,15 @@ module.exports = (app, connection) => {
     app.get('/creation/:id', (req, res) => {
 		connection.query('SELECT * FROM creation WHERE id = ?', [req.params.id], (err, rows) => {
 			if (err)
-				res.send(400)
-			res.send(rows)
+				res.send(err)
+			res.send(rows[0])
 		})
     })
     
     app.get('/creations/done', (req, res) => {
 		connection.query('SELECT id, nomfichier, titre, description FROM creation WHERE nomfichier IS NOT NULL ORDER BY id DESC', (err, rows) => {
 			if (err)
-				res.send(400)
+				res.send(err)
 			res.send(rows)
 		})
     })

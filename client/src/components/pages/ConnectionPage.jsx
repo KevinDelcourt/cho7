@@ -34,9 +34,10 @@ class ConnectionPage extends React.Component {
     }
 
     submit = async values => {
-        if(await login(values.username,values.password)){
-            this.props.userLoginAction(true)
-            this.setState({redirect: <Redirect to="/" />})
+        if(await login(values.username,values.password) === true){
+            this.setState({redirect: <Redirect to="/" />},()=>{
+                this.props.userLoginAction(true)
+            })
         }
         else{
             throw new SubmissionError({

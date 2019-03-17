@@ -74,6 +74,10 @@ export const getAvencement = () => axiosDefault(
     }
 )
 
-export const postProfilCreateur = (formData) => defaultPost("/renseignerprofil/",formData)
+export const postProfilCreateur = (formData) => defaultPost("/renseignerprofil",formData)
 
 export const deleteCreation = (id) => defaultPost("/suprCreation",{id: id})
+
+export const postNewCreation = (formData) => defaultPost("/addcreation",formData)
+
+export const postUpdateCreation = (formData) => defaultPost("/updateCreation",formData)

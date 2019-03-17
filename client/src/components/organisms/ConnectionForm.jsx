@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import React from 'react';
-import { login } from '../../modules/api';
 import Button from "../atoms/Button";
 import { Component} from 'react';
 import theme from "./../../theme.json";
@@ -22,29 +21,8 @@ const AuthentificationContainer = styled.div`
 `;
 
 class ConnectionForm extends Component {
-    state = {
-    	username:"",
-        password:"",
-        errCo: false
-    }
 
-    setPassword = (password) => this.setState({password:password})
-    setUsername = (username) => this.setState({username:username})
-
-    connect = async()=>{
-        if(await login(this.state.username,this.state.password))
-            window.location="/"
-        else{
-            console.log("oh no")
-            this.setState({errCo: true})
-        }
-    }
-    //<Authentification setPassword={this.setPassword} setUsername={this.setUsername}/>
     render() {
-        let labelErrCo = "";
-        if(this.state.errCo){
-            labelErrCo = <div><label>Erreur du pseudo ou mot de passe !</label></div>
-        }
         return (
             <form onSubmit={this.props.handleSubmit}>
                 <TitleContainer>
@@ -69,7 +47,6 @@ class ConnectionForm extends Component {
                             />
                 </AuthentificationContainer>
                 <StyledButton children="Se connecter" bgColor={theme.connectionButton}></StyledButton>
-                {labelErrCo}
             </form>
         );
     }

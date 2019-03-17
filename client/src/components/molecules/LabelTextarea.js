@@ -14,8 +14,12 @@ class LabelTextarea extends React.Component{
     render(){
         return(
             <LabelTextareaContainer>
-                <LabelBase children={this.props.label} htmlFor={this.props.name} />
-                <TextareaBase rows={this.props.row} cols={this.props.col} name={this.props.name} defaultValue={this.props.defaultValue} onChange={this.props.onChange} />
+                <LabelBase children={this.props.label} />
+                <TextareaBase {...this.props.input} rows={this.props.row} cols={this.props.col} name={this.props.name}  />
+                {this.props.meta.error && this.props.meta.touched?
+                    <div>{this.props.meta.error}</div>:
+                    ""    
+                }
             </LabelTextareaContainer>
         );
     }

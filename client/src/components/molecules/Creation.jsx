@@ -50,7 +50,7 @@ class Creation extends Component {
 					<Wrapper>
 						<div>{this.props.description}</div>
 						<Suprime>
-							<Link to={"/updateCreation/audio/" + this.props.valueId}>Modifier</Link>
+							<Link to={"/updateCreation/" + this.props.valueId}>Modifier</Link>
 							<button className="far fa-times-circle fa-2x" onClick={this.delete} ></button>
 						</Suprime>
 					</Wrapper>
