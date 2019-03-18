@@ -28,7 +28,7 @@ describe('composant affichage projet', () => {
         cy.url().should('eq', 'http://localhost:3000/creations')
 
 
-    cy.log('tarace')
+    cy.log('page de modification')
     cy.get('table > :nth-child(2) > :nth-child(2) > a').click()
     cy.url().should('eq', 'http://localhost:3000/updateCreation/3')
     
