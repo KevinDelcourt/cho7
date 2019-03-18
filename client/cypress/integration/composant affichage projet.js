@@ -1,6 +1,6 @@
-describe('composant header', () => {
+describe('composant affichage projet', () => {
 
-    it('je teste le composant header', () => {
+    it('je teste le composant affichage projet', () => {
         cy.visit('http://localhost:3000/')
         cy.get(':nth-child(2) > a > .sc-EHOje').click()
         cy.url().should('eq', 'http://localhost:3000/login')
@@ -23,29 +23,16 @@ describe('composant header', () => {
         cy.url().should('eq', 'http://localhost:3000/')
 
 
-    cy.log('cilck sur la profil')
-    cy.get('[href="/RenseignerProfilPage"] > .sc-EHOje').click()
-        cy.url().should('eq', 'http://localhost:3000/RenseignerProfilPage')
-
-
-    cy.log('cilck sur l\'image')
-        cy.get('.sc-gqjmRU').click()
-        cy.url().should('eq', 'http://localhost:3000/')
-
-
     cy.log('cilck sur la creation')
     cy.get('[href="/creations"] > .sc-EHOje').click()
         cy.url().should('eq', 'http://localhost:3000/creations')
 
 
-    cy.log('cilck sur l\'accueil')
-    cy.get(':nth-child(1) > [href="/"] > .sc-EHOje').click()
-        cy.url().should('eq', 'http://localhost:3000/')
+    cy.log('tarace')
+    cy.get('table > :nth-child(2) > :nth-child(2) > a').click()
+    cy.url().should('eq', 'http://localhost:3000/updateCreation/3')
+    
 
-
-    cy.log('cilck sur la deconnexion')
-    cy.get(':nth-child(2) > [href="/"] > .sc-EHOje').click()
-        cy.url().should('eq', 'http://localhost:3000/')
     })
+    
 })
-    //cy.get('.sc-gqjmRU')
