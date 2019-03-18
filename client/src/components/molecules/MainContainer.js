@@ -5,6 +5,11 @@ const Container = styled.div`
     background-color: rgba(145, 109, 67, 0.35);
     border-radius: 20px;
     padding: 15px 30px;
+    display: grid;	
+	grid-template-rows: repeat(4, auto);
+	grid-row-gap: 20px;
+	justify-content: center;
+	margin:5%;
 `
 
 class MainContainer extends React.Component{
