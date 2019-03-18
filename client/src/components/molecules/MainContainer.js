@@ -1,26 +1,27 @@
 import styled from "styled-components";
-import React from 'react';
+import React from "react";
+import theme from "./../../theme.json";
 
 const Container = styled.div`
-    background-color: rgba(145, 109, 67, 0.35);
-    border-radius: 20px;
-    padding: 15px 30px;
-    display: grid;	
-	grid-template-rows: repeat(4, auto);
-	grid-row-gap: 20px;
-	justify-content: center;
-	margin:5%;
-`
+  background-color: ${props => props.bgColor || "none"};
+  border-radius: ${props => props.borderRadius};
+  border: ${props => props.border};
+  padding: 15px 30px;
+`;
 
-class MainContainer extends React.Component{
-    render(){
-        return(
-            <Container>
-                <h2>{this.props.title}</h2>
-                {this.props.children}
-            </Container>
-        );
-    }
+class MainContainer extends React.Component {
+  render() {
+    return (
+      <Container
+        bgColor={theme.colors.mainContainer}
+        borderRadius={theme.border.mainContainerCorners}
+        border={theme.border.mainContainer}
+      >
+        <h2>{this.props.title}</h2>
+        {this.props.children}
+      </Container>
+    );
+  }
 }
 
 export default MainContainer;

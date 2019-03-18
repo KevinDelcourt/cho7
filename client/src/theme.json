@@ -2,7 +2,12 @@
     "colors":{
         "connectionButton":"#916D43",
         "menuButton":"rgba(145, 109, 67, 0.35)",
-        "submitButton":"#C4C4C4"
+        "submitButton":"#C4C4C4",
+        "mainContainer": "rgba(145, 109, 67, 0.35)"
+    },
+    "border":{
+        "mainContainerCorners":"20px",
+        "mainContainer":"none"
     }
 
 }

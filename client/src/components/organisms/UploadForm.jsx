@@ -10,18 +10,23 @@ import { required } from "../../modules/validation";
 import EtatsAvancementInput from "../molecules/EtatsAvancementInput";
 import MainContainer from "../molecules/MainContainer";
 
-const UploadFormContainer = styled(MainContainer)`
-	color:red;
-`;
-
 const StyledButton = styled(Button)`
   justify-self: end;
 `;
+
+const StyledUploadForm = styled.form`
+  display: grid;
+  grid-template-rows: repeat(4, auto);
+  grid-row-gap: 20px;
+  justify-content: center;
+  margin: 5%;
+`;
+
 class UploadForm extends React.Component {
   render() {
     return (
-      <form onSubmit={this.props.handleSubmit}>
-        <UploadFormContainer title="NOUVELLE CRÉATION">
+      <MainContainer title="NOUVELLE CRÉATION" >
+        <StyledUploadForm onSubmit={this.props.handleSubmit}>
           <Field
             component={LabelInput}
             name="titre"
@@ -56,10 +61,10 @@ class UploadForm extends React.Component {
           <StyledButton
             type="submit"
             children="Publier"
-            bgColor={theme.submitButton}
+            bgColor={theme.colors.submitButton}
           />
-        </UploadFormContainer>
-      </form>
+        </StyledUploadForm>
+      </MainContainer>
     );
   }
 }
