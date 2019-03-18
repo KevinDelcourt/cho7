@@ -8,7 +8,7 @@ import theme from "./../../theme.json";
 import { Field, reduxForm, FieldArray } from 'redux-form'
 import { required } from "../../modules/validation"
 import EtatsAvancementInput from "../molecules/EtatsAvancementInput";
-
+import MainContainer from '../molecules/MainContainer';
 
 const UploadFormContainer = styled.div`
 	display: grid;	
@@ -25,6 +25,7 @@ class UploadForm extends React.Component{
 	render() {
 		return(
 			<form onSubmit={this.props.handleSubmit}>
+				<MainContainer title="NOUVELLE CRÉATION">
 
 				<UploadFormContainer>
 					<Field 
@@ -54,8 +55,10 @@ class UploadForm extends React.Component{
 						row="10" col="120"
 						/>
 
-					<StyledButton type="submit" children="Publier" bgColor={theme.colors.submitButton}/>
+					<StyledButton type="submit" children="Publier" bgColor={theme.submitButton}/>
 				</UploadFormContainer>
+				</MainContainer>
+
 			</form>
 		)
 	}
