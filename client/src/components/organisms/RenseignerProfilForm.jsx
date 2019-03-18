@@ -81,7 +81,7 @@ class RenseignerProfilForm extends Component {
                     avatar={this.props.initialValues.avatar}
                     />
 
-                <Button type="submit" children="Modifier Profil" bgColor={theme.submitButton}></Button>
+                <Button type="submit" children="Modifier Profil" bgColor={theme.colors.submitButton}></Button>
             </RightColumn>
         </Cadre>
     </form>

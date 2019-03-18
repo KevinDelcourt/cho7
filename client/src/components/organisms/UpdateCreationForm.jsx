@@ -20,7 +20,7 @@ const PublishButtonContainer = styled.div`
 `;
 
 const StyledButton = styled(Button)`
-	background-color:${theme.submitButton}
+	background-color:${theme.colors.submitButton}
 `;
 
 class UpdateCreationForm extends React.Component {

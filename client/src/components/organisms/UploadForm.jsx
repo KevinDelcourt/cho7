@@ -54,7 +54,7 @@ class UploadForm extends React.Component{
 						row="10" col="120"
 						/>
 
-					<StyledButton type="submit" children="Publier" bgColor={theme.submitButton}/>
+					<StyledButton type="submit" children="Publier" bgColor={theme.colors.submitButton}/>
 				</UploadFormContainer>
 			</form>
 		)

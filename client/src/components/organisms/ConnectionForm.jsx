@@ -46,7 +46,7 @@ class ConnectionForm extends Component {
                             validate={[required]}
                             />
                 </AuthentificationContainer>
-                <StyledButton children="Se connecter" bgColor={theme.connectionButton}></StyledButton>
+                <StyledButton children="Se connecter" bgColor={theme.colors.connectionButton}></StyledButton>
             </form>
         );
     }
