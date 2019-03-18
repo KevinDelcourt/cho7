@@ -1,0 +1,397 @@
+{
+	"info": {
+		"_postman_id": "2212e29f-0d7e-464b-880c-f0569535e0aa",
+		"name": "test_authentication",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "test_login",
+			"item": [
+				{
+					"name": "mauvais username",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "bf21a017-03ff-4435-8959-a128297fab1b",
+								"exec": [
+									"pm.test(\"la réponse est en json\",()=>{",
+									"    pm.response.to.be.json",
+									"})",
+									"",
+									"pm.test(\"Renvoie la bonne erreur\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.username).to.eql(\"Nom d'utilisateur inconnu\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\":\"abcdefg\",\n\t\"password\":\"Admin\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8180/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8180",
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "mauvais mot de passe",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "bf21a017-03ff-4435-8959-a128297fab1b",
+								"exec": [
+									"pm.test(\"la réponse est en json\",()=>{",
+									"    pm.response.to.be.json",
+									"})",
+									"",
+									"pm.test(\"Renvoie la bonne erreur\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.password).to.eql(\"Mauvais mot de passe\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\":\"Admin\",\n\t\"password\":\"abcdefg\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8180/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8180",
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "bons identifiants",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "bf21a017-03ff-4435-8959-a128297fab1b",
+								"exec": [
+									"pm.test(\"Renvoie le cookie de connexion\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"s:\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\":\"Admin\",\n\t\"password\":\"Admin\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8180/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8180",
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "test_has_role_createur",
+			"item": [
+				{
+					"name": "has role CREATEUR",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "da63d539-3036-441e-8deb-39fd37b25f7e",
+								"exec": [
+									"pm.test(\"L'utilisateur est bien un créateur\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.eql(true);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8180/has_role/CREATEUR",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8180",
+							"path": [
+								"has_role",
+								"CREATEUR"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "has role USER",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "da63d539-3036-441e-8deb-39fd37b25f7e",
+								"exec": [
+									"pm.test(\"L'utilisateur n'est pas un membre lambda\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.eql(false);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8180/has_role/USER",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8180",
+							"path": [
+								"has_role",
+								"USER"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "1f590b1e-b898-4deb-ae99-f860c39e3522",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "b3037273-23d1-4f16-86b4-e2a4a55d0a2a",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"la réponse est en json\",()=>{",
+							"    pm.response.to.be.json",
+							"})"
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "test_logout",
+			"item": [
+				{
+					"name": "logout",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "81728abc-098e-4cfa-9b36-e1729d307cf1",
+								"exec": [
+									"pm.test(\"La réponse est la bonne\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.loggedOut).to.eql(true);",
+									"});",
+									"",
+									"pm.test(\"Il y a bien ordre de suppression de cookie\", function () {",
+									"    pm.response.to.have.header(\"Set-Cookie\");",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8180/logout",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8180",
+							"path": [
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout a fonctionné",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "bfb010dc-0d79-4743-80c8-6568825c70fb",
+								"exec": [
+									"pm.test(\"L'utilisateur n'est plus un créateur\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.eql(false);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8180/has_role/CREATEUR",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8180",
+							"path": [
+								"has_role",
+								"CREATEUR"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "7e61d820-30d4-4f1a-a30c-cad33dc3f595",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "3edfe776-b170-4ce4-a692-cd11ed9a1619",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"la réponse est en json\",()=>{",
+							"    pm.response.to.be.json",
+							"})"
+						]
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "d5983b2c-7a5c-40a2-bf3c-e19e618079a2",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "06d55b1b-c83f-4583-b340-99f74bb89410",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

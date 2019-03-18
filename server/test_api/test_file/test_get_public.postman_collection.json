@@ -1,0 +1,439 @@
+{
+	"info": {
+		"_postman_id": "5e8e033a-4a71-4369-83d2-f1231e4133ca",
+		"name": "test_get_public",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "entry point",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "17cb9612-49ff-44ed-95e3-e26b69856ea5",
+						"exec": [
+							"pm.test(\"l'api fonctionne\",()=>{",
+							"    pm.response.to.have.status(200)",
+							"    pm.response.to.have.jsonBody(true)",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "112f1359-ce40-4d9a-8892-fb3a5d095a6d",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8180/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8180",
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get createur",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ea8bca29-3474-448e-aabc-392c5a216f16",
+						"exec": [
+							"pm.test(\"id vaut 1\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.id).to.eql(1);",
+							"});",
+							"",
+							"pm.test(\"le role est bien ROLE_CREATEUR\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.role).to.eql(\"ROLE_CREATEUR\");",
+							"});",
+							"",
+							"pm.test(\"L'username est Admin\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.username).to.eql(\"Admin\");",
+							"});",
+							"",
+							"pm.test(\"Le mot de passe n'est pas renvoyé\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.password).to.eql(undefined);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8180/createur",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8180",
+					"path": [
+						"createur"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get creation finie",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d5bc915f-a2f7-4ab3-8b86-d993e7b8e87f",
+						"exec": [
+							"pm.test(\"L'id vaut 1\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.id).to.eql(1);",
+							"});",
+							"",
+							"pm.test(\"Le nom de fichier est le bon\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.nomfichier).to.eql(\"oui.mp3\");",
+							"});",
+							"",
+							"pm.test(\"Le titre est le bon\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.titre).to.eql(\"oui\");",
+							"});",
+							"",
+							"pm.test(\"La description est la bonne\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.description).to.eql(\"abc\");",
+							"});",
+							"",
+							"pm.test(\"Le nombre d'écoutes vaut 0\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.nbecoute).to.eql(0);",
+							"});",
+							"",
+							"pm.test(\"La somme des notes vaut 0\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.sommenotes).to.eql(0);",
+							"});",
+							"",
+							"pm.test(\"Le nombre de notes vaut 0\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.nbnote).to.eql(0);",
+							"});",
+							"",
+							"pm.test(\"La date de mise à jour est renvoyée\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.value).not.eql(null);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8180/creation/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8180",
+					"path": [
+						"creation",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get creation en cours",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d5bc915f-a2f7-4ab3-8b86-d993e7b8e87f",
+						"exec": [
+							"pm.test(\"L'id vaut 2\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.id).to.eql(2);",
+							"});",
+							"",
+							"pm.test(\"Le nom de fichier est null\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.nomfichier).to.eql(null);",
+							"});",
+							"",
+							"pm.test(\"Le titre est le bon\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.titre).to.eql(\"en cours\");",
+							"});",
+							"",
+							"pm.test(\"La description est la bonne\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.description).to.eql(\"son avec des etats\");",
+							"});",
+							"",
+							"pm.test(\"Le nombre d'écoutes vaut 0\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.nbecoute).to.eql(0);",
+							"});",
+							"",
+							"pm.test(\"La somme des notes vaut 0\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.sommenotes).to.eql(0);",
+							"});",
+							"",
+							"pm.test(\"Le nombre de notes vaut 0\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.nbnote).to.eql(0);",
+							"});",
+							"",
+							"pm.test(\"La date de mise à jour est renvoyée\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.value).not.eql(null);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8180/creation/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8180",
+					"path": [
+						"creation",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get etats avancement d'une création en cours",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "75b1ce8b-206b-4947-bd7c-9cd1541a8fae",
+						"exec": [
+							"pm.test(\"Il y a le bon nombre d'etats d'avancements\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.length).to.eql(2);",
+							"});",
+							"",
+							"pm.test(\"Chaque état a un libellé, une valeur et la bonne ref vers une création\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    for(let etat of jsonData){",
+							"        pm.expect(etat.libelle).not.eql(undefined);",
+							"        pm.expect(etat.valeuravancement).not.eql(undefined);",
+							"        pm.expect(etat.idCreation).not.eql(2);",
+							"    }",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8180/etatsCreation/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8180",
+					"path": [
+						"etatsCreation",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get creations en cours",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "956c1ba0-1262-4e6f-982e-5aff0e97ec7c",
+						"exec": [
+							"pm.test(\"Deux résultats sont retournés\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.length).to.eql(2);",
+							"});",
+							"",
+							"pm.test(\"Les résultats sont classés par id décroissant\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData[0].id > jsonData[1].id).to.eql(true)",
+							"    ",
+							"});",
+							"",
+							"pm.test(\"Chaque état a un id, un titre et une description\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    for(let creation of jsonData){",
+							"        pm.expect(creation.id).not.eql(undefined);",
+							"        pm.expect(creation.titre).not.eql(undefined);",
+							"        pm.expect(creation.description).not.eql(undefined);",
+							"    }",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8180/creations/inprogress",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8180",
+					"path": [
+						"creations",
+						"inprogress"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get creations finies",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "956c1ba0-1262-4e6f-982e-5aff0e97ec7c",
+						"exec": [
+							"pm.test(\"Deux résultats sont retournés\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.length).to.eql(2);",
+							"});",
+							"",
+							"pm.test(\"Les résultats sont classés par id décroissant\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData[0].id > jsonData[1].id).to.eql(true)",
+							"    ",
+							"});",
+							"",
+							"pm.test(\"Chaque état a id/titre/desc/nomfichier\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    for(let creation of jsonData){",
+							"        pm.expect(creation.id).not.eql(undefined);",
+							"        pm.expect(creation.titre).not.eql(undefined);",
+							"        pm.expect(creation.description).not.eql(undefined);",
+							"        pm.expect(creation.nomfichier).not.eql(null);",
+							"    }",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8180/creations/done",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8180",
+					"path": [
+						"creations",
+						"done"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "fec99616-5c65-4988-b1b7-8af90232175a",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "44d1223f-1c0d-4d32-9fc8-ff945de0eda0",
+				"type": "text/javascript",
+				"exec": [
+					"pm.test(\"la réponse est en json\",()=>{",
+					"    pm.response.to.be.json",
+					"})"
+				]
+			}
+		}
+	]
+}

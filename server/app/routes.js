@@ -44,7 +44,6 @@ module.exports = (app, passport) => {
 					if(err)
 						res.send(err)
 
-				
 					req.body.libelle.map((l,index)=>{
 						connection.query('INSERT INTO etat_avancement (libelle,valeuravancement,idcreation) VALUES (?,?,?)',[l,req.body.valeur[index],rows.insertId],(err,rows)=>{
 							if(err)

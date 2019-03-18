@@ -66,7 +66,7 @@ export const getCreationsInProgress = () => defaultGet('/creations/inprogress')
 export const getAvencement = () => axiosDefault(
     () => axios.get(baseUrl + '/avencement'),
     (response) => {
-        let grouped = groupBy(response.data,projet => projet.titre)
+        let grouped = groupBy(response.data,projet => projet.id)
         let data = []
         for(let obj in grouped)
             data.push(grouped[obj])

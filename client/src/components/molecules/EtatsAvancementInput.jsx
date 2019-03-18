@@ -2,7 +2,7 @@ import React from "react";
 import { Field } from 'redux-form'
 import LabelInput from './LabelInput'
 import Button from "../atoms/Button";
-
+import { required } from '../../modules/validation'
 
 const EtatsAvancementInput = ({ fields,lock }) => (
     <div className="custom-field-array-container">
@@ -12,7 +12,8 @@ const EtatsAvancementInput = ({ fields,lock }) => (
                     name={code+".libelle"}
                     type="text"
                     component={LabelInput}
-                    placeholder={"Etat d'avencement "+index}
+                    placeholder={"Etat d'avencement "+index+" *"}
+                    validate={required}
                     />
 
                 <Field 

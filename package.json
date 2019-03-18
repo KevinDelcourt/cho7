@@ -1,4 +1,5 @@
 {
+    "license": "MIT",
     "scripts": {
         "install-all": "concurrently \"cd server; yarn\" \"cd client; yarn\" ",
         "start": "concurrently \"nodemon server/server.js\" \"cd client; yarn start\" ",
