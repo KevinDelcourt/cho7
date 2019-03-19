@@ -10,8 +10,8 @@ CREATE TABLE users (
   role varchar(20) NOT NULL COLLATE utf8_general_ci
 );
 
-INSERT INTO users (username,password,email,role)
-VALUES ('Admin','Admin','','ROLE_CREATEUR');
+INSERT INTO users (username,password,email,role,avatar)
+VALUES ('Admin','Admin','','ROLE_CREATEUR','avatar_createur.png');
 
 CREATE TABLE creation (
   id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
