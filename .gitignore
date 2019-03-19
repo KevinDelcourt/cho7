@@ -6,6 +6,7 @@
 
 /server/public/audio/*
 !/server/public/audio/oui.mp3
+!/server/public/audio/201mdi.mp3
 
 /server/public/images/*
 !/server/public/images/avatar_createur.png

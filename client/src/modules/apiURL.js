@@ -9,7 +9,7 @@ const getApiUrl = () => {
         case 'production':
             return 'http://fc5dd4b978b84930bbea4fb4b428c76f.yatu.ws'
         default:
-            return 'error'
+            return 'http://localhost:8180'
     }
 }
 

@@ -147,11 +147,8 @@ module.exports = (app, passport) => {
 }
 
 const isLoggedIn = (req, res, next) => {
-	console.log('Auth check...')
 	if (req.isAuthenticated()) {
-		console.log('ok!')
 		return next();
 	}
-	console.log('denied! Redirecting...')
 	res.redirect('/denied');
 }
