@@ -17,7 +17,7 @@
 
 /coverage
 db-identifiants.json
-
+/client/cypress/videos/*
 /client/build
 /server/build
 
