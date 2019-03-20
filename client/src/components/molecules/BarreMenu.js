@@ -1,10 +1,9 @@
-import styled from 'styled-components';
-import React from 'react';
-import Button from '../atoms/Button';
-import { Link } from 'react-router-dom';
-import theme from "./../../theme.json";
-import { connect } from 'react-redux'
-
+import styled from "styled-components"
+import React from "react"
+import Button from "../atoms/Button"
+import { Link } from "react-router-dom"
+import theme from "./../../theme.json"
+import { connect } from "react-redux"
 
 const NavBarContainer = styled.div`
     background: rgba(213, 191, 159, 0.67);
@@ -13,52 +12,70 @@ const NavBarContainer = styled.div`
     display: flex;
     justify-content: space-between;
     margin: 0 2vw;
-`;
+`
 
 const StyledButton = styled(Button)`
     margin-left: 0.5vw;
     background-color: ${theme.menuButton};
     height: 6vh;
     min-height: 43px;
-`;
+`
 
 class BarreMenu extends React.Component {
-    
-    render(){
-        let co;
-        let creations;
-        let profil;
+    render() {
+        let co
+        let creations
+        let profil
 
         if (!this.props.role_createur) {
-            co =  <Link to="/login" style={{marginRight: '1vw'}}> <StyledButton children="Connexion"/> </Link>;
+            co = (
+                <Link to="/login" style={{ marginRight: "1vw" }}>
+                    {" "}
+                    <StyledButton children="Connexion" />{" "}
+                </Link>
+            )
+        } else {
+            co = (
+                <Link to="/logout">
+                    {" "}
+                    <StyledButton children="Déconnexion" />{" "}
+                </Link>
+            )
+            profil = (
+                <Link to="/RenseignerProfilPage">
+                    {" "}
+                    <StyledButton children="Profil" />{" "}
+                </Link>
+            )
         }
-        else {
-            co = <Link to="/logout" > <StyledButton children="Déconnexion"/> </Link>
-            profil= <Link to="/RenseignerProfilPage" > <StyledButton children="Profil"/> </Link>
-
-        }   
 
         if (this.props.role_createur) {
-            creations = <Link to="/creations"><StyledButton children="Mes créations" /></Link>;
+            creations = (
+                <Link to="/creations">
+                    <StyledButton children="Mes créations" />
+                </Link>
+            )
         }
 
-        return(
+        return (
             <NavBarContainer>
                 <div>
-                    <Link to='/'><StyledButton children="Accueil" /></Link>
+                    <Link to="/">
+                        <StyledButton children="Accueil" />
+                    </Link>
                     {creations}
                 </div>
 
-                <div> 
+                <div>
                     {profil}
                     {co}
                 </div>
             </NavBarContainer>
-        );
+        )
     }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
     return {
         role_createur: state.app.role_createur
     }

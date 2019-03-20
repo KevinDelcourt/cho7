@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import React from 'react';
+import styled from "styled-components"
+import React from "react"
 
 const Container = styled.div`
     background-color: rgba(145, 109, 67, 0.35);
@@ -7,15 +7,15 @@ const Container = styled.div`
     padding: 15px 30px;
 `
 
-class MainContainer extends React.Component{
-    render(){
-        return(
+class MainContainer extends React.Component {
+    render() {
+        return (
             <Container>
                 <h2>{this.props.title}</h2>
                 {this.props.children}
             </Container>
-        );
+        )
     }
 }
 
-export default MainContainer;
+export default MainContainer

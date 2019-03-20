@@ -1,39 +1,40 @@
-import React from 'react'
-import styled from 'styled-components';
-import LabelBase from './LabelBase'
+import React from "react"
+import styled from "styled-components"
+import LabelBase from "./LabelBase"
 
 const Input = styled.input`
     padding: 6px;
-`;
+`
 
 const LabelContainer = styled.div`
     display: grid;
     align-items: center;
-`;
+`
 
 const FieldContainer = styled.div`
     display: grid;
     width: 100%;
-`;
+`
 
-const FieldConnection = props =>
+const FieldConnection = props => (
     <div>
         <LabelContainer>
             <LabelBase>{props.label}</LabelBase>
         </LabelContainer>
-            
+
         <FieldContainer>
-            <Input 
+            <Input
                 {...props.input}
                 type={props.type}
                 placeholder={props.placeholder}
-                />
-            {props.meta.error && props.meta.touched?
-                <div>{props.meta.error}</div>:
-                ""    
-            }
+            />
+            {props.meta.error && props.meta.touched ? (
+                <div>{props.meta.error}</div>
+            ) : (
+                ""
+            )}
         </FieldContainer>
     </div>
+)
 
-
-export default FieldConnection;
+export default FieldConnection

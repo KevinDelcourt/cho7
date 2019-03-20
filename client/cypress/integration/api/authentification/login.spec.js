@@ -1,6 +1,6 @@
-import { longString } from '../../../utils/functions'
-import { login, loginAsCreateur} from '../../../utils/api/authentification'
-import reset_db from '../../../utils/reset_db'
+import { longString } from "../../../utils/functions"
+import { login, loginAsCreateur } from "../../../utils/api/authentification"
+import reset_db from "../../../utils/reset_db"
 
 const badPassword = {
     username: "Admin",
@@ -22,37 +22,42 @@ const longValues = {
     password: longString(65)
 }
 
-before(()=>reset_db())
+before(() => reset_db())
 
-describe('/login', () => {
-
-    it('Mauvais mot de passe', () => {
-        login(badPassword,(res)=>{
-            expect(res.body).to.not.have.property('username')
-            expect(res.body).to.have.property('password','Mauvais mot de passe') 
+describe("/login", () => {
+    it("Mauvais mot de passe", () => {
+        login(badPassword, res => {
+            expect(res.body).to.not.have.property("username")
+            expect(res.body).to.have.property(
+                "password",
+                "Mauvais mot de passe"
+            )
         })
     })
 
-    it('Mauvais nom utilisateur', () => {
-        login(badUsername,(res)=>{
-            expect(res.body).to.not.have.property('password')
-            expect(res.body).to.have.property('username','Utilisateur inconnu') 
-        })
-    })
-    
-    it('Tentative injection SQL', () => {
-        login(tentativeInjectionSQL,(res)=>{
-            expect(res.body).to.not.have.property('username')
-            expect(res.body).to.have.property('password','Mauvais mot de passe') 
+    it("Mauvais nom utilisateur", () => {
+        login(badUsername, res => {
+            expect(res.body).to.not.have.property("password")
+            expect(res.body).to.have.property("username", "Utilisateur inconnu")
         })
     })
 
-    it('Valeurs longues', () => {
-        login(longValues,(res)=>{
-            expect(res.body).to.not.have.property('password')
-            expect(res.body).to.have.property('username','Utilisateur inconnu') 
+    it("Tentative injection SQL", () => {
+        login(tentativeInjectionSQL, res => {
+            expect(res.body).to.not.have.property("username")
+            expect(res.body).to.have.property(
+                "password",
+                "Mauvais mot de passe"
+            )
         })
     })
 
-    it('Bons identifiants',()=>loginAsCreateur())
+    it("Valeurs longues", () => {
+        login(longValues, res => {
+            expect(res.body).to.not.have.property("password")
+            expect(res.body).to.have.property("username", "Utilisateur inconnu")
+        })
+    })
+
+    it("Bons identifiants", () => loginAsCreateur())
 })

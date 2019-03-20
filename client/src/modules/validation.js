@@ -1,2 +1,2 @@
-export const required = value => 
+export const required = value =>
     value ? undefined : "Ce champs est obligatoire"
