@@ -30,12 +30,12 @@ describe('Un utilisateur connecté', () => {
 })
 
 describe('Un scénario complet',()=>{
-    it('déconnexion/has_role/connexion/has_role/déconnexion/has_role',async ()=>{
-        await logout()
-        await isNotCreateur()
-        await loginAsCreateur()
-        await isCreateur()
-        await logout()
-        await isNotCreateur()
+    it('déconnexion/has_role/connexion/has_role/déconnexion/has_role',()=>{
+        logout()
+        isNotCreateur()
+        loginAsCreateur()
+        isCreateur()
+        logout()
+        isNotCreateur()
     })
 })

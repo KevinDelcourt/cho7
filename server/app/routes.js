@@ -29,8 +29,6 @@ module.exports = (app, passport) => {
 	})
 	
 	app.post('/addcreation',uploadAudio.single('creation'),(req,res)=>{
-		console.log(req.file)
-		console.log(req.body)
 		if(req.file)
 			connection.query('INSERT INTO creation (nomfichier,titre,description) VALUES (?,?,?)',[req.file.originalname,req.body.titre,req.body.description],(err,rows)=>{
 				if(err)
@@ -39,7 +37,7 @@ module.exports = (app, passport) => {
 				res.send(true)
 			})
 		else{
-			if(req.body.libelle)
+			if(req.body.libelle && req.body.titre)
 				connection.query('INSERT INTO creation (titre,description) VALUES (?,?)',[req.body.titre,req.body.description],(err,rows)=>{
 					if(err)
 						res.send(err)
@@ -113,7 +111,6 @@ module.exports = (app, passport) => {
 
 
 	app.post('/renseignerprofil',uploadImage.single('fichierAvatar'), (req, res) => {
-		
 		let filename = ""
 		if(req.file){
 			filename = "avatar_createur." + req.file.filename.split('.').pop()
@@ -150,5 +147,5 @@ const isLoggedIn = (req, res, next) => {
 	if (req.isAuthenticated()) {
 		return next();
 	}
-	res.redirect('/denied');
+	res.send(false);
 }

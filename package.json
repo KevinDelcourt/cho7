@@ -4,6 +4,6 @@
         "install-all": "concurrently \"cd server; yarn\" \"cd client; yarn\" ",
         "start": "concurrently \"nodemon server/server.js\" \"cd client; yarn start\" ",
         "dev": "concurrently \"nodemon server/server.js\" \"cd client; yarn start\" \"cd client; yarn storybook\" ",
-        "test": "concurrently \"nodemon server/server.js\" \"cd client; yarn start\" \"cd client; yarn cypress\" "
+        "test-dev": "concurrently \"nodemon server/server.js\" \"cd client; yarn start\" \"cd client; yarn cypress\" "
       }
 }
