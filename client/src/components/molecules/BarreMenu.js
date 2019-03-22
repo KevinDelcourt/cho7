@@ -13,10 +13,13 @@ const NavBarContainer = styled.div`
     display: flex;
     justify-content: space-between;
     margin: 0 2vw;
-    `;
+`;
+
 const StyledButton = styled(Button)`
     margin-left: 0.5vw;
     background-color:${theme.bgColor.menuButton}
+    height: 6vh;
+    min-height: 43px;
 `;
 
 class BarreMenu extends React.Component {
@@ -30,27 +33,27 @@ class BarreMenu extends React.Component {
     
     render(){
         let co;
-        let upload;
+        let creations;
         let profil;
 
         if (!this.state.auth) {
             co =  <Link to="/login" style={{marginRight: '1vw'}}> <StyledButton children="Connexion"/> </Link>;
         }
         else {
-            co = <Link to="/login" onClick={logout}> <StyledButton children="Déconnexion"/> </Link>
+            co = <a href="/" onClick={logout}> <StyledButton children="Déconnexion"/> </a>
             profil= <Link to="/RenseignerProfilPage" > <StyledButton children="Profil"/> </Link>
 
         }   
 
         if (this.state.auth) {
-            upload = <Link to="/Creation"> <StyledButton children="Creation" /></Link>;
+            creations = <Link to="/creations"><StyledButton children="Mes créations" /></Link>;
         }
 
         return(
             <NavBarContainer>
                 <div>
-                    <Link to='/'> <StyledButton children="Accueil" /> </Link>
-                    {upload}
+                    <Link to='/'><StyledButton children="Accueil" /></Link>
+                    {creations}
                 </div>
 
                 <div> 

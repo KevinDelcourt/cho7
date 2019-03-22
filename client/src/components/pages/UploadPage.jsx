@@ -10,11 +10,12 @@ const StyledUploadForm = styled(UploadForm)`
 `;
 
 class UploadPage extends React.Component {
-	state = {auth:false}
+	state = {auth:false, loaded:false}
 
 	async componentDidMount() {
         document.title = "Importer un fichier";
 		this.setState({auth:await hasRole("CREATEUR")})
+        this.setState({loaded: true})
 	}
 
 	render(){
@@ -28,7 +29,10 @@ class UploadPage extends React.Component {
 					</Template>
 				</div> 
 			)
-		return <span />
+		
+		if (this.state.loaded)
+            window.location="/"
+            return <React.Fragment />
 	}
 }
 	

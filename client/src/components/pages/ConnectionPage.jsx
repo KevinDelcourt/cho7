@@ -7,7 +7,6 @@ import SiteTitle from '../atoms/SiteTitle';
 import { hasRole } from '../../modules/auth';
 import { Link } from 'react-router-dom';
 
-
 const ConnectionFormContainer = styled.div`
     width: 28vw;
     margin-left: auto;
@@ -51,7 +50,5 @@ class ConnectionPage extends React.Component {
         )
     }
 }
-
-
 
 export default ConnectionPage;

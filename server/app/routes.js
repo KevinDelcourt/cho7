@@ -58,20 +58,60 @@ module.exports = (app, passport) => {
 				res.redirect("http://localhost:3000/")
 			})
 		else{
-			connection.query('INSERT INTO creation (titre,description) VALUES (?,?)',[req.body.titre,req.body.description],(err,rows)=>{
-				if(err)
-					res.redirect("http://localhost:3000?err=1")
+			if(req.body.libelle)
+				connection.query('INSERT INTO creation (titre,description) VALUES (?,?)',[req.body.titre,req.body.description],(err,rows)=>{
+					if(err)
+						res.redirect("http://localhost:3000?err=1")
+
 				
-				req.body.libelle.map((l,index)=>{
-					connection.query('INSERT INTO etat_avancement (libelle,valeuravancement,idcreation) VALUES (?,?,?)',[l,req.body.valeur[index],rows.insertId],(err,rows)=>{
+					req.body.libelle.map((l,index)=>{
+						connection.query('INSERT INTO etat_avancement (libelle,valeuravancement,idcreation) VALUES (?,?,?)',[l,req.body.valeur[index],rows.insertId],(err,rows)=>{
+							if(err)
+								res.redirect("http://localhost:3000?err=1")
+						})
+					})	
+
+					res.redirect("http://localhost:3000/")
+				})
+			else{
+				res.redirect("http://localhost:3000/Creation")
+			}
+		}
+			
+	})
+
+	app.post('/updateCreation/:id',uploadAudio.single('creation'),(req,res)=>{
+		const idCreation = req.params.id;
+
+		if (req.file)
+			connection.query('UPDATE creation SET nomfichier = ?, titre = ?, description = ? WHERE id = ?',[req.file.originalname, req.body.titre, req.body.description, idCreation],(err,rows)=>{
+				req.body.valeur.map((val, index)=>{
+					connection.query('UPDATE etat_avancement SET valeuravancement = ? WHERE id = ?',[val, req.body.idEtat[index]],(err,rows)=>{
+						if(err)
+							res.redirect("http://localhost:3000?err=1")
+					})
+				})
+				
+				if(err)
+					res.redirect(req.get('referer'));
+
+				//res.redirect("http://localhost:3000/updateCreation/" + idCreation);
+				res.redirect(req.get('referer'));
+			})
+		else
+			connection.query('UPDATE creation SET titre = ?, description = ? WHERE id = ?',[req.body.titre, req.body.description, idCreation],(err,rows)=>{
+				req.body.valeur.map((val, index)=>{
+					connection.query('UPDATE etat_avancement SET valeuravancement = ? WHERE id = ?',[val, req.body.idEtat[index]],(err,rows)=>{
 						if(err)
 							res.redirect("http://localhost:3000?err=1")
 					})
 				})	
+				
+				if(err)
+					res.redirect(req.get('referer'));
 
-				res.redirect("http://localhost:3000/")
+				res.redirect(req.get('referer'));
 			})
-		}
 	})
 
 	app.post('/suprCreation',uploadAudio.none(),(req,res)=>{
@@ -96,16 +136,47 @@ module.exports = (app, passport) => {
 				
 				});	
 			// });
-			
-	app.post('/renseignerprofil',
-	uploadImage.single('avatar'), (req, res) => {
-		console.log(req.file)
-		connection.query('UPDATE users SET username = ?, password = ?, email = ?, presentation = ?, avatar = ? WHERE role="ROLE_CREATEUR";',
-			[req.body.username, req.body.password, req.body.email, req.body.presentation,req.file.filename], (err, rows) => {
-				if(err)
-					res.send(err)
-				res.redirect("http://localhost:3000/RenseignerProfilPage/");
-			})
+
+
+	app.post('/renseignerprofil',uploadImage.single('avatar'), (req, res) => {
+		let filename = ""
+		if(req.file){
+			filename = req.file.filename
+	
+			connection.query('UPDATE users SET username = ?, password = ?, email = ?, presentation = ?, avatar = ? WHERE role="ROLE_CREATEUR";',
+				[req.body.username, req.body.password, req.body.email, req.body.presentation,filename], (err, rows) => {
+					if(err)
+						res.send(err)
+					res.redirect("http://localhost:3000/RenseignerProfilPage/");
+				})
+		}
+
+		else {
+			connection.query('UPDATE users SET username = ?, password = ?, email = ?, presentation = ? WHERE role="ROLE_CREATEUR";',
+				[req.body.username, req.body.password, req.body.email, req.body.presentation], (err, rows) => {
+					if(err)
+						res.send(err)
+					res.redirect("http://localhost:3000/RenseignerProfilPage/");
+				})
+		}
+	})
+
+	app.get('/etatsCreation/:idCreation', (req, res) => {
+		connection.query('SELECT * FROM etat_avancement WHERE idcreation =' + req.params.idCreation, (err, rows) => {
+			if (err)
+				res.send(400)
+			res.setHeader('Content-Type', 'application/json')
+			res.send(rows)
+		})
+	})
+
+	app.get('/creation/:id', (req, res) => {
+		connection.query('SELECT * FROM creation WHERE id =' + req.params.id, (err, rows) => {
+			if (err)
+				res.send(400)
+			res.setHeader('Content-Type', 'application/json')
+			res.send(rows)
+		})
 	})
 
 	app.get('/creations', (req, res) => {
@@ -117,10 +188,29 @@ module.exports = (app, passport) => {
 		})
 	})
 
+	app.get('/creationsInProgress', (req, res) => {
+		connection.query('SELECT id, titre FROM creation WHERE nomfichier IS NULL ORDER BY id DESC', (err, rows) => {
+			if (err)
+				res.send(400)
+			res.setHeader('Content-Type', 'application/json')
+			res.send(rows)
+		})
+	})
+
 	app.get('/creator',(req, res)=>{
 		connection.query('SELECT username, presentation FROM users WHERE role = "ROLE_CREATEUR"', (err,rows)=>{
 			if(err)
 				res.send(400)
+			res.setHeader('Content-Type', 'application/json')
+			res.send(rows)
+		})
+	})
+
+	app.get('/avencement',(req, res)=>{
+		connection.query('SELECT creation.titre, creation.description, etat_avancement.libelle,etat_avancement.valeuravancement, creation.miseajour FROM creation,etat_avancement WHERE etat_avancement.idcreation=creation.id AND creation.nomfichier is null', (err,rows)=>{
+			if(err)
+				res.send(400)
+
 			res.setHeader('Content-Type', 'application/json')
 			res.send(rows)
 		})
@@ -145,6 +235,8 @@ module.exports = (app, passport) => {
 			res.send(rows[0])	
 		})
 	})
+
+	
 
 	app.get('/logout', (req, res) => {
 		console.log('login out...')
