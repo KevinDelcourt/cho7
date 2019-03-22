@@ -10,8 +10,8 @@ CREATE TABLE users (
   role varchar(20) NOT NULL COLLATE utf8_general_ci
 );
 
-INSERT INTO users (username,password,email,role)
-VALUES ('Admin','Admin','','ROLE_CREATEUR');
+INSERT INTO users (username,password,email,presentation,role,avatar)
+VALUES ('Admin','Admin','artiste.art@genie.nl','je suis un artiste et je fait de l\'art de génie','ROLE_CREATEUR','image.jpg');
 
 CREATE TABLE creation (
   id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -27,6 +27,8 @@ CREATE TABLE creation (
 
 INSERT INTO creation (nomfichier,titre,description)
 VALUES ('oui.mp3','oui','abc');
+INSERT INTO creation (titre,description)
+VALUES ('non','xyz');
 
 CREATE TABLE etat_avancement (
   id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,

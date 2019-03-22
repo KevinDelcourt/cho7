@@ -1,3 +1,6 @@
+import reset_db from "../utils/reset_db"
+before(() => reset_db())
+
 describe('composant affichage projet', () => {
 
     it('je teste le composant affichage projet', () => {
@@ -30,8 +33,7 @@ describe('composant affichage projet', () => {
 
     cy.log('page de modification')
     cy.get('table > :nth-child(2) > :nth-child(2) > a').click()
-    cy.url().should('eq', 'http://localhost:3000/updateCreation/3')
-    
+    cy.url().should('eq', 'http://localhost:3000/updateCreation/2')
 
     })
     
