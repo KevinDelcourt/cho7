@@ -16,7 +16,9 @@
 # testing
 /coverage
 db-identifiants.json
-
+/client/cypress/screenshots
+/client/cypress/videos
+.gitignore
 
 # production
 /client/build
