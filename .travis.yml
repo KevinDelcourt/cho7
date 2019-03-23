@@ -23,7 +23,7 @@ jobs:
         - node server/db/init_db.js
         - yarn start & wait-on http://localhost:3000
         - cd client
-        - cypress run
+        #- cypress run
     - stage: test
       name: "Analyse SonarCloud"
       addons:
@@ -33,5 +33,5 @@ jobs:
           secure: ${SONAR_TOKEN}
       script: sonar-scanner
     - stage: deploy
-      name: ""
+      name: "Docker Deploy"
       script: echo "hi"
