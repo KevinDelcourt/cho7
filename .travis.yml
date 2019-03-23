@@ -39,6 +39,7 @@ jobs:
         - docker build -t cho7_web ./client
         - docker tag cho7_web ${DOCKER_USERNAME}/cho7_web
         - docker push ${DOCKER_USERNAME}/cho7_web
+    - stage: deploy
       name: "Docker Deploy Back"
       script:
         - echo ${DOCKER_PASSWORD} | docker login -u ${DOCKER_USERNAME} --password-stdin
