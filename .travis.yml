@@ -33,5 +33,9 @@ jobs:
           secure: ${SONAR_TOKEN}
       script: sonar-scanner
     - stage: deploy
-      name: "Docker Deploy"
-      script: echo "hi"
+      name: "Docker Deploy Web"
+      script:
+        - echo ${DOCKER_PASSWORD} | docker login -u ${DOCKER_USERNAME} --password-stdin
+        - docker build -t cho7_web ./client
+        - docker tag cho7_web ${DOCKER_USERNAME}/cho7_web
+        - docker push ${DOCKER_USERNAME}/cho7_web
