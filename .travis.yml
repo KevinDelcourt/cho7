@@ -5,9 +5,9 @@ node_js:
 cache:
   - npm
 stages:
-  #- test
+  - test
   - name: deploy
-    if: branch = redux-form
+    if: branch = master
 jobs:
   include:
     - stage: test
@@ -23,7 +23,7 @@ jobs:
         - node server/db/init_db.js
         - yarn start & wait-on http://localhost:3000
         - cd client
-        #- cypress run
+        - cypress run
     - stage: test
       name: "Analyse SonarCloud"
       addons:
