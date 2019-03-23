@@ -4,9 +4,14 @@ node_js:
   - "lts/*"
 cache:
   - npm
+stages:
+  - test
+  - name: deploy
+    if: branch = master
 jobs:
   include:
     - stage: test
+      name: "Tests d'intégration/d'API"
       services: mysql
       script:
         - mysql -e 'CREATE DATABASE cho7;'
@@ -18,13 +23,15 @@ jobs:
         - node server/db/init_db.js
         - yarn start & wait-on http://localhost:3000
         - cd client
-        - cypress run
+        #- cypress run
     - stage: test
+      name: "Analyse SonarCloud"
       addons:
         sonarcloud:
           organisation: "kevindelcourt-github"
         token:
           secure: ${SONAR_TOKEN}
       script: sonar-scanner
-    - stage: deployment
+    - stage: deploy
+      name: ""
       script: echo "hi"
