@@ -1,0 +1,15 @@
+version: "3"
+services:
+  web:
+    image: docker.io/kevindelcourt/cho7_web
+    ports:
+      - "80:80"
+  back:
+    image: docker.io/kevindelcourt/cho7_back
+    ports:
+      - "443:8180"
+  mysql:
+    image: docker.io/kevindelcourt/cho7_mysql
+    ports:
+      - "3306:3306"
+      - "33060:33060"
