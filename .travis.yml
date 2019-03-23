@@ -10,18 +10,18 @@ addons:
     secure: ${SONAR_TOKEN}
 cache:
   - npm
-before_install:
-  - mysql -e 'CREATE DATABASE cho7;'
-  - cd client
-script:
-  - npm install wait-on -g
-  - cd ../server
-  - npm install
-  - echo '{"host":"127.0.0.1","user":"root","database":"cho7"}' > db/db-identifiants.json
-  - node db/init_db.js 
-  - node server.js & wait-on http://localhost:8180
-  - cd ../client
-  - yarn start & wait-on http://localhost:3000
-  - cypress run
-  - cd ..
-  - sonar-scanner
+jobs:
+  include:
+    - stage: test
+      script:
+        - mysql -e 'CREATE DATABASE cho7;'
+        - yarn add wait-on -g
+        - yarn add concurrently -g
+        - yarn add nodemon -g
+        - yarn install-all
+        - echo '{"host":"127.0.0.1","user":"root","database":"cho7"}' > server/db/db-identifiants.json
+        - node server/db/init_db.js
+        - yarn start-all & wait-on http://localhost:3000
+        - cd client
+        - cypress run
+      script: sonar-scanner
