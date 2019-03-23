@@ -5,7 +5,7 @@ node_js:
 cache:
   - npm
 stages:
-  - test
+  #- test
   - name: deploy
     if: branch = redux-form
 jobs:
