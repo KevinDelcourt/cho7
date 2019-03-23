@@ -21,6 +21,6 @@ jobs:
         - yarn install-all
         - echo '{"host":"127.0.0.1","user":"root","database":"cho7"}' > server/db/db-identifiants.json
         - node server/db/init_db.js
-        - yarn start-all & wait-on http://localhost:3000
+        - yarn start & wait-on http://localhost:3000
         - cd client
         - cypress run
