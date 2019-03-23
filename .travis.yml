@@ -15,9 +15,7 @@ jobs:
       services: mysql
       script:
         - mysql -e 'CREATE DATABASE cho7;'
-        - yarn add wait-on -g
-        - yarn add concurrently -g
-        - yarn add nodemon -g
+        - yarn add wait-on concurrently nodemon
         - yarn install-all
         - echo '{"host":"127.0.0.1","user":"root","database":"cho7"}' > server/db/db-identifiants.json
         - node server/db/init_db.js
@@ -33,7 +31,7 @@ jobs:
           secure: ${SONAR_TOKEN}
       script: sonar-scanner
     - stage: deploy
-      name: "Docker Deploy Web"
+      name: "Docker Deploy Front"
       script:
         - echo ${DOCKER_PASSWORD} | docker login -u ${DOCKER_USERNAME} --password-stdin
         - docker build -t cho7_web ./client
