@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import React from 'react';
 import LabelInput from "../molecules/LabelInput";
-import Button from "../atoms/Button";
+import Button from "../atoms/Button/Button";
 import LabelTextarea from "../molecules/LabelTextarea";
 import theme from "./../../theme.json";
 import InputAddButton from "./InputAddButton";
@@ -28,7 +28,7 @@ class UploadForm extends React.Component{
 					<input type="file" name="creation" accept="audio/mp3, audio/wav" />
 					<InputAddButton />
 					<LabelTextarea name="description" label="Description :" row="10" col="120" />	
-					<StyledButton type="submit" children="Publier" bgColor={theme.bgColor.submitButton}/>
+					<StyledButton type="submit" children="Publier" bgColor={theme.color.grey1}/>
 				</UploadFormContainer>
 			</form>
 		)

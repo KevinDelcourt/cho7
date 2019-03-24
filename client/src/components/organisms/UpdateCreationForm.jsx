@@ -2,7 +2,7 @@ import styled from "styled-components";
 import React from 'react';
 import LabelInput from "../molecules/LabelInput";
 import LabelInputRange from "../molecules/LabelInputRange";
-import Button from '../atoms/Button';
+import Button from '../atoms/Button/Button';
 import LabelTextarea from "../molecules/LabelTextarea";
 import { getEtatsCreation } from '../../modules/auth';
 import theme from "./../../theme.json";
@@ -20,7 +20,7 @@ const PublishButtonContainer = styled.div`
 `;
 
 const StyledButton = styled(Button)`
-	background-color:${theme.submitButton}
+	background-color:${theme.color.grey1}
 `;
 
 class UpdateCreationForm extends React.Component {

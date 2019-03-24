@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import React from 'react';
-import Button from '../atoms/Button';
+import Button from '../atoms/Button/Button';
 import { logout, hasRole } from '../../modules/auth';
 import { Link } from 'react-router-dom';
 import theme from "./../../theme.json";
@@ -17,7 +17,7 @@ const NavBarContainer = styled.div`
 
 const StyledButton = styled(Button)`
     margin-left: 0.5vw;
-    background-color:${theme.bgColor.menuButton}
+    background-color:${theme.color.brown1};
     height: 6vh;
     min-height: 43px;
 `;

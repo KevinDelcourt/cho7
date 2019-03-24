@@ -2,7 +2,7 @@ import styled from "styled-components";
 import React from 'react';
 import Authentification from "./../molecules/Authentification";
 import { login } from '../../modules/auth';
-import Button from "../atoms/Button";
+import Button from "../atoms/Button/Button";
 import {Fragment, Component} from 'react';
 import theme from "./../../theme.json";
 
@@ -51,7 +51,7 @@ class ConnectionForm extends Component {
                 <AuthentificationContainer>
                     <Authentification setPassword={this.setPassword} setUsername={this.setUsername}/>
                 </AuthentificationContainer>
-                <StyledButton onClick={this.connect} children="Se connecter" bgColor={theme.bgColor.connectionButton}></StyledButton>
+                <StyledButton onClick={this.connect} children="Se connecter" bgColor={theme.color.brown2}></StyledButton>
                 {labelErrCo}
             </Fragment>
         );

@@ -4,7 +4,7 @@ import LabelTextarea from './../molecules/LabelTextarea';
 import LabelInput from './../molecules/LabelInput';
 import MainContainer from './../molecules/MainContainer';
 import Template from './Template';
-import Button from './../atoms/Button';
+import Button from '../atoms/Button/Button';
 import styled from 'styled-components';
 import { getUser } from '../../modules/auth';
 import { hasRole } from '../../modules/auth';
@@ -75,7 +75,7 @@ class RenseignerProfilPage extends React.Component {
 										<Avatar src={"http://localhost:8180/public/images/"+this.state.user.avatar}/>
 										<input type="file" name="avatar" />      
 									</AvatarContainer>
-									<Button type="submit" children="Modifier Profil" bgColor={theme.submitButton}></Button>
+									<Button type="submit" children="Modifier Profil" bgColor={theme.color.grey1}></Button>
 								</RightColumn>
 							</Cadre>
 						</form>
