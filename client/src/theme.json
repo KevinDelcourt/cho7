@@ -1,12 +1,11 @@
 {
-    "color": {
-        "brown2":"#916D43",
-        "brown1":"rgba(145, 109, 67, 0.35)",
-        "grey1":"#C4C4C4"
-    },
-    "font-family": {
-        "label": "Ruluko"
-    }
-
-    
+  "color": {
+    "brown2": "#916D43",
+    "brown1": "rgba(145, 109, 67, 0.35)",
+    "grey1": "#C4C4C4",
+    "orange1":"#b8590c"
+  },
+  "font-family": {
+    "ruluko": "Ruluko"
+  }
 }

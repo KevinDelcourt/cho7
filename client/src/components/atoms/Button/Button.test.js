@@ -1,10 +1,19 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import Button from './Button';
+import React from "react";
+import renderer from "react-test-renderer";
+import "jest-styled-components";
+import Button from "./Button";
+import theme from "../../../theme.json";
 
-it('renders expected background color', async () => {
-  const { getByText } = render(<Button bgColor="#C4C4C4" />);
-
-  await waitForElement(() => getByText(/hello Satoshi/i));
+test("Button background-color renders correctly", () => {
+  const tree = renderer
+    .create(<Button bgColor={theme.color.brown1} />)
+    .toJSON();
+  expect(tree).toMatchSnapshot();
+  expect(tree).toHaveStyleRule("background-color", "rgba(145,109,67,0.35)");
 });
 
+test("Button border renders correctly", () => {
+  const tree = renderer.create(<Button />).toJSON();
+  expect(tree).toMatchSnapshot();
+  expect(tree).toHaveStyleRule("border", "none");
+});
