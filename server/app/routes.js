@@ -4,6 +4,7 @@ const credentials = require('../db/db-identifiants.json')
 const connection = mysql.createConnection(credentials)
 const fs = require('fs')
 const multer = require('multer')
+const { body, validationResult } = require('express-validator/check');
 const storageAudio = multer.diskStorage({
 	destination: (req, file, cb) => {
 		cb(null, __dirname + '/../public/audio/')
@@ -22,6 +23,25 @@ const storageImage = multer.diskStorage({
 	}
 })
 let uploadImage = multer({ storage: storageImage });
+
+const creationValidator = [
+	body('titre').isLength({min: 1}).withMessage('Le titre est obligatoire').isLength({max: 50}).withMessage('Le titre doit faire un maximum de 50 caractères'),
+	body('creation').custom((value, {req}) => {
+		if (req.file.mimetype.split('/')[0] != 'audio') {
+			throw new Error('Seuls les fichiers audios sont acceptés');
+		} else {
+			return true
+		}
+	}).custom((value, {req}) => {
+		if (req.file.originalname.length > 50) {
+			throw new Error('Nom de fichier trop long, maximum 50 caractères');
+		} else {
+			return true
+		}
+	}),
+	body('description').isLength({max: 2048}).withMessage('Description trop longue, maximum 2048 caractères')
+];
+
 
 module.exports = (app, passport) => {
 
@@ -46,73 +66,79 @@ module.exports = (app, passport) => {
 			}
 			res.send('s:' + sign(req.sessionID, 'a'));
 		})
+
+
+	/* NOUVELLE CREATION */
 		
-	app.post('/addcreation',uploadAudio.single('creation'),(req,res)=>{
-		console.log(req.file)
-		console.log(req.body)
-		if(req.file)
-			connection.query('INSERT INTO creation (nomfichier,titre,description) VALUES (?,?,?)',[req.file.originalname,req.body.titre,req.body.description],(err,rows)=>{
-				if(err)
-					res.redirect("http://localhost:3000?err=1")
-
-				res.redirect("http://localhost:3000/")
-			})
-		else{
-			if(req.body.libelle)
-				connection.query('INSERT INTO creation (titre,description) VALUES (?,?)',[req.body.titre,req.body.description],(err,rows)=>{
-					if(err)
-						res.redirect("http://localhost:3000?err=1")
-
-				
-					req.body.libelle.map((l,index)=>{
-						connection.query('INSERT INTO etat_avancement (libelle,valeuravancement,idcreation) VALUES (?,?,?)',[l,req.body.valeur[index],rows.insertId],(err,rows)=>{
-							if(err)
-								res.redirect("http://localhost:3000?err=1")
-						})
-					})	
-
-					res.redirect("http://localhost:3000/")
-				})
-			else{
-				res.redirect("http://localhost:3000/Creation")
-			}
+	app.post('/addcreation', uploadAudio.single('creation'), creationValidator, (req, res) => {
+		const titre = req.body.titre;
+		const desc = req.body.description;
+		const errors = validationResult(req);
+		
+		if (!errors.isEmpty()) {
+			return res.status(422).json({ errors: errors.array() });
+		} else {
+			return res.json(req.body)
 		}
-			
+		
+		// Si fichier renseigné
+		/* if(req.file) {
+			connection.query('INSERT INTO creation (nomfichier, titre, description) VALUES (?, ?, ?)', [req.file.originalname, titre, desc], (err, rows) => {
+				if(err)
+					res.redirect("http://localhost:3000/newCreation?err=1")
+			})
+		} else {
+			connection.query('INSERT INTO creation (titre, description) VALUES (?,?)', [titre, desc], (err, rows) => {
+				if(err)
+					res.redirect("http://localhost:3000/newCreation?err=1")
+			})
+		}
+		
+		// Si au moins 1 état d'avancement renseigné
+		if(req.body.libelle) {
+			req.body.libelle.map((l, index) => {
+				connection.query('INSERT INTO etat_avancement (libelle, valeuravancement, idcreation) VALUES (?, ?, ?)',[l, req.body.valeur[index], rows.insertId], (err, rows) => {
+					if(err)
+						res.redirect("http://localhost:3000/newCreation?err=1")
+
+					res.redirect("http://localhost:3000/creations")
+				})
+			})
+		} else {
+			res.redirect("http://localhost:3000/creations")
+		} */
 	})
 
-	app.post('/updateCreation/:id',uploadAudio.single('creation'),(req,res)=>{
+
+	/* MODIFIER CREATION */
+
+	app.post('/updateCreation/:id', uploadAudio.single('creation'), creationValidator, (req, res) => {
 		const idCreation = req.params.id;
 
-		if (req.file)
+		if (req.file) {
 			connection.query('UPDATE creation SET nomfichier = ?, titre = ?, description = ? WHERE id = ?',[req.file.originalname, req.body.titre, req.body.description, idCreation],(err,rows)=>{
-				req.body.valeur.map((val, index)=>{
-					connection.query('UPDATE etat_avancement SET valeuravancement = ? WHERE id = ?',[val, req.body.idEtat[index]],(err,rows)=>{
-						if(err)
-							res.redirect("http://localhost:3000?err=1")
-					})
-				})
-				
 				if(err)
-					res.redirect(req.get('referer'));
-
-				//res.redirect("http://localhost:3000/updateCreation/" + idCreation);
-				res.redirect(req.get('referer'));
+					res.redirect("http://localhost:3000/updateCreation/" + idCreation + "?err=1");
 			})
-		else
+		} else {
 			connection.query('UPDATE creation SET titre = ?, description = ? WHERE id = ?',[req.body.titre, req.body.description, idCreation],(err,rows)=>{
-				req.body.valeur.map((val, index)=>{
-					connection.query('UPDATE etat_avancement SET valeuravancement = ? WHERE id = ?',[val, req.body.idEtat[index]],(err,rows)=>{
-						if(err)
-							res.redirect("http://localhost:3000?err=1")
-					})
-				})	
-				
 				if(err)
-					res.redirect(req.get('referer'));
-
-				res.redirect(req.get('referer'));
+					res.redirect("http://localhost:3000/updateCreation/" + idCreation + "?err=2");
 			})
+		}
+
+		req.body.valeur.map((val, index) => {
+			connection.query('UPDATE etat_avancement SET valeuravancement = ? WHERE id = ?',[val, req.body.idEtat[index]], (err, rows) => {
+				if(err)
+					res.redirect("http://localhost:3000/updateCreation/" + idCreation + "?err=3");
+			})
+		})
+
+		res.redirect(req.get('referer'));
 	})
+
+
+	/* SUPPRIMER CREATION */
 
 	app.post('/suprCreation',uploadAudio.none(),(req,res)=>{
 		let pathFinFichier;
