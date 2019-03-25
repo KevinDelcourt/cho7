@@ -7,6 +7,7 @@ const Button = styled.button`
     padding: 5px 15px;
     height: 35px;
     font-size:18px;
+    color:${props => props.color || "black"}
 `;
 
 export default Button;

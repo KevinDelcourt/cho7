@@ -3,7 +3,10 @@
     "brown2": "#916D43",
     "brown1": "rgba(145, 109, 67, 0.35)",
     "grey1": "#C4C4C4",
-    "orange1":"#b8590c"
+    "orange1":"#ef7513",
+    "orange2":"#b8590c",
+    "orange3":"#af540c",
+    "white":"#fff"
   },
   "font-family": {
     "ruluko": "Ruluko"
