@@ -8,8 +8,13 @@ import theme from "./../../theme.json"
 import { Field, reduxForm, FieldArray } from "redux-form"
 import { required } from "../../modules/validation"
 import EtatsAvancementInput from "../molecules/EtatsAvancementInput"
+import MainContainer from "../molecules/MainContainer"
 
-const UploadFormContainer = styled.div`
+const StyledButton = styled(Button)`
+    justify-self: end;
+`
+
+const StyledUploadForm = styled.form`
     display: grid;
     grid-template-rows: repeat(4, auto);
     grid-row-gap: 20px;
@@ -17,14 +22,11 @@ const UploadFormContainer = styled.div`
     margin: 5%;
 `
 
-const StyledButton = styled(Button)`
-    justify-self: end;
-`
 class UploadForm extends React.Component {
     render() {
         return (
-            <form onSubmit={this.props.handleSubmit}>
-                <UploadFormContainer>
+            <MainContainer title="NOUVELLE CRÉATION">
+                <StyledUploadForm onSubmit={this.props.handleSubmit}>
                     <Field
                         component={LabelInput}
                         name="titre"
@@ -56,14 +58,13 @@ class UploadForm extends React.Component {
                         row="10"
                         col="120"
                     />
-
                     <StyledButton
                         type="submit"
                         children="Publier"
-                        bgColor={theme.submitButton}
+                        bgColor={theme.colors.submitButton}
                     />
-                </UploadFormContainer>
-            </form>
+                </StyledUploadForm>
+            </MainContainer>
         )
     }
 }

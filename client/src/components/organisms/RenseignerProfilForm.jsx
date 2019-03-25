@@ -81,7 +81,7 @@ class RenseignerProfilForm extends Component {
                     <Button
                         type="submit"
                         children="Modifier Profil"
-                        bgColor={theme.submitButton}
+                        bgColor={theme.colors.submitButton}
                     />
                 </RightColumn>
             </Cadre>

@@ -1,7 +1,7 @@
 import React from "react"
 import banniere from "../../assets/images/banniere.png"
 import Banniere from "../atoms/Banniere"
-import BarreMenu from "../molecules/BarreMenu"
+import BarreMenu from "../molecules/BarreMenu.jsx"
 import { Link } from "react-router-dom"
 
 class HeaderTemplate extends React.Component {

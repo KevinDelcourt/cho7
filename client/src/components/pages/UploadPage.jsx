@@ -1,7 +1,6 @@
 import React from "react"
 import Template from "./Template"
 import UploadForm from "../organisms/UploadForm"
-import MainContainer from "../molecules/MainContainer"
 import { postNewCreation } from "../../modules/api"
 import { Redirect } from "react-router-dom"
 import { msgAction } from "../../modules/actionsAndReducers"
@@ -41,9 +40,7 @@ class UploadPage extends React.Component {
         return (
             <div>
                 <Template>
-                    <MainContainer title="NOUVELLE CRÉATION">
-                        <UploadForm onSubmit={this.submit} />
-                    </MainContainer>
+                    <UploadForm onSubmit={this.submit} />
                     {this.state.redirect}
                 </Template>
             </div>

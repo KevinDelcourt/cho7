@@ -48,7 +48,7 @@ class ConnectionForm extends Component {
                 </AuthentificationContainer>
                 <StyledButton
                     children="Se connecter"
-                    bgColor={theme.connectionButton}
+                    bgColor={theme.colors.connectionButton}
                 />
             </form>
         )
