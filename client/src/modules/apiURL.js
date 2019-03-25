@@ -5,7 +5,7 @@ const getApiUrl = () => {
         case "development":
             return "http://" + window.location.href.split(/[/:]/)[3] + ":8180"
         case "production":
-            return "http://testencore.azurewebsites.net/"
+            return "http://192.168.99.100:443"
         default:
             return "http://localhost:8180"
     }
