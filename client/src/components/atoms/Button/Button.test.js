@@ -26,8 +26,4 @@ test("Button border renders correctly", () => {
   expect(tree).toHaveStyleRule("border", "none");
 });
 
-//affichage deconnexion/connexion
-
-//affichage, disparition boutons du menu
-
 //modification du thème des boutons selon le créateur
