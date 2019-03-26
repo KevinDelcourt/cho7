@@ -1,0 +1,505 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1553621512728" clover="3.2.0">
+  <project timestamp="1553621512728" name="All files">
+    <metrics statements="345" coveredstatements="84" conditionals="74" coveredconditionals="10" methods="125" coveredmethods="23" elements="544" coveredelements="117" complexity="0" loc="345" ncloc="345" packages="8" files="43" classes="43">
+      <package name="src">
+        <metrics statements="47" coveredstatements="2" conditionals="32" coveredconditionals="0" methods="16" coveredmethods="1"/>
+        <file name="App.js" path="/Users/camuglianatacha/Documents/LP DQL/ptut/cho7/cho7/client/src/App.js">
+          <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+          <line num="15" count="1" type="stmt"/>
+        </file>
+        <file name="index.js" path="/Users/camuglianatacha/Documents/LP DQL/ptut/cho7/cho7/client/src/index.js">
+          <metrics statements="7" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+          <line num="1" count="0" type="stmt"/>
+          <line num="2" count="0" type="stmt"/>
+          <line num="3" count="0" type="stmt"/>
+          <line num="4" count="0" type="stmt"/>
+          <line num="5" count="0" type="stmt"/>
+          <line num="7" count="0" type="stmt"/>
+          <line num="9" count="0" type="stmt"/>
+        </file>
+        <file name="serviceWorker.js" path="/Users/camuglianatacha/Documents/LP DQL/ptut/cho7/cho7/client/src/serviceWorker.js">
+          <metrics statements="38" coveredstatements="0" conditionals="32" coveredconditionals="0" methods="15" coveredmethods="0"/>
+          <line num="13" count="0" type="stmt"/>
+          <line num="24" count="0" type="cond" truecount="0" falsecount="4"/>
+          <line num="26" count="0" type="stmt"/>
+          <line num="27" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="31" count="0" type="stmt"/>
+          <line num="34" count="0" type="stmt"/>
+          <line num="35" count="0" type="stmt"/>
+          <line num="37" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="39" count="0" type="stmt"/>
+          <line num="43" count="0" type="stmt"/>
+          <line num="44" count="0" type="stmt"/>
+          <line num="51" count="0" type="stmt"/>
+          <line num="58" count="0" type="stmt"/>
+          <line num="61" count="0" type="stmt"/>
+          <line num="62" count="0" type="stmt"/>
+          <line num="63" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="64" count="0" type="stmt"/>
+          <line num="66" count="0" type="stmt"/>
+          <line num="67" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="68" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="72" count="0" type="stmt"/>
+          <line num="78" count="0" type="cond" truecount="0" falsecount="4"/>
+          <line num="79" count="0" type="stmt"/>
+          <line num="85" count="0" type="stmt"/>
+          <line num="88" count="0" type="cond" truecount="0" falsecount="4"/>
+          <line num="89" count="0" type="stmt"/>
+          <line num="97" count="0" type="stmt"/>
+          <line num="103" count="0" type="stmt"/>
+          <line num="106" count="0" type="stmt"/>
+          <line num="107" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="112" count="0" type="stmt"/>
+          <line num="113" count="0" type="stmt"/>
+          <line num="114" count="0" type="stmt"/>
+          <line num="119" count="0" type="stmt"/>
+          <line num="123" count="0" type="stmt"/>
+          <line num="130" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="131" count="0" type="stmt"/>
+          <line num="132" count="0" type="stmt"/>
+        </file>
+        <file name="setupTests.js" path="/Users/camuglianatacha/Documents/LP DQL/ptut/cho7/cho7/client/src/setupTests.js">
+          <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+          <line num="7" count="2" type="stmt"/>
+        </file>
+      </package>
+      <package name="src.components.atoms">
+        <metrics statements="15" coveredstatements="8" conditionals="2" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <file name="AddButton.js" path="/Users/camuglianatacha/Documents/LP DQL/ptut/cho7/cho7/client/src/components/atoms/AddButton.js">
+          <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+          <line num="3" count="1" type="stmt"/>
+        </file>
+        <file name="Banniere.js" path="/Users/camuglianatacha/Documents/LP DQL/ptut/cho7/cho7/client/src/components/atoms/Banniere.js">
+          <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+          <line num="3" count="1" type="stmt"/>
+        </file>
+        <file name="FieldConnection.js" path="/Users/camuglianatacha/Documents/LP DQL/ptut/cho7/cho7/client/src/components/atoms/FieldConnection.js">
+          <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+          <line num="3" count="1" type="stmt"/>
+        </file>
+        <file name="FieldDescription.js" path="/Users/camuglianatacha/Documents/LP DQL/ptut/cho7/cho7/client/src/components/atoms/FieldDescription.js">
+          <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+          <line num="1" count="0" type="stmt"/>
+          <line num="3" count="0" type="stmt"/>
+        </file>
+        <file name="InputBase.js" path="/Users/camuglianatacha/Documents/LP DQL/ptut/cho7/cho7/client/src/components/atoms/InputBase.js">
+          <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+          <line num="3" count="1" type="stmt"/>
+        </file>
+        <file name="Label.js" path="/Users/camuglianatacha/Documents/LP DQL/ptut/cho7/cho7/client/src/components/atoms/Label.js">
+          <metrics statements="2" coveredstatements="1" conditionals="2" coveredconditionals="0" methods="1" coveredmethods="0"/>
+          <line num="3" count="1" type="stmt"/>
+          <line num="4" count="0" type="cond" truecount="0" falsecount="2"/>
+        </file>
+        <file name="LabelConnection.js" path="/Users/camuglianatacha/Documents/LP DQL/ptut/cho7/cho7/client/src/components/atoms/LabelConnection.js">
+          <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+          <line num="1" count="0" type="stmt"/>
+          <line num="3" count="0" type="stmt"/>
+        </file>
+        <file name="LabelDescription.js" path="/Users/camuglianatacha/Documents/LP DQL/ptut/cho7/cho7/client/src/components/atoms/LabelDescription.js">
+          <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+          <line num="1" count="0" type="stmt"/>
+          <line num="3" count="0" type="stmt"/>
+        </file>
+        <file name="Logo.jsx" path="/Users/camuglianatacha/Documents/LP DQL/ptut/cho7/cho7/client/src/components/atoms/Logo.jsx">
+          <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+          <line num="3" count="1" type="stmt"/>
+        </file>
+        <file name="SiteTitle.js" path="/Users/camuglianatacha/Documents/LP DQL/ptut/cho7/cho7/client/src/components/atoms/SiteTitle.js">
+          <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+          <line num="3" count="1" type="stmt"/>
+        </file>
+        <file name="TextareaBase.js" path="/Users/camuglianatacha/Documents/LP DQL/ptut/cho7/cho7/client/src/components/atoms/TextareaBase.js">
+          <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+          <line num="3" count="1" type="stmt"/>
+        </file>
+      </package>
+      <package name="src.components.atoms.Button">
+        <metrics statements="4" coveredstatements="4" conditionals="4" coveredconditionals="4" methods="3" coveredmethods="3"/>
+        <file name="Button.js" path="/Users/camuglianatacha/Documents/LP DQL/ptut/cho7/cho7/client/src/components/atoms/Button/Button.js">
+          <metrics statements="4" coveredstatements="4" conditionals="4" coveredconditionals="4" methods="3" coveredmethods="3"/>
+          <line num="3" count="2" type="stmt"/>
+          <line num="4" count="5" type="stmt"/>
+          <line num="5" count="5" type="cond" truecount="2" falsecount="0"/>
+          <line num="10" count="5" type="cond" truecount="2" falsecount="0"/>
+        </file>
+      </package>
+      <package name="src.components.molecules">
+        <metrics statements="34" coveredstatements="20" conditionals="10" coveredconditionals="6" methods="13" coveredmethods="5"/>
+        <file name="Authentification.jsx" path="/Users/camuglianatacha/Documents/LP DQL/ptut/cho7/cho7/client/src/components/molecules/Authentification.jsx">
+          <metrics statements="6" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
+          <line num="6" count="1" type="stmt"/>
+          <line num="11" count="1" type="stmt"/>
+          <line num="16" count="1" type="stmt"/>
+          <line num="27" count="0" type="stmt"/>
+          <line num="32" count="0" type="stmt"/>
+          <line num="40" count="0" type="stmt"/>
+        </file>
+        <file name="Avatar.jsx" path="/Users/camuglianatacha/Documents/LP DQL/ptut/cho7/cho7/client/src/components/molecules/Avatar.jsx">
+          <metrics statements="3" coveredstatements="3" conditionals="4" coveredconditionals="4" methods="2" coveredmethods="2"/>
+          <line num="3" count="1" type="stmt"/>
+          <line num="5" count="1" type="cond" truecount="2" falsecount="0"/>
+          <line num="6" count="1" type="cond" truecount="2" falsecount="0"/>
+        </file>
+        <file name="BarreMenu.js" path="/Users/camuglianatacha/Documents/LP DQL/ptut/cho7/cho7/client/src/components/molecules/BarreMenu.js">
+          <metrics statements="10" coveredstatements="7" conditionals="4" coveredconditionals="2" methods="2" coveredmethods="2"/>
+          <line num="9" count="1" type="stmt"/>
+          <line num="18" count="1" type="stmt"/>
+          <line num="31" count="1" type="stmt"/>
+          <line num="39" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="40" count="1" type="stmt"/>
+          <line num="43" count="0" type="stmt"/>
+          <line num="44" count="0" type="stmt"/>
+          <line num="48" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="49" count="0" type="stmt"/>
+          <line num="52" count="1" type="stmt"/>
+        </file>
+        <file name="Creation.jsx" path="/Users/camuglianatacha/Documents/LP DQL/ptut/cho7/cho7/client/src/components/molecules/Creation.jsx">
+          <metrics statements="7" coveredstatements="2" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="0"/>
+          <line num="5" count="1" type="stmt"/>
+          <line num="14" count="1" type="stmt"/>
+          <line num="25" count="0" type="stmt"/>
+          <line num="29" count="0" type="stmt"/>
+          <line num="31" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="32" count="0" type="stmt"/>
+          <line num="49" count="0" type="stmt"/>
+        </file>
+        <file name="LabelInput.js" path="/Users/camuglianatacha/Documents/LP DQL/ptut/cho7/cho7/client/src/components/molecules/LabelInput.js">
+          <metrics statements="2" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+          <line num="6" count="1" type="stmt"/>
+          <line num="15" count="0" type="stmt"/>
+        </file>
+        <file name="LabelInputRange.js" path="/Users/camuglianatacha/Documents/LP DQL/ptut/cho7/cho7/client/src/components/molecules/LabelInputRange.js">
+          <metrics statements="2" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+          <line num="5" count="1" type="stmt"/>
+          <line num="11" count="0" type="stmt"/>
+        </file>
+        <file name="LabelTextarea.js" path="/Users/camuglianatacha/Documents/LP DQL/ptut/cho7/cho7/client/src/components/molecules/LabelTextarea.js">
+          <metrics statements="2" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+          <line num="6" count="1" type="stmt"/>
+          <line num="15" count="0" type="stmt"/>
+        </file>
+        <file name="MainContainer.js" path="/Users/camuglianatacha/Documents/LP DQL/ptut/cho7/cho7/client/src/components/molecules/MainContainer.js">
+          <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+          <line num="4" count="1" type="stmt"/>
+          <line num="12" count="1" type="stmt"/>
+        </file>
+      </package>
+      <package name="src.components.organisms">
+        <metrics statements="60" coveredstatements="24" conditionals="4" coveredconditionals="0" methods="29" coveredmethods="8"/>
+        <file name="ConnectionForm.jsx" path="/Users/camuglianatacha/Documents/LP DQL/ptut/cho7/cho7/client/src/components/organisms/ConnectionForm.jsx">
+          <metrics statements="13" coveredstatements="3" conditionals="4" coveredconditionals="0" methods="4" coveredmethods="0"/>
+          <line num="9" count="1" type="stmt"/>
+          <line num="13" count="1" type="stmt"/>
+          <line num="17" count="1" type="stmt"/>
+          <line num="29" count="0" type="stmt"/>
+          <line num="30" count="0" type="stmt"/>
+          <line num="33" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="34" count="0" type="stmt"/>
+          <line num="36" count="0" type="stmt"/>
+          <line num="37" count="0" type="stmt"/>
+          <line num="42" count="0" type="stmt"/>
+          <line num="43" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="44" count="0" type="stmt"/>
+          <line num="46" count="0" type="stmt"/>
+        </file>
+        <file name="CreationsInProgress.jsx" path="/Users/camuglianatacha/Documents/LP DQL/ptut/cho7/cho7/client/src/components/organisms/CreationsInProgress.jsx">
+          <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
+          <line num="9" count="0" type="stmt"/>
+          <line num="13" count="0" type="stmt"/>
+          <line num="21" count="0" type="stmt"/>
+        </file>
+        <file name="FooterTemplate.jsx" path="/Users/camuglianatacha/Documents/LP DQL/ptut/cho7/cho7/client/src/components/organisms/FooterTemplate.jsx">
+          <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+          <line num="4" count="1" type="stmt"/>
+          <line num="20" count="1" type="stmt"/>
+        </file>
+        <file name="HeaderTemplate.jsx" path="/Users/camuglianatacha/Documents/LP DQL/ptut/cho7/cho7/client/src/components/organisms/HeaderTemplate.jsx">
+          <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+          <line num="9" count="1" type="stmt"/>
+        </file>
+        <file name="InputAddButton.js" path="/Users/camuglianatacha/Documents/LP DQL/ptut/cho7/cho7/client/src/components/organisms/InputAddButton.js">
+          <metrics statements="14" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="0"/>
+          <line num="8" count="0" type="stmt"/>
+          <line num="9" count="0" type="stmt"/>
+          <line num="12" count="0" type="stmt"/>
+          <line num="16" count="0" type="stmt"/>
+          <line num="17" count="0" type="stmt"/>
+          <line num="18" count="0" type="stmt"/>
+          <line num="19" count="0" type="stmt"/>
+          <line num="23" count="0" type="stmt"/>
+          <line num="24" count="0" type="stmt"/>
+          <line num="25" count="0" type="stmt"/>
+          <line num="26" count="0" type="stmt"/>
+          <line num="30" count="0" type="stmt"/>
+          <line num="36" count="0" type="stmt"/>
+          <line num="38" count="0" type="stmt"/>
+        </file>
+        <file name="NewsFeed.jsx" path="/Users/camuglianatacha/Documents/LP DQL/ptut/cho7/cho7/client/src/components/organisms/NewsFeed.jsx">
+          <metrics statements="5" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="2"/>
+          <line num="7" count="1" type="stmt"/>
+          <line num="13" count="1" type="stmt"/>
+          <line num="25" count="1" type="stmt"/>
+          <line num="29" count="1" type="stmt"/>
+          <line num="34" count="0" type="stmt"/>
+        </file>
+        <file name="Profile.jsx" path="/Users/camuglianatacha/Documents/LP DQL/ptut/cho7/cho7/client/src/components/organisms/Profile.jsx">
+          <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+          <line num="7" count="1" type="stmt"/>
+          <line num="15" count="1" type="stmt"/>
+          <line num="34" count="1" type="stmt"/>
+          <line num="40" count="1" type="stmt"/>
+        </file>
+        <file name="Projet.jsx" path="/Users/camuglianatacha/Documents/LP DQL/ptut/cho7/cho7/client/src/components/organisms/Projet.jsx">
+          <metrics statements="9" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="2"/>
+          <line num="6" count="1" type="stmt"/>
+          <line num="12" count="1" type="stmt"/>
+          <line num="21" count="1" type="stmt"/>
+          <line num="30" count="1" type="stmt"/>
+          <line num="34" count="0" type="stmt"/>
+          <line num="35" count="0" type="stmt"/>
+          <line num="39" count="1" type="stmt"/>
+          <line num="43" count="0" type="stmt"/>
+          <line num="46" count="0" type="stmt"/>
+        </file>
+        <file name="UpdateCreationForm.jsx" path="/Users/camuglianatacha/Documents/LP DQL/ptut/cho7/cho7/client/src/components/organisms/UpdateCreationForm.jsx">
+          <metrics statements="6" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
+          <line num="10" count="1" type="stmt"/>
+          <line num="18" count="1" type="stmt"/>
+          <line num="22" count="1" type="stmt"/>
+          <line num="30" count="0" type="stmt"/>
+          <line num="34" count="0" type="stmt"/>
+          <line num="41" count="0" type="stmt"/>
+        </file>
+        <file name="UploadForm.jsx" path="/Users/camuglianatacha/Documents/LP DQL/ptut/cho7/cho7/client/src/components/organisms/UploadForm.jsx">
+          <metrics statements="3" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+          <line num="9" count="1" type="stmt"/>
+          <line num="17" count="1" type="stmt"/>
+          <line num="24" count="0" type="stmt"/>
+        </file>
+      </package>
+      <package name="src.components.pages">
+        <metrics statements="56" coveredstatements="15" conditionals="18" coveredconditionals="0" methods="14" coveredmethods="2"/>
+        <file name="AccueilPage.jsx" path="/Users/camuglianatacha/Documents/LP DQL/ptut/cho7/cho7/client/src/components/pages/AccueilPage.jsx">
+          <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+          <line num="8" count="1" type="stmt"/>
+          <line num="15" count="1" type="stmt"/>
+          <line num="16" count="1" type="stmt"/>
+        </file>
+        <file name="ConnectionPage.jsx" path="/Users/camuglianatacha/Documents/LP DQL/ptut/cho7/cho7/client/src/components/pages/ConnectionPage.jsx">
+          <metrics statements="7" coveredstatements="2" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="0"/>
+          <line num="10" count="1" type="stmt"/>
+          <line num="19" count="1" type="stmt"/>
+          <line num="30" count="0" type="stmt"/>
+          <line num="31" count="0" type="stmt"/>
+          <line num="35" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="36" count="0" type="stmt"/>
+          <line num="38" count="0" type="stmt"/>
+        </file>
+        <file name="MesCreationsPage.jsx" path="/Users/camuglianatacha/Documents/LP DQL/ptut/cho7/cho7/client/src/components/pages/MesCreationsPage.jsx">
+          <metrics statements="9" coveredstatements="1" conditionals="4" coveredconditionals="0" methods="2" coveredmethods="0"/>
+          <line num="8" count="1" type="stmt"/>
+          <line num="18" count="0" type="stmt"/>
+          <line num="19" count="0" type="stmt"/>
+          <line num="20" count="0" type="stmt"/>
+          <line num="24" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="25" count="0" type="stmt"/>
+          <line num="38" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="39" count="0" type="stmt"/>
+          <line num="40" count="0" type="stmt"/>
+        </file>
+        <file name="RenseignerProfilPage.jsx" path="/Users/camuglianatacha/Documents/LP DQL/ptut/cho7/cho7/client/src/components/pages/RenseignerProfilPage.jsx">
+          <metrics statements="14" coveredstatements="4" conditionals="4" coveredconditionals="0" methods="3" coveredmethods="0"/>
+          <line num="13" count="1" type="stmt"/>
+          <line num="21" count="1" type="stmt"/>
+          <line num="29" count="1" type="stmt"/>
+          <line num="37" count="1" type="stmt"/>
+          <line num="54" count="0" type="stmt"/>
+          <line num="55" count="0" type="stmt"/>
+          <line num="56" count="0" type="stmt"/>
+          <line num="57" count="0" type="stmt"/>
+          <line num="61" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="62" count="0" type="stmt"/>
+          <line num="71" count="0" type="stmt"/>
+          <line num="86" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="87" count="0" type="stmt"/>
+          <line num="88" count="0" type="stmt"/>
+        </file>
+        <file name="Template.jsx" path="/Users/camuglianatacha/Documents/LP DQL/ptut/cho7/cho7/client/src/components/pages/Template.jsx">
+          <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+          <line num="6" count="1" type="stmt"/>
+          <line num="12" count="1" type="stmt"/>
+          <line num="21" count="1" type="stmt"/>
+        </file>
+        <file name="UpdateCreationPage.jsx" path="/Users/camuglianatacha/Documents/LP DQL/ptut/cho7/cho7/client/src/components/pages/UpdateCreationPage.jsx">
+          <metrics statements="11" coveredstatements="1" conditionals="4" coveredconditionals="0" methods="3" coveredmethods="0"/>
+          <line num="8" count="1" type="stmt"/>
+          <line num="14" count="0" type="stmt"/>
+          <line num="15" count="0" type="stmt"/>
+          <line num="16" count="0" type="stmt"/>
+          <line num="17" count="0" type="stmt"/>
+          <line num="21" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="22" count="0" type="stmt"/>
+          <line num="27" count="0" type="stmt"/>
+          <line num="34" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="35" count="0" type="stmt"/>
+          <line num="36" count="0" type="stmt"/>
+        </file>
+        <file name="UploadPage.jsx" path="/Users/camuglianatacha/Documents/LP DQL/ptut/cho7/cho7/client/src/components/pages/UploadPage.jsx">
+          <metrics statements="9" coveredstatements="1" conditionals="4" coveredconditionals="0" methods="2" coveredmethods="0"/>
+          <line num="8" count="1" type="stmt"/>
+          <line num="16" count="0" type="stmt"/>
+          <line num="17" count="0" type="stmt"/>
+          <line num="18" count="0" type="stmt"/>
+          <line num="22" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="23" count="0" type="stmt"/>
+          <line num="33" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="34" count="0" type="stmt"/>
+          <line num="35" count="0" type="stmt"/>
+        </file>
+      </package>
+      <package name="src.modules">
+        <metrics statements="65" coveredstatements="11" conditionals="4" coveredconditionals="0" methods="34" coveredmethods="4"/>
+        <file name="auth.js" path="/Users/camuglianatacha/Documents/LP DQL/ptut/cho7/cho7/client/src/modules/auth.js">
+          <metrics statements="65" coveredstatements="11" conditionals="4" coveredconditionals="0" methods="34" coveredmethods="4"/>
+          <line num="5" count="1" type="stmt"/>
+          <line num="9" count="0" type="stmt"/>
+          <line num="10" count="0" type="cond" truecount="0" falsecount="4"/>
+          <line num="11" count="0" type="stmt"/>
+          <line num="12" count="0" type="stmt"/>
+          <line num="14" count="0" type="stmt"/>
+          <line num="16" count="0" type="stmt"/>
+          <line num="17" count="0" type="stmt"/>
+          <line num="20" count="1" type="stmt"/>
+          <line num="22" count="0" type="stmt"/>
+          <line num="23" count="0" type="stmt"/>
+          <line num="25" count="0" type="stmt"/>
+          <line num="26" count="0" type="stmt"/>
+          <line num="29" count="1" type="stmt"/>
+          <line num="31" count="0" type="stmt"/>
+          <line num="32" count="0" type="stmt"/>
+          <line num="34" count="0" type="stmt"/>
+          <line num="35" count="0" type="stmt"/>
+          <line num="38" count="1" type="stmt"/>
+          <line num="40" count="0" type="stmt"/>
+          <line num="41" count="0" type="stmt"/>
+          <line num="43" count="0" type="stmt"/>
+          <line num="44" count="0" type="stmt"/>
+          <line num="47" count="1" type="stmt"/>
+          <line num="49" count="0" type="stmt"/>
+          <line num="50" count="0" type="stmt"/>
+          <line num="52" count="0" type="stmt"/>
+          <line num="53" count="0" type="stmt"/>
+          <line num="56" count="1" type="stmt"/>
+          <line num="58" count="0" type="stmt"/>
+          <line num="59" count="0" type="stmt"/>
+          <line num="61" count="0" type="stmt"/>
+          <line num="62" count="0" type="stmt"/>
+          <line num="65" count="1" type="stmt"/>
+          <line num="67" count="0" type="stmt"/>
+          <line num="68" count="0" type="stmt"/>
+          <line num="70" count="0" type="stmt"/>
+          <line num="71" count="0" type="stmt"/>
+          <line num="74" count="1" type="stmt"/>
+          <line num="76" count="0" type="stmt"/>
+          <line num="77" count="0" type="stmt"/>
+          <line num="79" count="0" type="stmt"/>
+          <line num="80" count="0" type="stmt"/>
+          <line num="83" count="1" type="stmt"/>
+          <line num="85" count="0" type="stmt"/>
+          <line num="86" count="0" type="stmt"/>
+          <line num="88" count="0" type="stmt"/>
+          <line num="89" count="0" type="stmt"/>
+          <line num="92" count="1" type="stmt"/>
+          <line num="94" count="0" type="stmt"/>
+          <line num="96" count="0" type="stmt"/>
+          <line num="97" count="0" type="stmt"/>
+          <line num="98" count="0" type="stmt"/>
+          <line num="99" count="0" type="stmt"/>
+          <line num="100" count="0" type="stmt"/>
+          <line num="101" count="0" type="stmt"/>
+          <line num="103" count="0" type="stmt"/>
+          <line num="104" count="0" type="stmt"/>
+          <line num="106" count="0" type="stmt"/>
+          <line num="107" count="0" type="stmt"/>
+          <line num="110" count="1" type="stmt"/>
+          <line num="112" count="0" type="stmt"/>
+          <line num="113" count="0" type="stmt"/>
+          <line num="115" count="0" type="stmt"/>
+          <line num="116" count="0" type="stmt"/>
+        </file>
+      </package>
+      <package name="src.stories">
+        <metrics statements="64" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="15" coveredmethods="0"/>
+        <file name="index.js" path="/Users/camuglianatacha/Documents/LP DQL/ptut/cho7/cho7/client/src/stories/index.js">
+          <metrics statements="64" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="15" coveredmethods="0"/>
+          <line num="1" count="0" type="stmt"/>
+          <line num="2" count="0" type="stmt"/>
+          <line num="3" count="0" type="stmt"/>
+          <line num="4" count="0" type="stmt"/>
+          <line num="5" count="0" type="stmt"/>
+          <line num="6" count="0" type="stmt"/>
+          <line num="7" count="0" type="stmt"/>
+          <line num="8" count="0" type="stmt"/>
+          <line num="9" count="0" type="stmt"/>
+          <line num="10" count="0" type="stmt"/>
+          <line num="11" count="0" type="stmt"/>
+          <line num="12" count="0" type="stmt"/>
+          <line num="13" count="0" type="stmt"/>
+          <line num="14" count="0" type="stmt"/>
+          <line num="15" count="0" type="stmt"/>
+          <line num="16" count="0" type="stmt"/>
+          <line num="17" count="0" type="stmt"/>
+          <line num="18" count="0" type="stmt"/>
+          <line num="19" count="0" type="stmt"/>
+          <line num="21" count="0" type="stmt"/>
+          <line num="22" count="0" type="stmt"/>
+          <line num="25" count="0" type="stmt"/>
+          <line num="26" count="0" type="stmt"/>
+          <line num="27" count="0" type="stmt"/>
+          <line num="28" count="0" type="stmt"/>
+          <line num="36" count="0" type="stmt"/>
+          <line num="37" count="0" type="stmt"/>
+          <line num="38" count="0" type="stmt"/>
+          <line num="39" count="0" type="stmt"/>
+          <line num="44" count="0" type="stmt"/>
+          <line num="47" count="0" type="stmt"/>
+          <line num="52" count="0" type="stmt"/>
+          <line num="54" count="0" type="stmt"/>
+          <line num="55" count="0" type="stmt"/>
+          <line num="57" count="0" type="stmt"/>
+          <line num="58" count="0" type="stmt"/>
+          <line num="59" count="0" type="stmt"/>
+          <line num="60" count="0" type="stmt"/>
+          <line num="63" count="0" type="stmt"/>
+          <line num="64" count="0" type="stmt"/>
+          <line num="65" count="0" type="stmt"/>
+          <line num="66" count="0" type="stmt"/>
+          <line num="69" count="0" type="stmt"/>
+          <line num="70" count="0" type="stmt"/>
+          <line num="71" count="0" type="stmt"/>
+          <line num="72" count="0" type="stmt"/>
+          <line num="75" count="0" type="stmt"/>
+          <line num="76" count="0" type="stmt"/>
+          <line num="77" count="0" type="stmt"/>
+          <line num="78" count="0" type="stmt"/>
+          <line num="85" count="0" type="stmt"/>
+          <line num="86" count="0" type="stmt"/>
+          <line num="87" count="0" type="stmt"/>
+          <line num="88" count="0" type="stmt"/>
+          <line num="89" count="0" type="stmt"/>
+          <line num="91" count="0" type="stmt"/>
+          <line num="92" count="0" type="stmt"/>
+          <line num="102" count="0" type="stmt"/>
+          <line num="103" count="0" type="stmt"/>
+          <line num="104" count="0" type="stmt"/>
+          <line num="107" count="0" type="stmt"/>
+          <line num="108" count="0" type="stmt"/>
+          <line num="110" count="0" type="stmt"/>
+          <line num="111" count="0" type="stmt"/>
+        </file>
+      </package>
+    </metrics>
+  </project>
+</coverage>
