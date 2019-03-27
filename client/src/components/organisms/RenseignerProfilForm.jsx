@@ -51,7 +51,6 @@ class RenseignerProfilForm extends Component {
                         type="password"
                         label="Mot de passe *"
                         wInput="25"
-                        validate={[required]}
                     />
 
                     <Field

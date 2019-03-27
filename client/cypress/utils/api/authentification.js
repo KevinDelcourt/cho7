@@ -7,6 +7,8 @@ export const loginAsCreateur = () =>
         expect(res.body).to.include("s:")
     })
 
+export const testBadLogin = res => expect(res.body).to.be.false
+
 export const logout = () =>
     getRequest("/logout", res => {
         expect(res.body).to.have.property("loggedOut", true)

@@ -1,9 +1,12 @@
+const { updateCreateurQuery } = require("../modules/queries")
+const { responseFromValidatorError } = require("../modules/validation")
 const mysql = require("mysql")
 const credentials = require("../db/db-identifiants.json")
 const connection = mysql.createConnection(credentials)
 const fs = require("fs")
 const multer = require("multer")
-const { body, validationResult } = require("express-validator/check")
+
+const { body, check, validationResult } = require("express-validator/check")
 const storageAudio = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, __dirname + "/../public/audio/")
@@ -26,10 +29,17 @@ let uploadImage = multer({ storage: storageImage })
 const creationValidator = [
     body("titre")
         .isLength({ min: 1 })
-        .withMessage("Le titre est obligatoire")
+        .withMessage("Titre requis"),
+    body("titre")
         .isLength({ max: 50 })
-        .withMessage("Le titre doit faire un maximum de 50 caractères"),
-    body("creation")
+        .withMessage("Trop long"),
+    body("libelle")
+        .isLength({ min: 1 })
+        .withMessage("Au moins 1 etat requis"),
+    body("valeur")
+        .isLength({ min: 1 })
+        .withMessage("Au moins 1 valeur requise"),
+    /*body("creation")
         .custom((value, { req }) => {
             if (req.file.mimetype.split("/")[0] != "audio") {
                 throw new Error("Seuls les fichiers audios sont acceptés")
@@ -45,10 +55,10 @@ const creationValidator = [
             } else {
                 return true
             }
-        }),
+        }),*/
     body("description")
         .isLength({ max: 2048 })
-        .withMessage("Description trop longue, maximum 2048 caractères")
+        .withMessage("Trop long")
 ]
 
 module.exports = (app, passport) => {
@@ -58,10 +68,13 @@ module.exports = (app, passport) => {
 
     app.post(
         "/addcreation",
+        isLoggedIn,
         uploadAudio.single("creation"),
         creationValidator,
         (req, res) => {
-            if (req.file)
+            let errors = validationResult(req)
+            if (!errors.isEmpty()) res.send(responseFromValidatorError(errors))
+            else if (req.file)
                 connection.query(
                     "INSERT INTO creation (nomfichier,titre,description) VALUES (?,?,?)",
                     [
@@ -105,12 +118,14 @@ module.exports = (app, passport) => {
 
     app.post(
         "/updateCreation/",
+        isLoggedIn,
         uploadAudio.single("creation"),
         creationValidator,
         (req, res) => {
             const idCreation = req.body.id
-
-            if (req.file)
+            let errors = validationResult(req)
+            if (!errors.isEmpty()) res.send(responseFromValidatorError(errors))
+            else if (req.file)
                 connection.query(
                     "UPDATE creation SET nomfichier = ?, titre = ?, description = ? WHERE id = ?",
                     [
@@ -153,7 +168,7 @@ module.exports = (app, passport) => {
         }
     )
 
-    app.post("/suprCreation", (req, res) => {
+    app.post("/suprCreation", isLoggedIn, (req, res) => {
         let pathFinFichier
         //avant recupere les titre a suprimer dans la bdd
         console.log(req.body)
@@ -180,40 +195,50 @@ module.exports = (app, passport) => {
 
     app.post(
         "/renseignerprofil",
+        isLoggedIn,
         uploadImage.single("fichierAvatar"),
+        [
+            check("username")
+                .isLength({ min: 1 })
+                .withMessage("Pseudo requis"),
+            check("email")
+                .isEmail()
+                .withMessage("Mail valide requis"),
+            check("username")
+                .isLength({ max: 50 })
+                .withMessage("Trop long"),
+            check("password")
+                .isLength({ max: 64 })
+                .withMessage("Trop long"),
+            check("email")
+                .isLength({ max: 254 })
+                .withMessage("Trop long"),
+            check("presentation")
+                .isLength({ max: 512 })
+                .withMessage("Trop long")
+        ],
         (req, res) => {
-            let filename = ""
-            if (req.file) {
-                filename =
-                    "avatar_createur." + req.file.filename.split(".").pop()
-                connection.query(
-                    'UPDATE users SET username = ?, password = ?, email = ?, presentation = ?, avatar = ? WHERE role="ROLE_CREATEUR";',
-                    [
-                        req.body.username,
-                        req.body.password,
-                        req.body.email,
-                        req.body.presentation,
-                        filename
-                    ],
-                    (err, rows) => {
-                        if (err) res.send(err)
-                        res.send(true)
-                    }
-                )
-            } else {
-                connection.query(
-                    'UPDATE users SET username = ?, password = ?, email = ?, presentation = ? WHERE role="ROLE_CREATEUR";',
-                    [
-                        req.body.username,
-                        req.body.password,
-                        req.body.email,
-                        req.body.presentation
-                    ],
-                    (err, rows) => {
-                        if (err) res.send(err)
-                        res.send(true)
-                    }
-                )
+            let errors = validationResult(req)
+            if (!errors.isEmpty()) res.send(responseFromValidatorError(errors))
+            else {
+                updateData = {
+                    username: req.body.username,
+                    email: req.body.email
+                }
+
+                if (req.body.password) updateData.password = req.body.password
+
+                if (req.body.presentation || req.body.presentation === "")
+                    updateData.presentation = req.body.presentation
+
+                if (req.file)
+                    updateData.avatar =
+                        "avatar_createur." + req.file.filename.split(".").pop()
+
+                updateCreateurQuery(connection, updateData, (err, rows) => {
+                    if (err) res.send(err)
+                    res.send(true)
+                })
             }
         }
     )

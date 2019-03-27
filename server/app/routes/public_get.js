@@ -4,6 +4,7 @@ module.exports = (app, connection) => {
             "SELECT * FROM users WHERE role = 'ROLE_CREATEUR'",
             (err, rows) => {
                 if (err) res.send(err)
+                delete rows[0].password
                 res.send(rows[0])
             }
         )
@@ -22,7 +23,7 @@ module.exports = (app, connection) => {
 
     app.get("/creations/done", (req, res) => {
         connection.query(
-            "SELECT id, nomfichier, titre, description FROM creation WHERE nomfichier IS NOT NULL ORDER BY id DESC",
+            "SELECT * FROM creation WHERE nomfichier IS NOT NULL ORDER BY id DESC",
             (err, rows) => {
                 if (err) res.send(err)
                 res.send(rows)
@@ -32,7 +33,7 @@ module.exports = (app, connection) => {
 
     app.get("/creations/inprogress", (req, res) => {
         connection.query(
-            "SELECT id, titre, description FROM creation WHERE nomfichier IS NULL ORDER BY id DESC",
+            "SELECT * FROM creation WHERE nomfichier IS NULL ORDER BY id DESC",
             (err, rows) => {
                 if (err) res.send(err)
                 res.send(rows)

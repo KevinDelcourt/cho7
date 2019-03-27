@@ -7,6 +7,7 @@ import { Redirect } from "react-router-dom"
 import { msgAction } from "../../modules/actionsAndReducers"
 import { connect } from "react-redux"
 import { bindActionCreators } from "redux"
+import { SubmissionError } from "redux-form"
 
 class RenseignerProfilPage extends React.Component {
     state = {
@@ -24,12 +25,13 @@ class RenseignerProfilPage extends React.Component {
             if (obj === "fichierAvatar") formData.append(obj, values[obj][0])
             else formData.append(obj, values[obj])
         }
-
-        if ((await postProfilCreateur(formData)) === true) {
+        let response = await postProfilCreateur(formData)
+        if (response === true) {
             this.props.msgAction("Profil renseigné avec succès")
             this.setState({ redirect: <Redirect to="/" /> })
         } else {
             this.props.msgAction("Erreur lors de la requête")
+            throw new SubmissionError({ ...response, err: true })
         }
     }
 

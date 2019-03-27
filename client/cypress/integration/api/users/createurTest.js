@@ -51,14 +51,14 @@ describe("modifier le profil", () => {
 
     neMarchePasSiPasConnecte(cb =>
         postProfilCreateur(
-            { username: "Admin", password: "Admin", email: "a" },
+            { username: "Admin", password: "Admin", email: "a@b.fr" },
             cb
         )
     )
 
     it("ne modifie pas le mot de passe si pas dans la requête", () => {
         loginAsCreateur()
-        postProfilCreateur({ username: "a", email: "abc" }, res => {
+        postProfilCreateur({ username: "a", email: "abc@d.fr" }, res => {
             expect(res.body).to.be.true
         })
         logout()
@@ -88,7 +88,7 @@ describe("modifier le profil", () => {
             expect(res.body).to.have.property("username", "Pseudo requis")
         })
         postProfilCreateur({ username: "truc", password: "truc" }, res => {
-            expect(res.body).to.have.property("email", "Mail requis")
+            expect(res.body).to.have.property("email", "Mail valide requis")
         })
     })
 

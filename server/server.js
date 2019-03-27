@@ -47,7 +47,7 @@ app.use(passport.session())
 app.use(flash())
 app.use("/public", express.static(__dirname + "/public"))
 
-require("./db/passport")(passport)
+require("./app/passport")(passport)
 
 require("./app/routes.js")(app, passport)
 

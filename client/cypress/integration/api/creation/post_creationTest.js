@@ -4,6 +4,7 @@ import {
     postNewCreation,
     postUpdateCreation
 } from "../../../utils/api/creation"
+import { loginAsCreateur } from "../../../utils/api/authentification"
 import reset_db from "../../../utils/reset_db"
 import { longString } from "../../../utils/functions"
 import { neMarchePasSiPasConnecte } from "../../../utils/api/index"
@@ -24,6 +25,7 @@ describe("upload creation sans fichier", () => {
             libelle: ["a1", "a2"],
             valeur: [10, 30]
         }
+        loginAsCreateur()
         postNewCreation(creation, res => {
             expect(res.body).to.have.property("titre", "Titre requis")
         })
@@ -31,6 +33,7 @@ describe("upload creation sans fichier", () => {
 
     it("erreur si pas de libelle ou de valeur", () => {
         let creation = { ...newCreation, libelle: [] }
+        loginAsCreateur()
         postNewCreation(creation, res => {
             expect(res.body).to.have.property(
                 "libelle",
@@ -46,19 +49,21 @@ describe("upload creation sans fichier", () => {
         })
     })
 
-    it("erreur si titre ou etat trop long", () => {
+    it("erreur si titre ou description trop longue", () => {
         let creation = { ...newCreation, titre: longString(51) }
+        loginAsCreateur()
         postNewCreation(creation, res => {
             expect(res.body).to.have.property("titre", "Trop long")
         })
 
-        creation = { ...newCreation, valeur: [longString(51), "oui"] }
+        creation = { ...newCreation, description: longString(2049) }
         postNewCreation(creation, res => {
-            expect(res.body).to.have.property("valeur", "Trop long")
+            expect(res.body).to.have.property("description", "Trop long")
         })
     })
 
     it("peut ajouter une création", () => {
+        loginAsCreateur()
         postNewCreation(newCreation, res => {
             expect(res.body).to.be.true
         })
@@ -89,6 +94,7 @@ describe("update creation sans fichier", () => {
     neMarchePasSiPasConnecte(cb => postUpdateCreation(updateCreationFinie, cb))
 
     it("peut modifier une création finie", () => {
+        loginAsCreateur()
         postUpdateCreation(updateCreationFinie, res => {
             expect(res.body).to.be.true
         })
@@ -99,6 +105,7 @@ describe("update creation sans fichier", () => {
     })
 
     it("peut modifier une création en cours", () => {
+        loginAsCreateur()
         postUpdateCreation(updateCreationEnCours, res => {
             expect(res.body).to.be.true
         })
@@ -121,20 +128,25 @@ describe("update creation sans fichier", () => {
             valeur: [10, 20],
             idEtat: [1, 2]
         }
+        loginAsCreateur()
         postUpdateCreation(creation, res => {
             expect(res.body).to.have.property("titre", "Titre requis")
         })
     })
 
     it("erreur si titre ou etat trop long", () => {
+        loginAsCreateur()
         let creation = { ...updateCreationEnCours, titre: longString(51) }
         postUpdateCreation(creation, res => {
             expect(res.body).to.have.property("titre", "Trop long")
         })
 
-        creation = { ...updateCreationEnCours, valeur: [longString(51), "oui"] }
+        creation = {
+            ...updateCreationEnCours,
+            description: longString(2049)
+        }
         postUpdateCreation(creation, res => {
-            expect(res.body).to.have.property("valeur", "Trop long")
+            expect(res.body).to.have.property("description", "Trop long")
         })
     })
 })

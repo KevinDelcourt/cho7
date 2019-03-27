@@ -1,7 +1,7 @@
 const LocalStrategy = require("passport-local").Strategy
 
 const mysql = require("mysql")
-const credentials = require("./db-identifiants.json")
+const credentials = require("../db/db-identifiants.json")
 
 const connection = mysql.createConnection(credentials)
 
@@ -15,6 +15,7 @@ module.exports = function(passport) {
             err,
             rows
         ) {
+            delete rows[0].password
             done(err, rows[0])
         })
     })
