@@ -1,5 +1,12 @@
 const { updateCreateurQuery } = require("../modules/queries")
-const { responseFromValidatorError } = require("../modules/validation")
+const {
+    responseFromValidatorError,
+    getErrors,
+    hasNoErrors,
+    maxLenCheck,
+    requiredCheck,
+    maxLenValidator
+} = require("../modules/validation")
 const mysql = require("mysql")
 const credentials = require("../db/db-identifiants.json")
 const connection = mysql.createConnection(credentials)
@@ -123,8 +130,8 @@ module.exports = (app, passport) => {
         creationValidator,
         (req, res) => {
             const idCreation = req.body.id
-            let errors = validationResult(req)
-            if (!errors.isEmpty()) res.send(responseFromValidatorError(errors))
+            let errors = getErrors(req)
+            if (!errors.isEmpty()) res.send(errors)
             else if (req.file)
                 connection.query(
                     "UPDATE creation SET nomfichier = ?, titre = ?, description = ? WHERE id = ?",
@@ -198,48 +205,32 @@ module.exports = (app, passport) => {
         isLoggedIn,
         uploadImage.single("fichierAvatar"),
         [
-            check("username")
-                .isLength({ min: 1 })
-                .withMessage("Pseudo requis"),
+            requiredCheck("username", "Pseudo requis"),
             check("email")
                 .isEmail()
-                .withMessage("Mail valide requis"),
-            check("username")
-                .isLength({ max: 50 })
-                .withMessage("Trop long"),
-            check("password")
-                .isLength({ max: 64 })
-                .withMessage("Trop long"),
-            check("email")
-                .isLength({ max: 254 })
-                .withMessage("Trop long"),
-            check("presentation")
-                .isLength({ max: 512 })
-                .withMessage("Trop long")
+                .withMessage("Mail valide requis")
         ],
+        maxLenValidator(),
+        hasNoErrors,
         (req, res) => {
-            let errors = validationResult(req)
-            if (!errors.isEmpty()) res.send(responseFromValidatorError(errors))
-            else {
-                updateData = {
-                    username: req.body.username,
-                    email: req.body.email
-                }
-
-                if (req.body.password) updateData.password = req.body.password
-
-                if (req.body.presentation || req.body.presentation === "")
-                    updateData.presentation = req.body.presentation
-
-                if (req.file)
-                    updateData.avatar =
-                        "avatar_createur." + req.file.filename.split(".").pop()
-
-                updateCreateurQuery(connection, updateData, (err, rows) => {
-                    if (err) res.send(err)
-                    res.send(true)
-                })
+            updateData = {
+                username: req.body.username,
+                email: req.body.email
             }
+
+            if (req.body.password) updateData.password = req.body.password
+
+            if (req.body.presentation || req.body.presentation === "")
+                updateData.presentation = req.body.presentation
+
+            if (req.file)
+                updateData.avatar =
+                    "avatar_createur." + req.file.filename.split(".").pop()
+
+            updateCreateurQuery(connection, updateData, err => {
+                if (err) return res.send(err)
+                res.send(true)
+            })
         }
     )
 
@@ -252,6 +243,7 @@ module.exports = (app, passport) => {
     })
 
     require("./routes/auth")(app, passport)
+    require("./routes/users")(app, connection)
     require("./routes/public_get")(app, connection)
 }
 
