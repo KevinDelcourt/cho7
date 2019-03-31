@@ -40,11 +40,24 @@ const maxLenValidator = () => {
     return tab
 }
 
+const isLoggedIn = (req, res, next) => {
+    if (req.isAuthenticated()) return next()
+
+    return res.send(false)
+}
+
+const hasGoodId = (req, res, next) => {
+    if ("" + req.user.id === req.params.id) return next()
+    return res.send(false)
+}
+
 module.exports = {
     responseFromValidatorError,
     getErrors,
     hasNoErrors,
     maxLenCheck,
     requiredCheck,
-    maxLenValidator
+    maxLenValidator,
+    isLoggedIn,
+    hasGoodId
 }

@@ -1,4 +1,9 @@
-import { getRequest, postRequest, expectToHaveProperties } from "./index"
+import {
+    getRequest,
+    postRequest,
+    expectToHaveProperties,
+    deleteRequest
+} from "./index"
 
 export const getUsers = cb =>
     getRequest("/users", res => {
@@ -17,5 +22,10 @@ export const getUsers = cb =>
     })
 
 export const getUserFromId = (id, cb) => getRequest("/users/" + id, cb)
+
+export const postUserUpdate = (id, data, cb) =>
+    postRequest("/users/" + id, data, cb)
+
+export const deleteUser = (id, cb) => deleteRequest("/users/" + id, cb)
 
 export const postNewUser = (data, cb) => postRequest("/users", data, cb)

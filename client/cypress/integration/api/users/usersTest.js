@@ -3,13 +3,23 @@ import {
     getUtilisateurConnecte,
     postProfilCreateur
 } from "../../../utils/api/createur"
-import { getUsers, getUserFromId, postNewUser } from "../../../utils/api/users"
+import {
+    getUsers,
+    getUserFromId,
+    postNewUser,
+    deleteUser,
+    postUserUpdate
+} from "../../../utils/api/users"
 import {
     loginAsCreateur,
     logout,
     login
 } from "../../../utils/api/authentification"
-import { neMarchePasSiPasConnecte } from "../../../utils/api/index"
+import {
+    neMarchePasSiPasConnecte,
+    erreurSiValeurTropLongue,
+    erreurSi
+} from "../../../utils/api/index"
 import { longString } from "../../../utils/functions"
 import reset_db from "../../../utils/reset_db"
 
@@ -54,41 +64,45 @@ describe("get user from id", () => {
 describe("create User", () => {
     beforeEach(() => reset_db())
 
-    it("Erreur si pas de username", () => {
-        postNewUser({ password: "abc", email: "a@b.fr" }, res => {
-            expect(res.body).to.have.property("username", "Pseudo requis")
-        })
-    })
+    erreurSi(
+        "pas de username",
+        cb => postNewUser({ password: "abc", email: "a@b.fr" }, cb),
+        { username: "Pseudo requis" }
+    )
 
-    it("Erreur si pas de password", () => {
-        postNewUser({ username: "abc", email: "a@b.fr" }, res => {
-            expect(res.body).to.have.property("password", "Mot de passe requis")
-        })
-    })
+    erreurSi(
+        "pas de password",
+        cb => postNewUser({ username: "abc", email: "a@b.fr" }, cb),
+        { password: "Mot de passe requis" }
+    )
 
-    it("Erreur si pas d'email", () => {
-        postNewUser({ username: "abc", password: "abc" }, res => {
-            expect(res.body).to.have.property("email", "Mail valide requis")
-        })
-    })
+    erreurSi(
+        "pas d'email",
+        cb => postNewUser({ password: "abc", password: "a@b.fr" }, cb),
+        { email: "Mail valide requis" }
+    )
 
-    it("Erreur si pas d'email valide", () => {
-        postNewUser({ username: "abc", password: "abc", email: "abc" }, res => {
-            expect(res.body).to.have.property("email", "Mail valide requis")
-        })
-    })
+    erreurSi(
+        "pas d'email valide",
+        cb =>
+            postNewUser(
+                { password: "abc", password: "a@b.fr", email: "abc" },
+                cb
+            ),
+        { email: "Mail valide requis" }
+    )
 
-    it("Erreurs pour valeurs trop longues", () => {
-        postNewUser({ username: longString(51) }, res => {
-            expect(res.body).to.have.property("username", "Trop long")
-        })
-        postNewUser({ password: longString(65) }, res => {
-            expect(res.body).to.have.property("password", "Trop long")
-        })
-        postNewUser({ email: longString(255) }, res => {
-            expect(res.body).to.have.property("email", "Trop long")
-        })
-    })
+    erreurSiValeurTropLongue("username", cb =>
+        postNewUser({ username: longString(51) }, cb)
+    )
+
+    erreurSiValeurTropLongue("password", cb =>
+        postNewUser({ password: longString(65) }, cb)
+    )
+
+    erreurSiValeurTropLongue("email", cb =>
+        postNewUser({ email: longString(255) }, cb)
+    )
 
     it("Peut créer un nouveau user", () => {
         postNewUser(
@@ -103,90 +117,104 @@ describe("create User", () => {
     })
 })
 
-/*
-describe("accéder au profil", () => {
-    it("Accède au profil du créateur sans son mot de passe", () => {
-        getCreateur(res => {
-            expect(res.body).to.eql(expectedCreateur)
-        })
-    })
+describe("delete user", () => {
+    beforeEach(() => reset_db())
 
-    it("ne peut pas renvoyer le profil du créateur si il n'est pas connecté", () => {
-        logout()
-        getUtilisateurConnecte(res => {
+    afterEach(() => logout())
+
+    neMarchePasSiPasConnecte(cb => deleteUser(1, cb))
+
+    it("Ne marche pas si pas connecté avec le bon profil", () => {
+        login({ username: "Admin", password: "Admin" })
+        deleteUser(2, res => {
             expect(res.body).to.be.false
         })
     })
 
-    it("peut renvoyer le profil du créateur si il est connecté", () => {
-        loginAsCreateur()
-        getUtilisateurConnecte(res => {
-            expect(res.body).to.eql(expectedCreateur)
-        })
-    })
-})
-
-describe("modifier le profil", () => {
-    beforeEach(() => reset_db())
-
-    after(() => reset_db())
-
-    neMarchePasSiPasConnecte(cb =>
-        postProfilCreateur(
-            { username: "Admin", password: "Admin", email: "a@b.fr" },
-            cb
-        )
-    )
-
-    it("ne modifie pas le mot de passe si pas dans la requête", () => {
-        loginAsCreateur()
-        postProfilCreateur({ username: "a", email: "abc@d.fr" }, res => {
-            expect(res.body).to.be.true
-        })
-        logout()
-        login({ username: "a", password: "Admin" }, res => {
-            expect(res.body).to.include("s:")
-        })
-    })
-
-    it("peut modifier le profil", () => {
-        loginAsCreateur()
-        postProfilCreateur(
-            { username: "paul", password: "abal", email: "truc@gmail.com" },
+    it("Peut supprimer un user", () => {
+        postNewUser(
+            { username: "abc", password: "abc", email: "abc@def.gh" },
             res => {
                 expect(res.body).to.be.true
             }
         )
-        logout()
-        getCreateur(res => {
-            expect(res.body).to.have.property("username", "paul")
-            expect(res.body).to.have.property("email", "truc@gmail.com")
+        login({ username: "abc", password: "abc" }, res => {
+            expect(res.body).to.include("s:")
+        })
+        getUserFromId(2, res => {
+            expect(res.body).to.have.property("username", "abc")
+        })
+        deleteUser(2, res => {
+            expect(res.body).to.be.true
+        })
+        getUserFromId(2, res => {
+            expect(res.body).to.be.false
+        })
+    })
+})
+
+describe("update user", () => {
+    beforeEach(() => {
+        reset_db()
+        loginAsCreateur()
+    })
+
+    afterEach(() => logout())
+
+    neMarchePasSiPasConnecte(cb => postUserUpdate(1, {}, cb))
+
+    it("Ne marche pas si pas connecté avec le bon profil", () => {
+        postUserUpdate(2, {}, res => {
+            expect(res.body).to.be.false
         })
     })
 
-    it("erreur si pas de mail/username", () => {
-        loginAsCreateur()
-        postProfilCreateur({ email: "truc" }, res => {
-            expect(res.body).to.have.property("username", "Pseudo requis")
-        })
-        postProfilCreateur({ username: "truc", password: "truc" }, res => {
-            expect(res.body).to.have.property("email", "Mail valide requis")
-        })
-    })
+    erreurSi(
+        "pas de username",
+        cb => postUserUpdate(1, { password: "abc" }, cb),
+        { username: "Pseudo requis" }
+    )
 
-    it("renvoie des erreurs en cas de chaines trop longues", () => {
-        loginAsCreateur()
-        postProfilCreateur({ username: longString(51) }, res => {
-            expect(res.body).to.have.property("username", "Trop long")
-        })
-        postProfilCreateur({ password: longString(65) }, res => {
-            expect(res.body).to.have.property("password", "Trop long")
-        })
-        postProfilCreateur({ email: longString(255) }, res => {
-            expect(res.body).to.have.property("email", "Trop long")
-        })
-        postProfilCreateur({ presentation: longString(513) }, res => {
-            expect(res.body).to.have.property("presentation", "Trop long")
+    erreurSi(
+        "pas d'email",
+        cb => postUserUpdate(1, { username: "abc", password: "abc" }, cb),
+        { email: "Mail valide requis" }
+    )
+
+    erreurSi(
+        "pas d'email valide",
+        cb => postUserUpdate(1, { username: "abc", email: "abc" }, cb),
+        { email: "Mail valide requis" }
+    )
+
+    erreurSiValeurTropLongue("username", cb =>
+        postUserUpdate(1, { username: longString(51) }, cb)
+    )
+
+    erreurSiValeurTropLongue("password", cb =>
+        postUserUpdate(1, { password: longString(65) }, cb)
+    )
+
+    erreurSiValeurTropLongue("email", cb =>
+        postUserUpdate(1, { email: longString(255) }, cb)
+    )
+
+    erreurSiValeurTropLongue("presentation", cb =>
+        postUserUpdate(1, { presentation: longString(513) }, cb)
+    )
+
+    it("Peut modifier un profil", () => {
+        postUserUpdate(
+            1,
+            { username: "a", email: "bb@cc.dd", presentation: "e" },
+            res => {
+                expect(res.body).to.be.true
+            }
+        )
+        getUserFromId(1, res => {
+            expect(res.body).to.have.property("username", "a")
+            expect(res.body).to.have.property("email", "bb@cc.dd")
+            expect(res.body).to.have.property("presentation", "e")
         })
     })
-})*/
+})

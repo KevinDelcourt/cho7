@@ -4,8 +4,11 @@ const {
     hasNoErrors,
     maxLenCheck,
     requiredCheck,
-    maxLenValidator
+    maxLenValidator,
+    isLoggedIn,
+    hasGoodId
 } = require("../../modules/validation")
+const { setBuilder, jsonToArray } = require("../../modules/queries")
 const { body, check, validationResult } = require("express-validator/check")
 
 const newUserValidator = [
@@ -16,6 +19,12 @@ const newUserValidator = [
         .withMessage("Mail valide requis")
 ]
 
+const userUpdateValidator = [
+    requiredCheck("username", "Pseudo requis"),
+    check("email")
+        .isEmail()
+        .withMessage("Mail valide requis")
+]
 module.exports = (app, connection) => {
     app.get("/users", (req, res) => {
         connection.query(
@@ -56,4 +65,56 @@ module.exports = (app, connection) => {
             }
         )
     })
+
+    app.delete("/users/:id", isLoggedIn, hasGoodId, (req, res) => {
+        connection.query(
+            "DELETE FROM users WHERE id = ?",
+            [req.params.id],
+            err => {
+                if (err) return res.send(err)
+                res.cookie("connect.sid", "", { expires: new Date() })
+                req.logout()
+                return res.send(true)
+            }
+        )
+    })
+
+    app.post(
+        "/users/:id",
+        isLoggedIn,
+        hasGoodId,
+        userUpdateValidator,
+        maxLenValidator(),
+        hasNoErrors,
+        (req, res) => {
+            updateData = {
+                username: req.body.username,
+                email: req.body.email
+            }
+
+            if (req.body.password) updateData.password = req.body.password
+
+            if (req.body.presentation || req.body.presentation === "")
+                updateData.presentation = req.body.presentation
+
+            if (req.file)
+                updateData.avatar =
+                    "avatar_" +
+                    req.params.id +
+                    "." +
+                    req.file.filename.split(".").pop()
+
+            let paramArray = jsonToArray(updateData)
+            paramArray.push(req.params.id)
+
+            connection.query(
+                "UPDATE users SET " + setBuilder(updateData) + " WHERE id = ?",
+                paramArray,
+                err => {
+                    if (err) return res.send(err)
+                    return res.send(true)
+                }
+            )
+        }
+    )
 }

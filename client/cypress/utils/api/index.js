@@ -1,5 +1,5 @@
 import getApiUrl from "../../../src/modules/apiURL"
-import { loginAsCreateur, logout } from "./authentification"
+import { logout } from "./authentification"
 
 export const getRequest = (url, cb) =>
     cy.request(getApiUrl() + url).then(res => {
@@ -9,6 +9,12 @@ export const getRequest = (url, cb) =>
 
 export const postRequest = (url, data, cb) =>
     cy.request("POST", getApiUrl() + url, data).then(res => {
+        expect(res.headers["content-type"]).to.include("application/json")
+        if (cb) cb(res)
+    })
+
+export const deleteRequest = (url, cb) =>
+    cy.request("DELETE", getApiUrl() + url).then(res => {
         expect(res.headers["content-type"]).to.include("application/json")
         if (cb) cb(res)
     })
@@ -30,4 +36,19 @@ export const neMarchePasSiPasConnecte = req => {
             expect(res.body).to.be.false
         })
     })
+}
+
+export const erreurSi = (testName, req, expected) => {
+    it("Erreur si: " + testName, () => {
+        req(res => {
+            for (let key in expected)
+                expect(res.body).to.have.property(key, expected[key])
+        })
+    })
+}
+
+export const erreurSiValeurTropLongue = (val, req) => {
+    let json = {}
+    json[val] = "Trop long"
+    erreurSi(val + " trop long", req, json)
 }
