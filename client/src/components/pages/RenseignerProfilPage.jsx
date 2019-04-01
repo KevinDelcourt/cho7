@@ -8,7 +8,6 @@ import { msgAction } from "../../modules/actionsAndReducers"
 import { connect } from "react-redux"
 import { bindActionCreators } from "redux"
 import { SubmissionError } from "redux-form"
-import theme from "./../../theme.json"
 
 class RenseignerProfilPage extends React.Component {
     state = {

@@ -1,9 +1,8 @@
-import styled from "styled-components";
-import React from 'react';
-import { login } from '../../modules/auth';
-import Button from "../atoms/Button/Button";
-import {Fragment, Component} from 'react';
-import theme from "./../../theme.json";
+import styled from "styled-components"
+import React from "react"
+import Button from "../atoms/Button/Button"
+import { Component } from "react"
+import theme from "./../../theme.json"
 import { Field, reduxForm } from "redux-form"
 import FieldConnection from "../atoms/FieldConnection"
 import { required } from "../../modules/validation"
@@ -52,7 +51,7 @@ class ConnectionForm extends Component {
                     bgColor={theme.color.brown2}
                 />
             </form>
-        );
+        )
     }
 }
 

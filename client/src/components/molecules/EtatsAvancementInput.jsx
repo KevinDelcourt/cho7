@@ -1,7 +1,7 @@
 import React from "react"
 import { Field } from "redux-form"
 import LabelInput from "./LabelInput"
-import Button from "../atoms/Button"
+import Button from "../atoms/Button/Button"
 import { required } from "../../modules/validation"
 
 const EtatsAvancementInput = ({ fields, lock }) => (
