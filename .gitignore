@@ -3,26 +3,26 @@
 /sonar-scanner
 /.scannerwork
 
-# dependencies
-/server/public/*
-!oui.mp3
-!800pouces.mp3
-!avatar.png
+
+/server/public/audio/*
+!/server/public/audio/oui.mp3
+!/server/public/audio/201mdi.mp3
+
+/server/public/images/*
+!/server/public/images/avatar_createur.png
+
 /server/node_modules
 /client/node_modules
 /.pnp
 .pnp.js
 
-# testing
 /coverage
 db-identifiants.json
-
-
-# production
+/client/cypress/videos/*
+/client/cypress/screenshots/*
 /client/build
 /server/build
 
-# misc
 .DS_Store
 .env.local
 .env.development.local
@@ -32,3 +32,4 @@ db-identifiants.json
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+node_modules

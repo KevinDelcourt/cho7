@@ -89,20 +89,16 @@ Description.add("LabelDescription", () => (
 )).add("FieldDescription", () => <FieldDescription />);
 
 const storyMainContainer = storiesOf("molecules", module);
-const child = [
-  <div style={{ backgroundColor: "white" }}>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-  </div>
-];
+const child = [<div style={{backgroundColor: "none"}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>];
 storyMainContainer.addDecorator(withKnobs);
 storyMainContainer.add("MainContainer", () => (
-  <MainContainer title={text("label du titre", "MonTitre")} children={child} />
-));
+	<MainContainer 
+	title={text("titre",'MonTitre')} 
+	bgColor={text("background-color",'yellow')}
+	borderRadius={text("border-radius",'30px')}
+	border={text("border",'dashed')}
+	children={child}/>
+))
 
 const storyLabelInputRange = storiesOf("molecules/LabelInputRange", module);
 storyLabelInputRange.add("LabelInputRange", () => <LabelInputRange />);

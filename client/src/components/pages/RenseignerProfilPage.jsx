@@ -1,92 +1,63 @@
-import React from 'react';
-import Avatar from './../molecules/Avatar';
-import LabelTextarea from './../molecules/LabelTextarea';
-import LabelInput from './../molecules/LabelInput';
-import MainContainer from './../molecules/MainContainer';
-import Template from './Template';
-import Button from '../atoms/Button/Button';
-import styled from 'styled-components';
-import { getUser } from '../../modules/auth';
-import { hasRole } from '../../modules/auth';
-import theme from "./../../theme.json";
-
-const Cadre = styled.div`
-	display: flex;
-	justify-content: space-around;
-	align-items: center;
-	padding: 7vh 4vw;
-	height: 70vh;
-`;
-
-const AvatarContainer = styled.div`
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	width : 20vw;
-	height: 45vh;
-`;
-
-const FormContainer = styled.div`
-	display: flex;
-	justify-content: space-around;
-	flex-direction: column;
-	height: 50vh;
-	min-width: 35vw;
-`;
-
-const RightColumn = styled.div`
-	display: flex;
-	height: 100%;
-	justify-content: space-between;
-	flex-direction: column;
-`;
+import React from "react"
+import MainContainer from "./../molecules/MainContainer"
+import Template from "./Template"
+import { getUser, postProfilCreateur } from "../../modules/api"
+import RenseignerProfilForm from "../organisms/RenseignerProfilForm"
+import { Redirect } from "react-router-dom"
+import { msgAction } from "../../modules/actionsAndReducers"
+import { connect } from "react-redux"
+import { bindActionCreators } from "redux"
+import { SubmissionError } from "redux-form"
+import theme from "./../../theme.json"
 
 class RenseignerProfilPage extends React.Component {
-	state={auth:false, loaded:false, user:{
-		username:"",
-		password:"",
-		email:"",
-		presentation:"",
-		avatar:""
-	}}
+    state = {
+        redirect: ""
+    }
 
-	async componentDidMount() {
-		document.title = "Modifier Profil";
-		this.setState({user: await getUser()})
-		this.setState({auth: await hasRole("CREATEUR")})
-        this.setState({loaded: true})
-	}
-	
-	render() {
-		if (this.state.auth)
-			return(
-				<Template>
-					<MainContainer title="Profil">
-						<form action="http://localhost:8180/renseignerprofil" method="post" enctype="multipart/form-data">
-							<Cadre>
-								<FormContainer>
-									<LabelInput name="username" defaultValue={this.state.user.username} label={"Pseudo :"} wInput="25" wLabel="10"/>
-									<LabelInput type="password" name="password" defaultValue={this.state.user.password} label={"Mot de passe :"} wInput="25" wLabel="10"/>
-									<LabelInput name="email" defaultValue={this.state.user.email} label={"Mail :"} wInput="25" wLabel="10"/>
-									<LabelTextarea name="presentation" defaultValue={this.state.user.presentation} label={"Description :"} row="7" col="50" onChange={(evt)=>this.setState({user:{username:this.state.user.username,password:this.state.user.password,email:this.state.user.email,avatar:this.state.user.avatar,presentation:evt.target.value}})}/>
-								</FormContainer>
-								<RightColumn>
-									<AvatarContainer >
-										<Avatar src={"http://localhost:8180/public/images/"+this.state.user.avatar}/>
-										<input type="file" name="avatar" />      
-									</AvatarContainer>
-									<Button type="submit" children="Modifier Profil" bgColor={theme.color.grey1}></Button>
-								</RightColumn>
-							</Cadre>
-						</form>
-					</MainContainer>
-				</Template>
-			)
-		
-		if (this.state.loaded)
-            window.location="/"
-            return <React.Fragment />
-	}
+    async componentDidMount() {
+        document.title = "Modifier Profil"
+        this.setState({ user: await getUser() })
+    }
+
+    onSubmit = async values => {
+        let formData = new FormData()
+        for (let obj in values) {
+            if (obj === "fichierAvatar") formData.append(obj, values[obj][0])
+            else formData.append(obj, values[obj])
+        }
+        let response = await postProfilCreateur(formData)
+        if (response === true) {
+            this.props.msgAction("Profil renseigné avec succès")
+            this.setState({ redirect: <Redirect to="/" /> })
+        } else {
+            this.props.msgAction("Erreur lors de la requête")
+            throw new SubmissionError({ ...response, err: true })
+        }
+    }
+
+    render = () => (
+        <Template>
+            <MainContainer title="Profil">
+                {this.state.user ? (
+                    <RenseignerProfilForm
+                        onSubmit={this.onSubmit}
+                        initialValues={this.state.user}
+                    />
+                ) : (
+                    ""
+                )}
+            </MainContainer>
+            {this.state.redirect}
+        </Template>
+    )
 }
 
-export default RenseignerProfilPage
+const mapDispatchToProps = dispatch => {
+    return bindActionCreators({ msgAction }, dispatch)
+}
+
+export default connect(
+    null,
+    mapDispatchToProps
+)(RenseignerProfilPage)

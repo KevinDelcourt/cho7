@@ -1,45 +1,57 @@
-const session  = require('express-session');
-const cookieParser = require('cookie-parser');
-const bodyParser = require('body-parser');
-const morgan = require('morgan');
-const express = require('express')
-const passport = require('passport');
-const flash    = require('connect-flash');
+const session = require("express-session")
+const cookieParser = require("cookie-parser")
+const bodyParser = require("body-parser")
+const morgan = require("morgan")
+const express = require("express")
+const passport = require("passport")
+const flash = require("connect-flash")
+const ip = require("ip")
+const app = express()
 
+app.use(morgan("dev"))
+app.use(cookieParser())
+app.use(bodyParser.json())
+app.use(
+    bodyParser.urlencoded({
+        extended: true
+    })
+)
 
-const app = express();
+app.use(
+    session({
+        secret: "a",
+        resave: true,
+        saveUninitialized: false
+    })
+)
+app.use(function(req, res, next) {
+    let referrer = "*"
+    if (req.get("referrer"))
+        referrer = "http://" + req.get("referrer").split("/")[2]
 
-app.use(morgan('dev')); 
-app.use(cookieParser()); 
-app.use(bodyParser.urlencoded({
-	extended: true
-}));
-app.use(bodyParser.json());
+    res.setHeader(
+        "Access-Control-Allow-Headers",
+        "X-Requested-With,content-type"
+    )
+    res.setHeader("Access-Control-Allow-Credentials", true)
+    res.setHeader("Access-Control-Allow-Origin", referrer)
+    res.setHeader(
+        "Access-Control-Allow-Methods",
+        "GET, POST, OPTIONS, PUT, PATCH, DELETE"
+    )
+    res.setHeader("Content-Type", "application/json")
+    next()
+})
+app.use(passport.initialize())
+app.use(passport.session())
+app.use(flash())
+app.use("/public", express.static(__dirname + "/public"))
 
-app.use(session({
-	secret: 'a',
-	resave: true,
-	saveUninitialized: false
- } )); 
- app.use(function (req, res, next) {
-    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-	res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-    res.setHeader('Access-Control-Allow-Credentials', true);
-    next();
-});
-app.use(passport.initialize());
-app.use(passport.session()); 
-app.use(flash()); 
-app.use('/public',express.static(__dirname + '/public'));
+require("./app/passport")(passport)
 
+require("./app/routes.js")(app, passport)
 
-require('./db/passport')(passport); 
+console.log("Server online!")
+console.log(ip.address() + ":8180")
 
-require('./app/routes.js')(app, passport); 
-
-
-console.log('Server online!');
-console.log('localhost:8180');
-
-app.listen(8180);
+app.listen(8180)
