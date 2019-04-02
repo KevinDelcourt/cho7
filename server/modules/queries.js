@@ -10,7 +10,6 @@ const jsonToArray = json => {
     for (let val in json) array.push(json[val])
     return array
 }
-
 module.exports = {
     updateCreateurQuery: (connexion, json, cb) => {
         connexion.query(

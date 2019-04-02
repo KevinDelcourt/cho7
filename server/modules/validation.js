@@ -4,7 +4,9 @@ const maxLenTab = {
     username: 50,
     password: 64,
     email: 254,
-    presentation: 512
+    presentation: 512,
+    titre: 50,
+    description: 2048
 }
 
 const responseFromValidatorError = error => {

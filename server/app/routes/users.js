@@ -1,31 +1,42 @@
 const {
-    responseFromValidatorError,
-    getErrors,
     hasNoErrors,
-    maxLenCheck,
     requiredCheck,
     maxLenValidator,
     isLoggedIn,
     hasGoodId
 } = require("../../modules/validation")
 const { setBuilder, jsonToArray } = require("../../modules/queries")
-const { body, check, validationResult } = require("express-validator/check")
+const { body, check } = require("express-validator/check")
+const multer = require("multer")
+const storageImage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, __dirname + "/../../public/images/")
+    },
+    filename: (req, file, cb) => {
+        cb(null, "avatar_createur." + file.originalname.split(".").pop())
+    }
+})
+let uploadImage = multer({ storage: storageImage })
 
 const newUserValidator = [
     requiredCheck("username", "Pseudo requis"),
     requiredCheck("password", "Mot de passe requis"),
-    check("email")
+    body("email")
         .isEmail()
         .withMessage("Mail valide requis")
 ]
 
 const userUpdateValidator = [
     requiredCheck("username", "Pseudo requis"),
-    check("email")
+    body("email")
         .isEmail()
         .withMessage("Mail valide requis")
 ]
 module.exports = (app, connection) => {
+    app.get("/user", isLoggedIn, (req, res) => {
+        res.send(req.user)
+    })
+
     app.get("/users", (req, res) => {
         connection.query(
             "SELECT id,username,email,presentation,avatar,role FROM users",
@@ -83,6 +94,7 @@ module.exports = (app, connection) => {
         "/users/:id",
         isLoggedIn,
         hasGoodId,
+        uploadImage.single("fichierAvatar"),
         userUpdateValidator,
         maxLenValidator(),
         hasNoErrors,
@@ -99,10 +111,7 @@ module.exports = (app, connection) => {
 
             if (req.file)
                 updateData.avatar =
-                    "avatar_" +
-                    req.params.id +
-                    "." +
-                    req.file.filename.split(".").pop()
+                    "avatar_createur." + req.file.filename.split(".").pop()
 
             let paramArray = jsonToArray(updateData)
             paramArray.push(req.params.id)
