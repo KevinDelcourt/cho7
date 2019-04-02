@@ -1,6 +1,12 @@
+const { isLoggedIn } = require("../../modules/validation")
+
 const sign = require("cookie-signature").sign
 
 module.exports = (app, passport) => {
+    app.get("/has_role/:role", isLoggedIn, (req, res) => {
+        res.send(req.user.role === "ROLE_" + req.params.role.toUpperCase())
+    })
+
     app.post(
         "/login",
         passport.authenticate("local", { failureRedirect: "/denied" }),

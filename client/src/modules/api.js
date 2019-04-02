@@ -30,6 +30,14 @@ const defaultPost = (url, data) =>
         })
     )
 
+const defaultDelete = url =>
+    axiosDefault(() =>
+        axios(baseUrl + url, {
+            method: "delete",
+            withCredentials: true
+        })
+    )
+
 export const login = (username, password) =>
     axiosDefault(
         () =>
@@ -56,7 +64,7 @@ export const hasRole = role =>
 
 export const getUser = () => defaultGet("/user/", { withCredentials: true })
 
-export const getCreateur = () => defaultGet("/createur")
+export const getCreateur = () => defaultGet("/users/1")
 
 export const getEtatsCreation = idCreation =>
     defaultGet("/etatsCreation/" + idCreation)
@@ -78,8 +86,7 @@ export const getAvencement = () =>
         }
     )
 
-export const postProfilCreateur = formData =>
-    defaultPost("/renseignerprofil", formData)
+export const postProfilCreateur = formData => defaultPost("/users/1", formData)
 
 export const deleteCreation = id => defaultPost("/suprCreation", { id: id })
 
