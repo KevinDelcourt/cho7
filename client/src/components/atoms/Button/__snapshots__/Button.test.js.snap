@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button background-color renders correctly 1`] = `
+.c0 {
+  background-color: rgba(145,109,67,0.35);
+  border: none;
+  border-radius: 5px;
+  padding: 5px 15px;
+  height: 35px;
+  font-size: 18px;
+  color: black;
+}
+
+<button
+  className="c0"
+/>
+`;
+
+exports[`Button border renders correctly 1`] = `
+.c0 {
+  border: none;
+  border-radius: 5px;
+  padding: 5px 15px;
+  height: 35px;
+  font-size: 18px;
+  color: black;
+}
+
+<button
+  className="c0"
+/>
+`;
+
+exports[`Button color renders correctly 1`] = `
+.c0 {
+  border: none;
+  border-radius: 5px;
+  padding: 5px 15px;
+  height: 35px;
+  font-size: 18px;
+  color: #fff;
+}
+
+<button
+  className="c0"
+  color="#fff"
+/>
+`;

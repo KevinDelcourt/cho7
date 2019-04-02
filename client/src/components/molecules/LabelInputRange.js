@@ -1,6 +1,6 @@
-import React from "react"
-import LabelBase from "../atoms/LabelBase"
-import styled from "styled-components"
+import React from 'react';
+import Label from '../atoms/Label';
+import styled from "styled-components";
 
 const StyleDivContainer = styled.div`
     display: inline-block;
@@ -10,7 +10,7 @@ class LabelInputRange extends React.Component {
     render() {
         return (
             <StyleDivContainer>
-                <LabelBase children={this.props.label} />
+                <Label children={this.props.label} />
                 <input
                     type="hidden"
                     name={"libelle[" + this.props.index + "]"}

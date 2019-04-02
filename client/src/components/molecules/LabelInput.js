@@ -1,7 +1,7 @@
-import styled from "styled-components"
-import InputBase from "./../atoms/InputBase"
-import LabelBase from "./../atoms/LabelBase"
-import React from "react"
+import styled from 'styled-components'
+import InputBase from './../atoms/InputBase'
+import Label from '../atoms/Label'
+import React from 'react'
 
 const LabelInputContainer = styled.div`
     display: grid;
@@ -14,7 +14,7 @@ class LabelInput extends React.Component {
     render() {
         return (
             <LabelInputContainer>
-                <LabelBase children={this.props.label} w={this.props.wLabel} />
+                <Label children={this.props.label} w={this.props.wLabel} />
 
                 <InputBase
                     {...this.props.input}

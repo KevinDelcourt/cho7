@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import React from "react"
-import Button from "../atoms/Button"
+import Button from "../atoms/Button/Button"
 import { Component } from "react"
 import theme from "./../../theme.json"
 import { Field, reduxForm } from "redux-form"
@@ -48,7 +48,7 @@ class ConnectionForm extends Component {
                 </AuthentificationContainer>
                 <StyledButton
                     children="Se connecter"
-                    bgColor={theme.colors.connectionButton}
+                    bgColor={theme.color.brown2}
                 />
             </form>
         )

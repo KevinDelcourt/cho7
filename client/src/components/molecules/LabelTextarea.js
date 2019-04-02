@@ -1,7 +1,7 @@
-import styled from "styled-components"
-import LabelBase from "./../atoms/LabelBase"
-import TextareaBase from "./../atoms/TextareaBase"
-import React from "react"
+import styled from 'styled-components';
+import Label from '../atoms/Label';
+import TextareaBase from './../atoms/TextareaBase';
+import React from 'react';
 
 const LabelTextareaContainer = styled.div`
     display: grid;
@@ -14,7 +14,7 @@ class LabelTextarea extends React.Component {
     render() {
         return (
             <LabelTextareaContainer>
-                <LabelBase children={this.props.label} />
+                <Label children={this.props.label} />
                 <TextareaBase
                     {...this.props.input}
                     rows={this.props.row}

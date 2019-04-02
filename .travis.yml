@@ -11,6 +11,12 @@ stages:
 jobs:
   include:
     - stage: test
+      name: "Tests unitaires"
+      script:
+        - cd client
+        - yarn
+        - yarn unit-test
+    - stage: test
       name: "Tests d'intégration/d'API"
       services: mysql
       script:

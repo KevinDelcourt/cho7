@@ -1,8 +1,9 @@
+import Button from '../atoms/Button/Button';
+import LabelTextarea from "../molecules/LabelTextarea";
 import styled from "styled-components"
 import React from "react"
 import LabelInput from "../molecules/LabelInput"
 import LabelInputRange from "../molecules/LabelInputRange"
-import Button from "../atoms/Button"
 import LabelTextarea from "../molecules/LabelTextarea"
 import { getEtatsCreation } from "../../modules/api"
 import theme from "./../../theme.json"
@@ -20,8 +21,8 @@ const PublishButtonContainer = styled.div`
 `
 
 const StyledButton = styled(Button)`
-    background-color: ${theme.colors.submitButton};
-`
+	background-color:${theme.color.grey1}
+`;
 
 class UpdateCreationForm extends React.Component {
     state = { etats: [] }
