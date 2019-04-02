@@ -1,8 +1,8 @@
-import styled from 'styled-components';
+import styled from "styled-components"
 
 const Button = styled.button`
-    background-color:${props => props.bgColor};
-    border:${props => props.border || "none"};
+    background-color: ${props => props.bgColor};
+    border: ${props => props.border || "none"};
     border-radius: 5px;
     padding: 5px 15px;
     height: 35px;
@@ -10,4 +10,4 @@ const Button = styled.button`
     color:${props => props.color || "black"}
 `;
 
-export default Button;
+export default Button
