@@ -11,6 +11,12 @@ stages:
 jobs:
   include:
     - stage: test
+      name: "Tests unitaires"
+      script:
+        - cd client
+        - yarn
+        - yarn unit-test
+    - stage: test
       name: "Tests d'intégration/d'API"
       services: mysql
       script:
@@ -30,12 +36,6 @@ jobs:
         token:
           secure: ${SONAR_TOKEN}
       script: sonar-scanner
-    - stage: test
-      name: "Tests unitaires"
-      script:
-        - cd client
-        - yarn
-        - yarn test-coverage
     - stage: deploy
       name: "Docker Deploy Front"
       script:
