@@ -2,7 +2,7 @@ import styled from "styled-components"
 import React from "react"
 import LabelInput from "../molecules/LabelInput"
 import AudioInput from "../molecules/AudioInput"
-import Button from "../atoms/Button/Button";
+import Button from "../atoms/Button/Button"
 import LabelTextarea from "../molecules/LabelTextarea"
 import theme from "./../../theme.json"
 import { Field, reduxForm, FieldArray } from "redux-form"
@@ -61,7 +61,7 @@ class UploadForm extends React.Component {
                     <StyledButton
                         type="submit"
                         children="Publier"
-                        bgColor={theme.colors.submitButton}
+                        bgColor={theme.color.grey1}
                     />
                 </StyledUploadForm>
             </MainContainer>
