@@ -8,17 +8,17 @@ const connection = mysql.createConnection(credentials)
 
 const request = fs.readFileSync(__dirname + "/mysql/init_db.sql").toString()
 
-let sql = null
-if (process.argv.length > 2) sql = process.argv[2]
-
-connection.query(request, (err, result) => {
-    if (err) throw err
-    console.log(result)
-    if (sql !== null)
-        connection.query(sql, (err, result) => {
+const exec = sql =>
+    connection.query(request, (err, result) => {
+        if (err) throw err
+        console.log(result)
+        connexction.query(sql, (err, result) => {
             if (err) throw err
             console.log(result)
             connection.destroy()
         })
-    else connection.destroy()
-})
+    })
+
+module.exports = {
+    exec
+}

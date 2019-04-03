@@ -21,11 +21,21 @@ module.exports = (app, connection) => {
         )
     })
 
+    app.get("/creations/done/plusecoutes", (req, res) => {
+        connection.query(
+            "SELECT * FROM creation WHERE nomfichier IS NOT NULL ORDER BY nbecoute DESC",
+            (err, rows) => {
+                if (err) return res.send(err)
+                res.send(rows)
+            }
+        )
+    })
+
     app.get("/creations/done", (req, res) => {
         connection.query(
             "SELECT * FROM creation WHERE nomfichier IS NOT NULL ORDER BY id DESC",
             (err, rows) => {
-                if (err) res.send(err)
+                if (err) return res.send(err)
                 res.send(rows)
             }
         )
@@ -35,7 +45,7 @@ module.exports = (app, connection) => {
         connection.query(
             "SELECT * FROM creation WHERE nomfichier IS NULL ORDER BY id DESC",
             (err, rows) => {
-                if (err) res.send(err)
+                if (err) return res.send(err)
                 res.send(rows)
             }
         )
@@ -45,7 +55,7 @@ module.exports = (app, connection) => {
         connection.query(
             "SELECT creation.id, creation.titre, creation.description, etat_avancement.libelle,etat_avancement.valeuravancement, creation.miseajour FROM creation,etat_avancement WHERE etat_avancement.idcreation=creation.id AND creation.nomfichier is null",
             (err, rows) => {
-                if (err) res.send(err)
+                if (err) return res.send(err)
 
                 res.send(rows)
             }

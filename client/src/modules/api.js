@@ -30,7 +30,7 @@ const defaultPost = (url, data) =>
         })
     )
 
-const defaultDelete = url =>
+export const defaultDelete = url =>
     axiosDefault(() =>
         axios(baseUrl + url, {
             method: "delete",
@@ -72,6 +72,9 @@ export const getEtatsCreation = idCreation =>
 export const getCreation = id => defaultGet("/creation/" + id)
 
 export const getCreations = () => defaultGet("/creations/done")
+
+export const getMeilleuresCreations = () =>
+    defaultGet("/creations/done/plusecoutes")
 
 export const getCreationsInProgress = () => defaultGet("/creations/inprogress")
 
