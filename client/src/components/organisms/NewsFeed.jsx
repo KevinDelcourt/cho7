@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import React from "react"
-import { getCreations } from "../../modules/api"
+import { getCreations, getMeilleuresCreations } from "../../modules/api"
 import Creation from "../molecules/Creation"
 import MainContainer from "../molecules/MainContainer"
 import SocialNetwork from "../molecules/SocialNetwork"
@@ -20,18 +20,33 @@ const Container = styled.div`
 `
 
 class NewsFeed extends React.Component {
-    state = { creations: [] }
+    state = { nouvellesCreations: [], meilleuresCreations: [] }
 
     async componentDidMount() {
-        this.setState({ creations: await getCreations() })
+        this.setState({
+            nouvellesCreations: await getCreations(),
+            meilleuresCreations: await getMeilleuresCreations()
+        })
     }
 
     render() {
         return (
             <Container>
-                <h2>Accueil</h2>
+                <h2>Dernières créations</h2>
                 <SubContainer>
-                    {this.state.creations.map((c, index) => (
+                    {this.state.nouvellesCreations.map((c, index) => (
+                        <MainContainer title={c.titre} key={index}>
+                            <Creation
+                                path={c.nomfichier}
+                                description={c.description}
+                                valueId={c.id}
+                            />
+                        </MainContainer>
+                    ))}
+                </SubContainer>
+                <h2>Créations les plus écoutées</h2>
+                <SubContainer>
+                    {this.state.meilleuresCreations.map((c, index) => (
                         <MainContainer title={c.titre} key={index}>
                             <Creation
                                 path={c.nomfichier}
