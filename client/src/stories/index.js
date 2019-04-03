@@ -3,7 +3,6 @@ import { storiesOf } from "@storybook/react"
 import { withKnobs, text, number } from "@storybook/addon-knobs"
 import SiteTitle from "../components/atoms/SiteTitle"
 import Button from "../components/atoms/Button/Button"
-import LabelDescription from "../components/atoms/LabelDescription"
 import FieldDescription from "../components/atoms/FieldDescription"
 import UploadForm from "../components/organisms/UploadForm"
 import BarreMenu from "../components/molecules/BarreMenu"
@@ -31,6 +30,19 @@ storyButton.add("Button", () => (
     />
 ))
 
+const storyLabel = storiesOf("atoms", module)
+storyLabel.addDecorator(withKnobs)
+storyLabel.add("Label", () => (
+    <Label
+        font={text("Font-family", "Ruluko")}
+        children={text("Label children", "Intitulé")}
+    />
+))
+
+const Description = storiesOf("atoms", module)
+Description.addDecorator(withKnobs)
+Description.add("FieldDescription", () => <FieldDescription />)
+
 const storyBarreMenu = storiesOf("molecules", module)
 storyBarreMenu.addDecorator(withKnobs)
 storyBarreMenu.add("Barre de Menu", () => (
@@ -51,15 +63,6 @@ storiesOf("organisms", module)
 
 const storyInputBase = storiesOf("atoms", module)
 storyInputBase.add("Input de base", () => <InputBase />)
-
-const storyLabel = storiesOf("atoms", module)
-storyLabel.addDecorator(withKnobs)
-storyLabel.add("Label", () => (
-    <Label
-        font={text("Font-family", "Ruluko")}
-        children={text("Label children", "Intitulé")}
-    />
-))
 
 const storyLabelInput = storiesOf("molecules", module)
 storyLabelInput.addDecorator(withKnobs)
@@ -82,12 +85,6 @@ storyLabelTextarea.add("LabelTextarea", () => (
         col={number("col", 5)}
     />
 ))
-
-const Description = storiesOf("atoms", module)
-Description.addDecorator(withKnobs)
-Description.add("LabelDescription", () => (
-    <LabelDescription children={text("Contenu", "text")} />
-)).add("FieldDescription", () => <FieldDescription />)
 
 const storyMainContainer = storiesOf("molecules", module)
 const child = [
