@@ -71,6 +71,15 @@ export const getCreation = (id) => axios.get('http://localhost:8180/creation/' +
     return false
 })
 
+export const deleteCreation = (id) => axios.get('http://localhost:8180/deleteCreation/' + id)
+.then((response)=>{
+    console.log(response)
+    return response.data
+}).catch((error)=>{
+    console.log(error)
+    return false
+})
+
 export const getCreations = () => axios.get('http://localhost:8180/creations')
 .then((response)=>{
     console.log(response.data)

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import { hasRole } from '../../modules/auth';
+import { deleteCreation } from '../../modules/auth';
 
 const Wrapper = styled.div`
 	margin: 10px 0;
@@ -11,39 +12,44 @@ const Wrapper = styled.div`
 	font-family: 'Ruluko', Arial, Sans-serif;
 `;
 
-const Suprime =styled.div`
+const Supprime =styled.div`
 	display: flex;
 	justify-content: flex-end;
 `;
 
 export default class Creation extends Component {
-	state={
-		auth:false
+	state = {
+		auth: false
 	}
 
 	async componentDidMount() {
 		this.setState({auth:await hasRole("CREATEUR")})
-	}    
+	}
+
+	async handleDeleteClick(e, id) {
+		e.preventDefault();
+		if (await deleteCreation(id))
+			window.location.reload()
+	}
 	 
 	render() {
 		const path = "http://localhost:8180/public/audio/" + this.props.path;
 
 		if (this.state.auth) {
 			return (
-				<form action="http://localhost:8180/suprCreation" method="post" enctype="multipart/form-data">
+				<React.Fragment>
 					<audio controls>
 						<source src={path} type="audio/mpeg" />
 					</audio>
 
 					<Wrapper>
 						<div>{this.props.description}</div>
-						<Suprime>
+						<Supprime>
 							<a href={"http://localhost:3000/updateCreation/audio/" + this.props.valueId}>Modifier</a>
-							<button type="submit" class="far fa-times-circle fa-2x" ></button>
-							<input type="hidden" name="idCreation" value={this.props.valueId}/>
-						</Suprime>
+							<button class="far fa-times-circle fa-2x" onClick={(e) => this.handleDeleteClick(e, this.props.valueId)}></button>
+						</Supprime>
 					</Wrapper>
-				</form>
+				</React.Fragment>
 			);
 		} else {
 			return (

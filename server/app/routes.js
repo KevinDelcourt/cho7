@@ -92,40 +92,23 @@ module.exports = (app, passport) => {
 			if (req.file) {
 				connection.query('INSERT INTO creation (nomfichier, titre, description) VALUES (?, ?, ?)', [req.file.originalname, titre, desc], (err, rows) => {
 					if(err)
-						res.redirect("http://localhost:3000/newCreation?err=1")
-
-					// Si au moins 1 état d'avancement renseigné
-					if(req.body.libelle) {
-						req.body.libelle.map((l, index) => {
-							connection.query('INSERT INTO etat_avancement (libelle, valeuravancement, idcreation) VALUES (?, ?, ?)',[l, req.body.valeur[index], rows.insertId], (err, rows) => {
-								if(err)
-									res.redirect("http://localhost:3000/newCreation?err=1")
-							})
-						})
-					} else {
-						res.redirect("http://localhost:3000/creations")
-					}
+						return res.redirect("http://localhost:3000/newCreation?err=1")
 				})
 			} else {
 				connection.query('INSERT INTO creation (titre, description) VALUES (?,?)', [titre, desc], (err, rows) => {
 					if(err)
-						res.redirect("http://localhost:3000/newCreation?err=1")
+						return res.redirect("http://localhost:3000/newCreation?err=1")
 
 					// Si au moins 1 état d'avancement renseigné
 					if(req.body.libelle) {
 						req.body.libelle.map((l, index) => {
-							connection.query('INSERT INTO etat_avancement (libelle, valeuravancement, idcreation) VALUES (?, ?, ?)',[l, req.body.valeur[index], rows.insertId], (err, rows) => {
-								if(err)
-									res.redirect("http://localhost:3000/newCreation?err=1")
-							})
+							connection.query('INSERT INTO etat_avancement (libelle, valeuravancement, idcreation) VALUES (?, ?, ?)',[l, req.body.valeur[index], rows.insertId], (err, rows) => {})
 						})
-					} else {
-						res.redirect("http://localhost:3000/creations")
 					}
 				})
 			}
 			
-			res.redirect("http://localhost:3000/creations")
+			return res.redirect("http://localhost:3000/creations")
 		}
 	})
 
@@ -160,28 +143,24 @@ module.exports = (app, passport) => {
 
 	/* SUPPRIMER CREATION */
 
-	app.post('/suprCreation',uploadAudio.none(),(req,res)=>{
-		let pathFinFichier;
-		//avant recupere les titre a suprimer dans la bdd
-		console.log(req.body)
-		console.log("okokookokokokokokokokokokookokookokokokokoko");
-		// connection.query('SELECT nomfichier FROM creation WHERE id=?', [req.body.idCreation],(err,rows)=>{
-
-		// 	if(err)
-		// 		res.redirect("http://localhost:3000?err=1")
-				
-			connection.query('DELETE FROM creation WHERE id=?',[req.body.idCreation],(err,rows)=>{
+	app.get('/deleteCreation/:id', uploadAudio.none(), (req, res) => {
+		const idCreation = req.params.id;
+		//let pathFinFichier;
+		// Avant recupere les titre a suprimer dans la bdd
+		// connection.query('SELECT nomfichier FROM creation WHERE id=?', [req.body.idCreation],(err,rows)=>{});
+		
+		if (/^(0|[1-9]\d*)$/.test(idCreation)) {
+			connection.query('DELETE FROM creation WHERE id = ?', [idCreation], (err, rows) => {
 				/* pathFinFichier= rows[0].nomfichier;
 				console(rows[0].nomfichier);
 				let pathComplet=  __dirname + '/../public/audio/'+pathFinFichier; */
 				// console.log(pathComplet);
 				// fs.unlinkSync(pathComplet)
-				res.redirect("http://localhost:3000/");
-				
-				})
-				
-				});	
-			// });
+			})
+		}
+
+		return res.send(true);
+	});
 
 
 	app.post('/renseignerprofil',uploadImage.single('avatar'), (req, res) => {
