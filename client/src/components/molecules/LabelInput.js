@@ -10,6 +10,7 @@ const Input = styled.input`
 const FieldContainer = styled.div`
     display: grid;
     width: 100%;
+    margin-bottom: 7px;
 `
 
 const LabelInput = props => (

@@ -34,6 +34,7 @@ storyLabel.addDecorator(withKnobs)
 storyLabel.add("Label", () => (
     <Label
         font={text("Font-family", "Ruluko")}
+        color={text("Font-color", "red")}
         children={text("Label children", "Intitulé")}
     />
 ))
