@@ -1,6 +1,6 @@
-import React from 'react';
-import Label from '../atoms/Label';
-import styled from "styled-components";
+import React from "react"
+import Label from "../atoms/Label/Label"
+import styled from "styled-components"
 
 const StyleDivContainer = styled.div`
     display: inline-block;
