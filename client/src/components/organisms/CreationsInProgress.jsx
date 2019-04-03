@@ -1,32 +1,39 @@
-import React from 'react';
-import { getCreationsInProgress } from '../../modules/auth';
-import MainContainer from '../molecules/MainContainer';
+import React from "react"
+import { getCreationsInProgress } from "../../modules/api"
+import MainContainer from "../molecules/MainContainer"
+import { Link } from "react-router-dom"
 
-class CreationsInProgress extends React.Component{
-    state = {creations: []}
+class CreationsInProgress extends React.Component {
+    state = { creations: [] }
 
     async componentDidMount() {
-        this.setState({creations: await getCreationsInProgress()})
+        this.setState({ creations: await getCreationsInProgress() })
     }
 
-    render(){
-        return(
+    render() {
+        return (
             <MainContainer title="Mes créations en cours">
                 <table>
-                    <tr>
-                        <th>Titre</th>
-                        <th></th>
-                    </tr>
-                    {this.state.creations.map((c) =>
+                    <tbody>
                         <tr>
-                            <td>{c.titre}</td>
-                            <td><a href={"/updateCreation/" + c.id}>Modifier</a></td>
+                            <th>Titre</th>
+                            <th />
                         </tr>
-                    )}
+                        {this.state.creations.map((c, index) => (
+                            <tr key={index}>
+                                <td>{c.titre}</td>
+                                <td>
+                                    <Link to={"/updateCreation/" + c.id}>
+                                        Modifier
+                                    </Link>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
                 </table>
             </MainContainer>
         )
     }
 }
 
-export default CreationsInProgress;
+export default CreationsInProgress
