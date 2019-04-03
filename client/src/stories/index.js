@@ -3,14 +3,13 @@ import { storiesOf } from "@storybook/react"
 import { withKnobs, text, number } from "@storybook/addon-knobs"
 import SiteTitle from "../components/atoms/SiteTitle"
 import Button from "../components/atoms/Button/Button"
-import FieldDescription from "../components/atoms/FieldDescription"
+import Label from "../components/atoms/Label/Label"
+import LabelInput from "../components/molecules/LabelInput"
 import UploadForm from "../components/organisms/UploadForm"
 import BarreMenu from "../components/molecules/BarreMenu"
 import { BrowserRouter as Router } from "react-router-dom"
 import FooterTemplate from "../components/organisms/FooterTemplate"
 import InputBase from "../components/atoms/InputBase"
-import Label from "../components/atoms/Label/Label"
-import LabelInput from "../components/molecules/LabelInput"
 import TextareaBase from "../components/atoms/TextareaBase"
 import LabelTextarea from "../components/molecules/LabelTextarea"
 import MainContainer from "../components/molecules/MainContainer"
@@ -39,9 +38,14 @@ storyLabel.add("Label", () => (
     />
 ))
 
-const Description = storiesOf("atoms", module)
-Description.addDecorator(withKnobs)
-Description.add("FieldDescription", () => <FieldDescription />)
+const storyLabelInput = storiesOf("molecules", module)
+storyLabelInput.addDecorator(withKnobs)
+storyLabelInput.add("Label Input", () => (
+    <LabelInput
+        label={text("Label", "myLabel")}
+        input={text("Input", "myInput")}
+    />
+))
 
 const storyBarreMenu = storiesOf("molecules", module)
 storyBarreMenu.addDecorator(withKnobs)
@@ -63,12 +67,6 @@ storiesOf("organisms", module)
 
 const storyInputBase = storiesOf("atoms", module)
 storyInputBase.add("Input de base", () => <InputBase />)
-
-const storyLabelInput = storiesOf("molecules", module)
-storyLabelInput.addDecorator(withKnobs)
-storyLabelInput.add("Label Input", () => (
-    <LabelInput label={text("Label", "myLabel")} input={text("Input", "")} />
-))
 
 const storyTextareaBase = storiesOf("atoms", module)
 storyTextareaBase.addDecorator(withKnobs)
