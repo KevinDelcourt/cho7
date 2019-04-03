@@ -1,54 +1,72 @@
-import React from 'react';
-import styled from "styled-components";
-import logo from './../../assets/images/logo.png';
-import Logo from '../atoms/Logo';
-import ConnectionForm from './../organisms/ConnectionForm';
-import SiteTitle from '../atoms/SiteTitle';
-import { hasRole } from '../../modules/auth';
-import { Link } from 'react-router-dom';
+import React from "react"
+import styled from "styled-components"
+import logo from "./../../assets/images/logo.png"
+import Logo from "../atoms/Logo"
+import ConnectionForm from "./../organisms/ConnectionForm"
+import SiteTitle from "../atoms/SiteTitle"
+import { Link, Redirect } from "react-router-dom"
+import { SubmissionError } from "redux-form"
+import { login } from "../../modules/api"
+import { connect } from "react-redux"
+import { bindActionCreators } from "redux"
+import { userLoginAction } from "../../modules/actionsAndReducers"
 
 const ConnectionFormContainer = styled.div`
     width: 28vw;
     margin-left: auto;
     margin-right: auto;
     padding: 6vh 4vw;
-    background: #EAEAEA;
+    background: #eaeaea;
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
-`;
+`
 
 const ConnectionHeader = styled.div`
     width: 100vw;
     margin-top: 5vh;
     display: flex;
     justify-content: space-around;
-`;
+`
 
 class ConnectionPage extends React.Component {
-    state={auth:false}
-
+    state = {}
     async componentDidMount() {
-        document.title = "Connexion";
-        this.setState({auth:await hasRole("CREATEUR")})
+        document.title = "Connexion"
     }
 
-    render(){
-        if(this.state.auth)
-            window.location="/"
-            
-        return (
-            <div>
-                <Link to="/" title="Accueil">
-                    <ConnectionHeader>
-                        <Logo src={logo} alt="logo" />
-                        <SiteTitle children="La Compagnie de l ' Aventure" />
-                    </ConnectionHeader>
-                </Link>
-                <ConnectionFormContainer>   
-                    <ConnectionForm />
-                </ConnectionFormContainer>
-            </div>
-        )
+    submit = async values => {
+        if ((await login(values.username, values.password)) === true) {
+            this.setState({ redirect: <Redirect to="/" /> }, () => {
+                this.props.userLoginAction(true)
+            })
+        } else {
+            throw new SubmissionError({
+                username: "Erreur dans le login ou mot de passe",
+                password: "Erreur dans le login ou mot de passe"
+            })
+        }
     }
+
+    render = () => (
+        <div>
+            <Link to="/" title="Accueil">
+                <ConnectionHeader>
+                    <Logo src={logo} alt="logo" />
+                    <SiteTitle children="La Compagnie de l ' Aventure" />
+                </ConnectionHeader>
+            </Link>
+            <ConnectionFormContainer>
+                <ConnectionForm onSubmit={this.submit} />
+            </ConnectionFormContainer>
+            {this.state.redirect}
+        </div>
+    )
 }
 
-export default ConnectionPage;
+const mapDispatchToProps = dispatch => {
+    return bindActionCreators({ userLoginAction }, dispatch)
+}
+
+export default connect(
+    null,
+    mapDispatchToProps
+)(ConnectionPage)
