@@ -3,6 +3,7 @@ import React from "react"
 import { getCreations } from "../../modules/api"
 import Creation from "../molecules/Creation"
 import MainContainer from "../molecules/MainContainer"
+import SocialNetwork from "../molecules/SocialNetwork"
 
 const SubContainer = styled.div`
     display: grid;
@@ -37,9 +38,11 @@ class NewsFeed extends React.Component {
                                 description={c.description}
                                 valueId={c.id}
                             />
-                        </MainContainer>
+                             <SocialNetwork/>
+                        </MainContainer>                        
                     ))}
                 </SubContainer>
+               
             </Container>
         )
     }
