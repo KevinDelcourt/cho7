@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/stories/index.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="..\..\prettify.css" />
+    <link rel="stylesheet" href="..\..\base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(..\..\sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="..\..\index.html">All files</a> / <a href="index.html">src/stories</a> index.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>0/67</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/0</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/15</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>0/64</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108</td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >import React from "react";</span>
+<span class="cstat-no" title="statement not covered" >import { storiesOf } from "@storybook/react";</span>
+<span class="cstat-no" title="statement not covered" >import { withKnobs, text, number } from "@storybook/addon-knobs";</span>
+<span class="cstat-no" title="statement not covered" >import SiteTitle from "../components/atoms/SiteTitle";</span>
+<span class="cstat-no" title="statement not covered" >import Button from "../components/atoms/Button/Button";</span>
+<span class="cstat-no" title="statement not covered" >import LabelDescription from "../components/atoms/LabelDescription";</span>
+<span class="cstat-no" title="statement not covered" >import FieldDescription from "../components/atoms/FieldDescription";</span>
+<span class="cstat-no" title="statement not covered" >import UploadForm from "../components/organisms/UploadForm";</span>
+<span class="cstat-no" title="statement not covered" >import BarreMenu from "../components/molecules/BarreMenu";</span>
+<span class="cstat-no" title="statement not covered" >import { BrowserRouter as Router } from "react-router-dom";</span>
+<span class="cstat-no" title="statement not covered" >import FooterTemplate from "../components/organisms/FooterTemplate";</span>
+<span class="cstat-no" title="statement not covered" >import InputBase from "../components/atoms/InputBase";</span>
+<span class="cstat-no" title="statement not covered" >import Label from "../components/atoms/Label";</span>
+<span class="cstat-no" title="statement not covered" >import LabelInput from "../components/molecules/LabelInput";</span>
+<span class="cstat-no" title="statement not covered" >import TextareaBase from "../components/atoms/TextareaBase";</span>
+<span class="cstat-no" title="statement not covered" >import LabelTextarea from "../components/molecules/LabelTextarea";</span>
+<span class="cstat-no" title="statement not covered" >import MainContainer from "../components/molecules/MainContainer";</span>
+<span class="cstat-no" title="statement not covered" >import LabelInputRange from "./../components/molecules/LabelInputRange";</span>
+<span class="cstat-no" title="statement not covered" >import AddButton from "./../components/atoms/AddButton";</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >storiesOf("atoms", module).add("Titre", <span class="fstat-no" title="function not covered" >() =&gt; (</span></span>
+<span class="cstat-no" title="statement not covered" >  &lt;SiteTitle children="Un titre" /&gt;</span>
+));
+&nbsp;
+const storyButton = <span class="cstat-no" title="statement not covered" >storiesOf("atoms", module);</span>
+<span class="cstat-no" title="statement not covered" >storyButton.addDecorator(withKnobs);</span>
+<span class="cstat-no" title="statement not covered" >storyButton.add("Button", <span class="fstat-no" title="function not covered" >() =&gt; (</span></span>
+<span class="cstat-no" title="statement not covered" >  &lt;Button</span>
+    bgColor={text("Background-Color", "#ef7513")}
+    children={text("Value", "Se connecter")}
+    border={text("Border", "1px solid #af540c")}
+    color={text("Color", "#fff")}
+  /&gt;
+));
+&nbsp;
+const storyBarreMenu = <span class="cstat-no" title="statement not covered" >storiesOf("molecules", module);</span>
+<span class="cstat-no" title="statement not covered" >storyBarreMenu.addDecorator(withKnobs);</span>
+<span class="cstat-no" title="statement not covered" >storyBarreMenu.add("Barre de Menu", <span class="fstat-no" title="function not covered" >() =&gt; (</span></span>
+<span class="cstat-no" title="statement not covered" >  &lt;Router&gt;</span>
+    &lt;BarreMenu /&gt;
+  &lt;/Router&gt;
+));
+&nbsp;
+<span class="cstat-no" title="statement not covered" >storiesOf("organisms", module)</span>
+  .addDecorator(withKnobs)
+  .add("Footer", <span class="fstat-no" title="function not covered" >() =&gt; (</span>
+<span class="cstat-no" title="statement not covered" >    &lt;FooterTemplate</span>
+      left={text("Gauche", "gaute")}
+      right={text("Droite", "droiche")}
+    /&gt;
+  ))
+  .add("UploadForm", <span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" ></span>&lt;UploadForm /&gt;);</span>
+&nbsp;
+const storyInputBase = <span class="cstat-no" title="statement not covered" >storiesOf("atoms", module);</span>
+<span class="cstat-no" title="statement not covered" >storyInputBase.add("Input de base", <span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" ></span>&lt;InputBase /&gt;);</span></span>
+&nbsp;
+const storyLabel = <span class="cstat-no" title="statement not covered" >storiesOf("atoms", module);</span>
+<span class="cstat-no" title="statement not covered" >storyLabel.addDecorator(withKnobs);</span>
+<span class="cstat-no" title="statement not covered" >storyLabel.add("Label de base", <span class="fstat-no" title="function not covered" >() =&gt; (</span></span>
+<span class="cstat-no" title="statement not covered" >  &lt;Label children={text("Label children", "")} /&gt;</span>
+));
+&nbsp;
+const storyLabelInput = <span class="cstat-no" title="statement not covered" >storiesOf("molecules", module);</span>
+<span class="cstat-no" title="statement not covered" >storyLabelInput.addDecorator(withKnobs);</span>
+<span class="cstat-no" title="statement not covered" >storyLabelInput.add("Label Input", <span class="fstat-no" title="function not covered" >() =&gt; (</span></span>
+<span class="cstat-no" title="statement not covered" >  &lt;LabelInput label={text("Label", "myLabel")} input={text("Input", "")} /&gt;</span>
+));
+&nbsp;
+const storyTextareaBase = <span class="cstat-no" title="statement not covered" >storiesOf("atoms", module);</span>
+<span class="cstat-no" title="statement not covered" >storyTextareaBase.addDecorator(withKnobs);</span>
+<span class="cstat-no" title="statement not covered" >storyTextareaBase.add("Textarea", <span class="fstat-no" title="function not covered" >() =&gt; (</span></span>
+<span class="cstat-no" title="statement not covered" >  &lt;TextareaBase rows={number("nbLigne", 5)} cols={number("NbCol", 10)} /&gt;</span>
+));
+&nbsp;
+const storyLabelTextarea = <span class="cstat-no" title="statement not covered" >storiesOf("molecules", module);</span>
+<span class="cstat-no" title="statement not covered" >storyLabelTextarea.addDecorator(withKnobs);</span>
+<span class="cstat-no" title="statement not covered" >storyLabelTextarea.add("LabelTextarea", <span class="fstat-no" title="function not covered" >() =&gt; (</span></span>
+<span class="cstat-no" title="statement not covered" >  &lt;LabelTextarea</span>
+    label={text("Label value", "")}
+    row={number("row", 5)}
+    col={number("col", 5)}
+  /&gt;
+));
+&nbsp;
+const Description = <span class="cstat-no" title="statement not covered" >storiesOf("atoms", module);</span>
+<span class="cstat-no" title="statement not covered" >Description.addDecorator(withKnobs);</span>
+<span class="cstat-no" title="statement not covered" >Description.add("LabelDescription", <span class="fstat-no" title="function not covered" >() =&gt; (</span></span>
+<span class="cstat-no" title="statement not covered" >  &lt;LabelDescription children={text("Contenu", "text")} /&gt;</span>
+)).add("FieldDescription", <span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" ></span>&lt;FieldDescription /&gt;);</span>
+&nbsp;
+const storyMainContainer = <span class="cstat-no" title="statement not covered" >storiesOf("molecules", module);</span>
+const child = <span class="cstat-no" title="statement not covered" >[&lt;div style={{backgroundColor: "none"}}&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/div&gt;];</span>
+<span class="cstat-no" title="statement not covered" >storyMainContainer.addDecorator(withKnobs);</span>
+<span class="cstat-no" title="statement not covered" >storyMainContainer.add("MainContainer", <span class="fstat-no" title="function not covered" >() =&gt; (</span></span>
+<span class="cstat-no" title="statement not covered" >	&lt;MainContainer </span>
+	title={text("titre",'MonTitre')} 
+	bgColor={text("background-color",'yellow')}
+	borderRadius={text("border-radius",'30px')}
+	border={text("border",'dashed')}
+	children={child}/&gt;
+))
+&nbsp;
+const storyLabelInputRange = <span class="cstat-no" title="statement not covered" >storiesOf("molecules/LabelInputRange", module);</span>
+<span class="cstat-no" title="statement not covered" >storyLabelInputRange.add("LabelInputRange", <span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" ></span>&lt;LabelInputRange /&gt;);</span></span>
+&nbsp;
+const storyAddButton = <span class="cstat-no" title="statement not covered" >storiesOf("atoms/AddButton", module);</span>
+<span class="cstat-no" title="statement not covered" >storyAddButton.add("AddButton", <span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" ></span>&lt;AddButton type="button" value="+" /&gt;);</span></span>
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Apr 03 2019 11:16:41 GMT+0200 (GMT+02:00)
+</div>
+</div>
+<script src="..\..\prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="..\..\sorter.js"></script>
+</body>
+</html>

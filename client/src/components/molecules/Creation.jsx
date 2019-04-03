@@ -6,6 +6,7 @@ import { Link, Redirect } from "react-router-dom"
 import { connect } from "react-redux"
 import { bindActionCreators } from "redux"
 import { msgAction } from "../../modules/actionsAndReducers"
+import ReactAudioPlayer from 'react-audio-player';
 
 const Wrapper = styled.div`
     margin: 10px 0;
@@ -26,6 +27,11 @@ class Creation extends Component {
         auth: false
     }
 
+    constructor(props){
+        super(props);
+        this.cptEcoute = this.cptEcoute.bind(this);
+    }
+
     async componentDidMount() {
         this.setState({ auth: await hasRole("CREATEUR") })
     }
@@ -36,16 +42,18 @@ class Creation extends Component {
         else this.props.msgAction("Erreur dans la suppression")
         this.setState({ redirect: <Redirect to="/accueil" /> })
     }
+    
+    cptEcoute(){
+        console.log("oui");
+    }
+
     render() {
         const path = getAudioUrl() + this.props.path
 
         if (this.state.auth) {
             return (
                 <React.Fragment>
-                    <audio controls>
-                        <source src={path} type="audio/mpeg" />
-                    </audio>
-
+                    <ReactAudioPlayer controls onPlay={this.cptEcoute} src={path} />
                     <Wrapper>
                         <div>{this.props.description}</div>
                         <Suprime>
