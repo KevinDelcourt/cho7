@@ -46,7 +46,7 @@ export default class Creation extends Component {
 						<div>{this.props.description}</div>
 						<Supprime>
 							<a href={"http://localhost:3000/updateCreation/audio/" + this.props.valueId}>Modifier</a>
-							<button class="far fa-times-circle fa-2x" onClick={(e) => this.handleDeleteClick(e, this.props.valueId)}></button>
+							<button class="far fa-times-circle fa-2x deleteButton" onClick={(e) => this.handleDeleteClick(e, this.props.valueId)}></button>
 						</Supprime>
 					</Wrapper>
 				</React.Fragment>

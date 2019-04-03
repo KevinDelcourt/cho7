@@ -94,6 +94,8 @@ module.exports = (app, passport) => {
 					if(err)
 						return res.redirect("http://localhost:3000/newCreation?err=1")
 				})
+
+				return res.redirect("http://localhost:3000/")
 			} else {
 				connection.query('INSERT INTO creation (titre, description) VALUES (?,?)', [titre, desc], (err, rows) => {
 					if(err)
@@ -106,9 +108,9 @@ module.exports = (app, passport) => {
 						})
 					}
 				})
+
+				return res.redirect("http://localhost:3000/creations")
 			}
-			
-			return res.redirect("http://localhost:3000/creations")
 		}
 	})
 
