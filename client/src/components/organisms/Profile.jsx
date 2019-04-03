@@ -30,6 +30,7 @@ class Profile extends React.Component {
         if (this.state.user)
             return (
                 <Container>
+                    {this.props.about ? <h2>A propos</h2> : ""}
                     <center>
                         <Avatar src={getImageUrl() + this.state.user.avatar} />
                     </center>

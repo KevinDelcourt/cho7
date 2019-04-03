@@ -93,7 +93,7 @@ module.exports = (app, passport) => {
                                 "INSERT INTO etat_avancement (libelle,valeuravancement,idcreation) VALUES (?,?,?)",
                                 [l, req.body.valeur[index], rows.insertId],
                                 (err, rows) => {
-                                    if (err) res.send(err)
+                                    if (err) return res.send(err)
                                 }
                             )
                         })

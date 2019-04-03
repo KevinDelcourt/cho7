@@ -6,7 +6,7 @@ import UploadPage from "./components/pages/UploadPage"
 import MesCreationsPage from "./components/pages/MesCreationsPage"
 import RenseignerProfilPage from "./components/pages/RenseignerProfilPage"
 import UpdateCreationPage from "./components/pages/UpdateCreationPage"
-import PageProfilCreateur from "./components/pages/ProfilCreateurPage"
+import PageProfilCreateur from "./components/pages/ProfilCreateurPage/ProfilCreateurPage"
 
 import Logout from "./components/pages/Logout"
 import { hasRole } from "./modules/api"
@@ -39,6 +39,7 @@ class App extends Component {
             <Fragment>
                 <Route exact path="/" component={AccueilPage} />
                 <Route path="/logout" component={Logout} />
+                <Route path="/about" component={PageProfilCreateur} />
                 <Route path="/accueil" component={this.getRedirect} />
                 <this.PrivateRoute
                     path="/login"
