@@ -9,9 +9,6 @@ describe("composant header", () => {
 
         cy.log("cilck et ajout de l'username")
 
-        //si lui ne passe pas , essayer de changer le get (aller dans cypress puis cliquer
-        //sur le champ de texte et copier le lien du get généré)
-
         cy.get(":nth-child(1) > .sc-EHOje > .sc-bxivhb").type("Admin")
 
         cy.log("cilck et ajout du mdp")
@@ -25,13 +22,13 @@ describe("composant header", () => {
         cy.contains("Profil").click()
         cy.url().should("eq", "http://localhost:3000/RenseignerProfilPage")
 
-        cy.log("cilck sur l'image")
-        cy.get(".sc-gqjmRU").click()
-        cy.url().should("eq", "http://localhost:3000/")
-
         cy.log("cilck sur la creation")
         cy.contains("Mes créations").click()
         cy.url().should("eq", "http://localhost:3000/creations")
+
+        cy.log("cilck sur l'image")
+        cy.get(".sc-gqjmRU").click()
+        cy.url().should("eq", "http://localhost:3000/")
 
         cy.log("cilck sur l'accueil")
         cy.contains("Accueil").click()

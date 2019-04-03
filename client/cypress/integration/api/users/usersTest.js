@@ -26,8 +26,8 @@ import reset_db from "../../../utils/reset_db"
 const expectedCreateur = {
     id: 1,
     username: "Admin",
-    email: "",
-    presentation: null,
+    email: "artiste.art@genie.nl",
+    presentation: "je suis un artiste et je fait de lart de génie",
     avatar: "avatar_createur.png",
     role: "ROLE_CREATEUR"
 }

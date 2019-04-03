@@ -1,7 +1,7 @@
 import reset_db from "../utils/reset_db"
-before(() => reset_db())
 
 describe("composant affichage projet", () => {
+    before(() => reset_db())
     it("je teste le composant affichage projet", () => {
         cy.visit("http://localhost:3000/")
         cy.contains("Connexion").click()

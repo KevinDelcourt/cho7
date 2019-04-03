@@ -10,8 +10,8 @@ CREATE TABLE users (
   role varchar(20) NOT NULL COLLATE utf8_general_ci
 );
 
-INSERT INTO users (username,password,email,role,avatar)
-VALUES ('Admin','Admin','','ROLE_CREATEUR','avatar_createur.png');
+INSERT INTO users (username,password,email,presentation,role,avatar)
+VALUES ('Admin','Admin','artiste.art@genie.nl','je suis un artiste et je fait de lart de génie','ROLE_CREATEUR','avatar_createur.png');
 
 CREATE TABLE creation (
   id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -34,7 +34,7 @@ VALUES
 CREATE TABLE etat_avancement (
   id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   libelle varchar(50) NOT NULL COLLATE utf8_general_ci,
-  valeuravancement int(11) DEFAULT 0,
+  valeuravancement int(3) DEFAULT 0,
   idcreation int(11), 
   FOREIGN KEY (idcreation) REFERENCES creation(id) ON DELETE CASCADE
 );

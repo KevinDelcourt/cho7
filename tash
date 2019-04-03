@@ -1,0 +1,1901 @@
+[33mcommit d4e0ec64010161d716d2828d71b3476ad1840e65[m[33m ([m[1;36mHEAD -> [m[1;32mtestCypress[m[33m, [m[1;31morigin/testCypress[m[33m)[m
+Author: root <jeremy.doleac@gmx.fr>
+Date:   Fri Mar 22 15:10:20 2019 +0100
+
+    el gitignore
+
+[33mcommit c1372c6b66990165d31ac1177558145532f891c5[m
+Author: root <jeremy.doleac@gmx.fr>
+Date:   Fri Mar 22 15:00:59 2019 +0100
+
+    ajout du test de la creation de projet
+
+[33mcommit 3df3021f252360314c994597702058e698edee1c[m
+Author: root <jeremy.doleac@gmx.fr>
+Date:   Mon Mar 18 13:07:57 2019 +0100
+
+    rectifications
+
+[33mcommit 0db512cfd98e6404ed1e7028bc98f743fe507d3a[m
+Author: root <jeremy.doleac@gmx.fr>
+Date:   Mon Mar 18 13:03:28 2019 +0100
+
+    ajout du test de l'affichage des projets
+
+[33mcommit 19590d5ae893d93799cad43d8684d25fbae6236e[m
+Author: root <jeremy.doleac@gmx.fr>
+Date:   Mon Mar 18 11:44:44 2019 +0100
+
+    test header
+
+[33mcommit 5a935bae81fbcecf9c53ee5c496826739873b99a[m[33m ([m[1;31morigin/travailHorsHoraire[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/cas_extreme_affichage[m[33m, [m[1;32mmaster[m[33m)[m
+Merge: 9990cc3 ee2c117
+Author: Nomanil <47627826+Nomanil@users.noreply.github.com>
+Date:   Wed Mar 13 16:32:04 2019 +0100
+
+    Merge pull request #47 from KevinDelcourt/empeche_accer_profil
+    
+    Empeche accer profil
+
+[33mcommit ee2c117b1f8e0a52d38fe414ff608a4278844430[m
+Author: sahla <medelciss@gmail.com>
+Date:   Wed Mar 13 16:22:46 2019 +0100
+
+    fix_motpasse_notification2
+
+[33mcommit c34df775951aca03a043d6b5cc7e5cfd6066046e[m
+Merge: 434ca40 9990cc3
+Author: sahla <medelciss@gmail.com>
+Date:   Wed Mar 13 16:22:12 2019 +0100
+
+    solve merge conflict
+
+[33mcommit 434ca406ff07da2692e357aa6a09c856e48c2c48[m
+Author: sahla <medelciss@gmail.com>
+Date:   Wed Mar 13 16:18:45 2019 +0100
+
+    fix presentation profil
+
+[33mcommit 9990cc3e74d5e2c368c2be4fc8d19cf9f9522084[m
+Merge: a87923f faec625
+Author: Nomanil <47627826+Nomanil@users.noreply.github.com>
+Date:   Wed Mar 13 16:12:35 2019 +0100
+
+    Merge pull request #46 from KevinDelcourt/hotfix
+    
+    Hotfix
+
+[33mcommit faec625f120aa464e95c48aed46937ed82521724[m
+Merge: d3b1f8e a87923f
+Author: Pierre-Paul <pierrepaul.g@outlook.com>
+Date:   Wed Mar 13 16:04:18 2019 +0100
+
+    Merge branch 'master' of https://github.com/KevinDelcourt/cho7 into hotfix
+
+[33mcommit 38bdb0e8075f67e78bb5f6f923df30ffad60199a[m
+Author: sahla <medelciss@gmail.com>
+Date:   Wed Mar 13 16:02:03 2019 +0100
+
+    fix notif motpasseincorect
+
+[33mcommit 019ddbb3fbc654e752f791f6ca0c09e4738d4fa8[m
+Author: sahla <medelciss@gmail.com>
+Date:   Wed Mar 13 15:59:31 2019 +0100
+
+    fix_motpasse_notification
+
+[33mcommit d3b1f8ef8d79b8306d7da217619212c6066d2d0c[m
+Author: Pierre-Paul <pierrepaul.g@outlook.com>
+Date:   Wed Mar 13 15:54:10 2019 +0100
+
+    fix: sécurisation page selon authentification
+
+[33mcommit 874e21d3f9634c377080f2dcc9a4f6a3b16fa0d6[m
+Merge: b7c3c45 a87923f
+Author: sahla <medelciss@gmail.com>
+Date:   Wed Mar 13 15:48:25 2019 +0100
+
+    solve merge conflict
+
+[33mcommit b7c3c45aefd5c492e2d1f352e0164a94edc5f8f0[m
+Merge: 0b40211 1672b53
+Author: sahla <medelciss@gmail.com>
+Date:   Wed Mar 13 15:47:17 2019 +0100
+
+    fix image profil
+
+[33mcommit a87923f44d7b2b11ce01e20d570a495169a09713[m
+Merge: 1672b53 59f90e7
+Author: Nomanil <47627826+Nomanil@users.noreply.github.com>
+Date:   Wed Mar 13 15:14:19 2019 +0100
+
+    Merge pull request #45 from KevinDelcourt/ModifierCreation
+    
+    Modifier creation
+
+[33mcommit 59f90e7bc701dd0d7dfb83b5d20926341d5798ec[m
+Author: Pierre-Paul <pierrepaul.g@outlook.com>
+Date:   Wed Mar 13 15:02:22 2019 +0100
+
+    fix: lecteur audio dans description
+
+[33mcommit 997c0792189af4eb49e0de6a2c3339131873a877[m
+Author: Pierre-Paul <pierrepaul.g@outlook.com>
+Date:   Wed Mar 13 14:55:24 2019 +0100
+
+    fix: bouton submit modifier creation
+
+[33mcommit 327474878266dd0cf098d27cc52d999b3991745f[m
+Merge: 0a2127d 1672b53
+Author: Pierre-Paul <pierrepaul.g@outlook.com>
+Date:   Wed Mar 13 14:36:54 2019 +0100
+
+    Solve merge conflict
+
+[33mcommit 0b402116cf0307a2e2a2743f6e5cd3ee59a0c5f2[m
+Author: sahla <medelciss@gmail.com>
+Date:   Wed Mar 13 14:34:05 2019 +0100
+
+    fix deconnexion
+
+[33mcommit 1672b53b9c8a8bc9e6c5dbe592e44f0395bfd134[m
+Merge: adc51f7 606f9f3
+Author: Nomanil <47627826+Nomanil@users.noreply.github.com>
+Date:   Wed Mar 13 14:33:26 2019 +0100
+
+    Merge pull request #43 from KevinDelcourt/afficher_projet
+    
+    Afficher projet
+
+[33mcommit 0a2127dc80d851c9c16c77dcbfa2a5261348bd01[m
+Merge: 9817cb4 adc51f7
+Author: Pierre-Paul <pierrepaul.g@outlook.com>
+Date:   Wed Mar 13 14:33:12 2019 +0100
+
+    Solve mere conflict
+
+[33mcommit 606f9f3b26d4742a6137e45bbf4b5a6b03b55c38[m
+Merge: b5d8803 adc51f7
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Wed Mar 13 14:23:40 2019 +0100
+
+    solve merge conflict
+
+[33mcommit 9817cb4a49c6930d13423eea6b3f60d1e963f7f3[m
+Author: Pierre-Paul <pierrepaul.g@outlook.com>
+Date:   Wed Mar 13 14:23:31 2019 +0100
+
+    feat: modification reation avec modification de ses etats
+
+[33mcommit adc51f79768b334278f0b93c88881807a28b1b54[m
+Merge: 64cac59 0ada5e7
+Author: Natika31 <36764068+Natika31@users.noreply.github.com>
+Date:   Wed Mar 13 14:06:37 2019 +0100
+
+    Merge pull request #42 from KevinDelcourt/styledComponents
+    
+    Styled components
+
+[33mcommit 8bb19ca68162c9cf91c78898f9f75d9e5fca10ef[m
+Author: sahla <medelciss@gmail.com>
+Date:   Wed Mar 13 14:04:14 2019 +0100
+
+    fix_empeche_accer
+
+[33mcommit 0ada5e72f3d4b24255b3c14f3740cca9efa13ada[m
+Author: Natacha <natika.orsas@gmail.com>
+Date:   Wed Mar 13 13:49:43 2019 +0100
+
+    fix
+
+[33mcommit b5d88036b499ee544e24596502aa0a43d4069a42[m
+Author: sahla <medelciss@gmail.com>
+Date:   Wed Mar 13 13:36:15 2019 +0100
+
+    fix_afficher-projet
+
+[33mcommit 7f116ae2ef3e2f51b4d008de3bcc6290de3cc6d3[m
+Merge: 7db9b58 64cac59
+Author: Natacha <natika.orsas@gmail.com>
+Date:   Wed Mar 13 13:27:13 2019 +0100
+
+    solve merge conflicts
+
+[33mcommit 7db9b58bf104eac8faae0b8dfdbd6b29ce1aaaaf[m
+Author: Natacha <natika.orsas@gmail.com>
+Date:   Wed Mar 13 13:19:02 2019 +0100
+
+    button border editable
+
+[33mcommit 709292c7fe6be7d480587b239abbb4a08dbfa1ba[m
+Author: Natacha <natika.orsas@gmail.com>
+Date:   Wed Mar 13 13:04:18 2019 +0100
+
+    tout les boutons en un bouton, style éditable
+
+[33mcommit 43eec617cf83733d67849e415843f40ac44eac82[m
+Merge: 6860599 64cac59
+Author: sahla <medelciss@gmail.com>
+Date:   Wed Mar 13 12:18:29 2019 +0100
+
+    solve merge conflict
+
+[33mcommit 686059987bb1d0e4f8a9789fabc3e8423af3987b[m
+Author: sahla <medelciss@gmail.com>
+Date:   Wed Mar 13 12:15:26 2019 +0100
+
+    projet_page_acceuil
+
+[33mcommit a2156fd5444f674e4191ef68649c4cad61474918[m
+Merge: 426da30 64cac59
+Author: Pierre-Paul <pierrepaul.g@outlook.com>
+Date:   Wed Mar 13 11:53:42 2019 +0100
+
+    Solve merge conflict
+
+[33mcommit 726b2b365e1f77b8d1312c960f3b6607568d3fce[m
+Author: Natacha <natika.orsas@gmail.com>
+Date:   Wed Mar 13 11:43:26 2019 +0100
+
+    delete ConnectionButton and MenuButton
+
+[33mcommit 64cac59f3df137456653b44102ecbfc5849e2f58[m
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Wed Mar 13 11:23:00 2019 +0100
+
+    fix: input range
+
+[33mcommit 121c8b7c837ae4fafdd4ea9e10b19081e9f0eab3[m
+Merge: 21c7e98 097a36a
+Author: Nomanil <47627826+Nomanil@users.noreply.github.com>
+Date:   Wed Mar 13 11:15:03 2019 +0100
+
+    Merge pull request #41 from KevinDelcourt/creer-une-creation
+    
+    Creer une creation
+
+[33mcommit 426da3014cf07a4ae4452403fdcab553018e424c[m
+Author: Pierre-Paul <pierrepaul.g@outlook.com>
+Date:   Wed Mar 13 11:07:27 2019 +0100
+
+    fix: requete creation null au lieu de chaine vide
+
+[33mcommit e458e909d457c82f674c3433d002a01256448af0[m
+Author: Pierre-Paul <pierrepaul.g@outlook.com>
+Date:   Wed Mar 13 10:47:19 2019 +0100
+
+    feat: ajout lien modifier newsfeed
+
+[33mcommit 097a36a0f60e2f6cb50e9105e7215c6f3aa4b1e4[m
+Merge: 83abd72 21c7e98
+Author: KevinDelcourt <38816626+KevinDelcourt@users.noreply.github.com>
+Date:   Wed Mar 13 10:43:34 2019 +0100
+
+    Merge branch 'master' into creer-une-creation
+
+[33mcommit 83abd72d962bbd006323b616b58615e5bbfffa7d[m
+Author: Carlos <carlos973junior@gmail.com>
+Date:   Wed Mar 13 10:37:15 2019 +0100
+
+    ajout du bouton - pour enlever les etats
+
+[33mcommit 8103ec98d43d27b2143e2443ba4b4c8ede7a43fa[m
+Author: Pierre-Paul <pierrepaul.g@outlook.com>
+Date:   Wed Mar 13 10:36:54 2019 +0100
+
+    fix: constante bloquante
+
+[33mcommit d777819930df34766d70862fa19bb735dca6306a[m
+Author: Pierre-Paul <pierrepaul.g@outlook.com>
+Date:   Wed Mar 13 10:22:00 2019 +0100
+
+    feat: modificationcreation sans etat avancement
+
+[33mcommit baf1562eb4f1c09bc7bed8070b10b5fd0a4ef8e3[m
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Wed Mar 13 10:13:59 2019 +0100
+
+    fix: accents dans bdd
+
+[33mcommit e998a18be8f7834ac27025f3b35701f54b0104dd[m
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Wed Mar 13 09:47:35 2019 +0100
+
+    feat: formulaire relié au back
+
+[33mcommit 73670c98cd5ea4c7b16b42bbb68a59ddf12def0f[m
+Merge: 63ead81 5a74b95
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Wed Mar 13 09:38:35 2019 +0100
+
+    Merge branch 'EtatAvancement' of https://github.com/KevinDelcourt/cho7 into creer-une-creation
+    
+    oui
+
+[33mcommit 5a74b95d8e487e0e1e9a9dc73aa33d2787a207ec[m
+Author: Carlos <carlos973junior@gmail.com>
+Date:   Wed Mar 13 09:37:06 2019 +0100
+
+    ajout des composant des etats
+
+[33mcommit 4b984161f883b86e80f790cde2736862e284f32e[m
+Author: Pierre-Paul <pierrepaul.g@outlook.com>
+Date:   Mon Mar 11 17:23:47 2019 +0100
+
+    feat: pre-remplissage modification creation
+
+[33mcommit c7a6723ea1ded76951dfa19b83d256d2c9be638f[m
+Author: Natacha <natika.orsas@gmail.com>
+Date:   Mon Mar 11 17:07:45 2019 +0100
+
+    refactor css
+
+[33mcommit a2fe59b057d43a1ead05fea7925fc4deb506a00f[m
+Merge: dbacfce 3051bc5
+Author: Nomanil <47627826+Nomanil@users.noreply.github.com>
+Date:   Mon Mar 11 17:07:35 2019 +0100
+
+    Merge pull request #40 from KevinDelcourt/testrequeteAfficherProjet
+    
+    Testrequete afficher projet
+
+[33mcommit 3051bc53cc5f553aa609989f3aef9bb6257f1cf5[m
+Author: JONATHAN LABORIE <jonathanlaborie@hotmail.fr>
+Date:   Mon Mar 11 17:06:13 2019 +0100
+
+    teste ok de la requete v2
+
+[33mcommit f455d74b9b965e79f5c4f6fe58a40400defe5e1e[m
+Author: JONATHAN LABORIE <jonathanlaborie@hotmail.fr>
+Date:   Mon Mar 11 17:00:23 2019 +0100
+
+    teste ok de la requete
+
+[33mcommit 98a91ae6e1de005f1c5ed6847e021075c3fbfcb6[m
+Author: JONATHAN LABORIE <jonathanlaborie@hotmail.fr>
+Date:   Mon Mar 11 15:09:25 2019 +0100
+
+    modification venu des dieux
+
+[33mcommit 21c7e9829bb7104ff47ca96df806d0c8fc40fc41[m
+Merge: 7e3fed3 a17aa21
+Author: Natika31 <36764068+Natika31@users.noreply.github.com>
+Date:   Mon Mar 11 14:47:38 2019 +0100
+
+    Merge pull request #38 from KevinDelcourt/debbugstorybook
+    
+    delete Cadre Avatar and Creation
+
+[33mcommit 63ead817705539473fc8045ffa57088a9063b96d[m
+Merge: 51e209f 7ee9557
+Author: KevinDelcourt <38816626+KevinDelcourt@users.noreply.github.com>
+Date:   Mon Mar 11 14:45:37 2019 +0100
+
+    Merge pull request #39 from KevinDelcourt/requete-creer-une-création
+    
+    change: route créer création avec état avancement
+
+[33mcommit 7ee95576470a320fd818451f34d51f859df0ca1a[m
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Mon Mar 11 14:39:45 2019 +0100
+
+    change: route créer création avec état avancement
+
+[33mcommit a17aa213c68ad497ec48cd962d75877ab9457eda[m
+Author: Natacha <natika.orsas@gmail.com>
+Date:   Mon Mar 11 14:04:43 2019 +0100
+
+    delete Cadre Avatar and Creation
+
+[33mcommit 4fb3550ef101abb9411d1d1b444268df74a2c872[m
+Author: Pierre-Paul <pierrepaul.g@outlook.com>
+Date:   Mon Mar 11 13:53:17 2019 +0100
+
+    feat: creations en cours
+
+[33mcommit 51e209f9730cf88852e701be0bd38e12b636d5ff[m
+Merge: 7a528d6 75196fc
+Author: KevinDelcourt <38816626+KevinDelcourt@users.noreply.github.com>
+Date:   Mon Mar 11 13:48:41 2019 +0100
+
+    Merge pull request #36 from KevinDelcourt/maj_bdd
+    
+    Maj bdd
+
+[33mcommit 7a528d6cb2a796e452f46a790afc8d6c18c8e3d0[m
+Merge: 7e3fed3 d11f282
+Author: SamiaSahla <47246062+SamiaSahla@users.noreply.github.com>
+Date:   Mon Mar 11 13:47:41 2019 +0100
+
+    Merge pull request #37 from KevinDelcourt/modifier_button_enCreation
+    
+    modifier button creation lien
+
+[33mcommit d11f28238c402fe042a45357577e7b3420baa360[m
+Author: sahla <medelciss@gmail.com>
+Date:   Mon Mar 11 13:45:04 2019 +0100
+
+    modifier button creation lien
+
+[33mcommit 75196fc06d741c8d6cf184d0119a95d7ad682c79[m
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Mon Mar 11 13:01:14 2019 +0100
+
+    fix: removed bad smells
+
+[33mcommit 7ae84ce20d043f7e180b6df3cc425363a13af4b9[m
+Merge: 09efbfe 7e3fed3
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Mon Mar 11 12:58:51 2019 +0100
+
+    test
+
+[33mcommit 09efbfe7ec4f4c060621b9d3a5d2b7f45fae6227[m
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Mon Mar 11 12:41:20 2019 +0100
+
+    change: maj bdd
+
+[33mcommit 7e3fed32c9b12d4b270c616dd2d27e7804f0c9f5[m
+Merge: dbacfce 7e611a6
+Author: Doléac Jérémy <46925792+DoleacJeremy@users.noreply.github.com>
+Date:   Mon Mar 11 11:27:45 2019 +0100
+
+    Merge pull request #35 from KevinDelcourt/Creer_Renseigner_Profil
+    
+    Supprimer création
+
+[33mcommit 7e611a6bb76bb6ff822627d8374b5dd6adc8056b[m
+Merge: 9142fb1 dbacfce
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Mon Mar 11 08:44:28 2019 +0100
+
+    solved merge conflict
+
+[33mcommit dbacfce952f48f127c22d946aedd8d1854e185e2[m
+Merge: f240189 7f2dc31
+Author: KevinDelcourt <38816626+KevinDelcourt@users.noreply.github.com>
+Date:   Thu Feb 14 15:34:28 2019 +0100
+
+    Merge pull request #34 from KevinDelcourt/old-state
+    
+    Backend profil créateur
+
+[33mcommit 7f2dc317ca210492bf5109cffbddd7dfccf300df[m
+Merge: 72a05b0 f240189
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Thu Feb 14 15:19:01 2019 +0100
+
+    solve merge conflict
+
+[33mcommit 9142fb1580a8d5267c6712504a07938bbcb39a93[m
+Author: sahla <medelciss@gmail.com>
+Date:   Thu Feb 14 15:08:45 2019 +0100
+
+    boutton suprimer BDD
+
+[33mcommit f240189f4b59a3ef0aef8e61dfd888bfbf7a81ed[m
+Merge: 49aa964 709ed43
+Author: KevinDelcourt <38816626+KevinDelcourt@users.noreply.github.com>
+Date:   Thu Feb 14 15:06:31 2019 +0100
+
+    Merge pull request #33 from KevinDelcourt/DisplayProfileInfos
+    
+    Display profile infos
+
+[33mcommit 709ed436e0578dcfb28d25ad8c0025c7689ed305[m
+Author: Pierre-Paul <pierrepaul.g@outlook.com>
+Date:   Thu Feb 14 14:59:00 2019 +0100
+
+    fix: police desc creation
+
+[33mcommit 54626c4fa54d32feea746b881373160584112d50[m
+Merge: b562dcf 49aa964
+Author: Pierre-Paul <pierrepaul.g@outlook.com>
+Date:   Thu Feb 14 14:53:37 2019 +0100
+
+    solve merge conflict
+
+[33mcommit b562dcfa8cd8976b0491d55d8554f73f12f84611[m
+Author: Pierre-Paul <pierrepaul.g@outlook.com>
+Date:   Thu Feb 14 14:45:26 2019 +0100
+
+    refactor: header template et navbar
+
+[33mcommit 72a05b0d1d9efdfaa96e23369f19834600de5926[m
+Merge: 5d5526f 49aa964
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Thu Feb 14 13:40:15 2019 +0100
+
+    Solve Merge Conflict
+
+[33mcommit 6be749b248972085e3e204c4267c262270ae237b[m
+Author: Pierre-Paul <pierrepaul.g@outlook.com>
+Date:   Thu Feb 14 12:52:31 2019 +0100
+
+    refactor: accueil et avatar
+
+[33mcommit 49aa964139dcb069ea657b54c53edbaf66f594fd[m
+Merge: eb3c794 4fdd16c
+Author: Natika31 <36764068+Natika31@users.noreply.github.com>
+Date:   Thu Feb 14 12:41:28 2019 +0100
+
+    Merge pull request #32 from KevinDelcourt/StylePageRenseignerProfil
+    
+    style: Le style correspond à la maquette
+
+[33mcommit 4fdd16cd6c3ea6f24479709e0b3de3d75ebf0b2d[m
+Author: Carlos <carlos973junior@gmail.com>
+Date:   Thu Feb 14 12:09:51 2019 +0100
+
+    style: Le style correspont à la maquette
+
+[33mcommit 5d5526f0bd0100ac90b27ba5e8ce45d3a9dcec99[m
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Thu Feb 14 11:40:58 2019 +0100
+
+    fix
+
+[33mcommit 32c1e1af803e4e89116a371587e265d18f6a7080[m
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Thu Feb 14 11:40:23 2019 +0100
+
+    Backend affichage profil accueil
+
+[33mcommit afbfd5b006628466047c85f18d334e197ac07dec[m
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Thu Feb 14 11:20:38 2019 +0100
+
+    Formulaire rensigner profil marche
+
+[33mcommit 89c29af3e9a01007db9110b255527ada7f2b833a[m
+Merge: 6259ea1 eb3c794
+Author: Pierre-Paul <pierrepaul.g@outlook.com>
+Date:   Thu Feb 14 10:56:02 2019 +0100
+
+    solve merge conflict
+
+[33mcommit 5060c31a4baa4a19852b5e9059d89aed4effcb95[m
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Thu Feb 14 10:13:08 2019 +0100
+
+    fix
+
+[33mcommit f3cb24b3fc2c9a9f0917315c2af7d81aa71a2bae[m
+Merge: ad97dd5 eb3c794
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Thu Feb 14 10:11:00 2019 +0100
+
+    solver merge confilct
+
+[33mcommit eb3c794732327f28ac89ee3ad5fecf80d7dcada3[m
+Merge: f6a26e2 65fd435
+Author: Dardokk <35424544+Dardokk@users.noreply.github.com>
+Date:   Thu Feb 14 09:47:09 2019 +0100
+
+    Merge pull request #30 from KevinDelcourt/MainBody
+    
+    css ok
+
+[33mcommit ad97dd5d41f6dc59085515fdc731e2d2ff392823[m
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Thu Feb 14 09:46:11 2019 +0100
+
+    Fin backend modifier profile
+
+[33mcommit 65fd4351814227183992dde0c00b3c3c19af384e[m
+Author: Natacha <natika.orsas@gmail.com>
+Date:   Wed Feb 13 23:45:46 2019 +0100
+
+    fix
+
+[33mcommit 33b779ede38dc45e0d9e5f5ba7942109727d561a[m
+Author: Natacha <natika.orsas@gmail.com>
+Date:   Wed Feb 13 23:16:43 2019 +0100
+
+    css ok
+
+[33mcommit 6259ea1ccaf62119dad61f75f3964fc4daecb7ab[m
+Merge: 17653db f6a26e2
+Author: Pierre-Paul <pierrepaul.g@outlook.com>
+Date:   Wed Feb 13 17:15:12 2019 +0100
+
+    solve merge conflict
+
+[33mcommit f6a26e2f4c5794ae8fe6607b100aafa44ae7ea1b[m
+Merge: 9c7b33f 094d729
+Author: Dardokk <35424544+Dardokk@users.noreply.github.com>
+Date:   Wed Feb 13 17:14:01 2019 +0100
+
+    Merge pull request #28 from KevinDelcourt/Creer_Renseigner_Profil
+    
+    Creer renseigner profil
+
+[33mcommit 17653db6e0d7c7bbbe28193aa98aec0c36ddb431[m
+Author: Pierre-Paul <pierrepaul.g@outlook.com>
+Date:   Wed Feb 13 17:03:29 2019 +0100
+
+    feat: affichage info profil accueil
+
+[33mcommit 094d72980bcc7d2b0c952b58532d66eb16b28046[m
+Author: sahla <medelciss@gmail.com>
+Date:   Wed Feb 13 17:01:34 2019 +0100
+
+    Page renseigner profil terminé
+
+[33mcommit d068249fcd502d2da03efe075287f11837a52a1e[m
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Wed Feb 13 16:59:29 2019 +0100
+
+    Insertion formulaire ok - manque la suppression d'image à chaque upload
+
+[33mcommit 763212401bb88f8d0e05c9883bc92361691e3dbf[m
+Merge: 32c7a34 9c7b33f
+Author: sahla <medelciss@gmail.com>
+Date:   Wed Feb 13 16:04:28 2019 +0100
+
+    Merge branch 'master' of https://github.com/KevinDelcourt/cho7 into Creer_Renseigner_Profil
+
+[33mcommit 9c7b33f9289dc3147dd431effa3a5983b4a35627[m
+Merge: 3885f02 419089a
+Author: brandaoCarlos <37739851+brandaoCarlos@users.noreply.github.com>
+Date:   Wed Feb 13 16:03:34 2019 +0100
+
+    Merge pull request #27 from KevinDelcourt/UploadAudioFiles
+    
+    Upload audio files
+
+[33mcommit 419089ae7b798c7afc3f167c3220bb8713d1e12e[m
+Author: Pierre-Paul <pierrepaul.g@outlook.com>
+Date:   Wed Feb 13 15:43:43 2019 +0100
+
+    feat: upload fichier
+
+[33mcommit 3ce9a683b75aaa9a8e1055a860b3ccbf6d694b60[m
+Author: Pierre-Paul <pierrepaul.g@outlook.com>
+Date:   Wed Feb 13 14:55:21 2019 +0100
+
+    style: accueil
+
+[33mcommit d1b798511c9d1af1f8cca6221ec5346053a6b387[m
+Merge: 5574ff6 3885f02
+Author: Pierre-Paul <pierrepaul.g@outlook.com>
+Date:   Wed Feb 13 14:25:45 2019 +0100
+
+    Merge branch 'master' of https://github.com/KevinDelcourt/cho7 into UploadAudioFiles
+
+[33mcommit 5574ff645ebcc5f9e1e331565b3b34045d12dde1[m
+Author: Pierre-Paul <pierrepaul.g@outlook.com>
+Date:   Wed Feb 13 14:25:38 2019 +0100
+
+    refactor: composants base
+
+[33mcommit 3885f020498661a357f31b43c7f0cc8db673146b[m
+Merge: 49aefcd 1ab4786
+Author: Dardokk <35424544+Dardokk@users.noreply.github.com>
+Date:   Wed Feb 13 14:25:14 2019 +0100
+
+    Merge pull request #25 from KevinDelcourt/submitButton
+    
+    SubmitButton_Avatar
+
+[33mcommit 1ab4786746095432e22639418f88a222831d608e[m
+Merge: 8e76fd1 49aefcd
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Wed Feb 13 14:15:08 2019 +0100
+
+    solve merge conflict
+
+[33mcommit 8e76fd15ccaabc2b6388b1f3bccd1d4c0c893f59[m
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Wed Feb 13 14:12:33 2019 +0100
+
+    fix: pause cypress
+
+[33mcommit 32c7a34a5bd4e1dee1490b2a7369531630e8f7a4[m
+Merge: d17fbc7 49aefcd
+Author: sahla <medelciss@gmail.com>
+Date:   Wed Feb 13 14:12:00 2019 +0100
+
+    Merge branch 'master' of https://github.com/KevinDelcourt/cho7 into submitButton
+
+[33mcommit d17fbc72174dcaf02df9fb230b2e9dda6c251bb4[m
+Author: sahla <medelciss@gmail.com>
+Date:   Wed Feb 13 13:56:16 2019 +0100
+
+    fix: rename Submitbutton
+
+[33mcommit 49aefcd64c6aaad8e929857710abc357c5c38bd2[m
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Wed Feb 13 13:55:20 2019 +0100
+
+    Partie Backend Fil d'actu
+
+[33mcommit e22b80c2c72f8367cd290e4d8116172d73f75fb5[m
+Merge: 28590ad c651ada
+Author: sahla <medelciss@gmail.com>
+Date:   Wed Feb 13 13:53:03 2019 +0100
+
+    solve merge conflict
+
+[33mcommit dd2933d99d408b6bf9f59e6bc68287c3e4be4d30[m
+Merge: 21ebb95 c651ada
+Author: Pierre-Paul <pierrepaul.g@outlook.com>
+Date:   Wed Feb 13 13:23:59 2019 +0100
+
+    solve merge conflict
+
+[33mcommit c651ada5490dafe86dff5737c82e9d7a9564f6d1[m
+Merge: d903bbd 257e4d9
+Author: Natika31 <36764068+Natika31@users.noreply.github.com>
+Date:   Wed Feb 13 13:16:20 2019 +0100
+
+    Merge pull request #26 from KevinDelcourt/BarreMenu
+    
+    Ajout des composants de base
+
+[33mcommit 257e4d91e5f6f4909837ca576185b955dfe7329a[m
+Author: Pierre-Paul <pierrepaul.g@outlook.com>
+Date:   Wed Feb 13 13:09:05 2019 +0100
+
+    fix: bad smells
+
+[33mcommit 57b946a3cd34f3c5b4c33308450c42a3e096790b[m
+Author: Carlos <carlos973junior@gmail.com>
+Date:   Wed Feb 13 12:54:50 2019 +0100
+
+    Ajout des composants de base
+
+[33mcommit 21ebb95e5c39c7ac82b11f8fc902d276f7c22894[m
+Merge: 5e11c74 d903bbd
+Author: Pierre-Paul <pierrepaul.g@outlook.com>
+Date:   Wed Feb 13 12:52:47 2019 +0100
+
+    Merge branch 'master' of https://github.com/KevinDelcourt/cho7 into UploadAudioFiles
+
+[33mcommit d903bbdfd581e10e4e0dc7b0b5c6c2127609d246[m
+Merge: 2f1ca0a c163a59
+Author: Natika31 <36764068+Natika31@users.noreply.github.com>
+Date:   Wed Feb 13 12:49:52 2019 +0100
+
+    Merge pull request #24 from KevinDelcourt/Lecture-audio
+    
+    Lecture audio
+
+[33mcommit 28590ad36e93c00c8740e089dc61a2588d586563[m
+Author: sahla <medelciss@gmail.com>
+Date:   Wed Feb 13 12:43:51 2019 +0100
+
+    SubmitButton_Avatar
+
+[33mcommit c163a59650819933b03fceeb630af9938c2dff1f[m
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Wed Feb 13 12:28:47 2019 +0100
+
+    fix cypress
+
+[33mcommit a1694520e6e13ed4761ed001cb236a3d5885fba3[m
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Wed Feb 13 12:10:03 2019 +0100
+
+    change gitignore
+
+[33mcommit 5390f18f62d78d3ef198513ff367934926a1f314[m
+Merge: a7a9bd9 2f1ca0a
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Wed Feb 13 12:00:35 2019 +0100
+
+    pull origin master
+
+[33mcommit a7a9bd91078cb6a491fb1dda9cd878fc1bdfccbd[m
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Wed Feb 13 11:54:18 2019 +0100
+
+    Requete Upload de fichier audios
+
+[33mcommit 5e11c7417fc9d32aa865705172da3fdef19cac86[m
+Merge: 9f6674a 2f1ca0a
+Author: Pierre-Paul <pierrepaul.g@outlook.com>
+Date:   Wed Feb 13 11:49:03 2019 +0100
+
+    Merge branch 'master' of https://github.com/KevinDelcourt/cho7 into UploadAudioFiles
+
+[33mcommit 2f1ca0a17aba3c707e38b4c9f7ef0fc7f8f3a89f[m
+Merge: a595a3d 73bb27e
+Author: SamiaSahla <47246062+SamiaSahla@users.noreply.github.com>
+Date:   Wed Feb 13 11:48:37 2019 +0100
+
+    Merge pull request #22 from KevinDelcourt/label_area
+    
+    label et textarea
+
+[33mcommit 73bb27e018e5a20157a94ddd9ace2a1dc73f18e7[m
+Merge: 04476e8 a595a3d
+Author: sahla <medelciss@gmail.com>
+Date:   Wed Feb 13 11:36:12 2019 +0100
+
+    solve merge conflict
+
+[33mcommit 9f6674a7587f2895aefd0405e4cf958ba7323fbd[m
+Merge: cbb446c a595a3d
+Author: Pierre-Paul <pierrepaul.g@outlook.com>
+Date:   Wed Feb 13 11:17:44 2019 +0100
+
+    solve merge conflict
+
+[33mcommit a595a3db0d84ccecff7de16ce479cb05ab3ba4e2[m
+Merge: 0a42227 d2b2de5
+Author: KevinDelcourt <38816626+KevinDelcourt@users.noreply.github.com>
+Date:   Wed Feb 13 11:16:03 2019 +0100
+
+    Merge pull request #23 from KevinDelcourt/FooterTemplate
+    
+    Template global
+
+[33mcommit d2b2de5ec80feeff67517de8845645f4528ddd57[m
+Merge: 923eabf 7fda32a
+Author: Pierre-Paul <pierrepaul.g@outlook.com>
+Date:   Wed Feb 13 11:03:47 2019 +0100
+
+    fix: bug css
+
+[33mcommit 04476e89ed3653c7db851b089a2f375c5bc780f6[m
+Merge: accbb08 de5743a
+Author: sahla <medelciss@gmail.com>
+Date:   Wed Feb 13 11:01:38 2019 +0100
+
+    label_area_storrybook
+
+[33mcommit 923eabf1604d694b7202287424fca02f714185bf[m
+Author: Pierre-Paul <pierrepaul.g@outlook.com>
+Date:   Wed Feb 13 11:00:43 2019 +0100
+
+    fix: bug css bis
+
+[33mcommit 96ebd818130f846a6c1396e311fec19b8fa0fb7a[m
+Author: Pierre-Paul <pierrepaul.g@outlook.com>
+Date:   Wed Feb 13 10:48:34 2019 +0100
+
+    fix: bug css
+
+[33mcommit 7fda32af3c3bc55c98a4f69f39b637c109dde178[m
+Author: Pierre-Paul <pierrepaul.g@outlook.com>
+Date:   Wed Feb 13 10:48:34 2019 +0100
+
+    fix: bug css
+
+[33mcommit a5ca994268a05902b344e6eb154cf26c7bc2f3ef[m
+Author: Pierre-Paul <pierrepaul.g@outlook.com>
+Date:   Wed Feb 13 10:37:57 2019 +0100
+
+    fix: test liens cypress
+
+[33mcommit cbb446c29a3ad9e783779dbdd4cef204780bfb9f[m
+Author: Pierre-Paul <pierrepaul.g@outlook.com>
+Date:   Wed Feb 13 10:26:24 2019 +0100
+
+    feat: select file
+
+[33mcommit 046f927764c17bdd9e7fd407b4ce7526b68f4f54[m
+Author: Pierre-Paul <pierrepaul.g@outlook.com>
+Date:   Wed Feb 13 10:04:00 2019 +0100
+
+    refactor: upload container
+
+[33mcommit c84963e05f1067044b03a9832b820694119490a7[m
+Author: Pierre-Paul <pierrepaul.g@outlook.com>
+Date:   Wed Feb 13 09:58:45 2019 +0100
+
+    fix: template
+
+[33mcommit 4f531c1232ec614bc572d80385f99687f7dc9a60[m
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Wed Feb 13 09:23:00 2019 +0100
+
+    afichage fichier audio du serveur
+
+[33mcommit 1b9be3d3a607686923ad9e3d7af1d53fa3410a97[m
+Author: Pierre-Paul <pierrepaul.g@outlook.com>
+Date:   Tue Feb 12 23:47:32 2019 +0100
+
+    refactor: template global
+
+[33mcommit 18e36f0f6226c8fae26b53dcd326402309bc7246[m
+Merge: daf1ad9 0a42227
+Author: Pierre-Paul <pierrepaul.g@outlook.com>
+Date:   Tue Feb 12 17:43:12 2019 +0100
+
+    solve merge conflict
+
+[33mcommit daf1ad9efccd9af5f0c0a49069d83698856ae71a[m
+Author: Pierre-Paul <pierrepaul.g@outlook.com>
+Date:   Tue Feb 12 15:20:54 2019 +0100
+
+    test: liens footer page upload
+
+[33mcommit 0a422273c77f1c3fd36251bdf578e78f6f3de558[m
+Merge: de5743a d3fc73d
+Author: Natika31 <36764068+Natika31@users.noreply.github.com>
+Date:   Tue Feb 12 17:26:25 2019 +0100
+
+    Merge pull request #20 from KevinDelcourt/Upload-Container-Titre
+    
+    Création composants Container + Titre
+
+[33mcommit d3fc73dcc9488af19addb74856a331c6ac863bdb[m
+Merge: c5653dc de5743a
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Tue Feb 12 16:56:43 2019 +0100
+
+    Ajout master
+
+[33mcommit accbb08ff93cfe591e865d800b2663e037977610[m
+Author: sahla <medelciss@gmail.com>
+Date:   Tue Feb 12 16:53:13 2019 +0100
+
+    label et textarea
+
+[33mcommit de5743afd5cd35dcfdbab051d38f713ba712e8b9[m
+Merge: 0755a4b 068a665
+Author: Dardokk <35424544+Dardokk@users.noreply.github.com>
+Date:   Tue Feb 12 16:50:28 2019 +0100
+
+    Merge pull request #21 from KevinDelcourt/BarreMenu
+    
+    Barre menu
+
+[33mcommit 068a665a1a908a9c28266e193261da9642e495c2[m
+Author: Carlos <carlos973junior@gmail.com>
+Date:   Tue Feb 12 16:32:02 2019 +0100
+
+    Ajustement de la position du bouton connection/déconnection
+
+[33mcommit c5653dc1ce682313d5e370d7195f2eceaf7f4f00[m
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Tue Feb 12 16:25:52 2019 +0100
+
+    Création composants Container + Titre
+
+[33mcommit 5571662ae35e619c0fcc5bf41b12f24e85912c8b[m
+Merge: 5c2cb6f 0755a4b
+Author: Carlos <carlos973junior@gmail.com>
+Date:   Tue Feb 12 15:52:47 2019 +0100
+
+    solve merge conflict
+
+[33mcommit 8fe5d92e8281ed526589675bd5cadd0a747b1cb9[m
+Author: Pierre-Paul <pierrepaul.g@outlook.com>
+Date:   Tue Feb 12 15:04:23 2019 +0100
+
+    refactor: footer et template
+
+[33mcommit 5c2cb6fa15f1a4aa1e1f3a6c30722f4eda258e7f[m
+Author: Carlos <carlos973junior@gmail.com>
+Date:   Tue Feb 12 15:05:43 2019 +0100
+
+    Barre de Menu terminé
+
+[33mcommit 7009508802520b51589f45b3f589137e0cca1198[m
+Author: Carlos <carlos973junior@gmail.com>
+Date:   Tue Feb 12 14:43:01 2019 +0100
+
+    Début de la barre de menu
+
+[33mcommit 0755a4becca2184013b4d9bf3c9ae6f650a1607a[m
+Merge: 3a0ba67 c88ba4e
+Author: Dardokk <35424544+Dardokk@users.noreply.github.com>
+Date:   Tue Feb 12 14:07:01 2019 +0100
+
+    Merge pull request #18 from KevinDelcourt/Footer
+    
+    Footer
+
+[33mcommit c88ba4efbcfb5b093f3322e4fa64c150f232376d[m
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Tue Feb 12 12:35:05 2019 +0100
+
+    fix
+
+[33mcommit 666d1c44b9efc45bb97c85fd329d822dc416ad9b[m
+Merge: 4b61787 3a0ba67
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Tue Feb 12 12:13:54 2019 +0100
+
+    fix
+
+[33mcommit 3a0ba674bf0b06eb77ddca4b593f4084d4b608fe[m
+Merge: 4911fbf c7e297e
+Author: Natika31 <36764068+Natika31@users.noreply.github.com>
+Date:   Tue Feb 12 12:12:27 2019 +0100
+
+    Merge pull request #19 from KevinDelcourt/composant_banniere
+    
+    Composant banniere
+
+[33mcommit 4b61787d743a1c827d1e0952e01debde298c295f[m
+Merge: 6653077 4911fbf
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Tue Feb 12 11:46:03 2019 +0100
+
+    fix storybook
+
+[33mcommit c7e297eb4beec2193c91c7ac4054bbd0c5d8c2a9[m
+Author: sahla <medelciss@gmail.com>
+Date:   Tue Feb 12 11:45:35 2019 +0100
+
+    fix test cypress
+
+[33mcommit f3a5acfcaeb627a9dcc888772f5c701cc9182026[m
+Merge: fb268ab 4911fbf
+Author: sahla <medelciss@gmail.com>
+Date:   Tue Feb 12 11:33:11 2019 +0100
+
+    Merge branch 'master' of https://github.com/KevinDelcourt/cho7 into composant_banniere
+
+[33mcommit fb268abd0924212d57c6146224932d4810c79101[m
+Author: sahla <medelciss@gmail.com>
+Date:   Tue Feb 12 11:32:37 2019 +0100
+
+    test lien banniere
+
+[33mcommit 3a541444768a5cb17eb55490066e004ced7f94b5[m
+Author: sahla <medelciss@gmail.com>
+Date:   Tue Feb 12 11:20:09 2019 +0100
+
+    ajout lien banniere
+
+[33mcommit 4911fbf0d7275827785df6a3ee601f5b3854b704[m
+Merge: 58f6de8 9344af1
+Author: Natika31 <36764068+Natika31@users.noreply.github.com>
+Date:   Tue Feb 12 11:17:39 2019 +0100
+
+    Merge pull request #16 from KevinDelcourt/MenuButton
+    
+    Menu button
+
+[33mcommit 1ea53e5b8b7dbb88c69afeed357ab640a07b07d2[m
+Author: sahla <medelciss@gmail.com>
+Date:   Tue Feb 12 11:11:12 2019 +0100
+
+    bannier centrer
+
+[33mcommit 9344af1aab9c8db5e27819b987e644c2386d6765[m
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Tue Feb 12 11:02:02 2019 +0100
+
+    fix test cypress
+
+[33mcommit 6653077ab68d9ce759b61e7bf781a7f950c85d9d[m
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Tue Feb 12 10:45:46 2019 +0100
+
+    Ajout Footer dans la page
+
+[33mcommit 24cfbb32d08b26dd4154622a690ad3a4b27baec8[m
+Merge: 4936b39 58f6de8
+Author: sahla <medelciss@gmail.com>
+Date:   Tue Feb 12 10:44:49 2019 +0100
+
+    solve merge change
+
+[33mcommit 4936b390e87b4f03a6d875dd21b5ec12e668a655[m
+Author: sahla <medelciss@gmail.com>
+Date:   Tue Feb 12 10:41:16 2019 +0100
+
+    fix banniere
+
+[33mcommit da078c956c6d0c47e13fba328048787554a789ca[m
+Author: sahla <medelciss@gmail.com>
+Date:   Tue Feb 12 10:39:25 2019 +0100
+
+    creer composant banniere
+
+[33mcommit cd2686a97c356e5e5d7cece918ddff5dcda2de1c[m
+Merge: d548256 58f6de8
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Tue Feb 12 10:35:36 2019 +0100
+
+    pull origin master
+
+[33mcommit aecaac02343ee0517d45a26e46ac709f036120fc[m
+Merge: d6a6598 58f6de8
+Author: Carlos <carlos973junior@gmail.com>
+Date:   Tue Feb 12 10:32:05 2019 +0100
+
+    Merge branch 'master' of https://github.com/KevinDelcourt/cho7 into MenuButton
+
+[33mcommit d6a65987150ead92122dd5278388e9efea0664e3[m
+Author: Carlos <carlos973junior@gmail.com>
+Date:   Tue Feb 12 10:31:30 2019 +0100
+
+    Modification du bouton et suppression du bouton Connexion
+
+[33mcommit 58f6de8fe61fd02ec4990ad8ec3ef1dd2be22a5e[m
+Merge: 56682f2 f5c2486
+Author: Natika31 <36764068+Natika31@users.noreply.github.com>
+Date:   Tue Feb 12 10:27:59 2019 +0100
+
+    Merge pull request #17 from KevinDelcourt/HeaderTemplate
+    
+    Header template
+
+[33mcommit d5482564a14af92d4e7caf09aa91fc38ac29aaf7[m
+Merge: 857546a 56682f2
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Tue Feb 12 10:14:42 2019 +0100
+
+    Pull origin master
+
+[33mcommit f5c248663efcc03fd1cdb1c6a4025a0456e99c19[m
+Author: Pierre-Paul <pierrepaul.g@outlook.com>
+Date:   Tue Feb 12 10:13:03 2019 +0100
+
+    fix comment
+
+[33mcommit 857546a52446e3471b2b46e8be9cacc4c257a9c4[m
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Tue Feb 12 10:01:48 2019 +0100
+
+    Modif Footer + Création de scripts à la racine du dossier
+
+[33mcommit 10432204d2b8552180d294770c8b5d55268c83d0[m
+Merge: ef207e5 56682f2
+Author: Carlos <carlos973junior@gmail.com>
+Date:   Tue Feb 12 09:46:39 2019 +0100
+
+    Merge branch 'master' of https://github.com/KevinDelcourt/cho7 into MenuButton
+
+[33mcommit ef207e533b1d0e99a8a2dcbacdd01a073756848f[m
+Author: Carlos <carlos973junior@gmail.com>
+Date:   Tue Feb 12 09:46:22 2019 +0100
+
+    Création du composant bouton et bouton de connection pour le header du template
+
+[33mcommit 5942de3b540359c18541a41789870ef511aa097c[m
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Mon Feb 11 17:29:50 2019 +0100
+
+    début Footer
+
+[33mcommit c12919872767464fde1f211432f18f09582af4d3[m
+Author: Pierre-Paul <pierrepaul.g@outlook.com>
+Date:   Mon Feb 11 17:25:15 2019 +0100
+
+    Creation composant header template
+
+[33mcommit 56682f22ba6fba0eaae79215e4666f582d8cddf5[m
+Merge: a578c0d 1767eff
+Author: Natika31 <36764068+Natika31@users.noreply.github.com>
+Date:   Mon Feb 11 16:47:35 2019 +0100
+
+    Merge pull request #15 from KevinDelcourt/HomeLinkOnConnectionHeader
+    
+    Home link on connection header
+
+[33mcommit 020724b9cf3e49b8ddb78f8583effd4ae595f7bd[m
+Merge: 14b883c a578c0d
+Author: sahla <medelciss@gmail.com>
+Date:   Mon Feb 11 16:23:13 2019 +0100
+
+    Merge branch 'master' of https://github.com/KevinDelcourt/cho7 into rassemblerCode
+
+[33mcommit 14b883c6d49f69d1077aa783bf4e4773e4d7c4c6[m
+Author: sahla <medelciss@gmail.com>
+Date:   Mon Feb 11 16:21:50 2019 +0100
+
+    test
+
+[33mcommit 1767eff7b36a7cda1ffbc8705558c0ef8ede8904[m
+Author: Pierre-Paul <pierrepaul.g@outlook.com>
+Date:   Mon Feb 11 16:20:21 2019 +0100
+
+    Ajout test lien header page connexion
+
+[33mcommit 608d9e3f83de70d6680ff5c52574cee5950979c7[m
+Author: Pierre-Paul <pierrepaul.g@outlook.com>
+Date:   Mon Feb 11 16:03:34 2019 +0100
+
+    Ajout lien accueil sur header page connexion
+
+[33mcommit a578c0de1842f2dfb608f846518abc3c722da125[m
+Merge: 52bd879 9f38cea
+Author: KevinDelcourt <38816626+KevinDelcourt@users.noreply.github.com>
+Date:   Mon Feb 11 15:31:32 2019 +0100
+
+    Merge pull request #14 from KevinDelcourt/ComposantBoutonConnexion
+    
+    Composant bouton connexion
+
+[33mcommit 9f38cea617378a492d56894651401e789089ac88[m
+Merge: 9002eef 52bd879
+Author: Carlos <carlos973junior@gmail.com>
+Date:   Mon Feb 11 15:18:24 2019 +0100
+
+    resolve overwrite
+
+[33mcommit 9002eef7467066261bbf67bad127bc4769122c5e[m
+Author: Carlos <carlos973junior@gmail.com>
+Date:   Mon Feb 11 15:16:19 2019 +0100
+
+    Fin de la page de connexion
+
+[33mcommit 52bd879bb209f0a6b7caa35ba0e3d8a7e8d4321e[m
+Merge: 23e06b6 1d6cc91
+Author: Natika31 <36764068+Natika31@users.noreply.github.com>
+Date:   Mon Feb 11 14:11:49 2019 +0100
+
+    Merge pull request #13 from KevinDelcourt/connectionTitleComponent
+    
+    Solve merge conflict et modification favicon
+
+[33mcommit 1d6cc91db1899d4627fa0e466869ff88932fb0a7[m
+Author: Pierre-Paul <pierrepaul.g@outlook.com>
+Date:   Mon Feb 11 14:00:47 2019 +0100
+
+    Modification package json client
+
+[33mcommit 1352c525a5a50989f0603d11d3150e19343f2761[m
+Author: Pierre-Paul <pierrepaul.g@outlook.com>
+Date:   Mon Feb 11 13:54:45 2019 +0100
+
+    Solve merge conflict et modification favicon
+
+[33mcommit 7f535b02529684a342c9a1f60fd8d5c151d7436a[m
+Merge: c4b6179 23e06b6
+Author: Carlos <carlos973junior@gmail.com>
+Date:   Mon Feb 11 12:32:01 2019 +0100
+
+    Solve merge conflict
+
+[33mcommit c4b6179b2dace9c6a98690e1dc6f1ff2fc2a5917[m
+Merge: a2a5a6f a254621
+Author: Carlos <carlos973junior@gmail.com>
+Date:   Mon Feb 11 11:51:52 2019 +0100
+
+    fix
+
+[33mcommit 23e06b65c5da23b1dd5c0b80074ada61fbd8aa72[m
+Merge: a254621 93a6b82
+Author: KevinDelcourt <38816626+KevinDelcourt@users.noreply.github.com>
+Date:   Mon Feb 11 11:40:08 2019 +0100
+
+    Merge pull request #11 from KevinDelcourt/authentification
+    
+    Authentification
+
+[33mcommit 93a6b82833f5e803a5e6464788cfcf3e09b23124[m
+Merge: f4628a4 a254621
+Author: KevinDelcourt <38816626+KevinDelcourt@users.noreply.github.com>
+Date:   Mon Feb 11 11:25:33 2019 +0100
+
+    Merge branch 'master' into authentification
+
+[33mcommit f4628a48f5f7ed3c491ae79b83db69c13f41757c[m
+Merge: fcd1e6b ff32953
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Mon Feb 11 11:23:57 2019 +0100
+
+    Merge branch 'authentification' of https://github.com/KevinDelcourt/cho7 into authentification
+
+[33mcommit fcd1e6bb72f2794be4fe1ba51d635eb02f89095f[m
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Mon Feb 11 11:23:38 2019 +0100
+
+    Suppr axiosTest.js
+
+[33mcommit a2a5a6f15f43cdd3475bde9159a46e9af4da3846[m
+Author: Carlos <carlos973junior@gmail.com>
+Date:   Mon Feb 11 11:10:06 2019 +0100
+
+    Bouton fini. Début du lien entre les inputs et le bouton
+
+[33mcommit a2546219a4edc51e30e4094b9c44f9ea00a8c320[m
+Merge: 850d727 15dca65
+Author: Natika31 <36764068+Natika31@users.noreply.github.com>
+Date:   Mon Feb 11 10:59:28 2019 +0100
+
+    Merge pull request #12 from KevinDelcourt/connectionTitleComponent
+    
+    Connection title component
+
+[33mcommit 839f38823408027620c8253d2d10257af67434d3[m
+Merge: 6fe4776 850d727
+Author: Carlos <carlos973junior@gmail.com>
+Date:   Mon Feb 11 10:58:04 2019 +0100
+
+    Merge branch 'master' of https://github.com/KevinDelcourt/cho7 into ComposantBoutonConnexion
+
+[33mcommit 15dca65f41eb28c7915816aad4746fc83c704b33[m
+Author: Pierre-Paul <pierrepaul.g@outlook.com>
+Date:   Mon Feb 11 10:33:28 2019 +0100
+
+    Ajout background page connexion
+
+[33mcommit d3f60e5932ac1bd7d478dc9997076fb70be6373b[m
+Author: Pierre-Paul <pierrepaul.g@outlook.com>
+Date:   Mon Feb 11 10:10:15 2019 +0100
+
+    Changement logo
+
+[33mcommit 12d5c738c4460763769a99f6289a06d277039318[m
+Author: Pierre-Paul <pierrepaul.g@outlook.com>
+Date:   Mon Feb 11 10:06:31 2019 +0100
+
+    Utilisation du props children et création du composant TitleConnection
+
+[33mcommit 5f6d1a34396c8847fe250e8bfda1981a55d5f43a[m
+Merge: 0dbbdd7 850d727
+Author: Pierre-Paul <pierrepaul.g@outlook.com>
+Date:   Mon Feb 11 10:04:42 2019 +0100
+
+    Merge branch 'master' of https://github.com/KevinDelcourt/cho7 into connectionTitleComponent
+
+[33mcommit ff329535973418b1d3598021596e4f44d92dc93e[m
+Merge: f9947a3 850d727
+Author: Natika31 <36764068+Natika31@users.noreply.github.com>
+Date:   Mon Feb 11 09:46:20 2019 +0100
+
+    Merge branch 'master' into authentification
+
+[33mcommit 850d727db916678e0ad287f6ba30f73de4c0fc97[m
+Merge: 837d05b 5d59f4d
+Author: Natika31 <36764068+Natika31@users.noreply.github.com>
+Date:   Mon Feb 11 09:44:20 2019 +0100
+
+    Merge pull request #10 from KevinDelcourt/code-de-conduite
+    
+    Update CODE_OF_CONDUCT.md
+
+[33mcommit 0dbbdd7d75fbe3c352f52442c32b9c3ee4b62bf7[m
+Author: Pierre-Paul <pierrepaul.g@outlook.com>
+Date:   Mon Feb 11 09:34:48 2019 +0100
+
+    Style authentification
+
+[33mcommit f9947a3072ac9402c3c150e16c61a6ba903bd8b0[m
+Merge: 6aaaa18 837d05b
+Author: KevinDelcourt <38816626+KevinDelcourt@users.noreply.github.com>
+Date:   Sun Feb 10 23:44:32 2019 +0100
+
+    Merge branch 'master' into authentification
+
+[33mcommit 837d05b81bb1c86b38e7311ae3d4c5f721c0c0ee[m
+Merge: 20f4af8 3da3fa8
+Author: Natika31 <36764068+Natika31@users.noreply.github.com>
+Date:   Sun Feb 10 23:30:09 2019 +0100
+
+    Merge pull request #9 from KevinDelcourt/MrDevJeremy
+    
+    Mr dev jeremy
+
+[33mcommit 3da3fa834865dd50608846c6ddf163db7bf613aa[m
+Merge: 598d8a5 20f4af8
+Author: Natacha <natika.orsas@gmail.com>
+Date:   Sun Feb 10 23:23:07 2019 +0100
+
+    solve merge conflicts
+
+[33mcommit 6aaaa188e6201aeac4e3792886f8bf3796e95853[m
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Sun Feb 10 23:21:45 2019 +0100
+
+    Correction Cypress
+
+[33mcommit 1fb88a6e91d24630cbc8d2ff259fe8afb474dc3b[m
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Sun Feb 10 23:08:46 2019 +0100
+
+    Correction cypress
+
+[33mcommit 5d59f4d50a1e931503cb88a95fb8ca2d938d9bf7[m
+Author: KevinDelcourt <38816626+KevinDelcourt@users.noreply.github.com>
+Date:   Sun Feb 10 22:53:58 2019 +0100
+
+    Update CODE_OF_CONDUCT.md
+    
+    Changements proposés:
+    - Concernant la partie sur la prise de décision: la présence du droit à la déconnexion rend impossible une prise de décision saine en dehors des heures de PTUT, peu importe l'heure. Donc il faut décider pendant les heures de PTUT.
+    - Pour se synchroniser le Daily Scrum c'est quand même mieux, du coup.
+    - Il vaut mieux parler de User Stories plutôt que de tâches.
+
+[33mcommit 20f4af8704ebf836e64bd016fc538c0b0c8aed8a[m
+Author: Natacha <natika.orsas@gmail.com>
+Date:   Sun Feb 10 21:57:42 2019 +0100
+
+    fix
+
+[33mcommit d8d77659aea4e87400b2ea2f294e8c5b4f8e6ca3[m
+Author: Natacha <natika.orsas@gmail.com>
+Date:   Sun Feb 10 21:57:30 2019 +0100
+
+    petites précisions concernant la distribution des tâches
+
+[33mcommit 0eb4d8a7a705d060fb7bc249d9eef81814a3106f[m
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Sun Feb 10 21:52:15 2019 +0100
+
+    correction bad smell
+
+[33mcommit 3702f07487e9b262c402938b3a8c6461258ec261[m
+Author: Natacha <natika.orsas@gmail.com>
+Date:   Sun Feb 10 21:48:31 2019 +0100
+
+    plafond horaire v3
+
+[33mcommit fbda6df2c8f426cab4e1bd8dcd1cf83e6f8dde91[m
+Author: Natacha <natika.orsas@gmail.com>
+Date:   Sun Feb 10 21:48:02 2019 +0100
+
+    plafond horaire bis
+
+[33mcommit a81423eff831d98d567e1819b22e1190d74c804a[m
+Author: Natacha <natika.orsas@gmail.com>
+Date:   Sun Feb 10 21:46:58 2019 +0100
+
+    plafond horaire
+
+[33mcommit 504c3663fe6341d2550c476ced901f399c08852d[m
+Author: Natacha <natika.orsas@gmail.com>
+Date:   Sun Feb 10 21:45:30 2019 +0100
+
+    ajout exception premier jour du sprint + rôle du scrum
+
+[33mcommit 9b458e48632a9542dadfab893258ac9e661a0b19[m
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Sun Feb 10 21:31:31 2019 +0100
+
+    Set up travis
+
+[33mcommit b9cbfbc7d4d0573e3711f9984cc631720038b1c3[m
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Sun Feb 10 21:20:12 2019 +0100
+
+    set up Travis
+
+[33mcommit 9849929bc0b8915fb7b18e6dc1b083e533931b6d[m
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Sun Feb 10 21:14:09 2019 +0100
+
+    set up travis
+
+[33mcommit 2318413b1c8dec7dc31c7709988b5c03fcf3508f[m
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Sun Feb 10 21:10:21 2019 +0100
+
+    set up travis
+
+[33mcommit f85054fdd2c403edc7eddd53b0173e26527a34fb[m
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Sun Feb 10 21:01:57 2019 +0100
+
+    Ajout de tests + setup Travis
+
+[33mcommit 9d225051f469afd78bd884e99acd17a8c2226e84[m
+Author: Natacha <natika.orsas@gmail.com>
+Date:   Sun Feb 10 20:21:39 2019 +0100
+
+    mise à jour
+
+[33mcommit 446890bf65d1ba8fb1c4979da1927f0691737d54[m
+Merge: 22b55f7 598d8a5
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Sun Feb 10 19:58:32 2019 +0100
+
+    Ajout branch MrDevJeremy
+
+[33mcommit 22b55f7a933337924ea91e7b8bf7154cbca1279e[m
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Sun Feb 10 19:55:56 2019 +0100
+
+    Structure d'app sécurisée
+
+[33mcommit aa976fe95a06e372e1989acda50d195a60ec1ba7[m
+Merge: b5b4b62 a144c2a
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Sun Feb 10 16:32:36 2019 +0100
+
+    Récupération des changements du master
+
+[33mcommit b5b4b62faecf1caf30f13d243a1803c781246753[m
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Sun Feb 10 16:27:31 2019 +0100
+
+    Small Change
+
+[33mcommit 598d8a5f11cf8358cc6ed4a81042f5767334fdd1[m
+Author: DoleacJeremy <jeremy.doleac@gmx.fr>
+Date:   Sun Feb 10 14:15:06 2019 +0100
+
+    ajout de l'emplacement des tests
+
+[33mcommit b613d6e7fac285e6a2f024c53843e3314793178c[m
+Author: DoleacJeremy <jeremy.doleac@gmx.fr>
+Date:   Sun Feb 10 12:53:52 2019 +0100
+
+    ajout du gitignore sinon j'upload les fichier de l'install cypress lol
+
+[33mcommit e3afc3c24400368aa301607b7f95ce909d92bbfc[m
+Author: DoleacJeremy <jeremy.doleac@gmx.fr>
+Date:   Sun Feb 10 12:52:59 2019 +0100
+
+    ajout de cypress pour les test !
+
+[33mcommit cd3baa052dc6729880b751082a300719d0db5fdb[m
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Sat Feb 9 23:35:32 2019 +0100
+
+    Authentification Ok back et front
+
+[33mcommit a144c2ae4dbcccfd113651c756a212edea427aec[m
+Author: KevinDelcourt <38816626+KevinDelcourt@users.noreply.github.com>
+Date:   Wed Feb 6 20:11:49 2019 +0100
+
+    Update README.md
+
+[33mcommit faffa2b4fc915d7f92519be2b92ec3b0effefd14[m
+Author: KevinDelcourt <38816626+KevinDelcourt@users.noreply.github.com>
+Date:   Wed Feb 6 20:08:53 2019 +0100
+
+    Update README.md
+
+[33mcommit 94fa836696b84d0190acac70b7b00baf3c0d550b[m
+Author: KevinDelcourt <38816626+KevinDelcourt@users.noreply.github.com>
+Date:   Wed Feb 6 20:05:27 2019 +0100
+
+    Update README.md
+
+[33mcommit 6fe4776b184f38a7b3aa7e175dd0a7a61d309a1f[m
+Merge: 7149b79 9ec3664
+Author: Carlos <carlos973junior@gmail.com>
+Date:   Wed Feb 6 17:18:08 2019 +0100
+
+    Merge branch 'ComposantBoutonConnexion' of https://github.com/KevinDelcourt/cho7.git; branch 'master' of https://github.com/KevinDelcourt/cho7 into ComposantBoutonConnexion
+
+[33mcommit 7149b7920a5a4a351459a59b6fd5adee61577086[m
+Author: Carlos <carlos973junior@gmail.com>
+Date:   Wed Feb 6 17:17:37 2019 +0100
+
+    Création du footer
+
+[33mcommit 9ec36641300e5a4751e0ac79a44234abfde24ce6[m
+Merge: 330202f 9a5b58a
+Author: Natika31 <36764068+Natika31@users.noreply.github.com>
+Date:   Wed Feb 6 17:02:29 2019 +0100
+
+    Merge pull request #8 from KevinDelcourt/LabelInputConnection-17
+    
+    Label input connection 17
+
+[33mcommit 9a5b58adf3aa7272549915698344714c8f86adf9[m
+Merge: f9ffcf9 330202f
+Author: Pierre-Paul <pierrepaul.g@outlook.com>
+Date:   Wed Feb 6 16:29:18 2019 +0100
+
+    Solve merge conflict
+
+[33mcommit f9ffcf9f9ed19c7a7d25268d3afd41eb5daeccd6[m
+Author: Pierre-Paul <pierrepaul.g@outlook.com>
+Date:   Wed Feb 6 16:19:53 2019 +0100
+
+    Création composant authentification et sous composants
+
+[33mcommit 330202f7ac74601d22545673566ec0890a618c1d[m
+Merge: 199985e 1cd2f42
+Author: Natika31 <36764068+Natika31@users.noreply.github.com>
+Date:   Wed Feb 6 16:11:54 2019 +0100
+
+    Merge pull request #5 from KevinDelcourt/ComposantSiteTitle
+    
+    Composant site title
+
+[33mcommit 1cd2f42be8e77b56e54b1e0522799020e53ef962[m
+Author: Carlos <carlos973junior@gmail.com>
+Date:   Wed Feb 6 15:41:16 2019 +0100
+
+    Composant titre et logo fini (sans structure)
+
+[33mcommit e91ad73348df80bf2ed4059eaeae8517c9175159[m
+Author: Carlos <carlos973junior@gmail.com>
+Date:   Wed Feb 6 12:37:29 2019 +0100
+
+    fix
+
+[33mcommit 199985ec7a96991cc28ea5131d015efa6a7de379[m
+Merge: 3177f17 0637b9f
+Author: Natika31 <36764068+Natika31@users.noreply.github.com>
+Date:   Wed Feb 6 12:04:04 2019 +0100
+
+    Merge pull request #4 from KevinDelcourt/Pierre-Paul
+    
+    Pierre paul
+
+[33mcommit 0637b9f76dda455f7b20f6fd667f8a638cc01ebe[m
+Author: Pierre-Paul <pierrepaul.g@outlook.com>
+Date:   Wed Feb 6 11:36:44 2019 +0100
+
+    Hotfix ConnectionPage
+
+[33mcommit 766b023b3e035a26bf63933140b7895bd498d92f[m
+Author: Pierre-Paul <pierrepaul.g@outlook.com>
+Date:   Wed Feb 6 11:27:02 2019 +0100
+
+    Finition structure connexion
+
+[33mcommit 80a48b7ba77cb98223c580a79d474e4618f083e8[m
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Wed Feb 6 10:49:29 2019 +0100
+
+    correction
+
+[33mcommit 29b48c75c921de1e12151e102f2967ee647f8b85[m
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Wed Feb 6 10:23:16 2019 +0100
+
+    change sonar
+
+[33mcommit e828d1400b7c4bbd62a4c355841ea23d97b27daf[m
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Wed Feb 6 10:17:26 2019 +0100
+
+    backend connexion ok
+
+[33mcommit 05912f239574b525d93794cd76aca5f58ac77da0[m
+Author: Pierre-Paul <pierrepaul.g@outlook.com>
+Date:   Wed Feb 6 10:02:31 2019 +0100
+
+    Refactoring structure page conenxion
+
+[33mcommit 300dff01e8bf4b6de01eb88a1d0bb7e8fe4823a0[m
+Merge: 16acc74 3177f17
+Author: Pierre-Paul <pierrepaul.g@outlook.com>
+Date:   Wed Feb 6 09:03:46 2019 +0100
+
+    Merge branch 'master' of https://github.com/KevinDelcourt/cho7 into Pierre-Paul
+
+[33mcommit 6bc651256a953e928e4ae8552fa47c0c7ff3d2f8[m
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Tue Feb 5 23:34:06 2019 +0100
+
+    début connexion backend
+
+[33mcommit 3177f173b195542f4e2e48e849906e580a463aab[m
+Merge: 7cac90e c9683f7
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Tue Feb 5 10:30:16 2019 +0100
+
+    Merge branch 'master' of https://github.com/KevinDelcourt/cho7
+
+[33mcommit 7cac90e48954d8f5e2a588150d84e033117c8a0d[m
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Tue Feb 5 10:29:33 2019 +0100
+
+    Fusion des deux .gitignore en un
+
+[33mcommit c9683f7102c8f66654c0681a011bd98584f25c9a[m
+Author: KevinDelcourt <38816626+KevinDelcourt@users.noreply.github.com>
+Date:   Mon Feb 4 22:57:56 2019 +0100
+
+    Update README.md
+
+[33mcommit 366624e0119a957565d6d94a07f8e880b8623fff[m
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Mon Feb 4 22:40:20 2019 +0100
+
+    setup travis
+
+[33mcommit f7e0e81e9c04209dbe3fe7f72056b8ada654b086[m
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Mon Feb 4 22:38:51 2019 +0100
+
+    Setup travis
+
+[33mcommit bf10e9b645a2e602035b80d650f989fe04afb658[m
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Mon Feb 4 22:34:19 2019 +0100
+
+    Setup sonarqube
+
+[33mcommit b9fd38ca30bbdb533b3b8469a5a1ec43c91e25ab[m
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Mon Feb 4 22:27:37 2019 +0100
+
+    Setup Travis SonarQube
+
+[33mcommit db28ba3cb24b6457e95a23608d3baef8f0500f63[m
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Mon Feb 4 22:22:01 2019 +0100
+
+    Settings Travis SonarQube
+
+[33mcommit 0846004a0af023cbc81c1b3d47841bb5fac6cb16[m
+Merge: 3953c2b 2005b27
+Author: KevinDelcourt <38816626+KevinDelcourt@users.noreply.github.com>
+Date:   Mon Feb 4 22:09:29 2019 +0100
+
+    Merge pull request #3 from KevinDelcourt/correction
+    
+    Setup Travis et SonarQube
+
+[33mcommit 2005b273792c0f88347d2014be291bf1a52ca54d[m
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Mon Feb 4 22:02:17 2019 +0100
+
+    Edit SonarQube
+
+[33mcommit 16acc74b002a8174278d417f33a07d430fc7d2c5[m
+Author: Pierre-Paul <pierrepaul.g@outlook.com>
+Date:   Mon Feb 4 17:35:41 2019 +0100
+
+    Intégration logo page connexion
+
+[33mcommit c4db062c0717a741951e925237a4e9c60b7a11fc[m
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Mon Feb 4 17:35:02 2019 +0100
+
+    Travis
+
+[33mcommit 6f1fa03ac25840c512f318e8afab767f968bf1e8[m
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Mon Feb 4 17:25:56 2019 +0100
+
+    Travis
+
+[33mcommit ea43e2c462ab4f85da3fea6bccfe00b2896262e4[m
+Merge: 0a17b8a 3953c2b
+Author: Pierre-Paul <pierrepaul.g@outlook.com>
+Date:   Mon Feb 4 17:23:32 2019 +0100
+
+    Merge branch 'master' of https://github.com/KevinDelcourt/cho7 into Pierre-Paul
+
+[33mcommit 3953c2bb3d82089042a7f7119d714764be10787a[m
+Merge: ad89d3c 0c2ed92
+Author: Carlos <carlos973junior@gmail.com>
+Date:   Mon Feb 4 17:23:00 2019 +0100
+
+    Merge branch 'master' of https://github.com/KevinDelcourt/cho7
+
+[33mcommit ad89d3cc0a7f70acae560b109221c03d021b82c3[m
+Author: Carlos <carlos973junior@gmail.com>
+Date:   Mon Feb 4 17:22:25 2019 +0100
+
+    Page de connexion - structure version 1
+
+[33mcommit 0c2ed923c5773cc891e078d0afff8fde64c67826[m
+Author: KevinDelcourt <38816626+KevinDelcourt@users.noreply.github.com>
+Date:   Mon Feb 4 17:22:02 2019 +0100
+
+    Update README.md
+
+[33mcommit 4c358037afc0b3e69dc307f403c56bc63e0c9cb7[m
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Mon Feb 4 17:20:36 2019 +0100
+
+    SonarQube
+
+[33mcommit 68780670f5f2e2b5e9076e48fcf699a3a4c4bf2c[m
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Mon Feb 4 15:57:15 2019 +0100
+
+    Sonarqube
+
+[33mcommit b63db39afbd365d59b84254c992f90ade0cf5ced[m
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Mon Feb 4 15:46:20 2019 +0100
+
+    Sonarqube
+
+[33mcommit 5678d3ad69cafef1e41fc48429f7d7a6d1196279[m
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Mon Feb 4 15:30:37 2019 +0100
+
+    Setup sonarqube
+
+[33mcommit 4d10d68b4d74aafa2b469ad1b0d4fb12c235ed4e[m
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Mon Feb 4 15:25:07 2019 +0100
+
+    setup sonarqube
+
+[33mcommit f7f2610e41bf8fbed8f4f4a91d5dcdfade633f84[m
+Merge: bbe153e f144160
+Author: sahla <medelciss@gmail.com>
+Date:   Mon Feb 4 14:47:07 2019 +0100
+
+    Merge branch 'master' of https://github.com/KevinDelcourt/cho7
+
+[33mcommit bbe153ed2c21792dc41e4cb313efb2aedf9b42af[m
+Author: sahla <medelciss@gmail.com>
+Date:   Mon Feb 4 14:46:05 2019 +0100
+
+    init baseDD
+
+[33mcommit 88aceadb241e35d47f882c1614ef01ed4f895660[m
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Mon Feb 4 14:32:41 2019 +0100
+
+    changement Travis
+
+[33mcommit 0a17b8ab66bbbb98b280b69efdeb9a25044f53f4[m
+Author: Pierre-Paul <pierrepaul.g@outlook.com>
+Date:   Mon Feb 4 14:30:33 2019 +0100
+
+    Code de conduite V2
+
+[33mcommit 46ffd3d97512c9755b285f497230466c261d976b[m
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Mon Feb 4 14:30:10 2019 +0100
+
+    changement travis
+
+[33mcommit 9ebed114a3135c008bb3633390bad3f6cfa902fc[m
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Mon Feb 4 14:23:52 2019 +0100
+
+    ajout travis yml
+
+[33mcommit f144160ff9c5dc2d591f155bc69a3f2e78992cfc[m
+Merge: 7fbd135 b9db02b
+Author: KevinDelcourt <38816626+KevinDelcourt@users.noreply.github.com>
+Date:   Mon Feb 4 14:14:29 2019 +0100
+
+    Merge pull request #2 from KevinDelcourt/correction
+    
+    correction fichiers init js
+
+[33mcommit b9db02b6b293bf486aa12f1262a68bf7fe30a283[m
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Mon Feb 4 14:11:27 2019 +0100
+
+    correction fichiers init js
+
+[33mcommit 7fbd1355e94cc6aaf8a5d4105c04787d4c90b140[m
+Merge: e41215d 5d6f385
+Author: Pierre-Paul <pierrepaul.g@outlook.com>
+Date:   Mon Feb 4 12:27:01 2019 +0100
+
+    Solve merge conflict
+
+[33mcommit e41215d1b71866cd5add2310796db4d51144f825[m
+Author: Pierre-Paul <pierrepaul.g@outlook.com>
+Date:   Mon Feb 4 12:22:54 2019 +0100
+
+    Code de conduite V1
+
+[33mcommit 5d6f3858feb8a63fc109813be2df63da70b34c72[m
+Merge: 9902761 76f2d55
+Author: KevinDelcourt <38816626+KevinDelcourt@users.noreply.github.com>
+Date:   Mon Feb 4 12:22:01 2019 +0100
+
+    Merge pull request #1 from KevinDelcourt/base-serveur-node
+    
+    base node js
+
+[33mcommit 76f2d5510bcc27be244e829674ec1875ed602f38[m
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Mon Feb 4 12:19:22 2019 +0100
+
+    base node js
+
+[33mcommit 99027617b6c1b51dfdd5a287011a69466d088cd8[m
+Author: Carlos <carlos973junior@gmail.com>
+Date:   Mon Feb 4 12:07:54 2019 +0100
+
+    Code de conduite V0
+
+[33mcommit 28271b35d631281794f20174b47bb3070717693e[m
+Author: KevinDelcourt <38816626+KevinDelcourt@users.noreply.github.com>
+Date:   Mon Feb 4 11:34:02 2019 +0100
+
+    Create CODE_OF_CONDUCT.md
+
+[33mcommit 23705907755d92860eb6976273bb2f28d16ce110[m
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Mon Feb 4 11:27:19 2019 +0100
+
+    création base appli
+
+[33mcommit 12bc73d0bb7b7ccbfb79bef21268eeadc017262d[m
+Author: KevinDelcourt <delcokevgmail.com>
+Date:   Mon Feb 4 11:17:43 2019 +0100
+
+    Initial commit
