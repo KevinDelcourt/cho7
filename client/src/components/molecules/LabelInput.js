@@ -15,7 +15,7 @@ const FieldContainer = styled.div`
 
 const LabelInput = props => (
     <div>
-        <Label font={theme.fontFamily.ruluko}>{props.label}</Label>
+        <Label font={theme.fontFamily.ruluko} children={props.label} />
 
         <FieldContainer>
             <Input
