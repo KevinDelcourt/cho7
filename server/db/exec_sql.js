@@ -8,6 +8,8 @@ const connection = mysql.createConnection(credentials)
 
 const request = fs.readFileSync(__dirname + "/mysql/init_db.sql").toString()
 
+let sql = process.argv[2]
+
 const exec = sql =>
     connection.query(request, (err, result) => {
         if (err) throw err
