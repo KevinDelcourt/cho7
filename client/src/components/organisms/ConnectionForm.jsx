@@ -3,7 +3,7 @@ import Button from "../atoms/Button/Button"
 import React from "react"
 import { Component } from "react"
 import { Field, reduxForm } from "redux-form"
-import FieldConnection from "../atoms/FieldConnection"
+import LabelInput from "../molecules/LabelInput"
 import { required } from "../../modules/validation"
 import theme from "./../../theme.json"
 
@@ -31,7 +31,7 @@ class ConnectionForm extends Component {
                 <AuthentificationContainer>
                     <Field
                         name="username"
-                        component={FieldConnection}
+                        component={LabelInput}
                         type="text"
                         label="Pseudo *"
                         placeholder="Pseudo"
@@ -40,7 +40,7 @@ class ConnectionForm extends Component {
 
                     <Field
                         name="password"
-                        component={FieldConnection}
+                        component={LabelInput}
                         type="password"
                         label="Mot de passe *"
                         validate={[required]}
