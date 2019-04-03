@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
-import LabelBase from "./Label/Label"
+import Label from "./Label/Label"
+import theme from "./../../theme.json"
 
 const Input = styled.input`
     padding: 6px;
@@ -19,7 +20,7 @@ const FieldContainer = styled.div`
 const FieldConnection = props => (
     <div>
         <LabelContainer>
-            <LabelBase>{props.label}</LabelBase>
+            <Label font={theme.fontFamily.ruluko}>{props.label}</Label>
         </LabelContainer>
 
         <FieldContainer>
