@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import LabelBase from "./Label"
+import LabelBase from "./Label/Label"
 
 const Input = styled.input`
     padding: 6px;

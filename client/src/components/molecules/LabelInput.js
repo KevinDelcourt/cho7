@@ -1,7 +1,7 @@
-import styled from 'styled-components'
-import InputBase from './../atoms/InputBase'
-import Label from '../atoms/Label'
-import React from 'react'
+import styled from "styled-components"
+import InputBase from "./../atoms/InputBase"
+import Label from "../atoms/Label/Label"
+import React from "react"
 
 const LabelInputContainer = styled.div`
     display: grid;

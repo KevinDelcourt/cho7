@@ -1,7 +1,7 @@
-import styled from 'styled-components';
-import Label from '../atoms/Label';
-import TextareaBase from './../atoms/TextareaBase';
-import React from 'react';
+import styled from "styled-components"
+import Label from "../atoms/Label/Label"
+import TextareaBase from "./../atoms/TextareaBase"
+import React from "react"
 
 const LabelTextareaContainer = styled.div`
     display: grid;

@@ -6,6 +6,7 @@ import theme from "./../../theme.json"
 import { Field, reduxForm } from "redux-form"
 import FieldConnection from "../atoms/FieldConnection"
 import { required } from "../../modules/validation"
+import Label from "../atoms/Label/Label"
 
 const StyledButton = styled(Button)`
     margin-top: 7vh;
@@ -33,7 +34,12 @@ class ConnectionForm extends Component {
                         name="username"
                         component={FieldConnection}
                         type="text"
-                        label="Pseudo *"
+                        label={
+                            <Label
+                                children="Pseudo *"
+                                font={theme.fontFamily.ruluko}
+                            />
+                        }
                         placeholder="Pseudo"
                         validate={[required]}
                     />
@@ -42,7 +48,12 @@ class ConnectionForm extends Component {
                         name="password"
                         component={FieldConnection}
                         type="password"
-                        label="Mot de passe *"
+                        label={
+                            <Label
+                                children="Mot de passe *"
+                                font={theme.fontFamily.ruluko}
+                            />
+                        }
                         validate={[required]}
                     />
                 </AuthentificationContainer>
