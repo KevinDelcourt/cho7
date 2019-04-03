@@ -27,19 +27,29 @@ let uploadImage = multer({ storage: storageImage });
 const creationValidator = [
 	body('titre').isLength({min: 1}).withMessage('Le titre est obligatoire').isLength({max: 50}).withMessage('Le titre doit faire un maximum de 50 caractères'),
 	body('creation').custom((value, {req}) => {
-		if (req.file.mimetype.split('/')[0] != 'audio') {
-			throw new Error('Seuls les fichiers audios sont acceptés');
+		if (!req.file) {
+			return true
+		} else if (req.file.mimetype.split('/')[0] != 'audio') {
+			throw new Error('Seuls les fichiers audios sont acceptés')
 		} else {
 			return true
 		}
 	}).custom((value, {req}) => {
-		if (req.file.originalname.length > 50) {
-			throw new Error('Nom de fichier trop long, maximum 50 caractères');
+		if (!req.file) {
+			return true
+		} else if (req.file.originalname.length > 50) {
+			throw new Error('Nom de fichier trop long, maximum 50 caractères')
 		} else {
 			return true
 		}
 	}),
 	body('description').isLength({max: 2048}).withMessage('Description trop longue, maximum 2048 caractères')
+];
+
+const etatAvancementValidator = [
+	body('libelle.*').isString().isLength({min: 1}).withMessage('Le label de l\'état est obligatoire').isLength({max: 50}).withMessage('Le titre doit faire un maximum de 50 caractères'),
+	body('idEtat.*').isInt({ min: 0, max: 99999999999 }),
+	body('valeur.*', 'Valeur invalide').isInt({ min: 0, max: 100 })
 ];
 
 
@@ -70,7 +80,7 @@ module.exports = (app, passport) => {
 
 	/* NOUVELLE CREATION */
 		
-	app.post('/addcreation', uploadAudio.single('creation'), creationValidator, (req, res) => {
+	app.post('/addcreation', uploadAudio.single('creation'), creationValidator, etatAvancementValidator, (req, res) => {
 		const titre = req.body.titre;
 		const desc = req.body.description;
 		const errors = validationResult(req);
@@ -78,35 +88,33 @@ module.exports = (app, passport) => {
 		if (!errors.isEmpty()) {
 			return res.status(422).json({ errors: errors.array() });
 		} else {
-			return res.json(req.body)
-		}
-		
-		// Si fichier renseigné
-		/* if(req.file) {
-			connection.query('INSERT INTO creation (nomfichier, titre, description) VALUES (?, ?, ?)', [req.file.originalname, titre, desc], (err, rows) => {
-				if(err)
-					res.redirect("http://localhost:3000/newCreation?err=1")
-			})
-		} else {
-			connection.query('INSERT INTO creation (titre, description) VALUES (?,?)', [titre, desc], (err, rows) => {
-				if(err)
-					res.redirect("http://localhost:3000/newCreation?err=1")
-			})
-		}
-		
-		// Si au moins 1 état d'avancement renseigné
-		if(req.body.libelle) {
-			req.body.libelle.map((l, index) => {
-				connection.query('INSERT INTO etat_avancement (libelle, valeuravancement, idcreation) VALUES (?, ?, ?)',[l, req.body.valeur[index], rows.insertId], (err, rows) => {
+			// Si fichier renseigné
+			if (req.file) {
+				connection.query('INSERT INTO creation (nomfichier, titre, description) VALUES (?, ?, ?)', [req.file.originalname, titre, desc], (err, rows) => {
 					if(err)
 						res.redirect("http://localhost:3000/newCreation?err=1")
-
-					res.redirect("http://localhost:3000/creations")
 				})
-			})
-		} else {
-			res.redirect("http://localhost:3000/creations")
-		} */
+			} else {
+				connection.query('INSERT INTO creation (titre, description) VALUES (?,?)', [titre, desc], (err, rows) => {
+					if(err)
+						res.redirect("http://localhost:3000/newCreation?err=1")
+				})
+			}
+			
+			// Si au moins 1 état d'avancement renseigné
+			if(req.body.libelle) {
+				req.body.libelle.map((l, index) => {
+					connection.query('INSERT INTO etat_avancement (libelle, valeuravancement, idcreation) VALUES (?, ?, ?)',[l, req.body.valeur[index], rows.insertId], (err, rows) => {
+						if(err)
+							res.redirect("http://localhost:3000/newCreation?err=1")
+
+						res.redirect("http://localhost:3000/creations")
+					})
+				})
+			} else {
+				res.redirect("http://localhost:3000/creations")
+			}
+		}
 	})
 
 

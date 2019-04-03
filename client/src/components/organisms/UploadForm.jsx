@@ -18,7 +18,6 @@ const StyledButton = styled(Button)`
 	justify-self: end;
 `;
 
-
 class UploadForm extends React.Component{
 	render() {
 		return(
