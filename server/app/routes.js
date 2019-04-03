@@ -1,31 +1,30 @@
-const sign = require('cookie-signature').sign
-const mysql = require('mysql');
-const credentials = require('../db/db-identifiants.json')
+const { updateCreateurQuery } = require("../modules/queries")
+const {
+    responseFromValidatorError,
+    getErrors,
+    hasNoErrors,
+    requiredCheck,
+    maxLenValidator 
+} = require("../modules/validation")
+const mysql = require("mysql")
+const credentials = require("../db/db-identifiants.json")
 const connection = mysql.createConnection(credentials)
-const fs = require('fs')
-const multer = require('multer')
-const { body, validationResult } = require('express-validator/check');
+const fs = require("fs")
+const multer = require("multer")
+
+const { body, check, validationResult } = require("express-validator/check")
 const storageAudio = multer.diskStorage({
-	destination: (req, file, cb) => {
-		cb(null, __dirname + '/../public/audio/')
-	},
-	filename: (req, file, cb) => {
-		cb(null, file.originalname)
-	}
+    destination: (req, file, cb) => {
+        cb(null, __dirname + "/../public/audio/")
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.originalname)
+    }
 })
-let uploadAudio = multer({ storage: storageAudio });
-const storageImage = multer.diskStorage({
-	destination: (req, file, cb) => {
-		cb(null, __dirname + '/../public/images/')
-	},
-	filename: (req, file, cb) => {
-		cb(null, Date.now()+"-"+file.originalname)
-	}
-})
-let uploadImage = multer({ storage: storageImage });
+let uploadAudio = multer({ storage: storageAudio })
 
 const creationValidator = [
-	body('titre').isLength({min: 1}).withMessage('Le titre est obligatoire').isLength({max: 50}).withMessage('Le titre doit faire un maximum de 50 caractères'),
+	body('titre').isLength({min: 1}).withMessage('Le titre est obligatoire'),
 	body('creation').custom((value, {req}) => {
 		if (!req.file) {
 			return true
@@ -42,8 +41,7 @@ const creationValidator = [
 		} else {
 			return true
 		}
-	}),
-	body('description').isLength({max: 2048}).withMessage('Description trop longue, maximum 2048 caractères')
+	})
 ];
 
 const etatAvancementValidator = [
@@ -52,100 +50,140 @@ const etatAvancementValidator = [
 	body('valeur.*', 'Valeur invalide').isInt({ min: 0, max: 100 })
 ];
 
-
 module.exports = (app, passport) => {
-
-	app.get('/', (req, res) => {
-		res.setHeader('Content-Type', 'text/plain')
-		res.send('Server online')
+    app.get("/", (req, res) => {
+        res.send(true)
 	})
-
-	app.get('/denied', (req, res) => {
-		res.setHeader('Content-Type', 'text/plain')
-		res.send('false')
-	})
-
-	app.post('/login', passport.authenticate('local', { failureRedirect: "/denied" }),
-		(req, res) => {
-			console.log("logged in")
-			console.log(req.user)
-			if (req.body.remember) {
-				req.session.cookie.maxAge = 1000 * 60 * 3
-			} else {
-				req.session.cookie.expires = false
-			}
-			res.send('s:' + sign(req.sessionID, 'a'));
-		})
-
-
+	
 	/* NOUVELLE CREATION */
-		
-	app.post('/addcreation', uploadAudio.single('creation'), creationValidator, etatAvancementValidator, (req, res) => {
-		const titre = req.body.titre;
-		const desc = req.body.description;
-		const errors = validationResult(req);
-		
-		if (!errors.isEmpty()) {
-			return res.status(422).json({ errors: errors.array() });
-		} else {
-			// Si fichier renseigné
-			if (req.file) {
-				connection.query('INSERT INTO creation (nomfichier, titre, description) VALUES (?, ?, ?)', [req.file.originalname, titre, desc], (err, rows) => {
-					if(err)
-						return res.redirect("http://localhost:3000/newCreation?err=1")
-				})
 
-				return res.redirect("http://localhost:3000/")
-			} else {
-				connection.query('INSERT INTO creation (titre, description) VALUES (?,?)', [titre, desc], (err, rows) => {
-					if(err)
-						return res.redirect("http://localhost:3000/newCreation?err=1")
+    app.post(
+        "/addcreation",
+        isLoggedIn,
+        uploadAudio.single("creation"),
+		creationValidator,
+		etatAvancementValidator,
+        maxLenValidator(),
+        hasNoErrors,
+        (req, res) => {
+            if (req.file)
+                connection.query(
+                    "INSERT INTO creation (nomfichier, titre, description) VALUES (?, ?, ?)",
+                    [
+                        req.file.originalname,
+                        req.body.titre,
+                        req.body.description
+                    ],
+                    err => {
+                        if (err) return res.send(err)
+                        res.send(true)
+                    }
+                )
+            else if (
+                req.body.libelle &&
+                req.body.valeur &&
+                req.body.libelle.length > 0 &&
+                req.body.valeur.length > 0
+            )
+                connection.query(
+                    "INSERT INTO creation (titre,description) VALUES (?,?)",
+                    [req.body.titre, req.body.description],
+                    (err, rows) => {
+                        if (err) return res.send(err)
 
-					// Si au moins 1 état d'avancement renseigné
-					if(req.body.libelle) {
-						req.body.libelle.map((l, index) => {
-							connection.query('INSERT INTO etat_avancement (libelle, valeuravancement, idcreation) VALUES (?, ?, ?)',[l, req.body.valeur[index], rows.insertId], (err, rows) => {})
-						})
-					}
-				})
+                        req.body.libelle.map((l, index) => {
+                            connection.query(
+                                "INSERT INTO etat_avancement (libelle, valeuravancement, idcreation) VALUES (?, ?, ?)",
+                                [l, req.body.valeur[index], rows.insertId],
+                                (err, rows) => {
+                                    if (err) return res.send(err)
+                                }
+                            )
+                        })
 
-				return res.redirect("http://localhost:3000/creations")
-			}
-		}
-	})
-
-
+                        res.send(true)
+                    }
+                )
+            else {
+                res.send({
+                    libelle: "Au moins 1 etat requis",
+                    valeur: "Au moins une valeur requise",
+                    creation: "Un fichier ou un état requis"
+                })
+            }
+        }
+	)
+	
 	/* MODIFIER CREATION */
 
-	app.post('/updateCreation/:id', uploadAudio.single('creation'), creationValidator, (req, res) => {
-		const idCreation = req.params.id;
+    app.post(
+        "/updateCreation/",
+        isLoggedIn,
+        uploadAudio.single("creation"),
+        creationValidator,
+        maxLenValidator(),
+        hasNoErrors,
+        (req, res) => {
+            const idCreation = req.body.id
+            if (req.file) {
+                connection.query(
+                    "DELETE FROM etat_avancement WHERE idcreation = ?",
+                    idCreation,
+                    err => {
+                        if (err) return res.send(err)
+                    }
+                )
+                connection.query(
+                    "UPDATE creation SET nomfichier = ?, titre = ?, description = ? WHERE id = ?",
+                    [
+                        req.file.originalname,
+                        req.body.titre,
+                        req.body.description,
+                        idCreation
+                    ],
+                    (err, rows) => {
+                        if (err) return res.send(err)
 
-		if (req.file) {
-			connection.query('UPDATE creation SET nomfichier = ?, titre = ?, description = ? WHERE id = ?',[req.file.originalname, req.body.titre, req.body.description, idCreation],(err,rows)=>{
-				if(err)
-					res.redirect("http://localhost:3000/updateCreation/" + idCreation + "?err=1");
-			})
-		} else {
-			connection.query('UPDATE creation SET titre = ?, description = ? WHERE id = ?',[req.body.titre, req.body.description, idCreation],(err,rows)=>{
-				if(err)
-					res.redirect("http://localhost:3000/updateCreation/" + idCreation + "?err=2");
-			})
-		}
+                        res.send(true)
+                    }
+                )
+            } else {
+                connection.query(
+                    "UPDATE creation SET titre = ?, description = ? WHERE id = ?",
+                    [req.body.titre, req.body.description, idCreation],
+                    (err, rows) => {
+                        if (err) return res.send(err)
 
-		req.body.valeur.map((val, index) => {
-			connection.query('UPDATE etat_avancement SET valeuravancement = ? WHERE id = ?',[val, req.body.idEtat[index]], (err, rows) => {
-				if(err)
-					res.redirect("http://localhost:3000/updateCreation/" + idCreation + "?err=3");
-			})
-		})
+                        if (
+                            req.body.libelle &&
+                            req.body.valeur &&
+                            req.body.libelle.length > 0 &&
+                            req.body.valeur.length > 0
+                        )
+                            req.body.valeur.map((val, index) => {
+                                connection.query(
+                                    "UPDATE etat_avancement SET valeuravancement = ?, libelle = ? WHERE id = ?",
+                                    [
+                                        val,
+                                        req.body.libelle[index],
+                                        req.body.idEtat[index]
+                                    ],
+                                    (err, rows) => {
+                                        if (err) return res.send(err)
+                                    }
+                                )
+                            })
 
-		res.redirect(req.get('referer'));
-	})
-
+                        res.send(true)
+                    }
+                )
+            }
+        }
+    )
 
 	/* SUPPRIMER CREATION */
 
-	app.get('/deleteCreation/:id', uploadAudio.none(), (req, res) => {
+	app.get('/deleteCreation/:id', isLoggedIn, (req, res) => {
 		const idCreation = req.params.id;
 		//let pathFinFichier;
 		// Avant recupere les titre a suprimer dans la bdd
@@ -158,128 +196,21 @@ module.exports = (app, passport) => {
 				let pathComplet=  __dirname + '/../public/audio/'+pathFinFichier; */
 				// console.log(pathComplet);
 				// fs.unlinkSync(pathComplet)
+				return res.send(true)
 			})
 		}
 
-		return res.send(true);
-	});
-
-
-	app.post('/renseignerprofil',uploadImage.single('avatar'), (req, res) => {
-		let filename = ""
-		if(req.file){
-			filename = req.file.filename
-	
-			connection.query('UPDATE users SET username = ?, password = ?, email = ?, presentation = ?, avatar = ? WHERE role="ROLE_CREATEUR";',
-				[req.body.username, req.body.password, req.body.email, req.body.presentation,filename], (err, rows) => {
-					if(err)
-						res.send(err)
-					res.redirect("http://localhost:3000/RenseignerProfilPage/");
-				})
-		}
-
-		else {
-			connection.query('UPDATE users SET username = ?, password = ?, email = ?, presentation = ? WHERE role="ROLE_CREATEUR";',
-				[req.body.username, req.body.password, req.body.email, req.body.presentation], (err, rows) => {
-					if(err)
-						res.send(err)
-					res.redirect("http://localhost:3000/RenseignerProfilPage/");
-				})
-		}
+		return res.send(false)
 	})
 
-	app.get('/etatsCreation/:idCreation', (req, res) => {
-		connection.query('SELECT * FROM etat_avancement WHERE idcreation =' + req.params.idCreation, (err, rows) => {
-			if (err)
-				res.send(400)
-			res.setHeader('Content-Type', 'application/json')
-			res.send(rows)
-		})
-	})
-
-	app.get('/creation/:id', (req, res) => {
-		connection.query('SELECT * FROM creation WHERE id =' + req.params.id, (err, rows) => {
-			if (err)
-				res.send(400)
-			res.setHeader('Content-Type', 'application/json')
-			res.send(rows)
-		})
-	})
-
-	app.get('/creations', (req, res) => {
-		connection.query('SELECT id, nomfichier, titre, description FROM creation WHERE nomfichier IS NOT NULL ORDER BY id DESC', (err, rows) => {
-			if (err)
-				res.send(400)
-			res.setHeader('Content-Type', 'application/json')
-			res.send(rows)
-		})
-	})
-
-	app.get('/creationsInProgress', (req, res) => {
-		connection.query('SELECT id, titre FROM creation WHERE nomfichier IS NULL ORDER BY id DESC', (err, rows) => {
-			if (err)
-				res.send(400)
-			res.setHeader('Content-Type', 'application/json')
-			res.send(rows)
-		})
-	})
-
-	app.get('/creator',(req, res)=>{
-		connection.query('SELECT username, presentation FROM users WHERE role = "ROLE_CREATEUR"', (err,rows)=>{
-			if(err)
-				res.send(400)
-			res.setHeader('Content-Type', 'application/json')
-			res.send(rows)
-		})
-	})
-
-	app.get('/avancement',(req, res)=>{
-		connection.query('SELECT creation.titre, creation.description, etat_avancement.libelle,etat_avancement.valeuravancement, creation.miseajour FROM creation,etat_avancement WHERE etat_avancement.idcreation=creation.id AND creation.nomfichier is null', (err,rows)=>{
-			if(err)
-				res.send(400)
-
-			res.setHeader('Content-Type', 'application/json')
-			res.send(rows)
-		})
-	})
-
-	app.get('/has_role/:role', isLoggedIn, (req, res) => {
-		res.setHeader('Content-Type', 'text/plain')
-		if (req.user.role === 'ROLE_' + req.params.role.toUpperCase())
-			res.send('true')
-		else
-			res.send('false')
-	})
-
-	app.get('/user',isLoggedIn , (req, res) => {
-		res.setHeader('Content-Type', 'application/json')
-		res.send(req.user)
-	})
-
-	app.get('/createur', (req, res) => {
-		connection.query("SELECT * FROM users WHERE role = 'ROLE_CREATEUR'", (err, rows)=>{
-			res.setHeader('Content-Type', 'application/json')
-			res.send(rows[0])	
-		})
-	})
-
-	
-
-	app.get('/logout', (req, res) => {
-		console.log('login out...')
-		res.cookie("connect.sid", "", { expires: new Date() })
-		res.send('logged out')
-		req.logout()
-	})
+    require("./routes/auth")(app, passport)
+    require("./routes/users")(app, connection)
+    require("./routes/public_get")(app, connection)
 }
 
 const isLoggedIn = (req, res, next) => {
-	console.log('Auth check...')
-	console.log(req.cookies)
-	if (req.isAuthenticated()) {
-		console.log('ok!')
-		return next();
-	}
-	console.log('denied! Redirecting...')
-	res.redirect('/denied');
+    if (req.isAuthenticated()) {
+        return next()
+    }
+    res.send(false)
 }

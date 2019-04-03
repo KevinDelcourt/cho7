@@ -1,27 +1,52 @@
-language: 
+language:
   - node_js
 node_js:
   - "lts/*"
-services: mysql
-addons:
-  sonarcloud:
-    organisation: "kevindelcourt-github"
-  token:
-    secure: ${SONAR_TOKEN}
 cache:
   - npm
-before_install:
-  - mysql -e 'CREATE DATABASE cho7;'
-  - cd client
-script:
-  - npm install wait-on -g
-  - cd ../server
-  - npm install
-  - echo '{"host":"127.0.0.1","user":"root","database":"cho7"}' > db/db-identifiants.json
-  - node db/init_db.js 
-  - node server.js & wait-on http://localhost:8180
-  - cd ../client
-  - yarn start & wait-on http://localhost:3000
-  - cypress run
-  - cd ..
-  - sonar-scanner
+stages:
+  - test
+  - name: deploy
+    if: branch = master
+jobs:
+  include:
+    - stage: test
+      name: "Tests unitaires"
+      script:
+        - cd client
+        - yarn
+        - yarn unit-test
+    - stage: test
+      name: "Tests d'intégration/d'API"
+      services: mysql
+      script:
+        - mysql -e 'CREATE DATABASE cho7;'
+        - yarn add wait-on concurrently nodemon
+        - yarn install-all
+        - echo '{"host":"127.0.0.1","user":"root","database":"cho7"}' > server/db/db-identifiants.json
+        - node server/db/init_db.js
+        - yarn start & wait-on http://localhost:3000
+        - cd client
+        - cypress run
+    - stage: test
+      name: "Analyse SonarCloud"
+      addons:
+        sonarcloud:
+          organisation: "kevindelcourt-github"
+        token:
+          secure: ${SONAR_TOKEN}
+      script: sonar-scanner
+    - stage: deploy
+      name: "Docker Deploy Front"
+      script:
+        - echo ${DOCKER_PASSWORD} | docker login -u ${DOCKER_USERNAME} --password-stdin
+        - docker build -t cho7_web ./client
+        - docker tag cho7_web ${DOCKER_USERNAME}/cho7_web
+        - docker push ${DOCKER_USERNAME}/cho7_web
+    - stage: deploy
+      name: "Docker Deploy Back"
+      script:
+        - echo ${DOCKER_PASSWORD} | docker login -u ${DOCKER_USERNAME} --password-stdin
+        - docker build -t cho7_back ./server
+        - docker tag cho7_back ${DOCKER_USERNAME}/cho7_back
+        - docker push ${DOCKER_USERNAME}/cho7_back

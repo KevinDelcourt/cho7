@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components"
 
 const SiteTitle = styled.h1`
     font-family: "Sevillana";
@@ -7,6 +7,6 @@ const SiteTitle = styled.h1`
     margin-left: 5vw;
     margin-top: 1vh;
     display: inline-block;
-`;
+`
 
-export default SiteTitle;
+export default SiteTitle

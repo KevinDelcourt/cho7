@@ -1,16 +1,24 @@
-const mysql = require('mysql')
+const mysql = require("mysql")
 
-const fs = require('fs')
+const fs = require("fs")
 
-const credentials = require('./db-identifiants.json')
+const credentials = require("./db-identifiants.json")
 credentials.multipleStatements = true
 const connection = mysql.createConnection(credentials)
 
 const request = fs.readFileSync(__dirname + "/mysql/init_db.sql").toString()
 
-connection.query(request, (err,result) => {
-    if(err) throw err
-    console.log(result)
-    connection.destroy()
-});
+let sql = null
+if (process.argv.length > 2) sql = process.argv[2]
 
+connection.query(request, (err, result) => {
+    if (err) throw err
+    console.log(result)
+    if (sql !== null)
+        connection.query(sql, (err, result) => {
+            if (err) throw err
+            console.log(result)
+            connection.destroy()
+        })
+    else connection.destroy()
+})

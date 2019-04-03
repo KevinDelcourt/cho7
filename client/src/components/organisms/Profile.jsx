@@ -1,8 +1,8 @@
-import React from 'react';
-import styled from "styled-components";
-import { getCreateur } from '../../modules/auth';
-import Avatar from '../molecules/Avatar';
-
+import React from "react"
+import styled from "styled-components"
+import { getCreateur } from "../../modules/api"
+import Avatar from "../molecules/Avatar"
+import { getImageUrl } from "../../modules/apiURL"
 
 const Wrapper = styled.div`
     margin-top: 15px;
@@ -10,47 +10,39 @@ const Wrapper = styled.div`
     background: rgba(255, 255, 255, 0.54);
     border-radius: 10px;
     overflow-wrap: break-word;
-`;
+`
 
 const Container = styled.div`
     height: max-content;
     background: rgba(145, 109, 67, 0.35);
     border-radius: 20px;
     padding: 20px 30px;
-`;
+`
 
-class Profile extends React.Component {   
-
-    state={user:{
-        username:"",
-        password:"",
-        email:"",
-        presentation:"",
-        avatar:"",
-        
-    }}
+class Profile extends React.Component {
+    state = {}
 
     async componentDidMount() {
-        this.setState({user: await getCreateur()})
-        
+        this.setState({ user: await getCreateur() })
     }
 
-    render(){
-       
-        return(
-            <Container>
-
-                <center><Avatar src={"http://localhost:8180/public/images/"+this.state.user.avatar}/></center>
+    render() {
+        if (this.state.user)
+            return (
+                <Container>
+                    {this.props.about ? <h2>A propos</h2> : ""}
+                    <center>
+                        <Avatar src={getImageUrl() + this.state.user.avatar} />
+                    </center>
 
                     <Wrapper>
                         <h2>{this.state.user.username}</h2>
                         <p>{this.state.user.presentation}</p>
                     </Wrapper>
-                
-            </Container>
-        
-        )
+                </Container>
+            )
+        return ""
     }
 }
 
-export default Profile;
+export default Profile
