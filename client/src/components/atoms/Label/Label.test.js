@@ -15,5 +15,5 @@ test("Label font-family renders correctly", () => {
 test("Label font-color renders correctly", () => {
     const tree = renderer.create(<Label color="red" />).toJSON()
     expect(tree).toMatchSnapshot()
-    expect(tree).toHaveStyleRule("font-color", "red")
+    expect(tree).toHaveStyleRule("color", "red")
 })
