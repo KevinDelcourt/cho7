@@ -89,7 +89,7 @@ export const getCreationsInProgress = () => axios.get('http://localhost:8180/cre
     return false
 })
 
-export const getAvencement = () => axios.get('http://localhost:8180/avencement')
+export const getAvancement = () => axios.get('http://localhost:8180/avancement')
 .then((response)=>{
     console.log(response)
     

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import React from 'react';
-import { getAvencement } from '../../modules/auth';
+import { getAvancement } from '../../modules/auth';
 import MainContainer from './../molecules/MainContainer';
 
 const SubContainer = styled.div`
@@ -24,10 +24,10 @@ const StateContainer = styled.div`
 `;
 
 class Projet extends React.Component{
-    state = {avencement: []}
+    state = {avancement: []}
 
     async componentDidMount(){
-        this.setState({avencement: await getAvencement()})
+        this.setState({avancement: await getAvancement()})
     }
 
     datetostring =(timestamp)=>{
@@ -39,7 +39,7 @@ class Projet extends React.Component{
         return(
             <MainContainer title="Projets en cours">
                 <SubContainer>
-                    {this.state.avencement.map((c) =>
+                    {this.state.avancement.map((c) =>
                         <MainContainer>
                             <h2>{c[0].titre}</h2>                          
                             {c.map((etat)=> 

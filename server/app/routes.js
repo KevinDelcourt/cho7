@@ -93,27 +93,39 @@ module.exports = (app, passport) => {
 				connection.query('INSERT INTO creation (nomfichier, titre, description) VALUES (?, ?, ?)', [req.file.originalname, titre, desc], (err, rows) => {
 					if(err)
 						res.redirect("http://localhost:3000/newCreation?err=1")
+
+					// Si au moins 1 état d'avancement renseigné
+					if(req.body.libelle) {
+						req.body.libelle.map((l, index) => {
+							connection.query('INSERT INTO etat_avancement (libelle, valeuravancement, idcreation) VALUES (?, ?, ?)',[l, req.body.valeur[index], rows.insertId], (err, rows) => {
+								if(err)
+									res.redirect("http://localhost:3000/newCreation?err=1")
+							})
+						})
+					} else {
+						res.redirect("http://localhost:3000/creations")
+					}
 				})
 			} else {
 				connection.query('INSERT INTO creation (titre, description) VALUES (?,?)', [titre, desc], (err, rows) => {
 					if(err)
 						res.redirect("http://localhost:3000/newCreation?err=1")
+
+					// Si au moins 1 état d'avancement renseigné
+					if(req.body.libelle) {
+						req.body.libelle.map((l, index) => {
+							connection.query('INSERT INTO etat_avancement (libelle, valeuravancement, idcreation) VALUES (?, ?, ?)',[l, req.body.valeur[index], rows.insertId], (err, rows) => {
+								if(err)
+									res.redirect("http://localhost:3000/newCreation?err=1")
+							})
+						})
+					} else {
+						res.redirect("http://localhost:3000/creations")
+					}
 				})
 			}
 			
-			// Si au moins 1 état d'avancement renseigné
-			if(req.body.libelle) {
-				req.body.libelle.map((l, index) => {
-					connection.query('INSERT INTO etat_avancement (libelle, valeuravancement, idcreation) VALUES (?, ?, ?)',[l, req.body.valeur[index], rows.insertId], (err, rows) => {
-						if(err)
-							res.redirect("http://localhost:3000/newCreation?err=1")
-
-						res.redirect("http://localhost:3000/creations")
-					})
-				})
-			} else {
-				res.redirect("http://localhost:3000/creations")
-			}
+			res.redirect("http://localhost:3000/creations")
 		}
 	})
 
@@ -240,7 +252,7 @@ module.exports = (app, passport) => {
 		})
 	})
 
-	app.get('/avencement',(req, res)=>{
+	app.get('/avancement',(req, res)=>{
 		connection.query('SELECT creation.titre, creation.description, etat_avancement.libelle,etat_avancement.valeuravancement, creation.miseajour FROM creation,etat_avancement WHERE etat_avancement.idcreation=creation.id AND creation.nomfichier is null', (err,rows)=>{
 			if(err)
 				res.send(400)
