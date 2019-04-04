@@ -4,14 +4,15 @@ import imgFacebook from "./../../assets/images/facebook2.jpg"
 import imgTwitter from "./../../assets/images/twitter.jpg"
 
 const ContainerSocialNetwork = styled.div`
-    background-color: ${props => props.bgColor || "none"};
+   
     border-radius: 20px;
     padding: 15px 30px;
     display: flex;	
 	align-items: center;
-`
+`;
 const ShareButton = styled.button`   
-	background-color: rgba(0,0,0,0.2);
+    position: relative;
+	background-color: rgba(0,0,0,0.2);	
 	width: 40px;
 	height : 40px;
 	display: flex;
@@ -19,13 +20,30 @@ const ShareButton = styled.button`
 	align-items: center;
 	border-radius: 50%;
     overflow : hidden;
-  
+    &:hover  {
+        background-color: #55acee;
+    }  
+`;
+
+const ShareButtonFace = styled.button`   
+    position: relative;
+	background-color: rgba(0,0,0,0.2);	
+	width: 40px;
+	height : 40px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 50%;
+    overflow : hidden;
+    &:hover  {
+        background-color: #3b5999;
+    }  
 `;
 
 const ImgShare = styled.img`   
 	width: 30px;
 	height: 30px;
-    border-radius: 50%;   
+    border-radius: 50%;      
 `;
 
 
@@ -68,10 +86,12 @@ class SocialNetwork extends React.Component {
 
     render() {
         return (
-            <ContainerSocialNetwork>                
-                <ShareButton onClick={this.shareFacebook}>
-                    <ImgShare src= {imgFacebook} alt="social" />                    
-                </ShareButton>             
+            <ContainerSocialNetwork> 
+                           
+                    <ShareButtonFace onClick={this.shareFacebook}>
+                        <ImgShare src= {imgFacebook} alt="social" />                                 
+                     </ShareButtonFace> 
+                             
                 <ShareButton onClick={this.shareTwitter} >
                     <ImgShare src= {imgTwitter} alt="social"  />                   
                 </ShareButton>
