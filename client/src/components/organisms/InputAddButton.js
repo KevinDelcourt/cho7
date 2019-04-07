@@ -1,6 +1,6 @@
 import React from "react"
 import AddButton from "../atoms/AddButton"
-import InputBase from "../atoms/InputBase"
+import Input from "../atoms/Input"
 import LabelInputRange from "../molecules/LabelInputRange"
 
 class InputAddButton extends React.Component {
@@ -29,8 +29,9 @@ class InputAddButton extends React.Component {
     render() {
         return (
             <div>
-                <InputBase id="inputStateName" />
+                <Input data-cypress id="inputStateName" />
                 <AddButton
+                    data-cypress
                     type="button"
                     value="+"
                     onClick={this.getStateName}
@@ -39,10 +40,12 @@ class InputAddButton extends React.Component {
                     {this.state.nameEtat.map((name, index) => (
                         <div key={index}>
                             <LabelInputRange
+                                data-cypress
                                 label={name + ": "}
                                 index={index}
                             />
                             <AddButton
+                                data-cypress
                                 type="button"
                                 value="-"
                                 onClick={() => this.removeState(index)}
