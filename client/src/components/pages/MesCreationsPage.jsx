@@ -5,7 +5,6 @@ import { hasRole } from "../../modules/api"
 import CreationsInProgress from "../organisms/CreationsInProgress"
 import MainContainer from "../molecules/MainContainer"
 import { Link } from "react-router-dom"
-import theme from "../../theme.json"
 
 const SubContainer = styled.div`
     display: grid;
