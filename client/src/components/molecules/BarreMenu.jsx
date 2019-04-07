@@ -19,6 +19,9 @@ const StyledButton = styled(Button)`
     background-color: ${theme.color.brown1};
     height: 6vh;
     min-height: 43px;
+    &:hover {
+        background-color: ${theme.color.brown2};
+    }
 `
 
 class BarreMenu extends React.Component {

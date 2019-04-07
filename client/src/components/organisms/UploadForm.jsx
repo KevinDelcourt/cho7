@@ -62,6 +62,7 @@ class UploadForm extends React.Component {
                         type="submit"
                         children="Publier"
                         bgColor={theme.color.grey1}
+                        bgColorHover={theme.color.grey2}
                     />
                 </StyledUploadForm>
             </MainContainer>

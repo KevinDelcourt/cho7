@@ -31,9 +31,8 @@ const EtatsAvancementInput = ({ fields, lock }) => (
                     <Button
                         type="button"
                         onClick={() => fields.remove(index)}
-                        bgColor={theme.color.brown2}>
-                        -
-                    </Button>
+                        bgColor={theme.color.brown2}
+                    />
                 )}
             </div>
         ))}

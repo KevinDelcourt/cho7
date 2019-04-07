@@ -49,6 +49,7 @@ class ConnectionForm extends Component {
                 <StyledButton
                     children="Se connecter"
                     bgColor={theme.color.brown2}
+                    bgColorHover={theme.color.grey2}
                 />
             </form>
         )
