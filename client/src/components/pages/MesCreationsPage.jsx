@@ -5,11 +5,19 @@ import { hasRole } from "../../modules/api"
 import CreationsInProgress from "../organisms/CreationsInProgress"
 import MainContainer from "../molecules/MainContainer"
 import { Link } from "react-router-dom"
+import theme from "../../theme.json"
 
 const SubContainer = styled.div`
     display: grid;
     grid-row-gap: 20px;
     grid-template-columns: 100%;
+`
+
+const StyledLink = styled(Link)`
+    &:hover {
+        color: #714512;
+        text-shadow: 1px 1px black;
+    }
 `
 
 class MesCreationsPage extends React.Component {
@@ -28,11 +36,11 @@ class MesCreationsPage extends React.Component {
                     <SubContainer>
                         <MainContainer>
                             <center>
-                                <Link
+                                <StyledLink
                                     to="/newCreation"
-                                    style={{ fontSize: 35 + "px" }}>
-                                    NOUVELLE CRÉATION
-                                </Link>
+                                    style={{ fontSize: 35 + "px" }}
+                                    children="NOUVELLE CRÉATION"
+                                />
                             </center>
                         </MainContainer>
                         <CreationsInProgress />
