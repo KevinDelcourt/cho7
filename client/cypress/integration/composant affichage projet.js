@@ -12,10 +12,10 @@ describe("composant affichage projet", () => {
         //si lui ne passe pas , essayer de changer le get (aller dans cypress puis cliquer
         //sur le champ de texte et copier le lien du get généré)
 
-        cy.get(":nth-child(1) > .sc-EHOje > .sc-bxivhb").type("Admin")
+        cy.get(":nth-child(1) > .sc-ifAKCX > .sc-bxivhb").type("Admin")
 
         cy.log("cilck et ajout du mdp")
-        cy.get(":nth-child(2) > .sc-EHOje > .sc-bxivhb").type("Admin")
+        cy.get(":nth-child(2) > .sc-ifAKCX > .sc-bxivhb").type("Admin")
 
         cy.log("cilck pour la connexion")
         cy.contains("Se connecter").click()

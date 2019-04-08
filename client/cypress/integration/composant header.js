@@ -9,10 +9,10 @@ describe("composant header", () => {
 
         cy.log("cilck et ajout de l'username")
 
-        cy.get(":nth-child(1) > .sc-EHOje > .sc-bxivhb").type("Admin")
+        cy.get(":nth-child(1) > .sc-ifAKCX > .sc-bxivhb").type("Admin")
 
         cy.log("cilck et ajout du mdp")
-        cy.get(":nth-child(2) > .sc-EHOje > .sc-bxivhb").type("Admin")
+        cy.get(":nth-child(2) > .sc-ifAKCX > .sc-bxivhb").type("Admin")
 
         cy.log("cilck pour la connexion")
         cy.contains("Se connecter").click()
@@ -27,7 +27,7 @@ describe("composant header", () => {
         cy.url().should("eq", "http://localhost:3000/creations")
 
         cy.log("cilck sur l'image")
-        cy.get(".sc-gqjmRU").click()
+        cy.get(".sc-fjdhpX > :nth-child(1) > center").click()
         cy.url().should("eq", "http://localhost:3000/")
 
         cy.log("cilck sur l'accueil")
