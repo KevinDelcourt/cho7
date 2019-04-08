@@ -16,6 +16,7 @@ class UploadPage extends React.Component {
     submit = async values => {
         let formData = new FormData()
         formData.append("titre", values.titre)
+        formData.append("twitter", values.twitter)
 
         if (values.description)
             formData.append("description", values.description)
