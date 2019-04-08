@@ -6,13 +6,13 @@ import theme from "./../../theme.json"
 
 const FieldContainer = styled.div`
     display: grid;
+    width: 75%;
 `
 
 const LabelInput = props => (
     <div>
-        <Label font={theme.fontFamily.ruluko} children={props.label} />
-
         <FieldContainer>
+            <Label font={theme.fontFamily.ruluko} children={props.label} />
             <Input
                 {...props.input}
                 type={props.type}
