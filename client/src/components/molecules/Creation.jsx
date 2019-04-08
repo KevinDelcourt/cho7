@@ -18,7 +18,7 @@ const Wrapper = styled.div`
     font-family: "Ruluko", Arial, Sans-serif;
 `
 
-const Suprime = styled.div`
+const Supprime = styled.div`
     display: flex;
     justify-content: flex-end;
 `
@@ -37,11 +37,11 @@ class Creation extends Component {
         this.setState({ auth: await hasRole("CREATEUR") })
     }
 
-    delete = async () => {
-        if (await deleteCreation(this.props.valueId))
+    handleDeleteClick = async () => {
+        if (await deleteCreation(this.props.valueId)) {
             this.props.msgAction("Supression effectuée avec succès")
-        else this.props.msgAction("Erreur dans la suppression")
-        this.setState({ redirect: <Redirect to="/accueil" /> })
+            this.setState({ redirect: <Redirect to="/accueil" /> })
+        } else this.props.msgAction("Erreur dans la suppression")
     }
     
     cptEcoute = async () => {

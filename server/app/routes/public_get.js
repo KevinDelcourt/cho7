@@ -51,7 +51,7 @@ module.exports = (app, connection) => {
         )
     })
 
-    app.get("/avencement", (req, res) => {
+    app.get("/avancement", (req, res) => {
         connection.query(
             "SELECT creation.id, creation.titre, creation.description, etat_avancement.libelle,etat_avancement.valeuravancement, creation.miseajour FROM creation,etat_avancement WHERE etat_avancement.idcreation=creation.id AND creation.nomfichier is null",
             (err, rows) => {
