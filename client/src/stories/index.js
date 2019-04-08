@@ -9,7 +9,7 @@ import BarreMenu from "../components/molecules/BarreMenu"
 import { BrowserRouter as Router } from "react-router-dom"
 import FooterTemplate from "../components/organisms/FooterTemplate"
 import Input from "../components/atoms/Input/Input"
-import TextareaBase from "../components/atoms/Textarea"
+import Textarea from "../components/atoms/Textarea"
 import LabelTextarea from "../components/molecules/LabelTextarea"
 import MainContainer from "../components/molecules/MainContainer"
 import LabelInputRange from "./../components/molecules/LabelInputRange"
@@ -38,7 +38,26 @@ storyLabel.add("Label", () => (
 const storyInput = storiesOf("atoms", module)
 storyInput.addDecorator(withKnobs)
 storyInput.add("Input", () => (
-    <Input borderRadius={text("Border-radius", "30px")} />
+    <Input
+        borderRadius={text("Border-radius", "30px")}
+        value={text(
+            "Label children",
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusm"
+        )}
+    />
+))
+
+const storyTextarea = storiesOf("atoms", module)
+storyTextarea.addDecorator(withKnobs)
+storyTextarea.add("Textarea", () => (
+    <Textarea
+        borderRadius={text("Border-radius", "30px")}
+        value={text(
+            "Label children",
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim."
+        )}
+        rows="5"
+    />
 ))
 
 const storyLabelInput = storiesOf("molecules", module)
@@ -67,12 +86,6 @@ storiesOf("organisms", module)
         />
     ))
     .add("UploadForm", () => <UploadForm />)
-
-const storyTextareaBase = storiesOf("atoms", module)
-storyTextareaBase.addDecorator(withKnobs)
-storyTextareaBase.add("Textarea", () => (
-    <TextareaBase rows={number("nbLigne", 5)} cols={number("NbCol", 10)} />
-))
 
 const storyLabelTextarea = storiesOf("molecules", module)
 storyLabelTextarea.addDecorator(withKnobs)
