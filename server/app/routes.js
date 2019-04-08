@@ -5,7 +5,7 @@ const {
     hasNoErrors,
     requiredCheck,
     maxLenValidator,
-    isLoggedIn 
+    isLoggedIn
 } = require("../modules/validation")
 const mysql = require("mysql")
 const credentials = require("../db/db-identifiants.json")
@@ -25,45 +25,59 @@ const storageAudio = multer.diskStorage({
 let uploadAudio = multer({ storage: storageAudio })
 
 const creationValidator = [
-	body('titre').isLength({min: 1}).withMessage('Le titre est obligatoire'),
-	body('creation').custom((value, {req}) => {
-		if (!req.file) {
-			return true
-		} else if (req.file.mimetype.split('/')[0] != 'audio') {
-			throw new Error('Seuls les fichiers audios sont acceptés')
-		} else {
-			return true
-		}
-	}).custom((value, {req}) => {
-		if (!req.file) {
-			return true
-		} else if (req.file.originalname.length > 50) {
-			throw new Error('Nom de fichier trop long, maximum 50 caractères')
-		} else {
-			return true
-		}
-	})
-];
+    body("titre")
+        .isLength({ min: 1 })
+        .withMessage("Titre requis"),
+    body("creation")
+        .custom((value, { req }) => {
+            if (!req.file) {
+                return true
+            } else if (req.file.mimetype.split("/")[0] != "audio") {
+                throw new Error("Seuls les fichiers audios sont acceptés")
+            } else {
+                return true
+            }
+        })
+        .custom((value, { req }) => {
+            if (!req.file) {
+                return true
+            } else if (req.file.originalname.length > 50) {
+                throw new Error(
+                    "Nom de fichier trop long, maximum 50 caractères"
+                )
+            } else {
+                return true
+            }
+        })
+]
 
 const etatAvancementValidator = [
-	body('libelle.*').isString().isLength({min: 1}).withMessage('Le label de l\'état est obligatoire').isLength({max: 50}).withMessage('Le titre doit faire un maximum de 50 caractères'),
-	body('idEtat.*').isInt({ min: 0, max: 99999999999 }),
-	body('valeur.*', 'Valeur invalide').isInt({ min: 0, max: 100 })
-];
+    body("libelle.*")
+        .isString()
+        .isLength({ min: 1 })
+        .withMessage("Le label de l'état est obligatoire")
+        .isLength({ max: 50 })
+        .withMessage("Le titre doit faire un maximum de 50 caractères"),
+    body("idEtat.*").isInt({
+        min: 0,
+        max: 99999999999
+    }) /*,
+    body("valeur.*", "Valeur invalide").isInt({ min: 0, max: 100 })*/
+]
 
 module.exports = (app, passport) => {
     app.get("/", (req, res) => {
         res.send(true)
-	})
-	
-	/* NOUVELLE CREATION */
+    })
+
+    /* NOUVELLE CREATION */
 
     app.post(
         "/addcreation",
         isLoggedIn,
         uploadAudio.single("creation"),
-		creationValidator,
-		etatAvancementValidator,
+        creationValidator,
+        etatAvancementValidator,
         maxLenValidator(),
         hasNoErrors,
         (req, res) => {
@@ -77,7 +91,7 @@ module.exports = (app, passport) => {
                     ],
                     err => {
                         if (err) return res.send(err)
-                        res.send(true)
+                        return res.send(true)
                     }
                 )
             else if (
@@ -91,31 +105,33 @@ module.exports = (app, passport) => {
                     [req.body.titre, req.body.description],
                     (err, rows) => {
                         if (err) return res.send(err)
-
                         req.body.libelle.map((l, index) => {
+                            if (req.body.valeur[index] == "undefined") {
+                                req.body.valeur[index] = 0
+                            }
+
                             connection.query(
                                 "INSERT INTO etat_avancement (libelle, valeuravancement, idcreation) VALUES (?, ?, ?)",
                                 [l, req.body.valeur[index], rows.insertId],
                                 (err, rows) => {
                                     if (err) return res.send(err)
+                                    return res.send(true)
                                 }
                             )
                         })
-
-                        res.send(true)
                     }
                 )
             else {
-                res.send({
+                return res.send({
                     libelle: "Au moins 1 etat requis",
                     valeur: "Au moins une valeur requise",
                     creation: "Un fichier ou un état requis"
                 })
             }
         }
-	)
-	
-	/* MODIFIER CREATION */
+    )
+
+    /* MODIFIER CREATION */
 
     app.post(
         "/updateCreation/",
@@ -182,27 +198,31 @@ module.exports = (app, passport) => {
         }
     )
 
-	/* SUPPRIMER CREATION */
+    /* SUPPRIMER CREATION */
 
-	app.get('/deleteCreation/:id', isLoggedIn, (req, res) => {
-        const idCreation = req.params.id;
-		//let pathFinFichier;
-		// Avant recupere les titre a suprimer dans la bdd
-		// connection.query('SELECT nomfichier FROM creation WHERE id=?', [req.body.idCreation], (err, rows) => {});
+    app.get("/deleteCreation/:id", isLoggedIn, (req, res) => {
+        const idCreation = req.params.id
+        //let pathFinFichier;
+        // Avant recupere les titre a suprimer dans la bdd
+        // connection.query('SELECT nomfichier FROM creation WHERE id=?', [req.body.idCreation], (err, rows) => {});
 
-		if (/^(0|[1-9]\d*)$/.test(idCreation)) {
-			connection.query('DELETE FROM creation WHERE id = ?', [idCreation], (err, rows) => {
-				/* pathFinFichier= rows[0].nomfichier;
+        if (/^(0|[1-9]\d*)$/.test(idCreation)) {
+            connection.query(
+                "DELETE FROM creation WHERE id = ?",
+                [idCreation],
+                (err, rows) => {
+                    /* pathFinFichier= rows[0].nomfichier;
 				console(rows[0].nomfichier);
 				let pathComplet=  __dirname + '/../public/audio/'+pathFinFichier; */
-				// console.log(pathComplet);
-				// fs.unlinkSync(pathComplet)
-				return res.send(true)
-			})
-		} else {
+                    // console.log(pathComplet);
+                    // fs.unlinkSync(pathComplet)
+                    return res.send(true)
+                }
+            )
+        } else {
             return res.send(false)
         }
-	})
+    })
 
     require("./routes/auth")(app, passport)
     require("./routes/users")(app, connection)
