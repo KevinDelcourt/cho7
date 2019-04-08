@@ -1,11 +1,11 @@
 import styled from "styled-components"
-import React from "react"
 import Button from "../atoms/Button/Button"
+import React from "react"
 import { Component } from "react"
-import theme from "./../../theme.json"
 import { Field, reduxForm } from "redux-form"
-import FieldConnection from "../atoms/FieldConnection"
+import LabelInput from "../molecules/LabelInput"
 import { required } from "../../modules/validation"
+import theme from "./../../theme.json"
 
 const StyledButton = styled(Button)`
     margin-top: 7vh;
@@ -31,7 +31,7 @@ class ConnectionForm extends Component {
                 <AuthentificationContainer>
                     <Field
                         name="username"
-                        component={FieldConnection}
+                        component={LabelInput}
                         type="text"
                         label="Pseudo *"
                         placeholder="Pseudo"
@@ -40,7 +40,7 @@ class ConnectionForm extends Component {
 
                     <Field
                         name="password"
-                        component={FieldConnection}
+                        component={LabelInput}
                         type="password"
                         label="Mot de passe *"
                         validate={[required]}

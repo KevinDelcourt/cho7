@@ -24,10 +24,10 @@ describe("composant creation de projet", () => {
 
         cy.log("cilck et ajout de l'username")
 
-        cy.get(":nth-child(1) > .sc-EHOje > .sc-bxivhb").type("Admin")
+        cy.get(":nth-child(1) > .sc-ifAKCX > .sc-bxivhb").type("Admin")
 
         cy.log("cilck et ajout du mdp")
-        cy.get(":nth-child(2) > .sc-EHOje > .sc-bxivhb").type("Admin")
+        cy.get(":nth-child(2) > .sc-ifAKCX > .sc-bxivhb").type("Admin")
 
         cy.log("cilck pour la connexion")
         cy.contains("Se connecter").click()
@@ -43,13 +43,13 @@ describe("composant creation de projet", () => {
 
         cy.log("entrention des données")
         cy.contains("Création en cours").click()
-        cy.get(".sc-brqgnP > :nth-child(1) > .sc-iAyFgw").type(
-            "la fureur du posti-it III"
-        )
-        cy.get(":nth-child(1) > .sc-hSdWYo > .sc-iAyFgw").type(
+        cy.get(".sc-bxivhb")
+            .first()
+            .type("la fureur du posti-it III")
+        cy.get(":nth-child(1) > :nth-child(1) > .sc-ifAKCX > .sc-bxivhb").type(
             "posti-it endoctriner"
         )
-        cy.get(".sc-eHgmQL").type(
+        cy.get(".sc-kkGfuU").type(
             "c'est l'histoire d'un posti-it qui tombe amoureux d'une aluméte ... mais les choses vont tres vite se compliqué et notre posti-it devras s'en sortir face au démonique cisax"
         )
 
@@ -82,10 +82,10 @@ describe("composant creation de projet", () => {
 
         cy.log("cilck et ajout de l'username")
 
-        cy.get(":nth-child(1) > .sc-EHOje > .sc-bxivhb").type("Admin")
+        cy.get(":nth-child(1) > .sc-ifAKCX > .sc-bxivhb").type("Admin")
 
         cy.log("cilck et ajout du mdp")
-        cy.get(":nth-child(2) > .sc-EHOje > .sc-bxivhb").type("Admin")
+        cy.get(":nth-child(2) > .sc-ifAKCX > .sc-bxivhb").type("Admin")
 
         cy.log("cilck pour la connexion")
         cy.contains("Se connecter").click()
@@ -100,9 +100,12 @@ describe("composant creation de projet", () => {
         cy.url().should("eq", "http://localhost:3000/newCreation")
 
         cy.log("entrention des données")
-        cy.get(".sc-hSdWYo > .sc-iAyFgw").type("posti-it infinity war")
-        cy.get(".sc-eHgmQL").type(
-            "les posti-it s'unissent contre le nouveau méchant a la mode pour le vaincre, von'til s'en sortir contre scotchator 2000 ?"
+        cy.get(".sc-bxivhb")
+            .first()
+            .type("la fureur du posti-it III")
+
+        cy.get(".sc-kkGfuU").type(
+            "c'est l'histoire d'un posti-it qui tombe amoureux d'une aluméte ... mais les choses vont tres vite se compliqué et notre posti-it devras s'en sortir face au démonique cisax"
         )
 
         cy.log("et validation")
@@ -129,10 +132,10 @@ describe("composant creation de projet", () => {
 
         cy.log("cilck et ajout de l'username")
 
-        cy.get(":nth-child(1) > .sc-EHOje > .sc-bxivhb").type("Admin")
+        cy.get(":nth-child(1) > .sc-ifAKCX > .sc-bxivhb").type("Admin")
 
         cy.log("cilck et ajout du mdp")
-        cy.get(":nth-child(2) > .sc-EHOje > .sc-bxivhb").type("Admin")
+        cy.get(":nth-child(2) > .sc-ifAKCX > .sc-bxivhb").type("Admin")
 
         cy.log("cilck pour la connexion")
         cy.contains("Se connecter").click()

@@ -1,36 +1,36 @@
-import styled from 'styled-components'
-import InputBase from './../atoms/InputBase'
-import Label from '../atoms/Label'
-import React from 'react'
+import React from "react"
+import styled from "styled-components"
+import Label from "../atoms/Label/Label"
+import theme from "./../../theme.json"
 
-const LabelInputContainer = styled.div`
-    display: grid;
-    grid-template-columns: repeat(2, auto);
-    grid-column-gap: 8px;
-    justify-content: start;
+const Input = styled.input`
+    padding: 6px;
 `
 
-class LabelInput extends React.Component {
-    render() {
-        return (
-            <LabelInputContainer>
-                <Label children={this.props.label} w={this.props.wLabel} />
+const FieldContainer = styled.div`
+    display: grid;
+    width: 100%;
+    margin-bottom: 7px;
+`
 
-                <InputBase
-                    {...this.props.input}
-                    name={this.props.name}
-                    type={this.props.type}
-                    placeholder={this.props.placeholder}
-                />
+const LabelInput = props => (
+    <div>
+        <Label font={theme.fontFamily.ruluko} children={props.label} />
 
-                {this.props.meta.error && this.props.meta.touched ? (
-                    <div>{this.props.meta.error}</div>
-                ) : (
-                    ""
-                )}
-            </LabelInputContainer>
-        )
-    }
-}
+        <FieldContainer>
+            <Input
+                {...props.input}
+                type={props.type}
+                name={props.name}
+                placeholder={props.placeholder}
+            />
+            {props.meta.error && props.meta.touched ? (
+                <div>{props.meta.error}</div>
+            ) : (
+                ""
+            )}
+        </FieldContainer>
+    </div>
+)
 
 export default LabelInput
