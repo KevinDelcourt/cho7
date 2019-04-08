@@ -26,6 +26,7 @@ class UpdateCreationPage extends React.Component {
         let formData = new FormData()
         formData.append("titre", values.titre)
         formData.append("id", values.id)
+        formData.append("twitter", values.twitter)
 
         if (values.description)
             formData.append("description", values.description)

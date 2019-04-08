@@ -33,7 +33,7 @@ class Projet extends React.Component {
     state = { 
         auth: false,
         avancement: []
-    }
+	}
 
     async componentDidMount() {
         this.setState({ auth: await hasRole("CREATEUR") })
@@ -52,36 +52,62 @@ class Projet extends React.Component {
     }
 
     render() {
-        return (
-            <MainContainer title="Projets en cours">
-                <SubContainer>
-                    {this.state.avancement.map((c, index) => (
-                        <MainContainer key={index} title={c[0].titre}>
-                            {c.map((etat, index) => (
-                                <StateContainer key={index}>
-                                    <label>{etat.libelle + ' : '}</label>
-                                    {etat.valeuravancement + "%"}
-                                </StateContainer>
-                            ))}
+		if(this.state.auth) {
+			return (
+				<MainContainer title="Projets en cours">
+					<SubContainer>
+						{this.state.avancement.map((c, index) => (
+							<MainContainer key={index} title={c[0].titre}>
+								{c.map((etat, index) => (
+									<StateContainer key={index}>
+										<label>{etat.libelle + ' : '}</label>
+										{etat.valeuravancement + "%"}
+									</StateContainer>
+								))}
 
-                            <DescriptionContainer>
-                                {c[0].description}
-                            </DescriptionContainer>
-                            
-                            <DetailsContainer>
-                                {this.datetostring(c[0].miseajour)}
-                                
-                                <div>
-                                    <Link className="fas fa-edit" to={"/updateCreation/" + c[0].id} />
-                                    <button className="far fa-times-circle fa-2x deleteButton" onClick={() => this.handleDeleteClick(c[0].id)} />
-                                </div>
-                            </DetailsContainer>
-                        </MainContainer>
-                    ))}
-                </SubContainer>
-                {this.state.redirect}
-            </MainContainer>
-        )
+								<DescriptionContainer>
+									{c[0].description}
+								</DescriptionContainer>
+								
+								<DetailsContainer>
+									{this.datetostring(c[0].miseajour)}
+									
+									<div>
+										<Link className="fas fa-edit" to={"/updateCreation/" + c[0].id} />
+                						<button className="far fa-times-circle fa-2x deleteButton" onClick={() => this.handleDeleteClick(c[0].id)} />
+									</div>
+								</DetailsContainer>
+							</MainContainer>
+						))}
+					</SubContainer>
+					{this.state.redirect}
+				</MainContainer>
+			)
+		} else {
+			return (
+				<MainContainer title="Projets en cours">
+					<SubContainer>
+						{this.state.avancement.map((c, index) => (
+							<MainContainer key={index} title={c[0].titre}>
+								{c.map((etat, index) => (
+									<StateContainer key={index}>
+										<label>{etat.libelle + ' : '}</label>
+										{etat.valeuravancement + "%"}
+									</StateContainer>
+								))}
+
+								<DescriptionContainer>
+									{c[0].description}
+								</DescriptionContainer>
+								
+								{this.datetostring(c[0].miseajour)}
+							</MainContainer>
+						))}
+					</SubContainer>
+					{this.state.redirect}
+				</MainContainer>
+			)
+		}
     }
 }
 
