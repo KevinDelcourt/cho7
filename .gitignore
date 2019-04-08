@@ -17,7 +17,7 @@
 /.pnp
 .pnp.js
 
-/coverage
+/client/coverage/*
 db-identifiants.json
 /client/cypress/videos/*
 /client/cypress/screenshots/*
