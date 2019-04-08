@@ -1,7 +1,7 @@
-import styled from "styled-components"
-import React from "react"
-import { getAvencement } from "../../modules/api"
-import MainContainer from "./../molecules/MainContainer"
+import styled from "styled-components";
+import React from 'react';
+import { getAvancement } from '../../modules/api';
+import MainContainer from './../molecules/MainContainer';
 
 const SubContainer = styled.div`
     display: grid;
@@ -24,10 +24,10 @@ const StateContainer = styled.div`
 `
 
 class Projet extends React.Component {
-    state = { avencement: [] }
+    state = { avancement: [] }
 
     async componentDidMount() {
-        this.setState({ avencement: await getAvencement() })
+        this.setState({ avancement: await getAvancement() })
     }
 
     datetostring = timestamp => {
@@ -39,7 +39,7 @@ class Projet extends React.Component {
         return (
             <MainContainer title="Projets en cours">
                 <SubContainer>
-                    {this.state.avencement.map((c, index) => (
+                    {this.state.avancement.map((c, index) => (
                         <MainContainer key={index}>
                             <h2>{c[0].titre}</h2>
                             {c.map((etat, index) => (
