@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import styled from "styled-components"
-import { hasRole, deleteCreation } from "../../modules/api"
+import { hasRole, deleteCreation, ajoutEcoute } from "../../modules/api"
 import { getAudioUrl } from "../../modules/apiURL"
 import { Link, Redirect } from "react-router-dom"
 import { connect } from "react-redux"
@@ -24,7 +24,7 @@ const Suprime = styled.div`
 
 class Creation extends Component {
     state = {
-        auth: false
+        auth: false     
     }
 
     constructor(props){
@@ -43,45 +43,36 @@ class Creation extends Component {
         this.setState({ redirect: <Redirect to="/accueil" /> })
     }
     
-    cptEcoute(){
-        console.log("oui");
+    cptEcoute = async () => {
+        ajoutEcoute(this.props.valueId)
     }
 
     render() {
-        const path = getAudioUrl() + this.props.path
+        const path = getAudioUrl() + this.props.path;
+        let suprime = null;
 
-        if (this.state.auth) {
-            return (
-                <React.Fragment>
-                    <ReactAudioPlayer controls onPlay={this.cptEcoute} src={path} />
-                    <Wrapper>
-                        <div>{this.props.description}</div>
-                        <Suprime>
-                            <Link to={"/updateCreation/" + this.props.valueId}>
-                                Modifier
-                            </Link>
-                            <button
-                                className="far fa-times-circle fa-2x"
-                                onClick={this.delete}
-                            />
-                        </Suprime>
-                    </Wrapper>
-                    {this.state.redirect}
-                </React.Fragment>
-            )
-        } else {
-            return (
-                <React.Fragment>
-                    <audio controls>
-                        <source src={path} type="audio/mpeg" />
-                    </audio>
-
-                    <Wrapper>
-                        <div>{this.props.description}</div>
-                    </Wrapper>
-                </React.Fragment>
-            )
+        if(this.state.auth){
+            suprime = <Suprime>
+                        <Link to={"/updateCreation/" + this.props.valueId}>
+                            Modifier
+                        </Link>
+                        <button
+                            className="far fa-times-circle fa-2x"
+                            onClick={this.delete}
+                        />
+                    </Suprime>
         }
+
+        return (
+            <React.Fragment>
+                <ReactAudioPlayer controls src={path} onEnded={this.cptEcoute}/>
+                <Wrapper>
+                    <div>{this.props.description}</div>
+                    {suprime}
+                </Wrapper>
+                {this.state.redirect}
+            </React.Fragment>
+        )
     }
 }
 
