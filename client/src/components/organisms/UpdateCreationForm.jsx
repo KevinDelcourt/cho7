@@ -1,5 +1,5 @@
-import Button from '../atoms/Button/Button';
-import LabelTextarea from "../molecules/LabelTextarea";
+import Button from "../atoms/Button/Button"
+import LabelTextarea from "../molecules/LabelTextarea"
 import styled from "styled-components"
 import React from "react"
 import LabelInput from "../molecules/LabelInput"
@@ -21,8 +21,8 @@ const PublishButtonContainer = styled.div`
 `
 
 const StyledButton = styled(Button)`
-	background-color:${theme.color.grey1}
-`;
+    background-color: ${theme.color.grey1};
+`
 
 class UpdateCreationForm extends React.Component {
     state = { etats: [] }
@@ -68,6 +68,13 @@ class UpdateCreationForm extends React.Component {
                         row="10"
                         col="20"
                         defaultValue={this.props.desc}
+                    />
+
+                    <Field
+                        component={LabelInput}
+                        name="twitter"
+                        type="checkbox"
+                        label="Envoyer un tweet"
                     />
 
                     <PublishButtonContainer>
