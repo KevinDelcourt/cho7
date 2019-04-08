@@ -25,7 +25,6 @@ const storageAudio = multer.diskStorage({
 })
 let uploadAudio = multer({ storage: storageAudio })
 let Twitter = require("twitter")
-let twittertxt = require("twitter-text")
 
 var twitterClient = new Twitter({
     consumer_key: "kQpM9aLLltlKefBfF7C2jpjgj",
