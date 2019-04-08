@@ -8,6 +8,8 @@ import { required } from "../../modules/validation"
 import theme from "./../../theme.json"
 import MainContainer from "../molecules/MainContainer"
 
+const StyledConnectionForm = styled.div``
+
 const StyledButton = styled(Button)`
     margin-top: 7vh;
     margin-left: 20%;
@@ -26,8 +28,8 @@ class ConnectionForm extends Component {
                 bgColor={theme.color.grey2}
                 boxShadow="0px 4px 15px rgba(0, 0, 0, 0.25)"
                 width="28vw"
-                borderRadius="20px">
-                <ConnectionForm onSubmit={this.props.handleSubmit}>
+                borderRadius="0px">
+                <StyledConnectionForm onSubmit={this.props.handleSubmit}>
                     <AuthentificationContainer>
                         <Field
                             name="username"
@@ -37,7 +39,6 @@ class ConnectionForm extends Component {
                             placeholder="Pseudo"
                             validate={[required]}
                         />
-
                         <Field
                             name="password"
                             component={LabelInput}
@@ -50,7 +51,7 @@ class ConnectionForm extends Component {
                         children="Se connecter"
                         bgColor={theme.color.brown2}
                     />
-                </ConnectionForm>
+                </StyledConnectionForm>
             </MainContainer>
         )
     }
