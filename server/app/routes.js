@@ -112,13 +112,10 @@ module.exports = (app, passport) => {
 
                             connection.query(
                                 "INSERT INTO etat_avancement (libelle, valeuravancement, idcreation) VALUES (?, ?, ?)",
-                                [l, req.body.valeur[index], rows.insertId],
-                                (err, rows) => {
-                                    if (err) return res.send(err)
-                                    return res.send(true)
-                                }
+                                [l, req.body.valeur[index], rows.insertId]
                             )
                         })
+                        return res.send(true)
                     }
                 )
             else {
