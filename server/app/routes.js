@@ -4,7 +4,8 @@ const {
     getErrors,
     hasNoErrors,
     requiredCheck,
-    maxLenValidator 
+    maxLenValidator,
+    isLoggedIn 
 } = require("../modules/validation")
 const mysql = require("mysql")
 const credentials = require("../db/db-identifiants.json")
@@ -12,7 +13,7 @@ const connection = mysql.createConnection(credentials)
 const fs = require("fs")
 const multer = require("multer")
 
-const { body, check, validationResult } = require("express-validator/check")
+const { body, validationResult } = require("express-validator/check")
 const storageAudio = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, __dirname + "/../public/audio/")
@@ -184,11 +185,11 @@ module.exports = (app, passport) => {
 	/* SUPPRIMER CREATION */
 
 	app.get('/deleteCreation/:id', isLoggedIn, (req, res) => {
-		const idCreation = req.params.id;
+        const idCreation = req.params.id;
 		//let pathFinFichier;
 		// Avant recupere les titre a suprimer dans la bdd
-		// connection.query('SELECT nomfichier FROM creation WHERE id=?', [req.body.idCreation],(err,rows)=>{});
-		
+		// connection.query('SELECT nomfichier FROM creation WHERE id=?', [req.body.idCreation], (err, rows) => {});
+
 		if (/^(0|[1-9]\d*)$/.test(idCreation)) {
 			connection.query('DELETE FROM creation WHERE id = ?', [idCreation], (err, rows) => {
 				/* pathFinFichier= rows[0].nomfichier;
@@ -198,19 +199,12 @@ module.exports = (app, passport) => {
 				// fs.unlinkSync(pathComplet)
 				return res.send(true)
 			})
-		}
-
-		return res.send(false)
+		} else {
+            return res.send(false)
+        }
 	})
 
     require("./routes/auth")(app, passport)
     require("./routes/users")(app, connection)
     require("./routes/public_get")(app, connection)
-}
-
-const isLoggedIn = (req, res, next) => {
-    if (req.isAuthenticated()) {
-        return next()
-    }
-    res.send(false)
 }

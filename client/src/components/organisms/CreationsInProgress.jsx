@@ -2,7 +2,7 @@ import React from "react"
 import { getCreationsInProgress } from "../../modules/api"
 import MainContainer from "../molecules/MainContainer"
 import { Link } from "react-router-dom"
-import { deleteCreation } from '../../modules/auth'
+import { deleteCreation } from '../../modules/api'
 
 class CreationsInProgress extends React.Component {
     state = { creations: [] }

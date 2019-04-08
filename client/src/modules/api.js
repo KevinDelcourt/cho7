@@ -71,7 +71,7 @@ export const getEtatsCreation = idCreation =>
 
 export const getCreation = id => defaultGet("/creation/" + id)
 
-export const deleteCreation = id => defaultGet("/deleteCreation/" + id)
+export const deleteCreation = id => defaultGet("/deleteCreation/" + id, { withCredentials: true })
 
 export const getCreations = () => defaultGet("/creations/done")
 
@@ -80,9 +80,9 @@ export const getMeilleuresCreations = () =>
 
 export const getCreationsInProgress = () => defaultGet("/creations/inprogress")
 
-export const getAvencement = () =>
+export const getAvancement = () =>
     axiosDefault(
-        () => axios.get(baseUrl + "/avencement"),
+        () => axios.get(baseUrl + "/avancement"),
         response => {
             let grouped = groupBy(response.data, projet => projet.id)
             let data = []
@@ -95,5 +95,4 @@ export const postProfilCreateur = formData => defaultPost("/users/1", formData)
 
 export const postNewCreation = formData => defaultPost("/addcreation", formData)
 
-export const postUpdateCreation = formData =>
-    defaultPost("/updateCreation", formData)
+export const postUpdateCreation = formData => defaultPost("/updateCreation", formData)

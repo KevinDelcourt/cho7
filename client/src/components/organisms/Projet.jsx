@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import React from 'react';
-import { getAvancement } from '../../modules/auth';
+import { getAvancement } from '../../modules/api';
 import MainContainer from './../molecules/MainContainer';
 
 const SubContainer = styled.div`
