@@ -4,6 +4,7 @@ import { getCreations, getMeilleuresCreations } from "../../modules/api"
 import Creation from "../molecules/Creation"
 import MainContainer from "../molecules/MainContainer"
 import SocialNetwork from "../molecules/SocialNetwork"
+import StarRating from "../molecules/StarRating"
 
 const SubContainer = styled.div`
     display: grid;
@@ -41,6 +42,7 @@ class NewsFeed extends React.Component {
                                 description={c.description}
                                 valueId={c.id}
                             />
+                              <StarRating/>
                               <SocialNetwork/>
                         </MainContainer>
                     ))}
@@ -54,6 +56,7 @@ class NewsFeed extends React.Component {
                                 description={c.description}
                                 valueId={c.id}
                             />
+                            <StarRating/>
                              <SocialNetwork/>
                         </MainContainer>                        
                     ))}
