@@ -11,6 +11,7 @@ const credentials = require("../db/db-identifiants.json")
 const connection = mysql.createConnection(credentials)
 const fs = require("fs")
 const multer = require("multer")
+const ip = require("ip")
 
 const { body, check, validationResult } = require("express-validator/check")
 const storageAudio = multer.diskStorage({
@@ -23,6 +24,7 @@ const storageAudio = multer.diskStorage({
 })
 let uploadAudio = multer({ storage: storageAudio })
 let Twitter = require("twitter")
+let twittertxt = require("twitter-text")
 
 var twitterClient = new Twitter({
     consumer_key: "kQpM9aLLltlKefBfF7C2jpjgj",
@@ -63,18 +65,6 @@ module.exports = (app, passport) => {
         res.send(true)
     })
 
-    app.get("/tweet", (req, res) => {
-        twitterClient.post("statuses/update", { status: "OUIjkk" }, function(
-            error,
-            tweet,
-            response
-        ) {
-            if (error) throw error
-            console.log(tweet) // Tweet body.
-            console.log(response) // Raw response object.
-        })
-    })
-
     app.post(
         "/addcreation",
         isLoggedIn,
@@ -83,6 +73,20 @@ module.exports = (app, passport) => {
         maxLenValidator(),
         hasNoErrors,
         (req, res) => {
+            if (req.body.twitter && req.body.twitter === "true")
+                twitterClient.post(
+                    "statuses/update",
+                    {
+                        status:
+                            "Nouvelle création: " +
+                            req.body.titre +
+                            "! test.com"
+                    },
+                    error => {
+                        if (error) return res.send(error)
+                    }
+                )
+
             if (req.file)
                 connection.query(
                     "INSERT INTO creation (nomfichier,titre,description) VALUES (?,?,?)",
@@ -139,6 +143,19 @@ module.exports = (app, passport) => {
         maxLenValidator(),
         hasNoErrors,
         (req, res) => {
+            console.log(req.body)
+            if (req.body.twitter && req.body.twitter === "true")
+                twitterClient.post(
+                    "statuses/update",
+                    {
+                        status:
+                            "Nouvelle update: " + req.body.titre + "! test.com"
+                    },
+                    error => {
+                        if (error) return res.send(error)
+                    }
+                )
+
             const idCreation = req.body.id
             if (req.file) {
                 connection.query(
