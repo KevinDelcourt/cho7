@@ -57,7 +57,13 @@ td, th {
 	text-align: center;
 	padding: 8px;
 }
-  
+
+.deleteButton {
+	border: 0;
+    font-size: 100%;
+	background-color: transparent;
+	cursor: pointer;
+}
 
 input, textarea {
 	font-family: 'Arial', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;

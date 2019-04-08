@@ -44,7 +44,7 @@ describe("upload creation sans fichier", () => {
         postNewCreation(creation, res => {
             expect(res.body).to.have.property(
                 "valeur",
-                "Au moins 1 valeur requise"
+                "Au moins une valeur requise"
             )
         })
     })
