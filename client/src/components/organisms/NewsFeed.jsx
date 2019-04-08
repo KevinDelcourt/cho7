@@ -41,6 +41,7 @@ class NewsFeed extends React.Component {
                                 description={c.description}
                                 valueId={c.id}
                             />
+                              <SocialNetwork/>
                         </MainContainer>
                     ))}
                 </SubContainer>
