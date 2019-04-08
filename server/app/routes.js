@@ -22,6 +22,14 @@ const storageAudio = multer.diskStorage({
     }
 })
 let uploadAudio = multer({ storage: storageAudio })
+let Twitter = require("twitter")
+
+var twitterClient = new Twitter({
+    consumer_key: "kQpM9aLLltlKefBfF7C2jpjgj",
+    consumer_secret: "QBy76UuHc7Zp6rWC7RRAntlKfwQlGilq4xd2Ew8m4BbZn1qVsw",
+    access_token_key: "711901917358788608-03x2C8x0ii1uIxQL1AIL8EFSUvt9JIL",
+    access_token_secret: "sGCgbhzfTBLzaWdGD37Q4RkIa7vHMDBVZxW4j7rFCBgp8"
+})
 
 const creationValidator = [
     requiredCheck("titre", "Titre requis")
@@ -53,6 +61,18 @@ const creationValidator = [
 module.exports = (app, passport) => {
     app.get("/", (req, res) => {
         res.send(true)
+    })
+
+    app.get("/tweet", (req, res) => {
+        twitterClient.post("statuses/update", { status: "OUIjkk" }, function(
+            error,
+            tweet,
+            response
+        ) {
+            if (error) throw error
+            console.log(tweet) // Tweet body.
+            console.log(response) // Raw response object.
+        })
     })
 
     app.post(
