@@ -1,14 +1,14 @@
 import React from "react"
-import { getCreationsInProgress } from "../../modules/api"
+import { getCreations } from "../../modules/api"
 import MainContainer from "../molecules/MainContainer"
 import { Link } from "react-router-dom"
 import { deleteCreation } from '../../modules/api'
 
-class CreationsInProgress extends React.Component {
+class CreationsCompleted extends React.Component {
     state = { creations: [] }
 
     async componentDidMount() {
-        this.setState({ creations: await getCreationsInProgress() })
+        this.setState({ creations: await getCreations() })
     }
 
     async handleDeleteClick(id) {
@@ -18,7 +18,7 @@ class CreationsInProgress extends React.Component {
 
     render() {
         return (
-            <MainContainer title="Mes créations en cours">
+            <MainContainer title="Mes créations publiées">
                 <table>
                     <tbody>
                         <tr>
@@ -46,4 +46,4 @@ class CreationsInProgress extends React.Component {
     }
 }
 
-export default CreationsInProgress
+export default CreationsCompleted
