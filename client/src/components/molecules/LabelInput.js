@@ -7,6 +7,8 @@ import theme from "./../../theme.json"
 const FieldContainer = styled.div`
     display: grid;
     width: 75%;
+    margin-left: auto;
+    margin-right: auto;
 `
 
 const LabelInput = props => (
