@@ -3,7 +3,6 @@ import styled from "styled-components"
 import logo from "./../../assets/images/logo.png"
 import Logo from "../atoms/Logo"
 import ConnectionForm from "./../organisms/ConnectionForm"
-import SiteTitle from "../atoms/SiteTitle"
 import { Link, Redirect } from "react-router-dom"
 import { SubmissionError } from "redux-form"
 import { login } from "../../modules/api"
@@ -25,6 +24,14 @@ const ConnectionHeader = styled.div`
     margin-top: 5vh;
     display: flex;
     justify-content: space-around;
+`
+const SiteTitle = styled.h1`
+    font-family: "Sevillana";
+    font-size: 40px;
+    text-align: center;
+    margin-left: 5vw;
+    margin-top: 1vh;
+    display: inline-block;
 `
 
 class ConnectionPage extends React.Component {

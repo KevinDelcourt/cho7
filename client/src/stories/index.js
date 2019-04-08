@@ -1,7 +1,6 @@
 import React from "react"
 import { storiesOf } from "@storybook/react"
 import { withKnobs, text, number } from "@storybook/addon-knobs"
-import SiteTitle from "../components/atoms/SiteTitle"
 import Button from "../components/atoms/Button/Button"
 import Label from "../components/atoms/Label/Label"
 import LabelInput from "../components/molecules/LabelInput"
@@ -14,9 +13,6 @@ import TextareaBase from "../components/atoms/TextareaBase"
 import LabelTextarea from "../components/molecules/LabelTextarea"
 import MainContainer from "../components/molecules/MainContainer"
 import LabelInputRange from "./../components/molecules/LabelInputRange"
-import AddButton from "./../components/atoms/AddButton"
-
-storiesOf("atoms", module).add("Titre", () => <SiteTitle children="Un titre" />)
 
 const storyButton = storiesOf("atoms", module)
 storyButton.addDecorator(withKnobs)
@@ -113,6 +109,3 @@ storyMainContainer.add("MainContainer", () => (
 
 const storyLabelInputRange = storiesOf("molecules/LabelInputRange", module)
 storyLabelInputRange.add("LabelInputRange", () => <LabelInputRange />)
-
-const storyAddButton = storiesOf("atoms/AddButton", module)
-storyAddButton.add("AddButton", () => <AddButton type="button" value="+" />)
