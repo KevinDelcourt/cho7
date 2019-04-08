@@ -1,22 +1,17 @@
-import styled from "styled-components"
 import React from "react"
-import theme from "./../../theme.json"
+import Container from "../atoms/Container/Container"
 
-const Container = styled.div`
-    background-color: ${props => props.bgColor || "none"};
-    border-radius: 20px;
-    padding: 15px 30px;
-`
-
-class MainContainer extends React.Component {
-    render() {
-        return (
-            <Container bgColor={theme.color.brown1}>
-                <h2>{this.props.title}</h2>
-                {this.props.children}
-            </Container>
-        )
-    }
+const MainContainer = props => {
+    return (
+        <Container
+            bgColor={props.bgColor}
+            boxShadow={props.boxShadow}
+            width={props.width}
+            borderRadius={props.borderRadius}>
+            <h2>{props.title}</h2>
+            {props.children}
+        </Container>
+    )
 }
 
 export default MainContainer

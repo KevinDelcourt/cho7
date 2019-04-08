@@ -10,15 +10,6 @@ import { connect } from "react-redux"
 import { bindActionCreators } from "redux"
 import { userLoginAction } from "../../modules/actionsAndReducers"
 
-const ConnectionFormContainer = styled.div`
-    width: 28vw;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 6vh 4vw;
-    background: #eaeaea;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
-`
-
 const ConnectionHeader = styled.div`
     width: 100vw;
     margin-top: 5vh;
@@ -61,9 +52,7 @@ class ConnectionPage extends React.Component {
                     <SiteTitle children="La Compagnie de l ' Aventure" />
                 </ConnectionHeader>
             </Link>
-            <ConnectionFormContainer>
-                <ConnectionForm onSubmit={this.submit} />
-            </ConnectionFormContainer>
+            <ConnectionForm onSubmit={this.submit} />
             {this.state.redirect}
         </div>
     )
