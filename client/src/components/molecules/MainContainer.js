@@ -26,7 +26,7 @@ const MainContainer = props => {
             width={props.width}
             borderRadius={props.borderRadius}>
             <Title
-                size={props.size}
+                size={props.fontSize}
                 font={props.font}
                 color={props.color}
                 children={props.title}

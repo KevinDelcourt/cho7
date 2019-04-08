@@ -24,7 +24,7 @@ class ConnectionForm extends Component {
                 boxShadow="0px 4px 15px rgba(0, 0, 0, 0.25)"
                 width="28vw"
                 borderRadius="0px"
-                size="50px">
+                fontSize="50px">
                 <StyledConnectionForm onSubmit={this.props.handleSubmit}>
                     <Field
                         name="username"
