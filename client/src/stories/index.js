@@ -36,7 +36,7 @@ storyLabel.add("Label", () => (
 ))
 
 const storyInput = storiesOf("atoms", module)
-storyLabel.addDecorator(withKnobs)
+storyInput.addDecorator(withKnobs)
 storyInput.add("Input", () => (
     <Input borderRadius={text("Border-radius", "30px")} />
 ))
