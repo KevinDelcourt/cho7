@@ -200,7 +200,7 @@ module.exports = (app, passport) => {
         )
     })
 
-    app.post("/ajoutEcoute", (req, res) => {
+    app.post("/cptEcoute", (req, res) => {
         connection.query('SELECT nbecoute FROM creation WHERE id=?', [req.body.id], (err,rows)=>{
             if(err) res.send(err);
             const ecouteCourante = rows[0].nbecoute;

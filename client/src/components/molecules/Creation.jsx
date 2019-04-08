@@ -1,12 +1,13 @@
-import React, { Component } from "react"
-import styled from "styled-components"
-import { hasRole, deleteCreation, ajoutEcoute } from "../../modules/api"
-import { getAudioUrl } from "../../modules/apiURL"
-import { Link, Redirect } from "react-router-dom"
-import { connect } from "react-redux"
-import { bindActionCreators } from "redux"
-import { msgAction } from "../../modules/actionsAndReducers"
+import React, { Component } from "react";
+import styled from "styled-components";
+import { hasRole, deleteCreation} from "../../modules/api";
+import { getAudioUrl } from "../../modules/apiURL";
+import { Link, Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { msgAction } from "../../modules/actionsAndReducers";
 import ReactAudioPlayer from 'react-audio-player';
+import {ajoutEcoute} from "../../modules/api";
 
 const Wrapper = styled.div`
     margin: 10px 0;
