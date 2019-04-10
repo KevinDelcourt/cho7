@@ -8,17 +8,17 @@ import { bindActionCreators } from "redux";
 import { msgAction } from "../../modules/actionsAndReducers";
 import ReactAudioPlayer from 'react-audio-player';
 import {ajoutEcoute} from "../../modules/api";
+import theme from "./../../theme.json";
 
-const Wrapper = styled.div`
+const DescriptionContainer = styled.div`
     margin: 10px 0;
     padding: 5px 10px;
-    background: rgba(255, 255, 255, 0.54);
+    background: ${theme.color.lightgrey1};
     border-radius: 10px;
     overflow-wrap: break-word;
-    font-family: "Ruluko", Arial, Sans-serif;
 `
 
-const Supprime = styled.div`
+const EditOptionsContainer = styled.div`
     display: flex;
     justify-content: flex-end;
 `
@@ -47,30 +47,32 @@ class Creation extends Component {
     cptEcoute = async () => {
         ajoutEcoute(this.props.valueId)
     }
+    
+    displayDetails = () => {
+		if (this.state.auth) {
+			return <DescriptionContainer>
+                {this.props.description}
+                <EditOptionsContainer>
+                    <Link className="fas fa-edit" to={"/updateCreation/" + this.props.valueId} />
+                    <button
+                        className="far fa-times-circle fa-2x deleteButton"
+                        onClick={this.handleDeleteClick}
+                    />
+                </EditOptionsContainer>
+            </DescriptionContainer>
+		} else {
+			return <DescriptionContainer>
+                {this.props.description}
+            </DescriptionContainer>
+		}
+	}
 
     render() {
         const path = getAudioUrl() + this.props.path;
-        let suprime = null;
-
-        if(this.state.auth){
-            suprime = <Supprime>
-                        <Link to={"/updateCreation/" + this.props.valueId}>
-                            Modifier
-                        </Link>
-                        <button
-                            className="far fa-times-circle fa-2x"
-                            onClick={this.delete}
-                        />
-                    </Supprime>
-        }
-
         return (
             <React.Fragment>
                 <ReactAudioPlayer controls src={path} onEnded={this.cptEcoute}/>
-                <Wrapper>
-                    <div>{this.props.description}</div>
-                    {suprime}
-                </Wrapper>
+                {this.displayDetails()}
                 {this.state.redirect}
             </React.Fragment>
         )

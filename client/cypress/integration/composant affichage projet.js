@@ -9,7 +9,9 @@ describe("composant affichage projet", () => {
         goToMesCreations()
 
         cy.log("page de modification")
-        cy.get("tbody > :nth-child(2) > :nth-child(2)").click()
+        cy.get(
+            ":nth-child(2) > table > tbody > :nth-child(2) > :nth-child(2) > a"
+        ).click()
         cy.url().should("eq", "http://localhost:3000/updateCreation/3")
     })
 })
