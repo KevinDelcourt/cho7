@@ -22,6 +22,10 @@ const Supprime = styled.div`
     display: flex;
     justify-content: flex-end;
 `
+const StyledButton = styled.button `
+    width: 25px;
+    height: 10px;
+`;
 
 class Creation extends Component {
     state = {
@@ -67,6 +71,7 @@ class Creation extends Component {
         return (
             <React.Fragment>
                 <ReactAudioPlayer controls src={path} onEnded={this.cptEcoute}/>
+                <Link to='creations'>visualiser</Link>
                 <Wrapper>
                     <div>{this.props.description}</div>
                     {suprime}
