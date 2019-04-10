@@ -55,7 +55,7 @@ class NewsFeed extends React.Component {
                 <h2>Créations les plus écoutées</h2>
                 <SubContainer>
                     {this.state.meilleuresCreations.map((c, index) => (
-                        <MainContainer title={c.titre} key={index}>
+                        <MainContainer title={<StyledLink to={"/creation/"+c.id}>{c.titre}</StyledLink>} key={index}>
                             <Creation
                                 path={c.nomfichier}
                                 description={c.description}
