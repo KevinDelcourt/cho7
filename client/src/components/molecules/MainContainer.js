@@ -6,6 +6,7 @@ const Container = styled.div`
     background-color: ${props => props.bgColor || "none"};
     border-radius: 20px;
     padding: 15px 30px;
+    height: max-content;
 `
 
 class MainContainer extends React.Component {
