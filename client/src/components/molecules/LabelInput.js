@@ -1,23 +1,20 @@
 import React from "react"
 import styled from "styled-components"
 import Label from "../atoms/Label/Label"
+import Input from "../atoms/Input/Input"
 import theme from "./../../theme.json"
-
-const Input = styled.input`
-    padding: 6px;
-`
 
 const FieldContainer = styled.div`
     display: grid;
-    width: 100%;
-    margin-bottom: 7px;
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
 `
 
 const LabelInput = props => (
     <div>
-        <Label font={theme.fontFamily.ruluko} children={props.label} />
-
         <FieldContainer>
+            <Label font={theme.fontFamily.ruluko} children={props.label} />
             <Input
                 {...props.input}
                 type={props.type}

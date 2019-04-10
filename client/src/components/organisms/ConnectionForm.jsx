@@ -6,29 +6,28 @@ import { Field, reduxForm } from "redux-form"
 import LabelInput from "../molecules/LabelInput"
 import { required } from "../../modules/validation"
 import theme from "./../../theme.json"
+import Container from "../atoms/Container/Container"
+import Title from "../atoms/Title/Title"
 
 const StyledButton = styled(Button)`
-    margin-top: 7vh;
-    margin-left: 20%;
+    display: block;
+    margin: 20px auto;
 `
 
-const TitleContainer = styled.div`
+const StyledTitle = styled(Title)`
     text-align: center;
-`
-
-const AuthentificationContainer = styled.div`
-    margin-top: 8vh;
-    height: 15vh;
 `
 
 class ConnectionForm extends Component {
     render() {
         return (
-            <form onSubmit={this.props.handleSubmit}>
-                <TitleContainer>
-                    <h1>Connexion</h1>
-                </TitleContainer>
-                <AuthentificationContainer>
+            <Container
+                bgColor={theme.color.grey2}
+                boxShadow={theme.effect.shadow}
+                width="28vw"
+                borderRadius="0px">
+                <StyledTitle size="50px" children="Connexion" />
+                <form onSubmit={this.props.handleSubmit}>
                     <Field
                         name="username"
                         component={LabelInput}
@@ -37,7 +36,6 @@ class ConnectionForm extends Component {
                         placeholder="Pseudo"
                         validate={[required]}
                     />
-
                     <Field
                         name="password"
                         component={LabelInput}
@@ -45,12 +43,12 @@ class ConnectionForm extends Component {
                         label="Mot de passe *"
                         validate={[required]}
                     />
-                </AuthentificationContainer>
-                <StyledButton
-                    children="Se connecter"
-                    bgColor={theme.color.brown2}
-                />
-            </form>
+                    <StyledButton
+                        children="Se connecter"
+                        bgColor={theme.color.brown2}
+                    />
+                </form>
+            </Container>
         )
     }
 }

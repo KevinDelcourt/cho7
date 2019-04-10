@@ -1,7 +1,6 @@
 import React from "react"
 import { storiesOf } from "@storybook/react"
 import { withKnobs, text, number } from "@storybook/addon-knobs"
-import SiteTitle from "../components/atoms/SiteTitle"
 import Button from "../components/atoms/Button/Button"
 import Label from "../components/atoms/Label/Label"
 import LabelInput from "../components/molecules/LabelInput"
@@ -9,14 +8,11 @@ import UploadForm from "../components/organisms/UploadForm"
 import BarreMenu from "../components/molecules/BarreMenu"
 import { BrowserRouter as Router } from "react-router-dom"
 import FooterTemplate from "../components/organisms/FooterTemplate"
-import InputBase from "../components/atoms/InputBase"
-import TextareaBase from "../components/atoms/TextareaBase"
+import Input from "../components/atoms/Input/Input"
+import Textarea from "../components/atoms/Textarea"
 import LabelTextarea from "../components/molecules/LabelTextarea"
 import MainContainer from "../components/molecules/MainContainer"
 import LabelInputRange from "./../components/molecules/LabelInputRange"
-import AddButton from "./../components/atoms/AddButton"
-
-storiesOf("atoms", module).add("Titre", () => <SiteTitle children="Un titre" />)
 
 const storyButton = storiesOf("atoms", module)
 storyButton.addDecorator(withKnobs)
@@ -36,6 +32,31 @@ storyLabel.add("Label", () => (
         font={text("Font-family", "Ruluko")}
         color={text("Font-color", "red")}
         children={text("Label children", "Intitulé")}
+    />
+))
+
+const storyInput = storiesOf("atoms", module)
+storyInput.addDecorator(withKnobs)
+storyInput.add("Input", () => (
+    <Input
+        borderRadius={text("Border-radius", "30px")}
+        value={text(
+            "Label children",
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusm"
+        )}
+    />
+))
+
+const storyTextarea = storiesOf("atoms", module)
+storyTextarea.addDecorator(withKnobs)
+storyTextarea.add("Textarea", () => (
+    <Textarea
+        borderRadius={text("Border-radius", "30px")}
+        value={text(
+            "Label children",
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim."
+        )}
+        rows="5"
     />
 ))
 
@@ -65,15 +86,6 @@ storiesOf("organisms", module)
         />
     ))
     .add("UploadForm", () => <UploadForm />)
-
-const storyInputBase = storiesOf("atoms", module)
-storyInputBase.add("Input de base", () => <InputBase />)
-
-const storyTextareaBase = storiesOf("atoms", module)
-storyTextareaBase.addDecorator(withKnobs)
-storyTextareaBase.add("Textarea", () => (
-    <TextareaBase rows={number("nbLigne", 5)} cols={number("NbCol", 10)} />
-))
 
 const storyLabelTextarea = storiesOf("molecules", module)
 storyLabelTextarea.addDecorator(withKnobs)
@@ -110,6 +122,3 @@ storyMainContainer.add("MainContainer", () => (
 
 const storyLabelInputRange = storiesOf("molecules/LabelInputRange", module)
 storyLabelInputRange.add("LabelInputRange", () => <LabelInputRange />)
-
-const storyAddButton = storiesOf("atoms/AddButton", module)
-storyAddButton.add("AddButton", () => <AddButton type="button" value="+" />)

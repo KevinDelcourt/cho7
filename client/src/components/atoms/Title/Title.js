@@ -1,10 +1,10 @@
 import styled from "styled-components"
 
-const Label = styled.label`
+const Title = styled.h2`
+    font-size: ${props => props.size};
     font-family: ${props => props.font};
     color: ${props => props.color};
-    font-size: 18px;
-    margin-bottom: 5px;
+    margin-bottom: 30px;
 `
 
-export default Label
+export default Title
