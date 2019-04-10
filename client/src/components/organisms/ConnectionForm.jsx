@@ -8,11 +8,11 @@ import { required } from "../../modules/validation"
 import theme from "./../../theme.json"
 import MainContainer from "../molecules/MainContainer"
 
-const StyledConnectionForm = styled.div``
+const StyledConnectionForm = styled.form``
 
 const StyledButton = styled(Button)`
-    margin-top: 7vh;
-    margin-left: 20%;
+    display: block;
+    margin: 30px auto;
 `
 
 class ConnectionForm extends Component {
