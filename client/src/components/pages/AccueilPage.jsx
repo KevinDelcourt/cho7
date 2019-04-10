@@ -9,7 +9,8 @@ const AccueilContainer = styled.section`
     display: grid;
     grid-template-columns: 26% 70%;
     grid-column-gap: 4%;
-    grid-row-gap: 4%;
+    grid-row-gap: 3vh;
+    grid-template-rows: max-content;
 `
 
 const AccueilPage = () => (
