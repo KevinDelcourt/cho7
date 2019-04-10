@@ -43,6 +43,7 @@ class InputAddButton extends React.Component {
                                 data-cypress
                                 label={name + ": "}
                                 index={index}
+                                idEtat="0"
                             />
                             <AddButton
                                 data-cypress

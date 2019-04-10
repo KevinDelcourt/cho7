@@ -20,6 +20,10 @@ const PublishButtonContainer = styled.div`
     justify-self: end;
 `
 
+const StyledButton = styled(Button)`
+    background-color: ${theme.color.grey1};
+`
+
 class UpdateCreationForm extends React.Component {
     state = { etats: [] }
 
@@ -64,6 +68,13 @@ class UpdateCreationForm extends React.Component {
                         row="10"
                         col="20"
                         defaultValue={this.props.desc}
+                    />
+
+                    <Field
+                        component={LabelInput}
+                        name="twitter"
+                        type="checkbox"
+                        label="Envoyer un tweet"
                     />
 
                     <PublishButtonContainer>
