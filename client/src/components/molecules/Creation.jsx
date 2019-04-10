@@ -31,9 +31,10 @@ class Creation extends Component {
 
     async componentDidMount() {
         this.setState({ auth: await hasRole("CREATEUR") })
-        this.rap.audioRef.addEventListener("playing", e => {
-            ajoutEcoute(this.props.creation.id)
-        })
+        if (this.rap)
+            this.rap.audioRef.addEventListener("playing", e => {
+                ajoutEcoute(this.props.creation.id)
+            })
     }
 
     handleDeleteClick = async () => {
