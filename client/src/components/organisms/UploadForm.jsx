@@ -58,6 +58,14 @@ class UploadForm extends React.Component {
                         row="10"
                         col="120"
                     />
+
+                    <Field
+                        component={LabelInput}
+                        name="twitter"
+                        type="checkbox"
+                        label="Envoyer un tweet"
+                    />
+
                     <StyledButton
                         type="submit"
                         children="Publier"

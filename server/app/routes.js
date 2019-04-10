@@ -12,6 +12,7 @@ const credentials = require("../db/db-identifiants.json")
 const connection = mysql.createConnection(credentials)
 const fs = require("fs")
 const multer = require("multer")
+const ip = require("ip")
 
 const { body, validationResult } = require("express-validator/check")
 const storageAudio = multer.diskStorage({
@@ -23,6 +24,14 @@ const storageAudio = multer.diskStorage({
     }
 })
 let uploadAudio = multer({ storage: storageAudio })
+let Twitter = require("twitter")
+
+var twitterClient = new Twitter({
+    consumer_key: "kQpM9aLLltlKefBfF7C2jpjgj",
+    consumer_secret: "QBy76UuHc7Zp6rWC7RRAntlKfwQlGilq4xd2Ew8m4BbZn1qVsw",
+    access_token_key: "711901917358788608-03x2C8x0ii1uIxQL1AIL8EFSUvt9JIL",
+    access_token_secret: "sGCgbhzfTBLzaWdGD37Q4RkIa7vHMDBVZxW4j7rFCBgp8"
+})
 
 const creationValidator = [
     body("titre")
@@ -81,6 +90,20 @@ module.exports = (app, passport) => {
         maxLenValidator(),
         hasNoErrors,
         (req, res) => {
+            if (req.body.twitter && req.body.twitter === "true")
+                twitterClient.post(
+                    "statuses/update",
+                    {
+                        status:
+                            "Nouvelle création: " +
+                            req.body.titre +
+                            "! test.com"
+                    },
+                    error => {
+                        if (error) return res.send(error)
+                    }
+                )
+
             if (req.file)
                 connection.query(
                     "INSERT INTO creation (nomfichier, titre, description) VALUES (?, ?, ?)",
@@ -138,6 +161,19 @@ module.exports = (app, passport) => {
         maxLenValidator(),
         hasNoErrors,
         (req, res) => {
+            console.log(req.body)
+            if (req.body.twitter && req.body.twitter === "true")
+                twitterClient.post(
+                    "statuses/update",
+                    {
+                        status:
+                            "Nouvelle update: " + req.body.titre + "! test.com"
+                    },
+                    error => {
+                        if (error) return res.send(error)
+                    }
+                )
+
             const idCreation = req.body.id
             if (req.file) {
                 connection.query(
