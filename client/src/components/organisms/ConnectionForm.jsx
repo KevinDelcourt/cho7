@@ -26,7 +26,7 @@ class ConnectionForm extends Component {
                 boxShadow={theme.effect.shadow}
                 width="28vw"
                 borderRadius="0px">
-                <StyledTitle size="50px" children="Connexion" />
+                <StyledTitle size="41px" children="Connexion" />
                 <form onSubmit={this.props.handleSubmit}>
                     <Field
                         name="username"
