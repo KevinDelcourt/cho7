@@ -1,14 +1,17 @@
 import React from "react"
-import { getCreationsInProgress } from "../../modules/api"
+import { getCreationsInProgress, getCreations } from "../../modules/api"
 import MainContainer from "../molecules/MainContainer"
 import { Link } from "react-router-dom"
 import { deleteCreation } from '../../modules/api'
 
-class CreationsInProgress extends React.Component {
+class Creations extends React.Component {
     state = { creations: [] }
 
     async componentDidMount() {
-        this.setState({ creations: await getCreationsInProgress() })
+        if (this.props.etat === "wip")
+            this.setState({ creations: await getCreationsInProgress() })
+        else if (this.props.etat === "done")
+            this.setState({ creations: await getCreations() })
     }
 
     async handleDeleteClick(id) {
@@ -46,4 +49,4 @@ class CreationsInProgress extends React.Component {
     }
 }
 
-export default CreationsInProgress
+export default Creations
