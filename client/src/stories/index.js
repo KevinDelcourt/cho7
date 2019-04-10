@@ -60,6 +60,31 @@ storyTextarea.add("Textarea", () => (
     />
 ))
 
+const storyMainContainer = storiesOf("molecules", module)
+const child = [
+    <div style={{ backgroundColor: "none" }}>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+        mollit anim id est laborum.
+    </div>
+]
+storyMainContainer.addDecorator(withKnobs)
+storyMainContainer.add("MainContainer", () => (
+    <MainContainer
+        title={text("titre", "MonTitre")}
+        bgColor={text("background-color", "yellow")}
+        borderRadius={text("border-radius", "30px")}
+        border={text("border", "dashed")}
+        boxShadow={text("border-shadow", "0px 4px 40px rgba(0,0,0,0.5)")}
+        width={text("width", "450px")}
+        children={text("content", child)}
+    />
+))
+
 const storyLabelInput = storiesOf("molecules", module)
 storyLabelInput.addDecorator(withKnobs)
 storyLabelInput.add("Label Input", () => (
@@ -94,29 +119,6 @@ storyLabelTextarea.add("LabelTextarea", () => (
         label={text("Label value", "")}
         row={number("row", 5)}
         col={number("col", 5)}
-    />
-))
-
-const storyMainContainer = storiesOf("molecules", module)
-const child = [
-    <div style={{ backgroundColor: "none" }}>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-        mollit anim id est laborum.
-    </div>
-]
-storyMainContainer.addDecorator(withKnobs)
-storyMainContainer.add("MainContainer", () => (
-    <MainContainer
-        title={text("titre", "MonTitre")}
-        bgColor={text("background-color", "yellow")}
-        borderRadius={text("border-radius", "30px")}
-        border={text("border", "dashed")}
-        children={child}
     />
 ))
 
