@@ -1,4 +1,4 @@
-import Avatar from "./../molecules/Avatar"
+import Avatar from "./../atoms/Avatar"
 import React, { Component } from "react"
 import { getImageUrl } from "../../modules/apiURL"
 import styled from "styled-components"

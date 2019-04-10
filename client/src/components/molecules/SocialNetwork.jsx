@@ -4,12 +4,9 @@ import imgFacebook from "./../../assets/images/facebook2.jpg"
 import imgTwitter from "./../../assets/images/twitter.jpg"
 
 const ContainerSocialNetwork = styled.div`
-   
-    border-radius: 20px;
-    padding: 15px 30px;
-    display: flex;	
-	align-items: center;
+    display: flex;
 `;
+
 const ShareButton = styled.button`   
     position: relative;
 	background-color: rgba(0,0,0,0.2);	
@@ -46,19 +43,15 @@ const ImgShare = styled.img`
     border-radius: 50%;      
 `;
 
-
-
 class SocialNetwork extends React.Component {
-    constructor(props){
+    constructor(props) {
         super(props);
         this.popupCenter = this.popupCenter.bind(this);       
         this.shareFacebook = this.shareFacebook.bind(this);
         this.shareTwitter = this.shareTwitter.bind(this);
-    }
-
-   
-
-    popupCenter(url, title, width, height){
+	}
+	
+    popupCenter(url, title, width, height) {
         var popupWidth = width || 640;
         var popupHeight = height || 320;
         var windowLeft = window.screenLeft || window.screenX;
@@ -72,28 +65,26 @@ class SocialNetwork extends React.Component {
         return true;
     };
     
-    shareFacebook(){       
+    shareFacebook() {       
         var shareUrl = "https://www.facebook.com/sharer/sharer.php?u=";
         this.popupCenter(shareUrl, "Partager sur facebook");
     }
 
-    shareTwitter(){     
+    shareTwitter() {     
         var shareUrl = "https://twitter.com/intent/tweet?text=" + encodeURIComponent(document.title) +
         "&via=Nomanil" ;    
         this.popupCenter(shareUrl,"Partager sur Twitter");
     }
 
-
     render() {
         return (
             <ContainerSocialNetwork> 
-                           
-                    <ShareButtonFace onClick={this.shareFacebook}>
-                        <ImgShare src= {imgFacebook} alt="social" />                                 
-                     </ShareButtonFace> 
+                <ShareButtonFace onClick={this.shareFacebook}>
+					<ImgShare src= {imgFacebook} alt="Facebook" />                                 
+				</ShareButtonFace> 
                              
                 <ShareButton onClick={this.shareTwitter} >
-                    <ImgShare src= {imgTwitter} alt="social"  />                   
+                    <ImgShare src= {imgTwitter} alt="Twitter"  />                   
                 </ShareButton>
             </ContainerSocialNetwork>
         )

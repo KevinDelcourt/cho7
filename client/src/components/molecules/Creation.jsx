@@ -6,17 +6,17 @@ import { Link, Redirect } from "react-router-dom"
 import { connect } from "react-redux"
 import { bindActionCreators } from "redux"
 import { msgAction } from "../../modules/actionsAndReducers"
+import theme from "./../../theme.json"
 
-const Wrapper = styled.div`
+const DescriptionContainer = styled.div`
     margin: 10px 0;
     padding: 5px 10px;
-    background: rgba(255, 255, 255, 0.54);
+    background: ${theme.color.lightgrey1};
     border-radius: 10px;
     overflow-wrap: break-word;
-    font-family: "Ruluko", Arial, Sans-serif;
 `
 
-const Supprime = styled.div`
+const EditOptionsContainer = styled.div`
     display: flex;
     justify-content: flex-end;
 `
@@ -36,45 +36,39 @@ class Creation extends Component {
             this.setState({ redirect: <Redirect to="/accueil" /> })
         } else this.props.msgAction("Erreur dans la suppression")
     }
+    
+    displayDetails = () => {
+		if (this.state.auth) {
+			return <DescriptionContainer>
+                {this.props.description}
+                <EditOptionsContainer>
+                    <Link className="fas fa-edit" to={"/updateCreation/" + this.props.valueId} />
+                    <button
+                        className="far fa-times-circle fa-2x deleteButton"
+                        onClick={this.handleDeleteClick}
+                    />
+                </EditOptionsContainer>
+            </DescriptionContainer>
+		} else {
+			return <DescriptionContainer>
+                {this.props.description}
+            </DescriptionContainer>
+		}
+	}
 
     render() {
         const path = getAudioUrl() + this.props.path
 
-        if (this.state.auth) {
-            return (
-                <React.Fragment>
-                    <audio controls>
-                        <source src={path} type="audio/mpeg" />
-                    </audio>
+        return (
+            <React.Fragment>
+                <audio controls>
+                    <source src={path} type="audio/mpeg" />
+                </audio>
 
-                    <Wrapper>
-                        <div>{this.props.description}</div>
-                        <Supprime>
-                            <Link to={"/updateCreation/" + this.props.valueId}>
-                                Modifier
-                            </Link>
-                            <button
-                                className="far fa-times-circle fa-2x deleteButton"
-                                onClick={this.handleDeleteClick}
-                            />
-                        </Supprime>
-                    </Wrapper>
-                    {this.state.redirect}
-                </React.Fragment>
-            )
-        } else {
-            return (
-                <React.Fragment>
-                    <audio controls>
-                        <source src={path} type="audio/mpeg" />
-                    </audio>
-
-                    <Wrapper>
-                        <div>{this.props.description}</div>
-                    </Wrapper>
-                </React.Fragment>
-            )
-        }
+                {this.displayDetails()}
+                {this.state.redirect}
+            </React.Fragment>
+        )
     }
 }
 
