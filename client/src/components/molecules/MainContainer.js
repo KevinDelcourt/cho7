@@ -2,9 +2,6 @@ import React from "react"
 import Container from "../atoms/Container/Container"
 import Title from "../atoms/Title/Title"
 
-
-
-
 const MainContainer = props => {
     return (
         <Container
