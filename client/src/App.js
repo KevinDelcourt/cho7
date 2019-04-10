@@ -7,7 +7,7 @@ import MesCreationsPage from "./components/pages/MesCreationsPage"
 import RenseignerProfilPage from "./components/pages/RenseignerProfilPage"
 import UpdateCreationPage from "./components/pages/UpdateCreationPage"
 import PageProfilCreateur from "./components/pages/ProfilCreateurPage/ProfilCreateurPage"
-
+import pageFaq from "./components/pages/pageFaq"
 import Logout from "./components/pages/Logout"
 import { hasRole } from "./modules/api"
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom"
@@ -41,6 +41,7 @@ class App extends Component {
                 <Route path="/logout" component={Logout} />
                 <Route path="/about" component={PageProfilCreateur} />
                 <Route path="/accueil" component={this.getRedirect} />
+                <Route path="/pageFaq" component={pageFaq} />
                 <this.PrivateRoute
                     path="/login"
                     component={ConnectionPage}

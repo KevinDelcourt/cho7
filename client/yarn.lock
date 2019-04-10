@@ -10564,6 +10564,14 @@ react-app-polyfill@^0.2.0:
     raf "3.4.0"
     whatwg-fetch "3.0.0"
 
+react-collapsed@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/react-collapsed/-/react-collapsed-2.0.0.tgz#79e18bf20a3c97b3b1e3db9aae44c5be178eb0ed"
+  integrity sha512-+M6Lc0fVbeFuoPG3hlsxYm4miUXHjs5YnlLc10UWt8rsAJf8vt2EqX/8eBS64NWxtDjbigekuJ1LFHYhBArBNA==
+  dependencies:
+    "@babel/runtime" "^7.3.1"
+    raf "^3.4.0"
+
 react-color@^2.14.1:
   version "2.17.0"
   resolved "https://registry.yarnpkg.com/react-color/-/react-color-2.17.0.tgz#e14b8a11f4e89163f65a34c8b43faf93f7f02aaa"

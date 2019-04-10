@@ -63,6 +63,9 @@ class BarreMenu extends React.Component {
                     <Link to="/">
                         <StyledButton children="Accueil" />
                     </Link>
+                    <Link to="/pageFaq">
+                        <StyledButton children="FAQ" />
+                    </Link>
                     {creations}
                 </div>
 
