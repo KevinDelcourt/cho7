@@ -9,8 +9,6 @@ import theme from "./../../theme.json"
 import Container from "../atoms/Container/Container"
 import Title from "../atoms/Title/Title"
 
-const StyledConnectionForm = styled.form``
-
 const StyledButton = styled(Button)`
     display: block;
     margin: 20px auto;
@@ -25,11 +23,11 @@ class ConnectionForm extends Component {
         return (
             <Container
                 bgColor={theme.color.grey2}
-                boxShadow="0px 4px 15px rgba(0, 0, 0, 0.25)"
+                boxShadow={theme.effect.shadow}
                 width="28vw"
                 borderRadius="0px">
-                <StyledTitle size="50px">Connexion</StyledTitle>
-                <StyledConnectionForm onSubmit={this.props.handleSubmit}>
+                <StyledTitle size="50px" children="Connexion" />
+                <form onSubmit={this.props.handleSubmit}>
                     <Field
                         name="username"
                         component={LabelInput}
@@ -49,7 +47,7 @@ class ConnectionForm extends Component {
                         children="Se connecter"
                         bgColor={theme.color.brown2}
                     />
-                </StyledConnectionForm>
+                </form>
             </Container>
         )
     }
