@@ -53,7 +53,7 @@ class Creation extends Component {
         let suprime = null;
 
         if(this.state.auth){
-            suprime = <Suprime>
+            suprime = <Supprime>
                         <Link to={"/updateCreation/" + this.props.valueId}>
                             Modifier
                         </Link>
@@ -61,7 +61,7 @@ class Creation extends Component {
                             className="far fa-times-circle fa-2x"
                             onClick={this.delete}
                         />
-                    </Suprime>
+                    </Supprime>
         }
 
         return (
