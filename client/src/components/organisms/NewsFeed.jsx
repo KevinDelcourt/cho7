@@ -42,7 +42,7 @@ class NewsFeed extends React.Component {
                                 description={c.description}
                                 valueId={c.id}
                             />
-                              <StarRating/>
+                              <StarRating creationID={c.id} noteMoyenne={c.sommenotes/c.nbnote}/>
                               <SocialNetwork/>
                         </MainContainer>
                     ))}
@@ -56,7 +56,7 @@ class NewsFeed extends React.Component {
                                 description={c.description}
                                 valueId={c.id}
                             />
-                            <StarRating/>
+                             <StarRating creationID={c.id} noteMoyenne={c.sommenotes/c.nbnote}/>
                              <SocialNetwork/>
                         </MainContainer>                        
                     ))}
