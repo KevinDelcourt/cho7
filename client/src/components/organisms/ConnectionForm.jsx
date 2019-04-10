@@ -6,7 +6,8 @@ import { Field, reduxForm } from "redux-form"
 import LabelInput from "../molecules/LabelInput"
 import { required } from "../../modules/validation"
 import theme from "./../../theme.json"
-import MainContainer from "../molecules/MainContainer"
+import Container from "../atoms/Container/Container"
+import Title from "../atoms/Title/Title"
 
 const StyledConnectionForm = styled.form``
 
@@ -15,16 +16,20 @@ const StyledButton = styled(Button)`
     margin: 30px auto;
 `
 
+const StyledTitle = styled(Title)`
+    text-align: center;
+`
+
 class ConnectionForm extends Component {
     render() {
         return (
-            <MainContainer
-                title="Connexion"
+            <Container
                 bgColor={theme.color.grey2}
                 boxShadow="0px 4px 15px rgba(0, 0, 0, 0.25)"
                 width="28vw"
                 borderRadius="0px"
-                fontSize="50px">
+                >
+                <StyledTitle size="50px">Connexion</StyledTitle>
                 <StyledConnectionForm onSubmit={this.props.handleSubmit}>
                     <Field
                         name="username"
@@ -46,7 +51,7 @@ class ConnectionForm extends Component {
                         bgColor={theme.color.brown2}
                     />
                 </StyledConnectionForm>
-            </MainContainer>
+            </Container>
         )
     }
 }
