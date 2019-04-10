@@ -4,6 +4,7 @@ import { getCreations, getMeilleuresCreations } from "../../modules/api"
 import Creation from "../molecules/Creation"
 import MainContainer from "../molecules/MainContainer"
 import SocialNetwork from "../molecules/SocialNetwork"
+import { Link } from "react-router-dom";
 
 const SubContainer = styled.div`
     display: grid;
@@ -18,6 +19,12 @@ const Container = styled.div`
     padding: 15px 30px;
     height: max-content;
 `
+
+const StyledLink = styled(Link)`
+    &:hover {
+        color: #eee;
+    }
+`;
 
 class NewsFeed extends React.Component {
     state = { nouvellesCreations: [], meilleuresCreations: [] }
@@ -35,14 +42,13 @@ class NewsFeed extends React.Component {
                 <h2>Dernières créations</h2>
                 <SubContainer>
                     {this.state.nouvellesCreations.map((c, index) => (
-                        <MainContainer title={c.titre} key={index}>
+                        <MainContainer title={<StyledLink to={"/creation/"+c.id}>{c.titre}</StyledLink>} key={index}>
                             <Creation
                                 path={c.nomfichier}
                                 description={c.description}
                                 valueId={c.id}
                             />
-                            
-                              <SocialNetwork/>
+                            <SocialNetwork/>
                         </MainContainer>
                     ))}
                 </SubContainer>
