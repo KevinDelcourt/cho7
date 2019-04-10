@@ -21,7 +21,8 @@ db-identifiants.json
 # production
 /client/build
 /server/build
-
+/client/coverage
+/node_modules
 # misc
 .DS_Store
 .env.local
