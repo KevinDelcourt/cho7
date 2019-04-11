@@ -3,6 +3,7 @@ import { getCreations, getMeilleuresCreations } from "../../modules/api"
 import Creation from "../molecules/Creation"
 import MainContainer from "../molecules/MainContainer"
 import SocialNetwork from "../molecules/SocialNetwork"
+import StarRating from "../molecules/StarRating"
 import { Link } from "react-router-dom"
 import Title from "../atoms/Title/Title"
 
