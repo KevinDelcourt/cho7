@@ -3,6 +3,8 @@ import { storiesOf } from "@storybook/react"
 import { withKnobs, text, number } from "@storybook/addon-knobs"
 import Button from "../components/atoms/Button/Button"
 import Label from "../components/atoms/Label/Label"
+import Container from "../components/atoms/Container/Container"
+import Title from "../components/atoms/Title/Title"
 import LabelInput from "../components/molecules/LabelInput"
 import UploadForm from "../components/organisms/UploadForm"
 import BarreMenu from "../components/molecules/BarreMenu"
@@ -57,6 +59,32 @@ storyTextarea.add("Textarea", () => (
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim."
         )}
         rows="5"
+    />
+))
+
+const storyContainer = storiesOf("atoms", module)
+storyContainer.addDecorator(withKnobs)
+storyContainer.add("Container", () => (
+    <Container
+        bgColor={text("BgColor", "green")}
+        borderRadius={text("Border-radius", "30px")}
+        boxShadow={text("BoxShadow", "0px 4px 3px rgba(0,0,0,0.9)")}
+        width={text("Width", "70px")}
+        children={text(
+            "Content",
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim."
+        )}
+    />
+))
+
+const storyTitle = storiesOf("atoms", module)
+storyTitle.addDecorator(withKnobs)
+storyTitle.add("Title", () => (
+    <Title
+        size={text("Size", "40px")}
+        font={text("Font", "Arial")}
+        color={text("Color", "blue")}
+        children={text("Value", "Lorem ipsum dolor sit amet.")}
     />
 ))
 
