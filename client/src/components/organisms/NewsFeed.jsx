@@ -18,6 +18,7 @@ const Container = styled.div`
     border-radius: 20px;
     padding: 15px 30px;
     height: max-content;
+    margin-left: 2vw;
 `
 
 const StyledLink = styled(Link)`
