@@ -257,6 +257,25 @@ module.exports = (app, passport) => {
         }
     })
 
+    app.post("/cptEcoute", (req, res) => {
+        connection.query(
+            "SELECT nbecoute FROM creation WHERE id=?",
+            [req.body.id],
+            (err, rows) => {
+                if (err) res.send(err)
+                const ecouteCourante = rows[0].nbecoute
+                connection.query(
+                    "UPDATE creation SET nbecoute=? WHERE id=?",
+                    [ecouteCourante + 1, req.body.id],
+                    (err, rows) => {
+                        if (err) res.send(err)
+                    }
+                )
+            }
+        )
+        res.send(true)
+    })
+
     require("./routes/auth")(app, passport)
     require("./routes/users")(app, connection)
     require("./routes/public_get")(app, connection)
