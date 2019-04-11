@@ -8,6 +8,7 @@ import RenseignerProfilPage from "./components/pages/RenseignerProfilPage"
 import PersonnalisationPage from "./components/pages/PersonnalisationPage"
 import UpdateCreationPage from "./components/pages/UpdateCreationPage"
 import PageProfilCreateur from "./components/pages/ProfilCreateurPage/ProfilCreateurPage"
+import CreationPage from './components/pages/CreationPage'
 
 import Logout from "./components/pages/Logout"
 import { hasRole, getTheme } from "./modules/api"
@@ -45,6 +46,7 @@ class App extends Component {
                 <Route path="/logout" component={Logout} />
                 <Route path="/about" component={PageProfilCreateur} />
                 <Route path="/accueil" component={this.getRedirect} />
+                <Route path="/creation/:id" component={CreationPage} />
                 <this.PrivateRoute
                     path="/login"
                     component={ConnectionPage}
