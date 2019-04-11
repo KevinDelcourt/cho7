@@ -1,13 +1,13 @@
-import React, { Component } from "react";
-import styled from "styled-components";
-import { hasRole, deleteCreation} from "../../modules/api";
-import { getAudioUrl } from "../../modules/apiURL";
-import { Link, Redirect } from "react-router-dom";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import { msgAction } from "../../modules/actionsAndReducers";
-import {ajoutEcoute} from "../../modules/api";
-import theme from "./../../theme.json";
+import React, { Component } from "react"
+import styled from "styled-components"
+import { hasRole, deleteCreation } from "../../modules/api"
+import { getAudioUrl } from "../../modules/apiURL"
+import { Link, Redirect } from "react-router-dom"
+import { connect } from "react-redux"
+import { bindActionCreators } from "redux"
+import { msgAction } from "../../modules/actionsAndReducers"
+import { ajoutEcoute } from "../../modules/api"
+import theme from "./../../theme.json"
 import AudioPlayer from "react-modular-audio-player"
 
 const DescriptionContainer = styled.div`
@@ -43,29 +43,10 @@ class Creation extends Component {
             this.setState({ redirect: <Redirect to="/accueil" /> })
         } else this.props.msgAction("Erreur dans la suppression")
     }
-    
+
     cptEcoute = async () => {
         ajoutEcoute(this.props.valueId)
     }
-    
-    displayDetails = () => {
-		if (this.state.auth) {
-			return <DescriptionContainer>
-                {this.props.description}
-                <EditOptionsContainer>
-                    <Link className="fas fa-edit" to={"/updateCreation/" + this.props.valueId} />
-                    <button
-                        className="far fa-times-circle fa-2x deleteButton"
-                        onClick={this.handleDeleteClick}
-                    />
-                </EditOptionsContainer>
-            </DescriptionContainer>
-		} else {
-			return <DescriptionContainer>
-                {this.props.description}
-            </DescriptionContainer>
-		}
-	}
 
     displayDetails = () => {
         if (this.state.auth) {
@@ -88,6 +69,32 @@ class Creation extends Component {
             return (
                 <DescriptionContainer>
                     {this.props.description}
+                </DescriptionContainer>
+            )
+        }
+    }
+
+    displayDetails = () => {
+        if (this.state.auth) {
+            return (
+                <DescriptionContainer>
+                    {this.props.creation.description}
+                    <EditOptionsContainer>
+                        <Link
+                            className="fas fa-edit"
+                            to={"/updateCreation/" + this.props.valueId}
+                        />
+                        <button
+                            className="far fa-times-circle fa-2x deleteButton"
+                            onClick={this.handleDeleteClick}
+                        />
+                    </EditOptionsContainer>
+                </DescriptionContainer>
+            )
+        } else {
+            return (
+                <DescriptionContainer>
+                    {this.props.creation.description}
                 </DescriptionContainer>
             )
         }
