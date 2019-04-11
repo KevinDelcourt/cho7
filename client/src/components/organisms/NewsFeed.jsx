@@ -4,6 +4,7 @@ import { getCreations, getMeilleuresCreations } from "../../modules/api"
 import Creation from "../molecules/Creation"
 import MainContainer from "../molecules/MainContainer"
 import SocialNetwork from "../molecules/SocialNetwork"
+import StarRating from "../molecules/StarRating"
 import { Link } from "react-router-dom"
 
 const SubContainer = styled.div`
@@ -55,7 +56,12 @@ class NewsFeed extends React.Component {
                                 description={c.description}
                                 valueId={c.id}
                             />
-
+                            <StarRating
+                                creationID={c.id}
+                                noteMoyenne={
+                                    c.nbnote === 0 ? 0 : c.sommenotes / c.nbnote
+                                }
+                            />
                             <SocialNetwork />
                         </MainContainer>
                     ))}
@@ -75,6 +81,12 @@ class NewsFeed extends React.Component {
                                 path={c.nomfichier}
                                 description={c.description}
                                 valueId={c.id}
+                            />
+                            <StarRating
+                                creationID={c.id}
+                                noteMoyenne={
+                                    c.nbnote === 0 ? 0 : c.sommenotes / c.nbnote
+                                }
                             />
                             <SocialNetwork />
                         </MainContainer>
