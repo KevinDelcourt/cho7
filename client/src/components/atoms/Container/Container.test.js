@@ -19,9 +19,11 @@ test("Container border-radius renders correctly", () => {
 })
 
 test("Container boxShadow renders correctly", () => {
-    const tree = renderer.create(<Container boxShadow="20px" />).toJSON()
+    const tree = renderer
+        .create(<Container boxShadow={theme.effect.shadow} />)
+        .toJSON()
     expect(tree).toMatchSnapshot()
-    expect(tree).toHaveStyleRule("box-shadow", "0px 4px 40px rgba(0,0,0,0.5)")
+    expect(tree).toHaveStyleRule("box-shadow", "0px 4px 15px rgba(0,0,0,0.25)")
 })
 
 test("Container width renders correctly", () => {

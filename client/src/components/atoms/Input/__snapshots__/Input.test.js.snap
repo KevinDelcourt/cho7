@@ -4,7 +4,6 @@ exports[`Input border-radius renders correctly 1`] = `
 .c0 {
   border-radius: 10px;
   padding: 5px;
-  margin-top: 5px;
   margin-bottom: 7px;
 }
 
