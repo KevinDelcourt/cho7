@@ -48,7 +48,7 @@ class Creation extends Component {
         if (this.state.auth) {
             return (
                 <DescriptionContainer>
-                    {this.props.description}
+                    {this.props.creation.description}
                     <EditOptionsContainer>
                         <Link
                             className="fas fa-edit"
@@ -64,7 +64,7 @@ class Creation extends Component {
         } else {
             return (
                 <DescriptionContainer>
-                    {this.props.description}
+                    {this.props.creation.description}
                 </DescriptionContainer>
             )
         }
