@@ -18,10 +18,14 @@ const StyledTitle = styled(Title)`
     text-align: center;
 `
 
+const FormContainer = styled(Container)`
+    min-width: 300px;
+`
+
 class ConnectionForm extends Component {
     render() {
         return (
-            <Container
+            <FormContainer
                 bgColor={theme.color.grey2}
                 boxShadow={theme.effect.shadow}
                 width="28vw"
@@ -48,7 +52,7 @@ class ConnectionForm extends Component {
                         bgColor={theme.color.brown2}
                     />
                 </form>
-            </Container>
+            </FormContainer>
         )
     }
 }

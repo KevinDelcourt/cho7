@@ -8,15 +8,7 @@ import { connect } from "react-redux"
 import { bindActionCreators } from "redux"
 import { msgAction } from "../../modules/actionsAndReducers"
 import { ajoutEcoute } from "../../modules/api"
-import theme from "./../../theme.json"
-
-const DescriptionContainer = styled.div`
-    margin: 10px 0;
-    padding: 5px 10px;
-    background: ${theme.color.lightgrey1};
-    border-radius: 10px;
-    overflow-wrap: break-word;
-`
+import DescriptionContainer from "../atoms/DescriptionContainer/DescriptionContainer"
 
 const EditOptionsContainer = styled.div`
     display: flex;
@@ -24,40 +16,40 @@ const EditOptionsContainer = styled.div`
 `
 
 let rearrangedPlayer = [
-  {
-    className: "tier-top",
-    style: {margin: "0.3rem"},
-    innerComponents: [
-      { 
-        type: "play",
-        style: {width: "fit-content"}
-      },
-      {
-        type: "rewind",
-        style: {width: "fit-content"}
-      },
-      {
-        type: "forward",
-        style: {width: "fit-content"}
-      },
-      {
-        type: "volume"
-      }
-    ]
-  },
-  {
-    className: "tier-bottom",
-    style: {margin: "0rem 0.3rem 0.3rem 0.3rem"},
-    innerComponents: [
-      {
-        type: "time",
-        style: {width: "fit-content"}
-      },
-      {
-        type: "seek"
-      }
-    ]
-  }
+    {
+        className: "tier-top",
+        style: { margin: "0.3rem" },
+        innerComponents: [
+            {
+                type: "play",
+                style: { width: "fit-content" }
+            },
+            {
+                type: "rewind",
+                style: { width: "fit-content" }
+            },
+            {
+                type: "forward",
+                style: { width: "fit-content" }
+            },
+            {
+                type: "volume"
+            }
+        ]
+    },
+    {
+        className: "tier-bottom",
+        style: { margin: "0rem 0.3rem 0.3rem 0.3rem" },
+        innerComponents: [
+            {
+                type: "time",
+                style: { width: "fit-content" }
+            },
+            {
+                type: "seek"
+            }
+        ]
+    }
 ]
 
 class Creation extends Component {
@@ -125,8 +117,8 @@ class Creation extends Component {
                     }}
                     iconSize="2rem"
                     fontSize="1rem"
-                    playerWidth="100%;"
-                      rearrange={rearrangedPlayer}
+                    playerWidth="100%"
+                    rearrange={rearrangedPlayer}
                 />
 
                 {this.displayDetails()}

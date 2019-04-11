@@ -1,5 +1,4 @@
 import React from "react"
-import styled from "styled-components"
 import { getCreateur } from "../../modules/api"
 import Avatar from "../atoms/Avatar"
 import { getImageUrl } from "../../modules/apiURL"

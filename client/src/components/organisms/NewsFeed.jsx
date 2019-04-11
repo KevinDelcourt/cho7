@@ -22,6 +22,7 @@ class NewsFeed extends React.Component {
                 {this.state.nouvellesCreations.map((c, index) => (
                     <MainContainer
                         title={<Link to={"/creation/" + c.id}>{c.titre}</Link>}
+                        width="100%"
                         key={index}>
                         <Creation
                             creation={c}
