@@ -19,6 +19,7 @@
         "react-scripts": "2.1.3",
         "react-test-renderer": "^16.8.5",
         "react-testing-library": "^6.0.2",
+        "react-modular-audio-player": "^1.1.1",
         "redux-form": "^8.1.0",
         "styled-components": "^4.1.3"
     },

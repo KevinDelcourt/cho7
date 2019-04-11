@@ -44,11 +44,12 @@ class NewsFeed extends React.Component {
                     {this.state.nouvellesCreations.map((c, index) => (
                         <MainContainer title={<StyledLink to={"/creation/"+c.id}>{c.titre}</StyledLink>} key={index}>
                             <Creation
+                                creation={c}
                                 path={c.nomfichier}
                                 description={c.description}
                                 valueId={c.id}
                             />
-                            <SocialNetwork/>
+                            <SocialNetwork />
                         </MainContainer>
                     ))}
                 </SubContainer>
@@ -57,15 +58,15 @@ class NewsFeed extends React.Component {
                     {this.state.meilleuresCreations.map((c, index) => (
                         <MainContainer title={<StyledLink to={"/creation/"+c.id}>{c.titre}</StyledLink>} key={index}>
                             <Creation
+                                creation={c}
                                 path={c.nomfichier}
                                 description={c.description}
                                 valueId={c.id}
                             />
-                             <SocialNetwork/>
-                        </MainContainer>                        
+                            <SocialNetwork />
+                        </MainContainer>
                     ))}
                 </SubContainer>
-               
             </Container>
         )
     }
