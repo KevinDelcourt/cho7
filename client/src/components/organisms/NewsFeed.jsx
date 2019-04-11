@@ -7,6 +7,7 @@ import SocialNetwork from "../molecules/SocialNetwork"
 import Container from "../atoms/Container/Container"
 import StarRating from "../molecules/StarRating"
 import StyledLink from "../atoms/Link/Link"
+import Title from "../atoms/Title/Title"
 
 const SubContainer = styled.div`
     display: grid;
@@ -33,7 +34,7 @@ class NewsFeed extends React.Component {
         return (
             <ThatContainer>
                 <Container>
-                    <h2>Dernières créations</h2>
+                    <Title>Dernières créations</Title>
                     <SubContainer>
                         {this.state.nouvellesCreations.map((c, index) => (
                             <MainContainer
@@ -61,7 +62,7 @@ class NewsFeed extends React.Component {
                             </MainContainer>
                         ))}
                     </SubContainer>
-                    <h2>Créations les plus écoutées</h2>
+                    <Title>Créations les plus écoutées</Title>
                     <SubContainer>
                         {this.state.meilleuresCreations.map((c, index) => (
                             <MainContainer

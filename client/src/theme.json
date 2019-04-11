@@ -3,9 +3,9 @@
     "fontLabel": "Ruluko",
     "fontBase": "Almendra SC",
 
-    "fontSizeGrandTitre": "3.5em",
-    "fontSizeTitre": "3em",
-    "fontSizeText": "2em",
+    "fontSizeGrandTitre": "3em",
+    "fontSizeTitre": "1.6em",
+    "fontSizeText": "1em",
 
     "colorText": "rgba(0, 0, 0, 1)",
     "colorContainerBg": "rgba(145, 109, 67, 0.35)",
@@ -16,5 +16,5 @@
     "colorAudioPlayerBg": "green",
 
     "borderRadius": "2em",
-    "borderSize": "3px"
+    "borderSize": "0px"
 }

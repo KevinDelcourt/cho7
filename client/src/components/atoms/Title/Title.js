@@ -11,6 +11,7 @@ const Title = styled.h2`
 const mapStateToProps = state => {
     return {
         size: state.app.theme.fontSizeTitre,
+        font: state.app.theme.fontBase,
         color: state.app.theme.colorText
     }
 }

@@ -21,11 +21,7 @@ const LabelInput = props => (
                 name={props.name}
                 placeholder={props.placeholder}
             />
-            {props.meta.error && props.meta.touched ? (
-                <div>{props.meta.error}</div>
-            ) : (
-                ""
-            )}
+            {props.meta.error && props.meta.touched ? props.meta.error : ""}
         </FieldContainer>
     </div>
 )

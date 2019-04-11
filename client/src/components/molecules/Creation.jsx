@@ -51,15 +51,12 @@ class Creation extends Component {
                 <DescriptionContainer>
                     {this.props.creation.description}
                     <EditOptionsContainer>
-                        <Link
-                            className="fas fa-edit"
-                            to={"/updateCreation/" + this.props.valueId}
-                        />
-                        <Link
-                            className="far fa-times-circle fa-2x deleteButton"
-                            to="/"
-                            onClick={this.handleDeleteClick}
-                        />
+                        <Link to={"/updateCreation/" + this.props.valueId}>
+                            <i className="fas fa-edit" />
+                        </Link>
+                        <Link to="/" onClick={this.handleDeleteClick}>
+                            <i className="far fa-times-circle" />
+                        </Link>
                     </EditOptionsContainer>
                 </DescriptionContainer>
             )

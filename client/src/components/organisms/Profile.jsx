@@ -32,7 +32,7 @@ class Profile extends React.Component {
 
                         <DescriptionContainer>
                             <Title>{this.state.user.username}</Title>
-                            <p>{this.state.user.presentation}</p>
+                            {this.state.user.presentation}
                         </DescriptionContainer>
                     </Container>
                 </Wrapper>

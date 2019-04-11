@@ -5,13 +5,14 @@ import { Component } from "react"
 import { Field, reduxForm } from "redux-form"
 import LabelInput from "../molecules/LabelInput"
 import { required } from "../../modules/validation"
-import theme from "./../../theme.json"
 import Container from "../atoms/Container/Container"
 import Title from "../atoms/Title/Title"
 
 const StyledButton = styled(Button)`
     display: block;
     margin: 20px auto;
+    font-size: 18px;
+    font-family: "Almendra SC", Ruluko, Arial, Sans-serif;
     background-color: #916d43;
     border: none;
     border-radius: 10px;

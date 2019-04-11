@@ -14,10 +14,6 @@ const SubContainer = styled.div`
     grid-template-columns: 100%;
 `
 
-const StateContainer = styled.div`
-    font-size: 20px;
-`
-
 const DetailsContainer = styled.div`
     display: flex;
     justify-content: space-between;
@@ -52,15 +48,12 @@ class Projet extends React.Component {
                     {this.datetostring(maj)}
 
                     <div>
-                        <Link
-                            className="fas fa-edit"
-                            to={"/updateCreation/" + id}
-                        />
-                        <Link
-                            to="/"
-                            className="far fa-times-circle fa-2x deleteButton"
-                            onClick={() => this.handleDeleteClick(id)}
-                        />
+                        <Link to={"/updateCreation/" + id}>
+                            <i className="far fa-edit" />
+                        </Link>
+                        <Link to="/" onClick={() => this.handleDeleteClick(id)}>
+                            <i className="far fa-times-circle" />
+                        </Link>
                     </div>
                 </DetailsContainer>
             )
@@ -84,10 +77,10 @@ class Projet extends React.Component {
                     {this.state.avancement.map((c, index) => (
                         <MainContainer key={index} title={c[0].titre}>
                             {c.map((etat, index) => (
-                                <StateContainer key={index}>
-                                    <label>{etat.libelle + " : "}</label>
+                                <div key={index}>
+                                    {etat.libelle + " : "}
                                     {etat.valeuravancement + "%"}
-                                </StateContainer>
+                                </div>
                             ))}
 
                             {this.displayDescription(c[0].description)}
