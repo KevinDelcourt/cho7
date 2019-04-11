@@ -95,4 +95,7 @@ export const postProfilCreateur = formData => defaultPost("/users/1", formData)
 
 export const postNewCreation = formData => defaultPost("/addcreation", formData)
 
-export const postUpdateCreation = formData => defaultPost("/updateCreation", formData)
+export const postUpdateCreation = formData =>
+    defaultPost("/updateCreation", formData)
+
+export const ajoutEcoute = id => defaultPost("/cptEcoute", {id: id})
