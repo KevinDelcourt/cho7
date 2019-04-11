@@ -46,3 +46,9 @@ VALUES
   ('avancement 1 2',0,3),
   ('avancement 2 2',40,3),
   ('avancement 3 2',97,3);
+
+CREATE TABLE theme (
+  id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  style varchar(64) NOT NULL COLLATE utf8_general_ci,
+  value varchar(64) NOT NULL COLLATE utf8_general_ci
+);

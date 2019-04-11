@@ -4,6 +4,7 @@ import { getCreations, getMeilleuresCreations } from "../../modules/api"
 import Creation from "../molecules/Creation"
 import MainContainer from "../molecules/MainContainer"
 import SocialNetwork from "../molecules/SocialNetwork"
+import Container from "../atoms/Container/Container"
 
 const SubContainer = styled.div`
     display: grid;
@@ -11,11 +12,8 @@ const SubContainer = styled.div`
     grid-template-columns: 100%;
 `
 
-const Container = styled.div`
+const ThatContainer = styled.div`
     grid-row: span 2;
-    background: rgba(145, 109, 67, 0.35);
-    border-radius: 20px;
-    padding: 15px 30px;
     height: max-content;
 `
 
@@ -31,37 +29,39 @@ class NewsFeed extends React.Component {
 
     render() {
         return (
-            <Container>
-                <h2>Dernières créations</h2>
-                <SubContainer>
-                    {this.state.nouvellesCreations.map((c, index) => (
-                        <MainContainer title={c.titre} key={index}>
-                            <Creation
-                                creation={c}
-                                path={c.nomfichier}
-                                description={c.description}
-                                valueId={c.id}
-                            />
+            <ThatContainer>
+                <Container>
+                    <h2>Dernières créations</h2>
+                    <SubContainer>
+                        {this.state.nouvellesCreations.map((c, index) => (
+                            <MainContainer title={c.titre} key={index}>
+                                <Creation
+                                    creation={c}
+                                    path={c.nomfichier}
+                                    description={c.description}
+                                    valueId={c.id}
+                                />
 
-                            <SocialNetwork />
-                        </MainContainer>
-                    ))}
-                </SubContainer>
-                <h2>Créations les plus écoutées</h2>
-                <SubContainer>
-                    {this.state.meilleuresCreations.map((c, index) => (
-                        <MainContainer title={c.titre} key={index}>
-                            <Creation
-                                creation={c}
-                                path={c.nomfichier}
-                                description={c.description}
-                                valueId={c.id}
-                            />
-                            <SocialNetwork />
-                        </MainContainer>
-                    ))}
-                </SubContainer>
-            </Container>
+                                <SocialNetwork />
+                            </MainContainer>
+                        ))}
+                    </SubContainer>
+                    <h2>Créations les plus écoutées</h2>
+                    <SubContainer>
+                        {this.state.meilleuresCreations.map((c, index) => (
+                            <MainContainer title={c.titre} key={index}>
+                                <Creation
+                                    creation={c}
+                                    path={c.nomfichier}
+                                    description={c.description}
+                                    valueId={c.id}
+                                />
+                                <SocialNetwork />
+                            </MainContainer>
+                        ))}
+                    </SubContainer>
+                </Container>
+            </ThatContainer>
         )
     }
 }

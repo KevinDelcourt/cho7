@@ -1,4 +1,4 @@
-import Button from "../atoms/Button/Button"
+import SubmitButton from "../atoms/Button/SubmitButton"
 import LabelTextarea from "../molecules/LabelTextarea"
 import styled from "styled-components"
 import React from "react"
@@ -18,10 +18,6 @@ const UpdateCreationFormContainer = styled.div`
 
 const PublishButtonContainer = styled.div`
     justify-self: end;
-`
-
-const StyledButton = styled(Button)`
-    background-color: ${theme.color.grey1};
 `
 
 class UpdateCreationForm extends React.Component {
@@ -78,7 +74,7 @@ class UpdateCreationForm extends React.Component {
                     />
 
                     <PublishButtonContainer>
-                        <StyledButton type="submit" children="Modifier" />
+                        <SubmitButton type="submit" children="Modifier" />
                     </PublishButtonContainer>
                 </UpdateCreationFormContainer>
             </form>

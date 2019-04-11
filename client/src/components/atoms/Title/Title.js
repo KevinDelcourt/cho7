@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { connect } from "react-redux"
 
 const Title = styled.h2`
     font-size: ${props => props.size};
@@ -7,4 +8,10 @@ const Title = styled.h2`
     margin-bottom: 30px;
 `
 
-export default Title
+const mapStateToProps = state => {
+    return {
+        size: state.app.theme.fontSizeTitre
+    }
+}
+
+export default connect(mapStateToProps)(Title)

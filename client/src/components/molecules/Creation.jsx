@@ -8,19 +8,19 @@ import { connect } from "react-redux"
 import { bindActionCreators } from "redux"
 import { msgAction } from "../../modules/actionsAndReducers"
 import { ajoutEcoute } from "../../modules/api"
-import theme from "./../../theme.json"
-
-const DescriptionContainer = styled.div`
-    margin: 10px 0;
-    padding: 5px 10px;
-    background: ${theme.color.lightgrey1};
-    border-radius: 10px;
-    overflow-wrap: break-word;
-`
+import DescriptionContainer from "./../atoms/Container/DescriptionContainer"
 
 const EditOptionsContainer = styled.div`
     display: flex;
     justify-content: flex-end;
+`
+const Fragment = styled.div`
+    .audio-player {
+        background-color: #b7b7b7;
+        padding: 0.5rem;
+        border-radius: 10px;
+        filter: invert(100%);
+    }
 `
 
 class Creation extends Component {
@@ -74,7 +74,7 @@ class Creation extends Component {
         const path = getAudioUrl() + this.props.creation.nomfichier
 
         return (
-            <React.Fragment>
+            <Fragment>
                 <AudioPlayer
                     audioFiles={[
                         {
@@ -93,8 +93,15 @@ class Creation extends Component {
 
                 {this.displayDetails()}
                 {this.state.redirect}
-            </React.Fragment>
+            </Fragment>
         )
+    }
+}
+
+const mapStateToProps = state => {
+    return {
+        playerColorMain: state.app.theme.colorAudioPlayerMain,
+        playerColorBg: state.app.theme.colorAudioPlayerBg
     }
 }
 
@@ -103,6 +110,6 @@ const mapDispatchToProps = dispatch => {
 }
 
 export default connect(
-    null,
+    mapStateToProps,
     mapDispatchToProps
 )(Creation)

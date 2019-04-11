@@ -1,10 +1,10 @@
 import styled from "styled-components"
 import React from "react"
-import Button from "../atoms/Button/Button"
+import StyledButton from "../atoms/Button/Button"
 import { Link } from "react-router-dom"
 import theme from "./../../theme.json"
 import { connect } from "react-redux"
-
+import LightContainer from "../atoms/Container/LightContainer"
 const NavBarContainer = styled.div`
     background: rgba(213, 191, 159, 0.67);
     border-radius: 5px;
@@ -14,12 +14,12 @@ const NavBarContainer = styled.div`
     margin: 0 2vw;
 `
 
-const StyledButton = styled(Button)`
+/*const StyledButton = styled(Button)`
     margin-left: 0.5vw;
-    background-color: ${theme.color.brown1};
+    background-color: ${theme.btnColor};
     height: 6vh;
     min-height: 43px;
-`
+`*/
 
 class BarreMenu extends React.Component {
     render() {
@@ -58,7 +58,7 @@ class BarreMenu extends React.Component {
         }
 
         return (
-            <NavBarContainer>
+            <LightContainer>
                 <div>
                     <Link to="/">
                         <StyledButton children="Accueil" />
@@ -70,7 +70,7 @@ class BarreMenu extends React.Component {
                     {profil}
                     {co}
                 </div>
-            </NavBarContainer>
+            </LightContainer>
         )
     }
 }

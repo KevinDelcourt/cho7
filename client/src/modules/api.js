@@ -71,7 +71,8 @@ export const getEtatsCreation = idCreation =>
 
 export const getCreation = id => defaultGet("/creation/" + id)
 
-export const deleteCreation = id => defaultGet("/deleteCreation/" + id, { withCredentials: true })
+export const deleteCreation = id =>
+    defaultGet("/deleteCreation/" + id, { withCredentials: true })
 
 export const getCreations = () => defaultGet("/creations/done")
 
@@ -98,4 +99,6 @@ export const postNewCreation = formData => defaultPost("/addcreation", formData)
 export const postUpdateCreation = formData =>
     defaultPost("/updateCreation", formData)
 
-export const ajoutEcoute = id => defaultPost("/cptEcoute", {id: id})
+export const ajoutEcoute = id => defaultPost("/cptEcoute", { id: id })
+
+export const getTheme = () => defaultGet("/theme")

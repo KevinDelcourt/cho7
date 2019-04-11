@@ -51,17 +51,15 @@ class UpdateCreationPage extends React.Component {
     render() {
         return (
             <Template>
-                <MainContainer title="MODIFIER CRÉATION">
-                    {this.state.creation ? (
-                        <UploadForm
-                            onSubmit={this.onSubmit}
-                            initialValues={this.state.creation}
-                            lock={true}
-                        />
-                    ) : (
-                        ""
-                    )}
-                </MainContainer>
+                {this.state.creation ? (
+                    <UploadForm
+                        onSubmit={this.onSubmit}
+                        initialValues={this.state.creation}
+                        lock={true}
+                    />
+                ) : (
+                    ""
+                )}
                 {this.state.redirect}
             </Template>
         )

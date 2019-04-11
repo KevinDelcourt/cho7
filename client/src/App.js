@@ -5,15 +5,16 @@ import AccueilPage from "./components/pages/AccueilPage"
 import UploadPage from "./components/pages/UploadPage"
 import MesCreationsPage from "./components/pages/MesCreationsPage"
 import RenseignerProfilPage from "./components/pages/RenseignerProfilPage"
+import PersonnalisationPage from "./components/pages/PersonnalisationPage"
 import UpdateCreationPage from "./components/pages/UpdateCreationPage"
 import PageProfilCreateur from "./components/pages/ProfilCreateurPage/ProfilCreateurPage"
 
 import Logout from "./components/pages/Logout"
-import { hasRole } from "./modules/api"
+import { hasRole, getTheme } from "./modules/api"
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom"
 import { connect } from "react-redux"
 import { bindActionCreators } from "redux"
-import { userLoginAction } from "./modules/actionsAndReducers"
+import { userLoginAction, themeAction } from "./modules/actionsAndReducers"
 
 class App extends Component {
     state = {}
@@ -21,6 +22,9 @@ class App extends Component {
     componentDidMount = async () => {
         this.props.userLoginAction(await hasRole("CREATEUR"), true)
         this.setState({ loaded: true })
+        let dbTheme = await getTheme()
+        let theme = { ...this.props.theme, ...dbTheme }
+        this.props.themeAction(theme)
     }
 
     getRedirect = () => (this.state.loaded ? <Redirect to="/" /> : "")
@@ -66,6 +70,11 @@ class App extends Component {
                     component={RenseignerProfilPage}
                     condition={this.props.role_createur}
                 />
+                <this.PrivateRoute
+                    path="/personnaliser"
+                    component={PersonnalisationPage}
+                    condition={this.props.role_createur}
+                />
             </Fragment>
         </Router>
     )
@@ -73,12 +82,13 @@ class App extends Component {
 
 const mapStateToProps = state => {
     return {
-        role_createur: state.app.role_createur
+        role_createur: state.app.role_createur,
+        theme: state.app.theme
     }
 }
 
 const mapDispatchToProps = dispatch => {
-    return bindActionCreators({ userLoginAction }, dispatch)
+    return bindActionCreators({ userLoginAction, themeAction }, dispatch)
 }
 
 export default connect(

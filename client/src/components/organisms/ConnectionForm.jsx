@@ -12,20 +12,28 @@ import Title from "../atoms/Title/Title"
 const StyledButton = styled(Button)`
     display: block;
     margin: 20px auto;
+    background-color: #916d43;
+    border: none;
+    border-radius: 10px;
+    color: black;
 `
 
 const StyledTitle = styled(Title)`
     text-align: center;
 `
 
+const StyledContainer = styled(Container)`
+    background-color: #eaeaea;
+    width: 28vw;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
+    border: none;
+    border-radius: 0px;
+`
+
 class ConnectionForm extends Component {
     render() {
         return (
-            <Container
-                bgColor={theme.color.grey2}
-                boxShadow={theme.effect.shadow}
-                width="28vw"
-                borderRadius="0px">
+            <StyledContainer>
                 <StyledTitle size="50px" children="Connexion" />
                 <form onSubmit={this.props.handleSubmit}>
                     <Field
@@ -43,12 +51,9 @@ class ConnectionForm extends Component {
                         label="Mot de passe *"
                         validate={[required]}
                     />
-                    <StyledButton
-                        children="Se connecter"
-                        bgColor={theme.color.brown2}
-                    />
+                    <StyledButton children="Se connecter" />
                 </form>
-            </Container>
+            </StyledContainer>
         )
     }
 }

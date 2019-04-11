@@ -276,6 +276,19 @@ module.exports = (app, passport) => {
         res.send(true)
     })
 
+    app.get("/theme", (req, res) => {
+        connection.query("SELECT * FROM theme", (err, rows) => {
+            if (err) return res.send(err)
+
+            let theme = {}
+            rows.map(r => {
+                theme[r.style] = r.value
+            })
+
+            return res.send(theme)
+        })
+    })
+
     require("./routes/auth")(app, passport)
     require("./routes/users")(app, connection)
     require("./routes/public_get")(app, connection)
