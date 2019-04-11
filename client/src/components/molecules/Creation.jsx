@@ -23,6 +23,43 @@ const EditOptionsContainer = styled.div`
     justify-content: flex-end;
 `
 
+let rearrangedPlayer = [
+  {
+    className: "tier-top",
+    style: {margin: "0.3rem"},
+    innerComponents: [
+      { 
+        type: "play",
+        style: {width: "fit-content"}
+      },
+      {
+        type: "rewind",
+        style: {width: "fit-content"}
+      },
+      {
+        type: "forward",
+        style: {width: "fit-content"}
+      },
+      {
+        type: "volume"
+      }
+    ]
+  },
+  {
+    className: "tier-bottom",
+    style: {margin: "0rem 0.3rem 0.3rem 0.3rem"},
+    innerComponents: [
+      {
+        type: "time",
+        style: {width: "fit-content"}
+      },
+      {
+        type: "seek"
+      }
+    ]
+  }
+]
+
 class Creation extends Component {
     state = {
         auth: false
@@ -88,7 +125,8 @@ class Creation extends Component {
                     }}
                     iconSize="2rem"
                     fontSize="1rem"
-                    playerWidth="30rem"
+                    playerWidth="100%;"
+                      rearrange={rearrangedPlayer}
                 />
 
                 {this.displayDetails()}

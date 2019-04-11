@@ -4,7 +4,7 @@ const Title = styled.h2`
     font-size: ${props => props.size};
     font-family: ${props => props.font};
     color: ${props => props.color};
-    margin-bottom: 30px;
+    margin: 15px 0;
 `
 
 export default Title

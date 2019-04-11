@@ -4,25 +4,7 @@ import { getAvancement } from "../../modules/api"
 import { Link, Redirect } from "react-router-dom"
 import { hasRole, deleteCreation } from "../../modules/api"
 import MainContainer from "./../molecules/MainContainer"
-import theme from "./../../theme.json"
-
-const SubContainer = styled.div`
-    display: grid;
-    grid-row-gap: 20px;
-    grid-template-columns: 100%;
-`
-
-const DescriptionContainer = styled.div`
-    margin: 10px 0;
-    padding: 5px 10px;
-    background: ${theme.color.lightgrey1};
-    border-radius: 10px;
-    overflow-wrap: break-word;
-`
-
-const StateContainer = styled.div`
-    font-size: 20px;
-`
+import DescriptionContainer from "../atoms/DescriptionContainer/DescriptionContainer"
 
 const DetailsContainer = styled.div`
     display: flex;
@@ -78,28 +60,26 @@ class Projet extends React.Component {
         if (desc == null || desc === "") {
             return <React.Fragment />
         } else {
-            return <DescriptionContainer>{desc}</DescriptionContainer>
+            return <DescriptionContainer children={desc} />
         }
     }
 
     render() {
         return (
             <MainContainer title="Projets en cours">
-                <SubContainer>
-                    {this.state.avancement.map((c, index) => (
-                        <MainContainer key={index} title={c[0].titre}>
-                            {c.map((etat, index) => (
-                                <StateContainer key={index}>
-                                    <label>{etat.libelle + " : "}</label>
-                                    {etat.valeuravancement + "%"}
-                                </StateContainer>
-                            ))}
+                {this.state.avancement.map((c, index) => (
+                    <MainContainer key={index} title={c[0].titre}>
+                        {c.map((etat, index) => (
+                            <div key={index}>
+                                <label>{etat.libelle + " : "}</label>
+                                {etat.valeuravancement + "%"}
+                            </div>
+                        ))}
 
-                            {this.displayDescription(c[0].description)}
-                            {this.displayDetails(c[0].id, c[0].miseajour)}
-                        </MainContainer>
-                    ))}
-                </SubContainer>
+                        {this.displayDescription(c[0].description)}
+                        {this.displayDetails(c[0].id, c[0].miseajour)}
+                    </MainContainer>
+                ))}
                 {this.state.redirect}
             </MainContainer>
         )
