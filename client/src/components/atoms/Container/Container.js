@@ -8,6 +8,7 @@ const Container = styled.div`
     width: ${props => props.width || "100%"};
     margin-left: auto;
     margin-right: auto;
+    min-width: 300px;
 `
 
 export default Container
