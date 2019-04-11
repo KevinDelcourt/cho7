@@ -12,7 +12,7 @@ const nouvelEtat = value => {
 }
 
 const typeDescription = value => {
-    cy.get(".sc-jWBwVP").type(value)
+    cy.get(".sc-brqgnP").type(value)
 }
 
 const validCreation = () => {
