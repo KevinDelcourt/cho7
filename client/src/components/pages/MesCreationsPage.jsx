@@ -2,7 +2,7 @@ import styled from "styled-components"
 import React from "react"
 import Template from "./Template"
 import { hasRole } from "../../modules/api"
-import CreationsInProgress from "../organisms/CreationsInProgress"
+import Creations from "../organisms/Creations"
 import MainContainer from "../molecules/MainContainer"
 import { Link } from "react-router-dom"
 
@@ -35,7 +35,8 @@ class MesCreationsPage extends React.Component {
                                 </Link>
                             </center>
                         </MainContainer>
-                        <CreationsInProgress />
+                        <Creations etat="wip" />
+                        <Creations etat="done" />
                     </SubContainer>
                 </Template>
             </div>
