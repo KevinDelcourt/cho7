@@ -257,6 +257,31 @@ module.exports = (app, passport) => {
         }
     })
 
+    app.post("/StarRating/:id", (req, res) => {
+        console.log(req.body)
+        const idCreation = req.params.id
+        connection.query(
+            "SELECT sommenotes, nbnote FROM creation WHERE id=?",
+            [idCreation],
+            (err, rows) => {
+                if (err) return res.send(err)
+                connection.query(
+                    "UPDATE creation SET sommenotes = ?, nbnote = ? WHERE id=?",
+                    [
+                        rows[0].sommenotes + req.body.star,
+                        rows[0].nbnote + 1,
+                        idCreation
+                    ],
+                    (err, rows) => {
+                        if (err) return res.send(err)
+
+                        return res.send(true)
+                    }
+                )
+            }
+        )
+    })
+
     app.post("/cptEcoute", (req, res) => {
         connection.query(
             "SELECT nbecoute FROM creation WHERE id=?",
