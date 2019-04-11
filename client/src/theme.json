@@ -3,18 +3,18 @@
     "fontLabel": "Ruluko",
     "fontBase": "Almendra SC",
 
-    "fontSizeGrandTitre": "50px",
-    "fontSizeTitre": "25px",
-    "fontSizeText": "20px",
+    "fontSizeGrandTitre": "3.5em",
+    "fontSizeTitre": "3em",
+    "fontSizeText": "2em",
 
-    "colorText": "#000000",
+    "colorText": "rgba(0, 0, 0, 1)",
     "colorContainerBg": "rgba(145, 109, 67, 0.35)",
-    "colorDescriptionBg": "rgba(255,255,255,0.54)",
+    "colorDescriptionBg": "rgba(255, 255, 255, 0.54)",
     "colorMenuBarBg": "rgba(213, 191, 159, 0.67)",
-    "colorSubmitBtn": "#C4C4C4",
+    "colorSubmitBtn": "rgba(196, 196, 196, 1)",
     "colorAudioPlayerMain": "red",
     "colorAudioPlayerBg": "green",
 
-    "borderRadius": "20px",
+    "borderRadius": "2em",
     "borderSize": "3px"
 }

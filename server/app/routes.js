@@ -314,6 +314,24 @@ module.exports = (app, passport) => {
         })
     })
 
+    app.post("/theme", isLoggedIn, (req, res) => {
+        let query = "INSERT INTO theme (style,value) VALUES "
+        let dataTab = []
+        for (let key in req.body) {
+            query += "(?,?),"
+            dataTab.push(key)
+            dataTab.push(req.body[key])
+        }
+        query = query.slice(0, -1)
+        connection.query("DELETE FROM theme", (err, rows) => {
+            if (err) return res.send(err)
+            connection.query(query, dataTab, (err, rows) => {
+                if (err) return res.send(err)
+                return res.send(true)
+            })
+        })
+    })
+
     require("./routes/auth")(app, passport)
     require("./routes/users")(app, connection)
     require("./routes/public_get")(app, connection)

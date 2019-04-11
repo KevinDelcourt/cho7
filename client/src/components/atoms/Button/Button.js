@@ -3,8 +3,7 @@ import { connect } from "react-redux"
 
 const Button = styled.button`
     background-color: ${props => props.bgColor};
-    border: solid;
-    border-size: ${props => props.borderSize}
+    border: ${props => props.borderSize} solid ${props => props.color};
     border-radius: ${props => props.borderRadius};
     padding: 5px 15px;
     height: 35px;

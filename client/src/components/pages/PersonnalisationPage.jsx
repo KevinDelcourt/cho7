@@ -1,7 +1,7 @@
 import React from "react"
 import MainContainer from "../molecules/MainContainer"
 import Template from "./Template"
-import { getUser, postProfilCreateur } from "../../modules/api"
+import { getUser, updateTheme } from "../../modules/api"
 import PersonnalisationForm from "../organisms/PersonnalisationForm"
 import { Redirect } from "react-router-dom"
 import { msgAction, themeAction } from "../../modules/actionsAndReducers"
@@ -20,19 +20,14 @@ class PersonnalisationPage extends React.Component {
 
     onSubmit = async values => {
         console.log(values)
-        /*let formData = new FormData()
-        for (let obj in values) {
-            if (obj === "fichierAvatar") formData.append(obj, values[obj][0])
-            else formData.append(obj, values[obj])
-        }
-        let response = await postProfilCreateur(formData)
+        let response = await updateTheme(values)
         if (response === true) {
-            this.props.msgAction("Profil renseigné avec succès")
+            this.props.msgAction("Modification sauvegardée")
             this.setState({ redirect: <Redirect to="/" /> })
         } else {
             this.props.msgAction("Erreur lors de la requête")
             throw new SubmissionError({ ...response, err: true })
-        }*/
+        }
     }
 
     render = () => (

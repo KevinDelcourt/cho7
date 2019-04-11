@@ -4,7 +4,7 @@ import Template from "./Template"
 import { hasRole } from "../../modules/api"
 import Creations from "../organisms/Creations"
 import MainContainer from "../molecules/MainContainer"
-import { Link } from "react-router-dom"
+import Link from "../atoms/Link/Link"
 
 const SubContainer = styled.div`
     display: grid;

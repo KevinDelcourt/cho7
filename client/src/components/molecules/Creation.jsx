@@ -3,7 +3,8 @@ import styled from "styled-components"
 import AudioPlayer from "react-modular-audio-player"
 import { hasRole, deleteCreation } from "../../modules/api"
 import { getAudioUrl } from "../../modules/apiURL"
-import { Link, Redirect } from "react-router-dom"
+import Link from "../atoms/Link/Link"
+import { Redirect } from "react-router-dom"
 import { connect } from "react-redux"
 import { bindActionCreators } from "redux"
 import { msgAction } from "../../modules/actionsAndReducers"
@@ -54,8 +55,9 @@ class Creation extends Component {
                             className="fas fa-edit"
                             to={"/updateCreation/" + this.props.valueId}
                         />
-                        <button
+                        <Link
                             className="far fa-times-circle fa-2x deleteButton"
+                            to="/"
                             onClick={this.handleDeleteClick}
                         />
                     </EditOptionsContainer>

@@ -26,6 +26,7 @@ class BarreMenu extends React.Component {
         let co
         let creations
         let profil
+        let personnaliser
 
         if (!this.props.role_createur) {
             co = (
@@ -45,6 +46,12 @@ class BarreMenu extends React.Component {
                 <Link to="/RenseignerProfilPage">
                     {" "}
                     <StyledButton children="Profil" />{" "}
+                </Link>
+            )
+            personnaliser = (
+                <Link to="/personnaliser">
+                    {" "}
+                    <StyledButton children="Personnaliser" />{" "}
                 </Link>
             )
         }
@@ -68,6 +75,7 @@ class BarreMenu extends React.Component {
 
                 <div>
                     {profil}
+                    {personnaliser}
                     {co}
                 </div>
             </LightContainer>

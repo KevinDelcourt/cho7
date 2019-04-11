@@ -9,12 +9,7 @@ const MainContainer = props => {
             boxShadow={props.boxShadow}
             width={props.width}
             borderRadius={props.borderRadius}>
-            <Title
-                size={props.fontSize}
-                font={props.font}
-                color={props.color}
-                children={props.title}
-            />
+            <Title font={props.font} children={props.title} />
             {props.children}
         </Container>
     )

@@ -5,12 +5,11 @@ import styled from "styled-components"
 class ColorInput extends React.Component {
     state = {
         value: "",
-        color: "#FF1000",
+        color: "",
         opacity: 0
     }
 
     componentDidMount = () => {
-        console.log(this.props)
         this.rgbaToState(this.props.meta.initial)
     }
 
@@ -20,7 +19,10 @@ class ColorInput extends React.Component {
         rgba.slice(5, -1)
             .split(", ")
             .map((val, i) => {
-                if (i < 3) color += parseInt(val).toString(16)
+                if (i < 3)
+                    if (parseInt(val).toString(16).length === 1)
+                        color += "0" + parseInt(val).toString(16)
+                    else color += parseInt(val).toString(16)
                 else opacity = parseFloat(val) * 100
             })
         this.setState({ color: color, opacity: opacity })
@@ -47,6 +49,7 @@ class ColorInput extends React.Component {
         this.setState({ opacity: e.target.value }, () => {
             if (this.props.onColorChange)
                 this.props.onColorChange(this.getRgbaFromState())
+            this.props.input.onChange(this.getRgbaFromState())
         })
     }
 

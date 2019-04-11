@@ -1,6 +1,7 @@
 import styled from "styled-components"
 import React, { Component } from "react"
 import LightContainer from "../atoms/Container/LightContainer"
+import Link from "../atoms/Link/Link"
 
 const FooterContainer = styled.div`
     width: 100%;
@@ -14,8 +15,8 @@ export default class FooterTemplate extends Component {
         return (
             <LightContainer>
                 <FooterContainer>
-                    <a href="/">La Compagnie de l'Aventure</a>
-                    <a href="/about">À propos</a>
+                    <Link to="/">La Compagnie de l'Aventure</Link>
+                    <Link to="/about">À propos</Link>
                 </FooterContainer>
             </LightContainer>
         )

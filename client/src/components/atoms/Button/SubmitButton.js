@@ -4,7 +4,7 @@ import Button from "./Button"
 
 const SubmitButton = styled(Button)`
     background-color: ${props => props.bgColor};
-    border-size: ${props => props.borderSize}
+    border: ${props => props.borderSize} solid ${props => props.color};
     border-radius: ${props => props.borderRadius};
     color: ${props => props.color};
 `

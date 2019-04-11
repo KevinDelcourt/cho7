@@ -21,14 +21,6 @@ body {
     box-sizing: border-box;
 }
 
-a:visited {
-    color: black;
-}
-
-a:link {
-    color: black;
-}
-
 h1 {
     font-size: 50px;
 }

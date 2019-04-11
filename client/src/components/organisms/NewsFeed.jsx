@@ -6,7 +6,7 @@ import MainContainer from "../molecules/MainContainer"
 import SocialNetwork from "../molecules/SocialNetwork"
 import Container from "../atoms/Container/Container"
 import StarRating from "../molecules/StarRating"
-import { Link } from "react-router-dom"
+import StyledLink from "../atoms/Link/Link"
 
 const SubContainer = styled.div`
     display: grid;
@@ -17,12 +17,6 @@ const SubContainer = styled.div`
 const ThatContainer = styled.div`
     grid-row: span 2;
     height: max-content;
-`
-
-const StyledLink = styled(Link)`
-    &:hover {
-        color: #eee;
-    }
 `
 
 class NewsFeed extends React.Component {
