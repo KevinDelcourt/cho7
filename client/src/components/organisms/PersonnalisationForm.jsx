@@ -1,43 +1,74 @@
 import React, { Component } from "react"
 import { Field, reduxForm } from "redux-form"
-import { required } from "../../modules/validation"
 import Label from "../atoms/Label/Label"
 import LabelInput from "../molecules/LabelInput"
 import SubmitButton from "../atoms/Button/SubmitButton"
-import styled from "styled-components"
 import ColorInput from "../molecules/ColorInput"
 import DescriptionContainer from "./../atoms/Container/DescriptionContainer"
+import SiteTitle from "../atoms/Title/SiteTitle"
 
 class PersonnalisationForm extends Component {
     polices = ["Roluko", "Sevillana", "Almendra SC", "Arial", "Comic Sans MS"]
 
+    colorFieldNames = [
+        { name: "colorText", label: "Text color" },
+        { name: "colorContainerBg", label: "Container Background" },
+        { name: "colorMenuBarBg", label: "Menu Bar Background" },
+        { name: "colorSubmitBtn", label: "Submit Button Background" },
+        {
+            name: "colorDescriptionBg",
+            label: "Description Container Background"
+        }
+    ]
+
+    policeFieldNames = [
+        { name: "fontBase", label: "Police pricipale" },
+        { name: "fontLabel", label: "Police label" },
+        { name: "fontGrandTitre", label: "Police grand titre" }
+    ]
+
     changeThemeProp = (key, val) => {
         let obj = {}
         obj[key] = val
-        this.props.themeAction({
-            ...this.props.theme,
-            ...obj
-        })
+        this.props.themeAction(obj)
     }
 
-    getColorField = (name, label) => (
-        <Field
-            component={ColorInput}
-            name={name}
-            label={label}
-            onColorChange={e => this.changeThemeProp(name, e)}
-        />
-    )
+    getColorFields = () => {
+        return this.colorFieldNames.map((obj, index) => (
+            <Field
+                key={index}
+                component={ColorInput}
+                name={obj.name}
+                label={obj.label}
+                onColorChange={e => this.changeThemeProp(obj.name, e)}
+            />
+        ))
+    }
 
-    getPxOptions = () => {
-        let tab = []
-        for (let i = 0; i < 5; i++)
-            tab.push(
-                <option key={i} value={i + "px"}>
-                    {i + "px"}
+    getSelectField = (name, label, options) => {
+        return (
+            <React.Fragment key={name}>
+                <Label>{label}</Label>
+                <Field
+                    component={"select"}
+                    name={name}
+                    onChange={e => this.changeThemeProp(name, e.target.value)}>
+                    {options}
+                </Field>
+                <br />
+            </React.Fragment>
+        )
+    }
+
+    getOptions = (start, end, step, string) => {
+        let options = []
+        for (let i = start; i <= end; i += step)
+            options.push(
+                <option key={i} value={i + string}>
+                    {i + string}
                 </option>
             )
-        return tab
+        return options
     }
 
     getEmOptions = () => {
@@ -51,101 +82,67 @@ class PersonnalisationForm extends Component {
         return tab
     }
 
-    getPoliceOptions = () => {
-        let tab = []
-        this.polices.map((p, i) => {
-            tab.push(
-                <option key={i} value={p}>
-                    {p}
-                </option>
-            )
-        })
-        return tab
-    }
+    getPoliceOptions = () =>
+        this.polices.map((p, i) => (
+            <option key={i} value={p}>
+                {p}
+            </option>
+        ))
+
     render = () => (
         <form onSubmit={this.props.handleSubmit}>
-            {this.getColorField("colorText", "Text color")}
-            {this.getColorField("colorContainerBg", "Container Background")}
-            {this.getColorField("colorMenuBarBg", "Menu Bar Background")}
-            {this.getColorField("colorSubmitBtn", "Submit Button Background")}
-            {this.getColorField(
-                "colorDescriptionBg",
-                "Description Container Background"
-            )}
+            {this.getColorFields()}
             <DescriptionContainer>Description Container</DescriptionContainer>
-            <Label>Taille bordure: </Label>
-            <Field
-                component={"select"}
-                name={"borderSize"}
-                onChange={e =>
-                    this.changeThemeProp("borderSize", e.target.value)
-                }>
-                {this.getPxOptions()}
-            </Field>
-            <Label>Rayon bordure: </Label>
-            <Field
-                component={"select"}
-                name={"borderRadius"}
-                onChange={e =>
-                    this.changeThemeProp("borderRadius", e.target.value)
-                }>
-                {this.getEmOptions()}
-            </Field>
-            <Label>Taille police texte: </Label>
-            <Field
-                component={"select"}
-                name={"fontSizeText"}
-                onChange={e =>
-                    this.changeThemeProp("fontSizeText", e.target.value)
-                }>
-                {this.getEmOptions()}
-            </Field>
-            <Label>Taille police titre: </Label>
-            <Field
-                component={"select"}
-                name={"fontSizeTitre"}
-                onChange={e =>
-                    this.changeThemeProp("fontSizeTitre", e.target.value)
-                }>
-                {this.getEmOptions()}
-            </Field>
-            <Label>Taille police grand titre: </Label>
-            <Field
-                component={"select"}
-                name={"fontSizeGrandTitre"}
-                onChange={e =>
-                    this.changeThemeProp("fontSizeGrandTitre", e.target.value)
-                }>
-                {this.getEmOptions()}
-            </Field>
-            <Label>Police texte: </Label>
-            <Field
-                component={"select"}
-                name={"fontBase"}
-                onChange={e =>
-                    this.changeThemeProp("fontBase", e.target.value)
-                }>
-                {this.getPoliceOptions()}
-            </Field>
-            <Label>Police label: </Label>
-            <Field
-                component={"select"}
-                name={"fontLabel"}
-                onChange={e =>
-                    this.changeThemeProp("fontLabel", e.target.value)
-                }>
-                {this.getPoliceOptions()}
-            </Field>
-            <Label>Police grand titre: </Label>
-            <Field
-                component={"select"}
-                name={"fontGrandTitre"}
-                onChange={e =>
-                    this.changeThemeProp("fontGrandTitre", e.target.value)
-                }>
-                {this.getPoliceOptions()}
-            </Field>
+            {this.getSelectField(
+                "borderSize",
+                "Taille Bordure",
+                this.getOptions(0, 5, 1, "px")
+            )}
 
+            {this.getSelectField(
+                "borderRadius",
+                "Rayon Bordure",
+                this.getOptions(0, 4, 0.5, "em")
+            )}
+
+            {this.getSelectField(
+                "fontSizeText",
+                "Taille police texte",
+                this.getOptions(0.96, 1.04, 0.01, "em")
+            )}
+
+            {this.getSelectField(
+                "fontSizeTitre",
+                "Taille police titre",
+                this.getOptions(1, 2.5, 0.5, "em")
+            )}
+
+            {this.getSelectField(
+                "fontSizeGrandTitre",
+                "Taille police grand titre",
+                this.getOptions(1, 4, 0.5, "em")
+            )}
+
+            {this.policeFieldNames.map(obj =>
+                this.getSelectField(
+                    obj.name,
+                    obj.label,
+                    this.getPoliceOptions()
+                )
+            )}
+
+            <Field
+                component={LabelInput}
+                name="siteTitle"
+                label="Titre du site"
+                type="text"
+                onChange={e =>
+                    this.changeThemeProp("siteTitle", e.target.value)
+                }
+            />
+
+            <SiteTitle />
+            <br />
             <SubmitButton type="submit" children="Sauvegarder" />
         </form>
     )

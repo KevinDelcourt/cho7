@@ -1,6 +1,5 @@
 import React from "react"
 import Template from "./Template"
-import MainContainer from "../molecules/MainContainer"
 import {
     getCreation,
     getEtatsCreation,

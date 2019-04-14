@@ -1,7 +1,7 @@
 import React from "react"
 import MainContainer from "../molecules/MainContainer"
 import Template from "./Template"
-import { getUser, updateTheme } from "../../modules/api"
+import { updateTheme } from "../../modules/api"
 import PersonnalisationForm from "../organisms/PersonnalisationForm"
 import { Redirect } from "react-router-dom"
 import { msgAction, themeAction } from "../../modules/actionsAndReducers"

@@ -4,7 +4,6 @@ import { required } from "../../modules/validation"
 import LabelTextarea from "./../molecules/LabelTextarea"
 import LabelInput from "./../molecules/LabelInput"
 import SubmitButton from "./../atoms/Button/SubmitButton"
-import theme from "./../../theme.json"
 import styled from "styled-components"
 import AvatarInput from "../molecules/AvatarInput"
 

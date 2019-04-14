@@ -1,25 +1,8 @@
-import styled from "styled-components"
 import React from "react"
 import StyledButton from "../atoms/Button/Button"
 import { Link } from "react-router-dom"
-import theme from "./../../theme.json"
 import { connect } from "react-redux"
 import LightContainer from "../atoms/Container/LightContainer"
-const NavBarContainer = styled.div`
-    background: rgba(213, 191, 159, 0.67);
-    border-radius: 5px;
-    padding: 5px 1vw;
-    display: flex;
-    justify-content: space-between;
-    margin: 0 2vw;
-`
-
-/*const StyledButton = styled(Button)`
-    margin-left: 0.5vw;
-    background-color: ${theme.btnColor};
-    height: 6vh;
-    min-height: 43px;
-`*/
 
 class BarreMenu extends React.Component {
     render() {

@@ -49,7 +49,8 @@ export const appReducer = (state = defaultState, action) => {
 
     if (action.type === "msg") return { ...state, msg: action.payload }
 
-    if (action.type === "theme") return { ...state, theme: action.payload }
+    if (action.type === "theme")
+        return { ...state, theme: { ...state.theme, ...action.payload } }
 
     return state
 }

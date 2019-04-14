@@ -2,7 +2,6 @@ import styled from "styled-components"
 import Label from "../atoms/Label/Label"
 import TextareaBase from "../atoms/Textarea"
 import React from "react"
-import theme from "./../../theme.json"
 
 const LabelTextareaContainer = styled.div`
     display: grid;

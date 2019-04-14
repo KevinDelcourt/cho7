@@ -4,6 +4,7 @@ import { connect } from "react-redux"
 const Textarea = styled.textarea`
     border-radius: ${props => props.borderRadius};
     border: ${props => props.borderSize} solid ${props => props.color};
+    color: black;
     padding: 8px;
     width: 100%;
 `

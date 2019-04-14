@@ -2,7 +2,6 @@ import React from "react"
 import styled from "styled-components"
 import Label from "../atoms/Label/Label"
 import Input from "../atoms/Input/Input"
-import theme from "./../../theme.json"
 
 const FieldContainer = styled.div`
     display: grid;

@@ -1,8 +1,9 @@
 import React from "react"
-import banniere from "../../assets/images/banniere.png"
 import Banniere from "../atoms/Banniere"
 import BarreMenu from "../molecules/BarreMenu.jsx"
 import { Link } from "react-router-dom"
+import { connect } from "react-redux"
+import { getImageUrl } from "../../modules/apiURL"
 
 class HeaderTemplate extends React.Component {
     render() {
@@ -10,7 +11,10 @@ class HeaderTemplate extends React.Component {
             <div>
                 <center>
                     <Link to="/">
-                        <Banniere src={banniere} alt="banniere" />
+                        <Banniere
+                            src={getImageUrl(this.props.banniere)}
+                            alt="banniere"
+                        />
                     </Link>
                 </center>
                 <BarreMenu />
@@ -18,4 +22,11 @@ class HeaderTemplate extends React.Component {
         )
     }
 }
-export default HeaderTemplate
+
+const mapStateToProps = state => {
+    return {
+        banniere: state.app.theme.banniere
+    }
+}
+
+export default connect(mapStateToProps)(HeaderTemplate)

@@ -22,6 +22,14 @@ const Fragment = styled.div`
         border-radius: 10px;
         filter: invert(100%);
     }
+
+    .audio-player-time {
+        color: black;
+    }
+
+    .marquee {
+        color: black;
+    }
 `
 
 class Creation extends Component {
@@ -97,18 +105,11 @@ class Creation extends Component {
     }
 }
 
-const mapStateToProps = state => {
-    return {
-        playerColorMain: state.app.theme.colorAudioPlayerMain,
-        playerColorBg: state.app.theme.colorAudioPlayerBg
-    }
-}
-
 const mapDispatchToProps = dispatch => {
     return bindActionCreators({ msgAction }, dispatch)
 }
 
 export default connect(
-    mapStateToProps,
+    null,
     mapDispatchToProps
 )(Creation)

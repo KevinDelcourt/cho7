@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from "react"
-import "./App.css"
 import ConnectionPage from "./components/pages/ConnectionPage.jsx"
 import AccueilPage from "./components/pages/AccueilPage"
 import UploadPage from "./components/pages/UploadPage"
@@ -8,7 +7,7 @@ import RenseignerProfilPage from "./components/pages/RenseignerProfilPage"
 import PersonnalisationPage from "./components/pages/PersonnalisationPage"
 import UpdateCreationPage from "./components/pages/UpdateCreationPage"
 import PageProfilCreateur from "./components/pages/ProfilCreateurPage/ProfilCreateurPage"
-import CreationPage from './components/pages/CreationPage'
+import CreationPage from "./components/pages/CreationPage"
 
 import Logout from "./components/pages/Logout"
 import { hasRole, getTheme } from "./modules/api"

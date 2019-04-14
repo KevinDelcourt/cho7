@@ -1,6 +1,5 @@
 import React from "react"
 import styled from "styled-components"
-import logo from "./../../assets/images/logo.png"
 import Logo from "../atoms/Logo"
 import ConnectionForm from "./../organisms/ConnectionForm"
 import { Link, Redirect } from "react-router-dom"
@@ -9,21 +8,14 @@ import { login } from "../../modules/api"
 import { connect } from "react-redux"
 import { bindActionCreators } from "redux"
 import { userLoginAction } from "../../modules/actionsAndReducers"
+import { getImageUrl } from "../../modules/apiURL"
+import SiteTitle from "./../atoms/Title/SiteTitle"
 
 const ConnectionHeader = styled.div`
     width: 100vw;
     margin-top: 5vh;
     display: flex;
     justify-content: space-around;
-`
-const SiteTitle = styled.h1`
-    font-size: ${props => props.size};
-    font-family: ${props => props.font};
-    color: ${props => props.color};
-    text-align: center;
-    margin-left: 5vw;
-    margin-top: 1vh;
-    display: inline-block;
 `
 
 class ConnectionPage extends React.Component {
@@ -39,8 +31,7 @@ class ConnectionPage extends React.Component {
             })
         } else {
             throw new SubmissionError({
-                username: "Erreur dans le login ou mot de passe",
-                password: "Erreur dans le login ou mot de passe"
+                username: "Erreur dans le login ou mot de passe"
             })
         }
     }
@@ -49,13 +40,8 @@ class ConnectionPage extends React.Component {
         <div>
             <Link to="/" title="Accueil">
                 <ConnectionHeader>
-                    <Logo src={logo} alt="logo" />
-                    <SiteTitle
-                        size={this.props.size}
-                        font={this.props.font}
-                        color={this.props.color}>
-                        La Compagnie de l ' Aventure
-                    </SiteTitle>
+                    <Logo src={getImageUrl(this.props.logo)} alt="logo" />
+                    <SiteTitle />
                 </ConnectionHeader>
             </Link>
             <ConnectionForm onSubmit={this.submit} />
@@ -66,9 +52,7 @@ class ConnectionPage extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        size: state.app.theme.fontSizeGrandTitre,
-        font: state.app.theme.fontGrandTitre,
-        color: state.app.theme.colorText
+        logo: state.app.theme.logo
     }
 }
 

@@ -12,9 +12,13 @@
     "colorDescriptionBg": "rgba(255, 255, 255, 0.54)",
     "colorMenuBarBg": "rgba(213, 191, 159, 0.67)",
     "colorSubmitBtn": "rgba(196, 196, 196, 1)",
-    "colorAudioPlayerMain": "red",
-    "colorAudioPlayerBg": "green",
 
     "borderRadius": "2em",
-    "borderSize": "0px"
+    "borderSize": "0px",
+
+    "background": "backgroundCropped.jpg",
+    "banniere": "banniere.png",
+    "logo": "logo.png",
+
+    "siteTitle": "La compagnie de l'aventure"
 }

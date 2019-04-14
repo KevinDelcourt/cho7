@@ -1,6 +1,5 @@
 import React from "react"
 import Label from "../atoms/Label/Label"
-import styled from "styled-components"
 
 class ColorInput extends React.Component {
     state = {
@@ -24,6 +23,7 @@ class ColorInput extends React.Component {
                         color += "0" + parseInt(val).toString(16)
                     else color += parseInt(val).toString(16)
                 else opacity = parseFloat(val) * 100
+                return true
             })
         this.setState({ color: color, opacity: opacity })
     }

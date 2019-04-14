@@ -4,15 +4,10 @@ import LabelInput from "../molecules/LabelInput"
 import AudioInput from "../molecules/AudioInput"
 import SubmitButton from "../atoms/Button/SubmitButton"
 import LabelTextarea from "../molecules/LabelTextarea"
-import theme from "./../../theme.json"
 import { Field, reduxForm, FieldArray } from "redux-form"
 import { required } from "../../modules/validation"
 import EtatsAvancementInput from "../molecules/EtatsAvancementInput"
 import MainContainer from "../molecules/MainContainer"
-
-/*const StyledButton = styled(SubmitButton)`
-    justify-self: end;
-`*/
 
 const StyledUploadForm = styled.form`
     display: grid;
