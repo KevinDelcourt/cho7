@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS etat_avancement, users, creation;
+DROP TABLE IF EXISTS etat_avancement, users, creation, theme;
 
 CREATE TABLE users (
   id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
