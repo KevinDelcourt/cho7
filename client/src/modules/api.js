@@ -103,3 +103,7 @@ export const postUpdateCreation = formData =>
     defaultPost("/updateCreation", formData)
 
 export const ajoutEcoute = id => defaultPost("/cptEcoute", { id: id })
+
+export const getTheme = () => defaultGet("/theme")
+
+export const updateTheme = theme => defaultPost("/theme", theme)

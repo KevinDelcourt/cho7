@@ -1,6 +1,5 @@
 import React from "react"
 import styled from "styled-components"
-import logo from "./../../assets/images/logo.png"
 import Logo from "../atoms/Logo"
 import ConnectionForm from "./../organisms/ConnectionForm"
 import { Link, Redirect } from "react-router-dom"
@@ -9,20 +8,13 @@ import { login } from "../../modules/api"
 import { connect } from "react-redux"
 import { bindActionCreators } from "redux"
 import { userLoginAction } from "../../modules/actionsAndReducers"
+import SiteTitle from "./../atoms/Title/SiteTitle"
 
 const ConnectionHeader = styled.div`
     width: 100vw;
     margin-top: 5vh;
     display: flex;
     justify-content: space-around;
-`
-const SiteTitle = styled.h1`
-    font-family: "Sevillana";
-    font-size: 40px;
-    text-align: center;
-    margin-left: 5vw;
-    margin-top: 1vh;
-    display: inline-block;
 `
 
 class ConnectionPage extends React.Component {
@@ -38,8 +30,7 @@ class ConnectionPage extends React.Component {
             })
         } else {
             throw new SubmissionError({
-                username: "Erreur dans le login ou mot de passe",
-                password: "Erreur dans le login ou mot de passe"
+                username: "Erreur dans le login ou mot de passe"
             })
         }
     }
@@ -48,8 +39,8 @@ class ConnectionPage extends React.Component {
         <div>
             <Link to="/" title="Accueil">
                 <ConnectionHeader>
-                    <Logo src={logo} alt="logo" />
-                    <SiteTitle children="La Compagnie de l ' Aventure" />
+                    <Logo />
+                    <SiteTitle />
                 </ConnectionHeader>
             </Link>
             <ConnectionForm onSubmit={this.submit} />

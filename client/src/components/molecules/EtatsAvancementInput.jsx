@@ -3,7 +3,6 @@ import { Field } from "redux-form"
 import LabelInput from "./LabelInput"
 import Button from "../atoms/Button/Button"
 import { required } from "../../modules/validation"
-import theme from "./../../theme.json"
 
 const EtatsAvancementInput = ({ fields, lock }) => (
     <div className="custom-field-array-container">
@@ -28,10 +27,7 @@ const EtatsAvancementInput = ({ fields, lock }) => (
                 {lock ? (
                     ""
                 ) : (
-                    <Button
-                        type="button"
-                        onClick={() => fields.remove(index)}
-                        bgColor={theme.color.brown2}>
+                    <Button type="button" onClick={() => fields.remove(index)}>
                         -
                     </Button>
                 )}

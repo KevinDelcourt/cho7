@@ -1,10 +1,12 @@
 import styled from "styled-components"
 import React from "react"
 import { getAvancement } from "../../modules/api"
-import { Link, Redirect } from "react-router-dom"
+import { Redirect } from "react-router-dom"
+import Link from "../atoms/Link/Link"
+
 import { hasRole, deleteCreation } from "../../modules/api"
 import MainContainer from "./../molecules/MainContainer"
-import DescriptionContainer from "../atoms/DescriptionContainer/DescriptionContainer"
+import DescriptionContainer from "./../atoms/Container/DescriptionContainer"
 
 const DetailsContainer = styled.div`
     display: flex;
@@ -40,14 +42,12 @@ class Projet extends React.Component {
                     {this.datetostring(maj)}
 
                     <div>
-                        <Link
-                            className="fas fa-edit"
-                            to={"/updateCreation/" + id}
-                        />
-                        <button
-                            className="far fa-times-circle fa-2x deleteButton"
-                            onClick={() => this.handleDeleteClick(id)}
-                        />
+                        <Link to={"/updateCreation/" + id}>
+                            <i className="far fa-edit" />
+                        </Link>
+                        <Link to="/" onClick={() => this.handleDeleteClick(id)}>
+                            <i className="far fa-times-circle" />
+                        </Link>
                     </div>
                 </DetailsContainer>
             )
@@ -60,7 +60,7 @@ class Projet extends React.Component {
         if (desc == null || desc === "") {
             return <React.Fragment />
         } else {
-            return <DescriptionContainer children={desc} />
+            return <DescriptionContainer children={desc} width="170px" />
         }
     }
 

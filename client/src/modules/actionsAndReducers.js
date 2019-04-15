@@ -1,7 +1,16 @@
+import theme from "./../theme.json"
+
 export const msgAction = msg => {
     return {
         type: "msg",
         payload: msg
+    }
+}
+
+export const themeAction = theme => {
+    return {
+        type: "theme",
+        payload: theme
     }
 }
 
@@ -20,7 +29,7 @@ export const userLogoutAction = payload => {
     }
 }
 
-let defaultState = { role_createur: false, msg: "" }
+let defaultState = { role_createur: false, theme: theme, msg: "" }
 export const appReducer = (state = defaultState, action) => {
     if (action.type === "login") {
         let msg = ""
@@ -39,6 +48,9 @@ export const appReducer = (state = defaultState, action) => {
     }
 
     if (action.type === "msg") return { ...state, msg: action.payload }
+
+    if (action.type === "theme")
+        return { ...state, theme: { ...state.theme, ...action.payload } }
 
     return state
 }
