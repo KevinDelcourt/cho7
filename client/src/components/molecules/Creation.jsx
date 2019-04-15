@@ -3,16 +3,33 @@ import styled from "styled-components"
 import AudioPlayer from "react-modular-audio-player"
 import { hasRole, deleteCreation } from "../../modules/api"
 import { getAudioUrl } from "../../modules/apiURL"
-import { Link, Redirect } from "react-router-dom"
+import Link from "../atoms/Link/Link"
+import { Redirect } from "react-router-dom"
 import { connect } from "react-redux"
 import { bindActionCreators } from "redux"
 import { msgAction } from "../../modules/actionsAndReducers"
 import { ajoutEcoute } from "../../modules/api"
-import DescriptionContainer from "../atoms/DescriptionContainer/DescriptionContainer"
+import DescriptionContainer from "./../atoms/Container/DescriptionContainer"
 
 const EditOptionsContainer = styled.div`
     display: flex;
     justify-content: flex-end;
+`
+const Fragment = styled.div`
+    .audio-player {
+        background-color: #b7b7b7;
+        padding: 0.5rem;
+        border-radius: 10px;
+        filter: invert(100%);
+    }
+
+    .audio-player-time {
+        color: black;
+    }
+
+    .marquee {
+        color: black;
+    }
 `
 
 let rearrangedPlayer = [
@@ -24,12 +41,21 @@ let rearrangedPlayer = [
                 type: "play",
                 style: { width: "fit-content" }
             },
+
             {
                 type: "rewind",
                 style: { width: "fit-content" }
             },
             {
                 type: "forward",
+                style: { width: "fit-content" }
+            },
+            {
+                type: "loop",
+                style: { width: "fit-content" }
+            },
+            {
+                type: "name",
                 style: { width: "fit-content" }
             },
             {
@@ -79,14 +105,12 @@ class Creation extends Component {
                 <DescriptionContainer>
                     {this.props.creation.description}
                     <EditOptionsContainer>
-                        <Link
-                            className="fas fa-edit"
-                            to={"/updateCreation/" + this.props.valueId}
-                        />
-                        <button
-                            className="far fa-times-circle fa-2x deleteButton"
-                            onClick={this.handleDeleteClick}
-                        />
+                        <Link to={"/updateCreation/" + this.props.valueId}>
+                            <i className="fas fa-edit" />
+                        </Link>
+                        <Link to="/" onClick={this.handleDeleteClick}>
+                            <i className="far fa-times-circle" />
+                        </Link>
                     </EditOptionsContainer>
                 </DescriptionContainer>
             )
@@ -103,7 +127,7 @@ class Creation extends Component {
         const path = getAudioUrl() + this.props.creation.nomfichier
 
         return (
-            <React.Fragment>
+            <Fragment>
                 <AudioPlayer
                     audioFiles={[
                         {
@@ -123,7 +147,7 @@ class Creation extends Component {
 
                 {this.displayDetails()}
                 {this.state.redirect}
-            </React.Fragment>
+            </Fragment>
         )
     }
 }

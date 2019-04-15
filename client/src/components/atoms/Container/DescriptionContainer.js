@@ -1,23 +1,23 @@
+import Container from "./Container"
 import styled from "styled-components"
 import { connect } from "react-redux"
 
-const Container = styled.div`
+const DescriptionContainer = styled(Container)`
     background-color: ${props => props.bgColor};
     border-radius: ${props => props.borderRadius};
     border: ${props => props.borderSize} solid;
-    padding: 20px 30px;
     width: ${props => props.width || "100%"};
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 20px;
+    margin: 10px 0;
+    padding: 5px 10px;
+    overflow-wrap: break-word;
 `
 
 const mapStateToProps = state => {
     return {
-        bgColor: state.app.theme.colorContainerBg,
+        bgColor: state.app.theme.colorDescriptionBg,
         borderRadius: state.app.theme.borderRadius,
         borderSize: state.app.theme.borderSize
     }
 }
 
-export default connect(mapStateToProps)(Container)
+export default connect(mapStateToProps)(DescriptionContainer)

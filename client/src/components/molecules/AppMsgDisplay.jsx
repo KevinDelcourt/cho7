@@ -1,5 +1,7 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
+import Container from "../atoms/Container/Container"
+import Button from "../atoms/Button/Button"
 
 class AppMsgDisplay extends Component {
     state = {
@@ -13,11 +15,21 @@ class AppMsgDisplay extends Component {
     }
     render = () =>
         this.state.display ? (
-            <div style={{ position: "fixed", top: "0", left: "0" }}>
-                <p>{this.props.msg}</p>
-                <button onClick={() => this.setState({ display: false })}>
-                    dismiss
-                </button>
+            <div
+                style={{
+                    position: "fixed",
+                    bottom: "5px",
+                    width: "100%"
+                }}>
+                <center>
+                    <Container style={{ width: "max-content" }}>
+                        <p>{this.props.msg}</p>
+                        <Button
+                            onClick={() => this.setState({ display: false })}>
+                            OK
+                        </Button>
+                    </Container>
+                </center>
             </div>
         ) : (
             ""

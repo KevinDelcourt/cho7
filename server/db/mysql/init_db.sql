@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS etat_avancement, users, creation;
+DROP TABLE IF EXISTS etat_avancement, users, creation, theme;
 
 CREATE TABLE users (
   id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -59,3 +59,9 @@ VALUES
   ('Vous êtes ou ?', 'On est à Toulouse'),
   ('Qui gère ce site ?', 'Nomanil le ezkez nsdk kzk'),
   ('Comment tu te prénommes ?', 'Ca va Nomanil encore oui non oui');
+  
+CREATE TABLE theme (
+  id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  style varchar(64) NOT NULL COLLATE utf8_general_ci,
+  value varchar(64) NOT NULL COLLATE utf8_general_ci
+);

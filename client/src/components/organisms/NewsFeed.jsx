@@ -4,7 +4,7 @@ import Creation from "../molecules/Creation"
 import MainContainer from "../molecules/MainContainer"
 import SocialNetwork from "../molecules/SocialNetwork"
 import StarRating from "../molecules/StarRating"
-import { Link } from "react-router-dom"
+import Link from "../atoms/Link/Link"
 import Title from "../atoms/Title/Title"
 
 class NewsFeed extends React.Component {
@@ -33,7 +33,9 @@ class NewsFeed extends React.Component {
                         />
                         <StarRating
                             creationID={c.id}
-                            noteMoyenne={c.sommenotes / c.nbnote}
+                            noteMoyenne={
+                                c.nbnote === 0 ? 0 : c.sommenotes / c.nbnote
+                            }
                         />
                         <SocialNetwork />
                     </MainContainer>
@@ -51,7 +53,9 @@ class NewsFeed extends React.Component {
                         />
                         <StarRating
                             creationID={c.id}
-                            noteMoyenne={c.sommenotes / c.nbnote}
+                            noteMoyenne={
+                                c.nbnote === 0 ? 0 : c.sommenotes / c.nbnote
+                            }
                         />
                         <SocialNetwork />
                     </MainContainer>
