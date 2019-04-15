@@ -25,12 +25,16 @@ const StyledTitle = styled(Title)`
 
 const FormContainer = styled(Container)`
     min-width: 300px;
+    background-color: #eaeaea;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
+    border: none;
+    border-radius: 0px;
 `
 
 class ConnectionForm extends Component {
     render() {
         return (
-            <FormContainer width="28vw" borderRadius="0px">
+            <FormContainer width="28vw">
                 <StyledTitle size="41px" children="Connexion" />
                 <form onSubmit={this.props.handleSubmit}>
                     <Field
