@@ -23,19 +23,15 @@ const StyledTitle = styled(Title)`
     text-align: center;
 `
 
-const StyledContainer = styled(Container)`
-    background-color: #eaeaea;
-    width: 28vw;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25);
-    border: none;
-    border-radius: 0px;
+const FormContainer = styled(Container)`
+    min-width: 300px;
 `
 
 class ConnectionForm extends Component {
     render() {
         return (
-            <StyledContainer>
-                <StyledTitle size="50px" children="Connexion" />
+            <FormContainer width="28vw" borderRadius="0px">
+                <StyledTitle size="41px" children="Connexion" />
                 <form onSubmit={this.props.handleSubmit}>
                     <Field
                         name="username"
@@ -54,7 +50,7 @@ class ConnectionForm extends Component {
                     />
                     <StyledButton children="Se connecter" />
                 </form>
-            </StyledContainer>
+            </FormContainer>
         )
     }
 }

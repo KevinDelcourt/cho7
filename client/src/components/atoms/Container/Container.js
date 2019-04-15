@@ -9,6 +9,7 @@ const Container = styled.div`
     width: ${props => props.width || "100%"};
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 20px;
 `
 
 const mapStateToProps = state => {

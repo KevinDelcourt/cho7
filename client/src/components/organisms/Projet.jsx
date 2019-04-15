@@ -8,12 +8,6 @@ import { hasRole, deleteCreation } from "../../modules/api"
 import MainContainer from "./../molecules/MainContainer"
 import DescriptionContainer from "./../atoms/Container/DescriptionContainer"
 
-const SubContainer = styled.div`
-    display: grid;
-    grid-row-gap: 20px;
-    grid-template-columns: 100%;
-`
-
 const DetailsContainer = styled.div`
     display: flex;
     justify-content: space-between;
@@ -66,28 +60,26 @@ class Projet extends React.Component {
         if (desc == null || desc === "") {
             return <React.Fragment />
         } else {
-            return <DescriptionContainer>{desc}</DescriptionContainer>
+            return <DescriptionContainer children={desc} width="170px" />
         }
     }
 
     render() {
         return (
             <MainContainer title="Projets en cours">
-                <SubContainer>
-                    {this.state.avancement.map((c, index) => (
-                        <MainContainer key={index} title={c[0].titre}>
-                            {c.map((etat, index) => (
-                                <div key={index}>
-                                    {etat.libelle + " : "}
-                                    {etat.valeuravancement + "%"}
-                                </div>
-                            ))}
+                {this.state.avancement.map((c, index) => (
+                    <MainContainer key={index} title={c[0].titre}>
+                        {c.map((etat, index) => (
+                            <div key={index}>
+                                <label>{etat.libelle + " : "}</label>
+                                {etat.valeuravancement + "%"}
+                            </div>
+                        ))}
 
-                            {this.displayDescription(c[0].description)}
-                            {this.displayDetails(c[0].id, c[0].miseajour)}
-                        </MainContainer>
-                    ))}
-                </SubContainer>
+                        {this.displayDescription(c[0].description)}
+                        {this.displayDetails(c[0].id, c[0].miseajour)}
+                    </MainContainer>
+                ))}
                 {this.state.redirect}
             </MainContainer>
         )

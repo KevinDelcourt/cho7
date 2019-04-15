@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Label font-color renders correctly 1`] = `
+.c0 {
+  color: red;
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+<label
+  className="c0"
+  color="red"
+/>
+`;
+
+exports[`Label font-family renders correctly 1`] = `
+.c0 {
+  font-family: Ruluko;
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+<label
+  className="c0"
+/>
+`;

@@ -1,15 +1,10 @@
 import React from "react"
-import styled from "styled-components"
 import { getCreateur } from "../../modules/api"
 import Avatar from "../atoms/Avatar"
 import { getImageUrl } from "../../modules/apiURL"
 import DescriptionContainer from "./../atoms/Container/DescriptionContainer"
 import Container from "../atoms/Container/Container"
 import Title from "../atoms/Title/Title"
-
-const Wrapper = styled.div`
-    height: max-content;
-`
 
 class Profile extends React.Component {
     state = {}
@@ -21,21 +16,14 @@ class Profile extends React.Component {
     render() {
         if (this.state.user)
             return (
-                <Wrapper>
-                    <Container>
-                        {this.props.about ? <h2>A propos</h2> : ""}
-                        <center>
-                            <Avatar
-                                src={getImageUrl() + this.state.user.avatar}
-                            />
-                        </center>
-
-                        <DescriptionContainer>
-                            <Title>{this.state.user.username}</Title>
-                            {this.state.user.presentation}
-                        </DescriptionContainer>
-                    </Container>
-                </Wrapper>
+                <Container>
+                    {this.props.about ? <Title children="A propos" /> : ""}
+                    <Avatar src={getImageUrl() + this.state.user.avatar} />
+                    <DescriptionContainer width="230px">
+                        <Title children={this.state.user.username} />
+                        <p>{this.state.user.presentation}</p>
+                    </DescriptionContainer>
+                </Container>
             )
         return ""
     }

@@ -15,6 +15,7 @@ describe("composant creation de projet sans fichier", () => {
     })
 
     it("je teste le creation de projet normal", () => {
+        cy.log("je teste le creation de projet normal")
         populateCreationForm.validCreation()
         validerCreationForm()
         cy.url().should("eq", "http://localhost:3000/")

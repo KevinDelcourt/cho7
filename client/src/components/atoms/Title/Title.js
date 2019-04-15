@@ -3,7 +3,7 @@ import { connect } from "react-redux"
 
 const Title = styled.h2`
     font-size: ${props => props.size};
-    margin-bottom: 30px;
+    margin: 15px 0;
 `
 
 const mapStateToProps = state => {
