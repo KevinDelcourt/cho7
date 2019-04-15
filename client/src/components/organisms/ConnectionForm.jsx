@@ -48,6 +48,7 @@ class ConnectionForm extends Component {
                         validate={[required]}
                     />
                     <StyledButton
+                        data-cypress
                         children="Se connecter"
                         bgColor={theme.color.brown2}
                     />
