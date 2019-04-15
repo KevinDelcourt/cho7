@@ -7,6 +7,7 @@ import Link from "../atoms/Link/Link"
 import { hasRole, deleteCreation } from "../../modules/api"
 import MainContainer from "./../molecules/MainContainer"
 import DescriptionContainer from "./../atoms/Container/DescriptionContainer"
+import AvancementBar from "../atoms/AvancementBar"
 
 const DetailsContainer = styled.div`
     display: flex;
@@ -70,10 +71,11 @@ class Projet extends React.Component {
                 {this.state.avancement.map((c, index) => (
                     <MainContainer key={index} title={c[0].titre}>
                         {c.map((etat, index) => (
-                            <div key={index}>
-                                <label>{etat.libelle + " : "}</label>
-                                {etat.valeuravancement + "%"}
-                            </div>
+                            <AvancementBar
+                                kay={index}
+                                value={etat.valeuravancement}
+                                label={etat.libelle}
+                            />
                         ))}
 
                         {this.displayDescription(c[0].description)}
