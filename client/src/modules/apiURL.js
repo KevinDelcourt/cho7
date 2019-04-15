@@ -5,7 +5,7 @@ const getApiUrl = () => {
         case "development":
             return "http://" + window.location.href.split(/[/:]/)[3] + ":8180"
         case "production":
-            return "http://localhost:443"
+            return "http://149.202.58.150:443"
         default:
             return "http://localhost:8180"
     }

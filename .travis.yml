@@ -52,6 +52,6 @@ jobs:
       name: "Docker Deploy BD"
       script:
         - echo ${DOCKER_PASSWORD} | docker login -u ${DOCKER_USERNAME} --password-stdin
-        - docker build -t cho7_BD ./server/db/mysql
-        - docker tag cho7_BD ${DOCKER_USERNAME}/cho7_BD
-        - docker push ${DOCKER_USERNAME}/cho7_BD
+        - docker build -t cho7_mysql ./server/db/mysql
+        - docker tag cho7_mysql ${DOCKER_USERNAME}/cho7_mysql
+        - docker push ${DOCKER_USERNAME}/cho7_mysql
