@@ -15,14 +15,13 @@ import { connect } from "react-redux"
 import { bindActionCreators } from "redux"
 import styled from "styled-components"
 import Collapse from "react-css-collapse"
-import theme from "./../../theme.json"
 
 const QuestionContainer = styled.div`
     cursor: pointer;
     margin: 10px 0;
     border-radius: 10px;
     padding: 8px 10px;
-    background: ${theme.color.lightgrey1};
+    background: #fff;
     overflow-wrap: break-word;
     display: flex;
     align-items: center;

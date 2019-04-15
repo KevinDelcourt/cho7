@@ -30,7 +30,7 @@ class QuestionReponseForm extends Component {
             <StyledButton
                 type="submit"
                 children="Envoyer"
-                bgColor={theme.color.grey1}
+                bgColor={theme.colorDescriptionBg}
             />
         </StyledForm>
     )
