@@ -6,7 +6,11 @@ const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     padding: 0;
-    background: url("${props => getImageUrl(props.background)}");
+    background: url("${props => {
+        if (props.backgroundFile) {
+            return URL.createObjectURL(props.backgroundFile)
+        } else return getImageUrl(props.background)
+    }}");
     background-size: cover;
     background-attachment: fixed;
 }
@@ -21,6 +25,7 @@ const GlobalStyle = createGlobalStyle`
     color: ${props => props.color};
     font-family: ${props => props.font};
     font-size: ${props => props.fontSize};
+    transition: color 1s ease, background-color 1s ease;
 }
 
 table {
@@ -57,7 +62,8 @@ const mapStateToProps = state => {
         fontSize: state.app.theme.fontSizeText,
         fontSizeTitre: state.app.theme.fontSizeTitre,
         font: state.app.theme.fontBase,
-        background: state.app.theme.background
+        background: state.app.theme.background,
+        backgroundFile: state.app.theme.backgroundFile
     }
 }
 

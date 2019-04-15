@@ -6,6 +6,8 @@ import SubmitButton from "../atoms/Button/SubmitButton"
 import ColorInput from "../molecules/ColorInput"
 import DescriptionContainer from "./../atoms/Container/DescriptionContainer"
 import SiteTitle from "../atoms/Title/SiteTitle"
+import ThemeImageInput from "../molecules/ThemeImageInput"
+import Logo from "../atoms/Logo"
 
 class PersonnalisationForm extends Component {
     polices = ["Roluko", "Sevillana", "Almendra SC", "Arial", "Comic Sans MS"]
@@ -27,6 +29,11 @@ class PersonnalisationForm extends Component {
         { name: "fontGrandTitre", label: "Police grand titre" }
     ]
 
+    fileFields = [
+        { name: "backgroundFile", label: "Image de fond" },
+        { name: "banniereFile", label: "Image de la bannière" },
+        { name: "logoFile", label: "Logo du site" }
+    ]
     changeThemeProp = (key, val) => {
         let obj = {}
         obj[key] = val
@@ -52,6 +59,7 @@ class PersonnalisationForm extends Component {
                 <Field
                     component={"select"}
                     name={name}
+                    style={{ color: "black" }}
                     onChange={e => this.changeThemeProp(name, e.target.value)}>
                     {options}
                 </Field>
@@ -143,6 +151,19 @@ class PersonnalisationForm extends Component {
 
             <SiteTitle />
             <br />
+
+            {this.fileFields.map((field, index) => (
+                <Field
+                    component={ThemeImageInput}
+                    name={field.name}
+                    label={field.label}
+                    changeImage={e => {
+                        if (e.target.files[0])
+                            this.changeThemeProp(field.name, e.target.files[0])
+                    }}
+                />
+            ))}
+            <Logo />
             <SubmitButton type="submit" children="Sauvegarder" />
         </form>
     )

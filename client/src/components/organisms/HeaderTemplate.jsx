@@ -12,7 +12,13 @@ class HeaderTemplate extends React.Component {
                 <center>
                     <Link to="/">
                         <Banniere
-                            src={getImageUrl(this.props.banniere)}
+                            src={
+                                this.props.banniereFile
+                                    ? URL.createObjectURL(
+                                          this.props.banniereFile
+                                      )
+                                    : getImageUrl(this.props.banniere)
+                            }
                             alt="banniere"
                         />
                     </Link>
@@ -25,7 +31,8 @@ class HeaderTemplate extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        banniere: state.app.theme.banniere
+        banniere: state.app.theme.banniere,
+        banniereFile: state.app.theme.banniereFile
     }
 }
 

@@ -15,18 +15,22 @@ class AppMsgDisplay extends Component {
     }
     render = () =>
         this.state.display ? (
-            <Container
+            <div
                 style={{
                     position: "fixed",
-                    top: "5px",
-                    left: "5px",
-                    width: "auto"
+                    bottom: "5px",
+                    width: "100%"
                 }}>
-                <p>{this.props.msg}</p>
-                <Button onClick={() => this.setState({ display: false })}>
-                    dismiss
-                </Button>
-            </Container>
+                <center>
+                    <Container style={{ width: "max-content" }}>
+                        <p>{this.props.msg}</p>
+                        <Button
+                            onClick={() => this.setState({ display: false })}>
+                            OK
+                        </Button>
+                    </Container>
+                </center>
+            </div>
         ) : (
             ""
         )

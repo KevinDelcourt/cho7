@@ -19,8 +19,16 @@ class PersonnalisationPage extends React.Component {
     }
 
     onSubmit = async values => {
-        console.log(values)
-        let response = await updateTheme(values)
+        let formData = new FormData()
+        for (let key in values) {
+            if (key.slice(-4) === "File") {
+                formData.append(key, values[key][0])
+                console.log("a")
+            } else formData.append(key, values[key])
+        }
+
+        let response = await updateTheme(formData)
+
         if (response === true) {
             this.props.msgAction("Modification sauvegardée")
             this.setState({ redirect: <Redirect to="/" /> })

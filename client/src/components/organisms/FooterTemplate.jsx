@@ -2,6 +2,7 @@ import styled from "styled-components"
 import React, { Component } from "react"
 import LightContainer from "../atoms/Container/LightContainer"
 import Link from "../atoms/Link/Link"
+import { connect } from "react-redux"
 
 const FooterContainer = styled.div`
     width: 100%;
@@ -10,15 +11,23 @@ const FooterContainer = styled.div`
     align-items: center;
 `
 
-export default class FooterTemplate extends Component {
+class FooterTemplate extends Component {
     render() {
         return (
             <LightContainer>
                 <FooterContainer>
-                    <Link to="/">La Compagnie de l'Aventure</Link>
+                    <Link to="/">{this.props.siteTitle}</Link>
                     <Link to="/about">À propos</Link>
                 </FooterContainer>
             </LightContainer>
         )
     }
 }
+
+const mapStateToProps = state => {
+    return {
+        siteTitle: state.app.theme.siteTitle
+    }
+}
+
+export default connect(mapStateToProps)(FooterTemplate)

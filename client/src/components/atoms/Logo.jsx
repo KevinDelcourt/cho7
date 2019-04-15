@@ -1,4 +1,7 @@
 import styled from "styled-components"
+import React from "react"
+import { getImageUrl } from "../../modules/apiURL"
+import { connect } from "react-redux"
 
 const Logo = styled.img`
     width: 126px;
@@ -6,4 +9,22 @@ const Logo = styled.img`
     display: flex;
 `
 
-export default Logo
+const ALogo = props => (
+    <Logo
+        src={
+            props.logoFile
+                ? URL.createObjectURL(props.logoFile)
+                : getImageUrl(props.logo)
+        }
+        alt="logo"
+    />
+)
+
+const mapStateToProps = state => {
+    return {
+        logo: state.app.theme.logo,
+        logoFile: state.app.theme.logoFile
+    }
+}
+
+export default connect(mapStateToProps)(ALogo)

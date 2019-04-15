@@ -8,7 +8,6 @@ import { login } from "../../modules/api"
 import { connect } from "react-redux"
 import { bindActionCreators } from "redux"
 import { userLoginAction } from "../../modules/actionsAndReducers"
-import { getImageUrl } from "../../modules/apiURL"
 import SiteTitle from "./../atoms/Title/SiteTitle"
 
 const ConnectionHeader = styled.div`
@@ -40,7 +39,7 @@ class ConnectionPage extends React.Component {
         <div>
             <Link to="/" title="Accueil">
                 <ConnectionHeader>
-                    <Logo src={getImageUrl(this.props.logo)} alt="logo" />
+                    <Logo />
                     <SiteTitle />
                 </ConnectionHeader>
             </Link>
@@ -50,17 +49,11 @@ class ConnectionPage extends React.Component {
     )
 }
 
-const mapStateToProps = state => {
-    return {
-        logo: state.app.theme.logo
-    }
-}
-
 const mapDispatchToProps = dispatch => {
     return bindActionCreators({ userLoginAction }, dispatch)
 }
 
 export default connect(
-    mapStateToProps,
+    null,
     mapDispatchToProps
 )(ConnectionPage)
