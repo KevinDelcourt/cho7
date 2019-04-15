@@ -33,6 +33,7 @@ class ConnectionForm extends Component {
                 <StyledTitle size="41px" children="Connexion" />
                 <form onSubmit={this.props.handleSubmit}>
                     <Field
+                        dataCypress="field1"
                         name="username"
                         component={LabelInput}
                         type="text"
@@ -41,6 +42,7 @@ class ConnectionForm extends Component {
                         validate={[required]}
                     />
                     <Field
+                        dataCypress="field2"
                         name="password"
                         component={LabelInput}
                         type="password"
@@ -63,3 +65,5 @@ ConnectionForm = reduxForm({
 })(ConnectionForm)
 
 export default ConnectionForm
+
+//cy.get('[data-cypress="field1"]')

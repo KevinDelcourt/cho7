@@ -10,7 +10,7 @@ class HeaderTemplate extends React.Component {
             <div>
                 <center>
                     <Link to="/">
-                        <Banniere src={banniere} alt="banniere" />
+                        <Banniere data-cypress="banierre" src={banniere} alt="banniere" />
                     </Link>
                 </center>
                 <BarreMenu />

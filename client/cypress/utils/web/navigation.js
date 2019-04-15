@@ -6,6 +6,7 @@ export const goToRenseignerProfilPage = () => {
 
 export const goToMesCreations = () => {
     cy.log("cilck sur la creation")
+    cy.get("[data-cypress=boutonMenuCreation]")
     cy.contains("Mes créations").click()
     cy.url().should("eq", "http://localhost:3000/creations")
 }

@@ -2,7 +2,7 @@ import React from "react"
 import { getCreationsInProgress, getCreations } from "../../modules/api"
 import MainContainer from "../molecules/MainContainer"
 import { Link } from "react-router-dom"
-import { deleteCreation } from '../../modules/api'
+import { deleteCreation } from "../../modules/api"
 
 class Creations extends React.Component {
     state = { creations: [] }
@@ -15,8 +15,7 @@ class Creations extends React.Component {
     }
 
     async handleDeleteClick(id) {
-        if (await deleteCreation(id))
-            window.location.reload()
+        if (await deleteCreation(id)) window.location.reload()
     }
 
     render() {
@@ -38,7 +37,13 @@ class Creations extends React.Component {
                                     </Link>
                                 </td>
                                 <td>
-                                    <button class="deleteButton" onClick={() => this.handleDeleteClick(c.id)}>Supprimer</button>
+                                    <button
+                                        class="deleteButton"
+                                        onClick={() =>
+                                            this.handleDeleteClick(c.id)
+                                        }>
+                                        Supprimer
+                                    </button>
                                 </td>
                             </tr>
                         ))}

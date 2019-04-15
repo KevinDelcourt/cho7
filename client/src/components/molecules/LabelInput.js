@@ -19,6 +19,7 @@ const LabelInput = props => (
                 {...props.input}
                 type={props.type}
                 name={props.name}
+                data-cypress={props.dataCypress}
                 placeholder={props.placeholder}
             />
             {props.meta.error && props.meta.touched ? (
