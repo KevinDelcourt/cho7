@@ -1,3 +1,6 @@
+const mysql = require("mysql")
+
+const credentials = require("../../db/db-identifiants.json")
 module.exports = (app, connection) => {
     app.get("/createur", (req, res) => {
         connection.query(
@@ -52,6 +55,7 @@ module.exports = (app, connection) => {
     })
 
     app.get("/avancement", (req, res) => {
+        connection = mysql.createConnection(credentials)
         connection.query(
             "SELECT creation.id, creation.titre, creation.description, etat_avancement.libelle,etat_avancement.valeuravancement, creation.miseajour FROM creation,etat_avancement WHERE etat_avancement.idcreation=creation.id AND creation.nomfichier is null",
             (err, rows) => {
