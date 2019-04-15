@@ -9,7 +9,7 @@ exports[`Container background-color renders correctly 1`] = `
   width: 100%;
   margin-left: auto;
   margin-right: auto;
-  min-width: 200px;
+  margin-bottom: 20px;
 }
 
 <div
@@ -26,7 +26,7 @@ exports[`Container border-radius renders correctly 1`] = `
   width: 100%;
   margin-left: auto;
   margin-right: auto;
-  min-width: 200px;
+  margin-bottom: 20px;
 }
 
 <div
@@ -43,7 +43,7 @@ exports[`Container boxShadow renders correctly 1`] = `
   width: 100%;
   margin-left: auto;
   margin-right: auto;
-  min-width: 200px;
+  margin-bottom: 20px;
 }
 
 <div
@@ -60,7 +60,7 @@ exports[`Container width renders correctly 1`] = `
   width: 20px;
   margin-left: auto;
   margin-right: auto;
-  min-width: 200px;
+  margin-bottom: 20px;
 }
 
 <div
