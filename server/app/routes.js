@@ -24,6 +24,17 @@ const storageAudio = multer.diskStorage({
     }
 })
 let uploadAudio = multer({ storage: storageAudio })
+
+const storageImage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, __dirname + "/../public/images/")
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.originalname)
+    }
+})
+let uploadImage = multer({ storage: storageImage })
+
 let Twitter = require("twitter")
 
 var twitterClient = new Twitter({
@@ -256,6 +267,99 @@ module.exports = (app, passport) => {
             return res.send(false)
         }
     })
+
+    app.post("/StarRating/:id", (req, res) => {
+        console.log(req.body)
+        const idCreation = req.params.id
+        connection.query(
+            "SELECT sommenotes, nbnote FROM creation WHERE id=?",
+            [idCreation],
+            (err, rows) => {
+                if (err) return res.send(err)
+                connection.query(
+                    "UPDATE creation SET sommenotes = ?, nbnote = ? WHERE id=?",
+                    [
+                        rows[0].sommenotes + req.body.star,
+                        rows[0].nbnote + 1,
+                        idCreation
+                    ],
+                    (err, rows) => {
+                        if (err) return res.send(err)
+
+                        return res.send(true)
+                    }
+                )
+            }
+        )
+    })
+
+    app.post("/cptEcoute", (req, res) => {
+        connection.query(
+            "SELECT nbecoute FROM creation WHERE id=?",
+            [req.body.id],
+            (err, rows) => {
+                if (err) res.send(err)
+                const ecouteCourante = rows[0].nbecoute
+                connection.query(
+                    "UPDATE creation SET nbecoute=? WHERE id=?",
+                    [ecouteCourante + 1, req.body.id],
+                    (err, rows) => {
+                        if (err) res.send(err)
+                    }
+                )
+            }
+        )
+        res.send(true)
+    })
+
+    app.get("/theme", (req, res) => {
+        connection.query("SELECT * FROM theme", (err, rows) => {
+            if (err) return res.send(err)
+
+            let theme = {}
+            rows.map(r => {
+                theme[r.style] = r.value
+            })
+
+            return res.send(theme)
+        })
+    })
+
+    app.post(
+        "/theme",
+        isLoggedIn,
+        uploadImage.fields([
+            { name: "logoFile", maxCount: 1 },
+            { name: "banniereFile", maxCount: 1 },
+            { name: "backgroundFile", maxCount: 1 }
+        ]),
+        (req, res) => {
+            let query = "INSERT INTO theme (style,value) VALUES "
+            let dataTab = []
+            for (let key in req.body) {
+                console.log(req.body[key])
+                if (req.body[key] != "undefined") {
+                    query += "(?,?),"
+                    dataTab.push(key)
+                    dataTab.push(req.body[key])
+                }
+            }
+            for (let key in req.files) {
+                query += "(?,?),"
+                dataTab.push(key.slice(0, -4))
+                dataTab.push(req.files[key][0].originalname)
+            }
+
+            query = query.slice(0, -1)
+            connection.query("DELETE FROM theme", (err, rows) => {
+                if (err) return res.send(err)
+                connection.query(query, dataTab, (err, rows) => {
+                    if (err) return res.send(err)
+                    return res.send(true)
+                })
+            })
+        }
+    )
 
     require("./routes/auth")(app, passport)
     require("./routes/users")(app, connection)

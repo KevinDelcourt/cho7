@@ -2,9 +2,9 @@ import styled from "styled-components"
 import React from "react"
 import Template from "./Template"
 import { hasRole } from "../../modules/api"
-import CreationsInProgress from "../organisms/CreationsInProgress"
+import Creations from "../organisms/Creations"
 import MainContainer from "../molecules/MainContainer"
-import { Link } from "react-router-dom"
+import Link from "../atoms/Link/Link"
 
 const SubContainer = styled.div`
     display: grid;
@@ -42,7 +42,8 @@ class MesCreationsPage extends React.Component {
                                 />
                             </center>
                         </MainContainer>
-                        <CreationsInProgress />
+                        <Creations etat="wip" />
+                        <Creations etat="done" />
                     </SubContainer>
                 </Template>
             </div>

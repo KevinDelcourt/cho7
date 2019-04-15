@@ -1,8 +1,7 @@
 import styled from "styled-components"
 import Label from "../atoms/Label/Label"
-import TextareaBase from "./../atoms/TextareaBase"
+import TextareaBase from "../atoms/Textarea"
 import React from "react"
-import theme from "./../../theme.json"
 
 const LabelTextareaContainer = styled.div`
     display: grid;
@@ -15,10 +14,7 @@ class LabelTextarea extends React.Component {
     render() {
         return (
             <LabelTextareaContainer>
-                <Label
-                    font={theme.fontFamily.ruluko}
-                    children={this.props.label}
-                />
+                <Label children={this.props.label} />
                 <TextareaBase
                     {...this.props.input}
                     rows={this.props.row}

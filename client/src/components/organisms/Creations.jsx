@@ -1,20 +1,21 @@
 import React from "react"
-import { getCreationsInProgress } from "../../modules/api"
+import { getCreationsInProgress, getCreations } from "../../modules/api"
 import MainContainer from "../molecules/MainContainer"
-import { Link } from "react-router-dom"
-import { deleteCreation } from '../../modules/api'
+import Link from "../atoms/Link/Link"
+import { deleteCreation } from "../../modules/api"
 
-class CreationsInProgress extends React.Component {
+class Creations extends React.Component {
     state = { creations: [] }
 
     async componentDidMount() {
-        this.setState({ creations: await getCreationsInProgress() })
+        if (this.props.etat === "wip")
+            this.setState({ creations: await getCreationsInProgress() })
+        else if (this.props.etat === "done")
+            this.setState({ creations: await getCreations() })
     }
 
-    async handleDeleteClick(e, id) {
-        e.preventDefault();
-        if (await deleteCreation(id))
-            window.location.reload()
+    async handleDeleteClick(id) {
+        if (await deleteCreation(id)) window.location.reload()
     }
 
     render() {
@@ -36,7 +37,14 @@ class CreationsInProgress extends React.Component {
                                     </Link>
                                 </td>
                                 <td>
-                                    <button class="deleteButton" onClick={(e) => this.handleDeleteClick(e, c.id)}>Supprimer</button>
+                                    <Link
+                                        class="deleteButton"
+                                        to="/creations"
+                                        onClick={() =>
+                                            this.handleDeleteClick(c.id)
+                                        }>
+                                        Supprimer
+                                    </Link>
                                 </td>
                             </tr>
                         ))}
@@ -47,4 +55,4 @@ class CreationsInProgress extends React.Component {
     }
 }
 
-export default CreationsInProgress
+export default Creations

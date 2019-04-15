@@ -17,7 +17,7 @@ describe("composant header", () => {
         goToMesCreations()
 
         cy.log("cilck sur l'image")
-        cy.get(".sc-fjdhpX > :nth-child(1) > center").click()
+        cy.get(".sc-gqjmRU").click()
         cy.url().should("eq", "http://localhost:3000/")
 
         goToAccueil()

@@ -6,22 +6,23 @@ import Profile from "../organisms/Profile"
 import Projet from "../organisms/Projet"
 
 const AccueilContainer = styled.section`
-    display: grid;
-    grid-template-columns: 26% 70%;
-    grid-column-gap: 4%;
-    grid-row-gap: 4%;
+    display: flex;
+`
+
+const Summary = styled.div`
+    margin-right: 4vw;
 `
 
 const AccueilPage = () => (
-    <div>
-        <Template>
-            <AccueilContainer>
+    <Template>
+        <AccueilContainer>
+            <Summary>
                 <Projet />
-                <NewsFeed />
                 <Profile />
-            </AccueilContainer>
-        </Template>
-    </div>
+            </Summary>
+            <NewsFeed />
+        </AccueilContainer>
+    </Template>
 )
 
 export default AccueilPage
