@@ -32,7 +32,12 @@ class NewsFeed extends React.Component {
                             description={c.description}
                             valueId={c.id}
                         />
-
+                        <StarRating
+                            creationID={c.id}
+                            noteMoyenne={
+                                c.nbnote === 0 ? 0 : c.sommenotes / c.nbnote
+                            }
+                        />
                         <SocialNetwork />
                     </MainContainer>
                 ))}
@@ -46,6 +51,12 @@ class NewsFeed extends React.Component {
                             path={c.nomfichier}
                             description={c.description}
                             valueId={c.id}
+                        />
+                        <StarRating
+                            creationID={c.id}
+                            noteMoyenne={
+                                c.nbnote === 0 ? 0 : c.sommenotes / c.nbnote
+                            }
                         />
                         <SocialNetwork />
                     </MainContainer>
