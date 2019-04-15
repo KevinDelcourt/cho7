@@ -5,9 +5,7 @@ node_js:
 cache:
   - npm
 stages:
-  - test
-  - name: deploy
-    if: branch = master AND type = push
+  - deploy
 jobs:
   include:
     - stage: test
