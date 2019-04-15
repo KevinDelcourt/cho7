@@ -260,25 +260,79 @@ module.exports = (app, passport) => {
     app.post("/StarRating/:id", (req, res) => {
         console.log(req.body)
         const idCreation = req.params.id
-        connection.query('SELECT sommenotes, nbnote FROM creation WHERE id=?', [idCreation], (err, rows) => {
-            if(err) return res.send(err)
-            connection.query(
-                "UPDATE creation SET sommenotes = ?, nbnote = ? WHERE id=?", 
-                [
-                    rows[0].sommenotes+req.body.star,
-                    rows[0].nbnote+1,  
-                    idCreation
-                ],
-                (err, rows) => {
-                    if (err) return res.send(err)
+        connection.query(
+            "SELECT sommenotes, nbnote FROM creation WHERE id=?",
+            [idCreation],
+            (err, rows) => {
+                if (err) return res.send(err)
+                connection.query(
+                    "UPDATE creation SET sommenotes = ?, nbnote = ? WHERE id=?",
+                    [
+                        rows[0].sommenotes + req.body.star,
+                        rows[0].nbnote + 1,
+                        idCreation
+                    ],
+                    (err, rows) => {
+                        if (err) return res.send(err)
 
-                    return res.send(true)
-                }
-            )
-        });     
-                                                          
+                        return res.send(true)
+                    }
+                )
+            }
+        )
     })
 
+    /* NOUVELLE QUESTION */
+
+    app.post("/addQuestion", (req, res) => {
+        connection.query(
+            "INSERT INTO faq (question) VALUES (?)",
+            [req.body.question],
+            (err, rows) => {
+                return err ? res.send(err) : res.send(true)
+            }
+        )
+    })
+
+    /* NOUVELLE REPONSE */
+
+    app.post("/addReponse/:id", (req, res) => {
+        connection.query(
+            "UPDATE faq SET reponse = ? WHERE id = ?",
+            [req.body.reponse, req.params.id],
+            (err, rows) => {
+                return err ? res.send(err) : res.send(true)
+            }
+        )
+    })
+
+    /* RECUPERER QUESTIONS SANS REPONSES */
+
+    app.get("/questions", (req, res) => {
+        connection.query(
+            "SELECT * FROM faq WHERE reponse IS NULL",
+            (err, rows) => {
+                if (err) res.send(err)
+                res.send(rows)
+            }
+        )
+    })
+
+    /* SUPPRIMER QUESTION/REPONSE(FAQ) */
+
+    app.get("/deleteFaq/:id", isLoggedIn, (req, res) => {
+        const idFaq = req.params.id
+
+        if (/^(0|[1-9]\d*)$/.test(idFaq)) {
+            connection.query(
+                "DELETE FROM faq WHERE id = ?",
+                [idFaq],
+                (err, rows) => {
+                    return err ? res.send(err) : res.send(true)
+                }
+            )
+        }
+    })
 
     require("./routes/auth")(app, passport)
     require("./routes/users")(app, connection)

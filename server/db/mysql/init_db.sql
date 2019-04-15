@@ -46,3 +46,16 @@ VALUES
   ('avancement 1 2',0,3),
   ('avancement 2 2',40,3),
   ('avancement 3 2',97,3);
+
+CREATE TABLE faq (
+	id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  question varchar (250) NOT NULL COLLATE utf8_general_ci,
+	reponse varchar (250) DEFAULT NULL
+);
+
+INSERT INTO faq (question, reponse)
+VALUES 
+  ('Comment ça vas ?', 'Ca va très bien merci bien cest bien'),
+  ('Vous êtes ou ?', 'On est à Toulouse'),
+  ('Qui gère ce site ?', 'Nomanil le ezkez nsdk kzk'),
+  ('Comment tu te prénommes ?', 'Ca va Nomanil encore oui non oui');
