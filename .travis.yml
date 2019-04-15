@@ -48,3 +48,10 @@ jobs:
         - docker build -t cho7_back ./server
         - docker tag cho7_back ${DOCKER_USERNAME}/cho7_back
         - docker push ${DOCKER_USERNAME}/cho7_back
+    - stage: deploy
+      name: "Docker Deploy BD"
+      script:
+        - echo ${DOCKER_PASSWORD} | docker login -u ${DOCKER_USERNAME} --password-stdin
+        - docker build -t cho7_BD ./server/db/mysql
+        - docker tag cho7_BD ${DOCKER_USERNAME}/cho7_BD
+        - docker push ${DOCKER_USERNAME}/cho7_BD
