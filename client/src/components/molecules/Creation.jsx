@@ -41,12 +41,21 @@ let rearrangedPlayer = [
                 type: "play",
                 style: { width: "fit-content" }
             },
+
             {
                 type: "rewind",
                 style: { width: "fit-content" }
             },
             {
                 type: "forward",
+                style: { width: "fit-content" }
+            },
+            {
+                type: "loop",
+                style: { width: "fit-content" }
+            },
+            {
+                type: "name",
                 style: { width: "fit-content" }
             },
             {
