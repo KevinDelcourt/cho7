@@ -2,9 +2,9 @@
 
 exports[`Label font-color renders correctly 1`] = `
 .c0 {
-  font-family: Arial;
   color: red;
   font-size: 18px;
+  margin-bottom: 5px;
 }
 
 <label
@@ -17,6 +17,7 @@ exports[`Label font-family renders correctly 1`] = `
 .c0 {
   font-family: Ruluko;
   font-size: 18px;
+  margin-bottom: 5px;
 }
 
 <label
