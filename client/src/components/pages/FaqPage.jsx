@@ -1,5 +1,7 @@
 import React from "react"
 import MainContainer from "../molecules/MainContainer"
+import Container from "../atoms/Container/Container"
+import DescriptionContainer from "../atoms/Container/DescriptionContainer"
 import Template from "./Template"
 import {
     hasRole,
@@ -17,14 +19,12 @@ import { connect } from "react-redux"
 import { bindActionCreators } from "redux"
 import styled from "styled-components"
 import Collapse from "react-css-collapse"
+import theme from "../../theme"
 
-const QuestionContainer = styled.div`
+const QuestionContainer = styled(DescriptionContainer)`
     cursor: pointer;
-    margin: 10px 0;
     border-radius: 10px;
-    padding: 8px 10px;
-    background: #d7d6d6;
-    overflow-wrap: break-word;
+    background-color: ${theme.colorDescriptionBg};
     display: flex;
     align-items: center;
 `
@@ -38,18 +38,13 @@ const ReponseContainer = styled(Collapse)`
     font-size: 18px;
 `
 
-const GridContainer = styled.div`
+const NavContainer = styled(Container)`
     display: grid;
-    grid-row-gap: 3vh;
-`
-
-const GridContainer2 = styled.div`
-    display: grid;
-    justify-items: center;
     grid-template-columns: repeat(2, auto);
-    background-color: #d7d6d6;
+    background-color: ${theme.colorMenuBarBg};
     border-radius: 5px;
-    padding: 10px;
+    font-size: 1.2em;
+    padding: 15px;
 `
 
 class FaqPage extends React.Component {
@@ -189,7 +184,7 @@ class FaqPage extends React.Component {
     displayNavBar = () => {
         if (this.state.auth)
             return (
-                <GridContainer2>
+                <NavContainer>
                     <button
                         to="/faq"
                         onClick={() =>
@@ -211,7 +206,7 @@ class FaqPage extends React.Component {
                         className="deleteButton">
                         Repondre aux questions
                     </button>
-                </GridContainer2>
+                </NavContainer>
             )
     }
 
@@ -227,12 +222,10 @@ class FaqPage extends React.Component {
 
     render = () => (
         <Template>
-            <GridContainer>
-                {this.displayNavBar()}
-                {this.state.activeTab === "question"
-                    ? this.displayFaq()
-                    : this.displayQuestions()}
-            </GridContainer>
+            {this.displayNavBar()}
+            {this.state.activeTab === "question"
+                ? this.displayFaq()
+                : this.displayQuestions()}
         </Template>
     )
 }
