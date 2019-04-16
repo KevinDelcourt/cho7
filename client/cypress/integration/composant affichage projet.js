@@ -1,6 +1,7 @@
 import reset_db from "../utils/reset_db"
 import { beginAndLoginAsCreateur } from "../utils/web/authentification"
-import { goToMesCreations } from "../utils/web/navigation"
+import { goToMesCreations, goToModification } from "../utils/web/navigation"
+import { ModifierCreation } from "../utils/web/creation"
 
 describe("composant affichage projet", () => {
     before(() => reset_db())
@@ -8,11 +9,8 @@ describe("composant affichage projet", () => {
         beginAndLoginAsCreateur()
         goToMesCreations()
 
-        //page de modification
-        cy.log("page de modification")
-        cy.get('[href="/updateCreation/3"]').click()
-        cy.url().should("eq", "http://localhost:3000/updateCreation/3")
+        goToModification()
 
-        //modification
+        ModifierCreation()
     })
 })

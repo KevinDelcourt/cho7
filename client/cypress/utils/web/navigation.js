@@ -23,3 +23,9 @@ export const goToNouvelleCreation = () => {
     cy.contains("NOUVELLE CRÉATION").click()
     cy.url().should("eq", "http://localhost:3000/newCreation")
 }
+
+export const goToModification = () => {
+    cy.log("page de modification")
+    cy.get('[href="/updateCreation/3"]').click()
+    cy.url().should("eq", "http://localhost:3000/updateCreation/3")
+}

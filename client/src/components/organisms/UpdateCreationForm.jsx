@@ -40,12 +40,13 @@ class UpdateCreationForm extends React.Component {
                 }
                 method="post"
                 encType="multipart/form-data">
+                <LabelInput
+                    name="titre"
+                    label="Titre : *"
+                    defaultValue={this.props.titre}
+                    dataCypress="prout"
+                />
                 <UpdateCreationFormContainer>
-                    <LabelInput
-                        name="titre"
-                        label="Titre : *"
-                        defaultValue={this.props.titre}
-                    />
                     <input
                         type="file"
                         name="creation"
