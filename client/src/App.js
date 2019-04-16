@@ -8,7 +8,6 @@ import PersonnalisationPage from "./components/pages/PersonnalisationPage"
 import UpdateCreationPage from "./components/pages/UpdateCreationPage"
 import PageProfilCreateur from "./components/pages/ProfilCreateurPage/ProfilCreateurPage"
 import FaqPage from "./components/pages/FaqPage"
-import ReponseFaqPage from "./components/pages/ReponseFaqPage"
 import CreationPage from "./components/pages/CreationPage"
 import Logout from "./components/pages/Logout"
 import { hasRole, getTheme } from "./modules/api"
@@ -48,11 +47,6 @@ class App extends Component {
                 <Route path="/accueil" component={this.getRedirect} />
                 <Route path="/creation/:id" component={CreationPage} />
                 <Route path="/faq" component={FaqPage} />
-                <this.PrivateRoute
-                    path="/reponseFaq"
-                    component={ReponseFaqPage}
-                    condition={this.props.role_createur}
-                />
                 <this.PrivateRoute
                     path="/login"
                     component={ConnectionPage}
