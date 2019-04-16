@@ -15,7 +15,7 @@ const nouvelEtat = value => {
 
 const typeDescription = value => {
     cy.log("ecrire description")
-    cy.get(".sc-hSdWYo").type(value)
+    cy.get(".sc-kkGfuU").type(value)
 }
 
 const validCreation = () => {
@@ -43,4 +43,15 @@ export const populateCreationForm = {
 export const validerCreationForm = () => {
     cy.log("validation")
     cy.contains("Publier").click()
+}
+
+export const ModifierCreation = () => {
+    cy.log("ModifierCreation") //TODO: formulaire à refactorer
+    cy.get('[value="en cours 2"]').clear()
+    cy.get('[value="en cours 2"]').type("Admin")
+    cy.get("[data-cypress=submit]").click()
+
+    cy.contains("Se connecter").click()
+
+    cy.url().should("eq", "http://localhost:3000/")
 }

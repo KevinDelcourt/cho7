@@ -6,6 +6,7 @@ export const goToRenseignerProfilPage = () => {
 
 export const goToMesCreations = () => {
     cy.log("cilck sur la creation")
+    cy.get("[data-cypress=boutonMenuCreation]")
     cy.contains("Mes créations").click()
     cy.url().should("eq", "http://localhost:3000/creations")
 }
@@ -21,4 +22,10 @@ export const goToNouvelleCreation = () => {
     cy.log("cilck sur la nouvelle creation")
     cy.contains("NOUVELLE CRÉATION").click()
     cy.url().should("eq", "http://localhost:3000/newCreation")
+}
+
+export const goToModification = () => {
+    cy.log("page de modification")
+    cy.get('[href="/updateCreation/3"]').click()
+    cy.url().should("eq", "http://localhost:3000/updateCreation/3")
 }

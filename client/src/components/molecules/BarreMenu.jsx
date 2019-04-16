@@ -15,7 +15,7 @@ class BarreMenu extends React.Component {
             co = (
                 <Link to="/login" style={{ marginRight: "1vw" }}>
                     {" "}
-                    <StyledButton children="Connexion" />{" "}
+                    <StyledButton data-cypress children="Connexion" />{" "}
                 </Link>
             )
         } else {
@@ -42,7 +42,10 @@ class BarreMenu extends React.Component {
         if (this.props.role_createur) {
             creations = (
                 <Link to="/creations">
-                    <StyledButton children="Mes créations" />
+                    <StyledButton
+                        data-cypress="boutonMenuCreation"
+                        children="Mes créations"
+                    />
                 </Link>
             )
         }
