@@ -58,8 +58,7 @@ module.exports = (app, connection) => {
         connection.query(
             "SELECT * FROM creation WHERE nomfichier IS NULL ORDER BY id DESC",
             (err, rows) => {
-                if (err) return res.send(err)
-                res.send(rows)
+                return err ? res.send(err) : res.send(rows)
             }
         )
     })
