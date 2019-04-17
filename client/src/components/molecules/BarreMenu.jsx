@@ -1,31 +1,15 @@
-import styled from "styled-components"
 import React from "react"
-import Button from "../atoms/Button/Button"
+import StyledButton from "../atoms/Button/Button"
 import { Link } from "react-router-dom"
-import theme from "./../../theme.json"
 import { connect } from "react-redux"
-
-const NavBarContainer = styled.div`
-    background: rgba(213, 191, 159, 0.67);
-    border-radius: 5px;
-    padding: 5px 1vw;
-    display: flex;
-    justify-content: space-between;
-    margin: 0 2vw;
-`
-
-const StyledButton = styled(Button)`
-    margin-left: 0.5vw;
-    background-color: ${theme.color.brown1};
-    height: 6vh;
-    min-height: 43px;
-`
+import LightContainer from "../atoms/Container/LightContainer"
 
 class BarreMenu extends React.Component {
     render() {
         let co
         let creations
         let profil
+        let personnaliser
 
         if (!this.props.role_createur) {
             co = (
@@ -47,6 +31,12 @@ class BarreMenu extends React.Component {
                     <StyledButton children="Profil" />{" "}
                 </Link>
             )
+            personnaliser = (
+                <Link to="/personnaliser">
+                    {" "}
+                    <StyledButton children="Personnaliser" />{" "}
+                </Link>
+            )
         }
 
         if (this.props.role_createur) {
@@ -61,7 +51,7 @@ class BarreMenu extends React.Component {
         }
 
         return (
-            <NavBarContainer>
+            <LightContainer>
                 <div>
                     <Link to="/">
                         <StyledButton children="Accueil" />
@@ -70,10 +60,14 @@ class BarreMenu extends React.Component {
                 </div>
 
                 <div>
+                    <Link to="/faq">
+                        <StyledButton children="FAQ" />
+                    </Link>
                     {profil}
+                    {personnaliser}
                     {co}
                 </div>
-            </NavBarContainer>
+            </LightContainer>
         )
     }
 }

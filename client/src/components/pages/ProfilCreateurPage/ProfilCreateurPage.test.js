@@ -1,9 +1,9 @@
 import React from "react"
 import renderer from "react-test-renderer"
-import { BrowserRouter as Router, Route } from "react-router-dom"
 import "jest-styled-components"
 import ProfilCreateurPage from "./ProfilCreateurPage"
 
+import { BrowserRouter as Router, Route } from "react-router-dom"
 import { Provider } from "react-redux"
 import { createStore, combineReducers } from "redux"
 import { reducer as formReducer } from "redux-form"

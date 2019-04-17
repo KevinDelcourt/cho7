@@ -10,6 +10,10 @@
 
 /server/public/images/*
 !/server/public/images/avatar_createur.png
+!/server/public/images/logo.png
+!/server/public/images/backgroundCropped.jpg
+!/server/public/images/banniere.png
+
 
 /server/node_modules
 /client/node_modules

@@ -3,8 +3,7 @@ import { Field, reduxForm } from "redux-form"
 import { required } from "../../modules/validation"
 import LabelTextarea from "./../molecules/LabelTextarea"
 import LabelInput from "./../molecules/LabelInput"
-import Button from "./../atoms/Button/Button"
-import theme from "./../../theme.json"
+import SubmitButton from "./../atoms/Button/SubmitButton"
 import styled from "styled-components"
 import AvatarInput from "../molecules/AvatarInput"
 
@@ -77,11 +76,7 @@ class RenseignerProfilForm extends Component {
                         avatar={this.props.initialValues.avatar}
                     />
 
-                    <Button
-                        type="submit"
-                        children="Modifier Profil"
-                        bgColor={theme.color.grey1}
-                    />
+                    <SubmitButton type="submit" children="Modifier Profil" />
                 </RightColumn>
             </Cadre>
         </form>

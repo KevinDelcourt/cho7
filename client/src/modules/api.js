@@ -92,14 +92,31 @@ export const getAvancement = () =>
         }
     )
 
+export const getQuestionsReponses = () => defaultGet("/questionsreponses")
+
+export const getQuestions = () =>
+    defaultGet("/questions", { withCredentials: true })
+
 export const postProfilCreateur = formData => defaultPost("/users/1", formData)
 
 export const postNewCreation = formData => defaultPost("/addcreation", formData)
 
-export const postStarRating = (id, star) =>
-    defaultPost("/StarRating/" + id, star)
-
 export const postUpdateCreation = formData =>
     defaultPost("/updateCreation", formData)
 
+export const postStarRating = (id, star) =>
+    defaultPost("/StarRating/" + id, star)
+
+export const postQuestion = values => defaultPost("/addQuestion", values)
+
+export const postReponse = (values, id) =>
+    defaultPost("/addReponse/" + id, values)
+
+export const deleteFaq = id =>
+    defaultGet("/deleteFaq/" + id, { withCredentials: true })
+
 export const ajoutEcoute = id => defaultPost("/cptEcoute", { id: id })
+
+export const getTheme = () => defaultGet("/theme")
+
+export const updateTheme = theme => defaultPost("/theme", theme)
