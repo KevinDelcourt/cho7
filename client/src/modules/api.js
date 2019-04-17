@@ -74,10 +74,8 @@ export const getCreation = id => defaultGet("/creation/" + id)
 export const deleteCreation = id =>
     defaultGet("/deleteCreation/" + id, { withCredentials: true })
 
-export const getCreations = () => defaultGet("/creations/done")
-
-export const getMeilleuresCreations = () =>
-    defaultGet("/creations/done/plusecoutes")
+export const getCreations = (tri, order) =>
+    defaultGet("/creations/" + tri + "/" + order)
 
 export const getCreationsInProgress = () => defaultGet("/creations/inprogress")
 

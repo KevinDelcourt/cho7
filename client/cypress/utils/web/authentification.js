@@ -5,8 +5,6 @@ export const loginAsCreateur = () => {
     cy.get('[data-cypress="field2"]').type("Admin")
     cy.get("[data-cypress=submit]").click()
 
-    cy.contains("Se connecter").click()
-
     cy.url().should("eq", "http://localhost:3000/")
 }
 

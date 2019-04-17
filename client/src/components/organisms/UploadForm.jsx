@@ -17,6 +17,10 @@ const StyledUploadForm = styled.form`
     margin: 5%;
 `
 
+const Div = styled.div`
+    justify-self: end;
+`
+
 class UploadForm extends React.Component {
     render() {
         return (
@@ -60,12 +64,13 @@ class UploadForm extends React.Component {
                         type="checkbox"
                         label="Envoyer un tweet"
                     />
-
-                    <SubmitButton
-                        data-cypress="submit"
-                        type="submit"
-                        children="Publier"
-                    />
+                    <Div>
+                        <SubmitButton
+                            data-cypress="submit"
+                            type="submit"
+                            children="Publier"
+                        />
+                    </Div>
                 </StyledUploadForm>
             </MainContainer>
         )

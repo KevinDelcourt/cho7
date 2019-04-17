@@ -30,11 +30,38 @@ const creationController = connection => {
                 (err, rows) => queryCallback(err, res, () => res.send(rows))
             ),
 
-        getCreationDuPlusAuMoinsRecent: (req, res) =>
-            connection.query(
-                "SELECT * FROM creation WHERE nomfichier IS NOT NULL ORDER BY id DESC",
-                (err, rows) => queryCallback(err, res, () => res.send(rows))
-            ),
+        getCreationDuPlusAuMoinsRecent: (req, res) => {
+            let tri = req.params.tri
+            let order = req.params.order
+
+            if (
+                typeof tri == "string" &&
+                tri.length <= 6 &&
+                (order === "desc" || order === "asc")
+            ) {
+                switch (tri) {
+                    case "date":
+                        tri = "miseajour"
+                        break
+                    case "note":
+                        tri = "sommenotes / nbnote"
+                        break
+                    case "ecoute":
+                        tri = "nbecoute"
+                        break
+                }
+
+                connection.query(
+                    "SELECT * FROM creation WHERE nomfichier IS NOT NULL ORDER BY " +
+                        tri +
+                        " " +
+                        order,
+                    (err, rows) => {
+                        return err ? res.send(err) : res.send(rows)
+                    }
+                )
+            }
+        },
 
         getCreationEnCours: (req, res) => {
             connection.query(

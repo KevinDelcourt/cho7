@@ -105,7 +105,7 @@ module.exports = (app, passport) => {
     )
 
     app.get(
-        "/creations/done",
+        "/creations/:tri/:order",
         creationController.getCreationDuPlusAuMoinsRecent
     )
 
