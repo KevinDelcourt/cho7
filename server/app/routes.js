@@ -276,6 +276,31 @@ module.exports = (app, passport) => {
         res.send(true)
     })
 
+    app.post("/nomsplaylist", (req, res) => {
+        connection.query("SELECT id, nom FROM playlist", (err, rows)=>{
+            if(err) res.send(err)
+            res.send(rows)
+        })
+    })
+
+    app.post("/creationsToPlaylist", (req,res) => {
+        connection.query("SELECT "+
+        "creation.id, nomfichier, titre, nbecoute "+
+        "FROM creation INNER JOIN avoircreation INNER JOIN playlist "+
+        "ON creation.id=avoircreation.id_crea AND avoircreation.id_play=playlist.id AND playlist.nom=?",[req.body.nom],
+        (err, rows)=>{
+            if(err) res.send(err)
+            res.send(rows)
+        })
+    })
+
+    app.post("/nomcreation", (req, res) =>{
+        connection.query("SELECT id, titre FROM creation", (err, rows)=>{
+            if(err) res.send(err)
+            res.send(rows)
+        })
+    })
+
     require("./routes/auth")(app, passport)
     require("./routes/users")(app, connection)
     require("./routes/public_get")(app, connection)

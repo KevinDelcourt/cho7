@@ -46,3 +46,16 @@ VALUES
   ('avancement 1 2',0,3),
   ('avancement 2 2',40,3),
   ('avancement 3 2',97,3);
+
+CREATE TABLE playlist(
+   id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+   nom VARCHAR(100) NOT NULL COLLATE utf8_general_ci
+);
+
+CREATE TABLE avoircreation(
+   id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+   id_crea INT(11) NOT NULL,
+   id_play INT(11) NOT NULL,
+   FOREIGN KEY (id_crea) REFERENCES creation(id),
+   FOREIGN KEY (id_play) REFERENCES playlist(id)
+);
