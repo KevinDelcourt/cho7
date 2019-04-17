@@ -57,7 +57,6 @@ class ConnectionForm extends Component {
                     <StyledButton
                         data-cypress="submit"
                         children="Se connecter"
-                        bgColor={theme.color.brown2}
                     />
                 </form>
             </FormContainer>
