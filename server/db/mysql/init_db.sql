@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS etat_avancement, users, creation, theme;
+DROP TABLE IF EXISTS etat_avancement, users, creation, theme, faq;
 
 CREATE TABLE users (
   id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -39,7 +39,7 @@ CREATE TABLE etat_avancement (
   FOREIGN KEY (idcreation) REFERENCES creation(id) ON DELETE CASCADE
 );
 
-INSERT INTO etat_avancement (libelle,valeuravancement,idcreation)
+INSERT INTO etat_avancement (libelle, valeuravancement, idcreation)
 VALUES 
   ('avancement 1 1',10,2),
   ('avancement 2 1',3,2),
@@ -47,6 +47,19 @@ VALUES
   ('avancement 2 2',40,3),
   ('avancement 3 2',97,3);
 
+CREATE TABLE faq (
+	id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  question varchar (250) NOT NULL COLLATE utf8_general_ci,
+	reponse varchar (250) DEFAULT NULL
+);
+
+INSERT INTO faq (question, reponse)
+VALUES 
+  ('Comment ça vas ?', 'Ca va très bien merci bien cest bien'),
+  ('Vous êtes ou ?', 'On est à Toulouse'),
+  ('Qui gère ce site ?', 'Nomanil le ezkez nsdk kzk'),
+  ('Comment tu te prénommes ?', 'Ca va Nomanil encore oui non oui');
+  
 CREATE TABLE theme (
   id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   style varchar(64) NOT NULL COLLATE utf8_general_ci,

@@ -110,6 +110,58 @@ module.exports = (app, passport) => {
 
     app.get("/creations/inprogress", creationController.getCreationEnCours)
 
+    app.post("/addQuestion", (req, res) => {
+        connection.query(
+            "INSERT INTO faq (question) VALUES (?)",
+            [req.body.question],
+            (err, rows) => {
+                return err ? res.send(err) : res.send(true)
+            }
+        )
+    })
+
+    app.post("/addReponse/:id", (req, res) => {
+        connection.query(
+            "UPDATE faq SET reponse = ? WHERE id = ?",
+            [req.body.reponse, req.params.id],
+            (err, rows) => {
+                return err ? res.send(err) : res.send(true)
+            }
+        )
+    })
+
+    app.get("/questions", (req, res) => {
+        connection.query(
+            "SELECT * FROM faq WHERE reponse IS NULL",
+            (err, rows) => {
+                if (err) res.send(err)
+                res.send(rows)
+            }
+        )
+    })
+
+    app.get("/deleteFaq/:id", validators.isLoggedIn, (req, res) => {
+        if (/^(0|[1-9]\d*)$/.test(req.params.id)) {
+            connection.query(
+                "DELETE FROM faq WHERE id = ?",
+                [req.params.id],
+                (err, rows) => {
+                    return err ? res.send(err) : res.send(true)
+                }
+            )
+        }
+    })
+
+    app.get("/questionsreponses", (req, res) => {
+        connection.query(
+            "SELECT * FROM faq WHERE reponse IS NOT NULL",
+            (err, rows) => {
+                if (err) res.send(err)
+                res.send(rows)
+            }
+        )
+    })
+
     app.get("/avancement", creationController.getAvancement)
 
     app.get(
