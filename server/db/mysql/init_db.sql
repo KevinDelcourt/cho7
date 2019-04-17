@@ -39,7 +39,7 @@ CREATE TABLE etat_avancement (
   FOREIGN KEY (idcreation) REFERENCES creation(id) ON DELETE CASCADE
 );
 
-INSERT INTO etat_avancement (libelle,valeuravancement,idcreation)
+INSERT INTO etat_avancement (libelle, valeuravancement, idcreation)
 VALUES 
   ('avancement 1 1',10,2),
   ('avancement 2 1',3,2),
