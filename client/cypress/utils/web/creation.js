@@ -1,8 +1,9 @@
 const typeTitre = value => {
     cy.log("titre")
-    cy.get(".sc-bxivhb")
+    cy.get('[data-cypress="titre"]')
         .first()
         .type(value)
+    //    dataCypress = "titre"
 }
 
 const nouvelEtat = value => {
@@ -43,4 +44,16 @@ export const populateCreationForm = {
 export const validerCreationForm = () => {
     cy.log("validation")
     cy.contains("Publier").click()
+}
+
+export const modifierCreation = () => {
+    cy.log("ModifierCreation")
+    //click sur le titre
+    cy.get('[data-cypress="titre"]').clear()
+    cy.get('[data-cypress="titre"]').type(
+        "la fureur du posti-it IV - a new warior"
+    )
+    cy.get('[data-cypress="submit"]').click()
+
+    cy.url().should("eq", "http://localhost:3000/")
 }

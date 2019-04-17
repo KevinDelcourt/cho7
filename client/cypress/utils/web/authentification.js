@@ -1,11 +1,9 @@
 export const loginAsCreateur = () => {
     cy.url().should("eq", "http://localhost:3000/login")
 
-    cy.get(":nth-child(1) > .sc-ifAKCX > .sc-bxivhb").type("Admin")
-
-    cy.get(":nth-child(2) > .sc-ifAKCX > .sc-bxivhb").type("Admin")
-
-    cy.contains("Se connecter").click()
+    cy.get('[data-cypress="field1"]').type("Admin")
+    cy.get('[data-cypress="field2"]').type("Admin")
+    cy.get("[data-cypress=submit]").click()
 
     cy.url().should("eq", "http://localhost:3000/")
 }
