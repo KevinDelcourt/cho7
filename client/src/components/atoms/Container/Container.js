@@ -10,6 +10,7 @@ const Container = styled.div`
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 20px;
+    height: max-content;
 `
 
 const mapStateToProps = state => {
