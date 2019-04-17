@@ -14,19 +14,20 @@ describe("composant creation de projet sans fichier", () => {
         goToNouvelleCreation()
     })
 
-    it("je teste le creation de projet normal", () => {
+    it("je test la creation de projet normal", () => {
+        cy.log("je test la creation de projet normal")
         populateCreationForm.validCreation()
         validerCreationForm()
         cy.url().should("eq", "http://localhost:3000/")
     })
 
-    it("je teste le creation de projet sans eta d'avencement", () => {
+    it("je test la creation de projet sans etat d'avancement", () => {
         populateCreationForm.creationSansEtats()
         validerCreationForm()
         cy.url().should("eq", "http://localhost:3000/newCreation")
     })
 
-    it("je teste le creation de projet vide", () => {
+    it("je test la creation de projet vide", () => {
         validerCreationForm()
         cy.contains("Ce champs est obligatoire")
     })

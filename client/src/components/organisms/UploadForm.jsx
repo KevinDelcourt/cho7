@@ -2,17 +2,12 @@ import styled from "styled-components"
 import React from "react"
 import LabelInput from "../molecules/LabelInput"
 import AudioInput from "../molecules/AudioInput"
-import Button from "../atoms/Button/Button"
+import SubmitButton from "../atoms/Button/SubmitButton"
 import LabelTextarea from "../molecules/LabelTextarea"
-import theme from "./../../theme.json"
 import { Field, reduxForm, FieldArray } from "redux-form"
 import { required } from "../../modules/validation"
 import EtatsAvancementInput from "../molecules/EtatsAvancementInput"
 import MainContainer from "../molecules/MainContainer"
-
-const StyledButton = styled(Button)`
-    justify-self: end;
-`
 
 const StyledUploadForm = styled.form`
     display: grid;
@@ -25,7 +20,10 @@ const StyledUploadForm = styled.form`
 class UploadForm extends React.Component {
     render() {
         return (
-            <MainContainer title="NOUVELLE CRÉATION">
+            <MainContainer
+                title={
+                    this.props.lock ? "MODIFIER CRÉATION" : "NOUVELLE CRÉATION"
+                }>
                 <StyledUploadForm onSubmit={this.props.handleSubmit}>
                     <Field
                         component={LabelInput}
@@ -33,8 +31,8 @@ class UploadForm extends React.Component {
                         type="text"
                         label="Titre *"
                         validate={[required]}
+                        dataCypress="titre"
                     />
-
                     <Field
                         component={AudioInput}
                         name="creation"
@@ -44,13 +42,11 @@ class UploadForm extends React.Component {
                                 : ""
                         }
                     />
-
                     <FieldArray
                         component={EtatsAvancementInput}
                         name="etats"
                         lock={this.props.lock}
                     />
-
                     <Field
                         component={LabelTextarea}
                         name="description"
@@ -58,7 +54,6 @@ class UploadForm extends React.Component {
                         row="10"
                         col="120"
                     />
-
                     <Field
                         component={LabelInput}
                         name="twitter"
@@ -66,10 +61,10 @@ class UploadForm extends React.Component {
                         label="Envoyer un tweet"
                     />
 
-                    <StyledButton
+                    <SubmitButton
+                        data-cypress="submit"
                         type="submit"
                         children="Publier"
-                        bgColor={theme.color.grey1}
                     />
                 </StyledUploadForm>
             </MainContainer>

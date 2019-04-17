@@ -21,32 +21,44 @@ module.exports = (app, connection) => {
         )
     })
 
-    app.get("/creations/done/plusecoutes", (req, res) => {
-        connection.query(
-            "SELECT * FROM creation WHERE nomfichier IS NOT NULL ORDER BY nbecoute DESC",
-            (err, rows) => {
-                if (err) return res.send(err)
-                res.send(rows)
-            }
-        )
-    })
+    app.get("/creations/:tri/:order", (req, res) => {
+        let tri = req.params.tri
+        let order = req.params.order
 
-    app.get("/creations/done", (req, res) => {
-        connection.query(
-            "SELECT * FROM creation WHERE nomfichier IS NOT NULL ORDER BY id DESC",
-            (err, rows) => {
-                if (err) return res.send(err)
-                res.send(rows)
+        if (
+            typeof tri == "string" &&
+            tri.length <= 6 &&
+            (order === "desc" || order === "asc")
+        ) {
+            switch (tri) {
+                case "date":
+                    tri = "miseajour"
+                    break
+                case "note":
+                    tri = "sommenotes / nbnote"
+                    break
+                case "ecoute":
+                    tri = "nbecoute"
+                    break
             }
-        )
+
+            connection.query(
+                "SELECT * FROM creation WHERE nomfichier IS NOT NULL ORDER BY " +
+                    tri +
+                    " " +
+                    order,
+                (err, rows) => {
+                    return err ? res.send(err) : res.send(rows)
+                }
+            )
+        }
     })
 
     app.get("/creations/inprogress", (req, res) => {
         connection.query(
             "SELECT * FROM creation WHERE nomfichier IS NULL ORDER BY id DESC",
             (err, rows) => {
-                if (err) return res.send(err)
-                res.send(rows)
+                return err ? res.send(err) : res.send(rows)
             }
         )
     })
@@ -66,6 +78,18 @@ module.exports = (app, connection) => {
         connection.query(
             "SELECT * FROM etat_avancement WHERE idcreation = ?",
             [req.params.idCreation],
+            (err, rows) => {
+                if (err) res.send(err)
+                res.send(rows)
+            }
+        )
+    })
+
+    /* RECUPERER QUESTIONS/REPONSES(FAQ) */
+
+    app.get("/questionsreponses", (req, res) => {
+        connection.query(
+            "SELECT * FROM faq WHERE reponse IS NOT NULL",
             (err, rows) => {
                 if (err) res.send(err)
                 res.send(rows)

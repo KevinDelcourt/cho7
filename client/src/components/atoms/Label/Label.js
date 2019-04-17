@@ -1,9 +1,15 @@
 import styled from "styled-components"
+import { connect } from "react-redux"
 
 const Label = styled.label`
-    font-family: ${props => props.font || "Arial"};
-    color: ${props => props.color};
-    font-size: 18px;
+    font-family: ${props => props.font};
+    margin-bottom: 5px;
 `
 
-export default Label
+const mapStateToProps = state => {
+    return {
+        font: state.app.theme.fontLabel
+    }
+}
+
+export default connect(mapStateToProps)(Label)

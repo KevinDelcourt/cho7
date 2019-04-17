@@ -1,85 +1,74 @@
-import styled from "styled-components"
 import React from "react"
-import { getCreations, getMeilleuresCreations } from "../../modules/api"
+import { getCreations } from "../../modules/api"
 import Creation from "../molecules/Creation"
 import MainContainer from "../molecules/MainContainer"
 import SocialNetwork from "../molecules/SocialNetwork"
-import { Link } from "react-router-dom"
+import StarRating from "../molecules/StarRating"
+import Link from "../atoms/Link/Link"
+import Label from "../atoms/Label/Label"
+import styled from "styled-components"
 
-const SubContainer = styled.div`
-    display: grid;
-    grid-row-gap: 20px;
-    grid-template-columns: 100%;
-`
-
-const Container = styled.div`
-    grid-row: span 2;
-    background: rgba(145, 109, 67, 0.35);
-    border-radius: 20px;
-    padding: 15px 30px;
-    height: max-content;
-`
-
-const StyledLink = styled(Link)`
-    &:hover {
-        color: #eee;
-    }
+const SelectContainer = styled.div`
+    margin-bottom: 15px;
 `
 
 class NewsFeed extends React.Component {
-    state = { nouvellesCreations: [], meilleuresCreations: [] }
+    state = {
+        creations: []
+    }
 
     async componentDidMount() {
         this.setState({
-            nouvellesCreations: await getCreations(),
-            meilleuresCreations: await getMeilleuresCreations()
+            creations: await getCreations("date", "asc")
+        })
+    }
+
+    handleChange = async e => {
+        let value = e.target.value.split(",")
+
+        this.setState({
+            creations: await getCreations(value[0], value[1])
         })
     }
 
     render() {
         return (
-            <Container>
-                <h2>Dernières créations</h2>
-                <SubContainer>
-                    {this.state.nouvellesCreations.map((c, index) => (
-                        <MainContainer
-                            title={
-                                <StyledLink to={"/creation/" + c.id}>
-                                    {c.titre}
-                                </StyledLink>
+            <MainContainer title="Dernières créations">
+                <SelectContainer>
+                    <Label children="Trier par : " />
+                    <select onChange={this.handleChange}>
+                        <option value="date,asc">Plus récents</option>
+                        <option value="date,desc">Plus anciens</option>
+                        <option value="titre,asc">Titre A -> Z</option>
+                        <option value="titre,desc">Titre Z -> A</option>
+                        <option value="note,desc">Mieux notés</option>
+                        <option value="note,asc">Moins bien notés</option>
+                        <option value="ecoute,desc">Plus écoutés</option>
+                        <option value="ecoute,asc">Moins écoutés</option>
+                    </select>
+                </SelectContainer>
+
+                {this.state.creations.map((c, index) => (
+                    <MainContainer
+                        title={<Link to={"/creation/" + c.id}>{c.titre}</Link>}
+                        width="100%"
+                        key={index}>
+                        <Creation
+                            creation={c}
+                            path={c.nomfichier}
+                            description={c.description}
+                            valueId={c.id}
+                        />
+                        <StarRating
+                            creationID={c.id}
+                            noteMoyenne={
+                                c.nbnote === 0 ? 0 : c.sommenotes / c.nbnote
                             }
-                            key={index}>
-                            <Creation
-                                creation={c}
-                                path={c.nomfichier}
-                                description={c.description}
-                                valueId={c.id}
-                            />
-                            <SocialNetwork />
-                        </MainContainer>
-                    ))}
-                </SubContainer>
-                <h2>Créations les plus écoutées</h2>
-                <SubContainer>
-                    {this.state.meilleuresCreations.map((c, index) => (
-                        <MainContainer
-                            title={
-                                <StyledLink to={"/creation/" + c.id}>
-                                    {c.titre}
-                                </StyledLink>
-                            }
-                            key={index}>
-                            <Creation
-                                creation={c}
-                                path={c.nomfichier}
-                                description={c.description}
-                                valueId={c.id}
-                            />
-                            <SocialNetwork />
-                        </MainContainer>
-                    ))}
-                </SubContainer>
-            </Container>
+                        />
+                        <SocialNetwork />
+                    </MainContainer>
+                ))}
+            </MainContainer>
         )
     }
 }

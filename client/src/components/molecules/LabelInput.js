@@ -1,34 +1,27 @@
 import React from "react"
 import styled from "styled-components"
 import Label from "../atoms/Label/Label"
-import theme from "./../../theme.json"
-
-const Input = styled.input`
-    padding: 6px;
-`
+import Input from "../atoms/Input/Input"
 
 const FieldContainer = styled.div`
     display: grid;
-    width: 100%;
-    margin-bottom: 7px;
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
 `
 
 const LabelInput = props => (
     <div>
-        <Label font={theme.fontFamily.ruluko} children={props.label} />
-
         <FieldContainer>
+            <Label children={props.label} />
             <Input
+                data-cypress={props.dataCypress}
                 {...props.input}
                 type={props.type}
                 name={props.name}
                 placeholder={props.placeholder}
             />
-            {props.meta.error && props.meta.touched ? (
-                <div>{props.meta.error}</div>
-            ) : (
-                ""
-            )}
+            {props.meta.error && props.meta.touched ? props.meta.error : ""}
         </FieldContainer>
     </div>
 )

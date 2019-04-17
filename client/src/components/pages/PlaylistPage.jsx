@@ -1,13 +1,16 @@
 import React from "react"
 import Template from "./Template"
 import MainContainer from "../molecules/MainContainer"
-import { hasRole, getNomsPlaylist, getCreationsToPlaylist, getNomCreation, ajoutEcoute} from "../../modules/api"
+import { hasRole,
+    getNomsPlaylist,
+    getCreationsToPlaylist,
+    getNomCreation,
+    ajoutEcoute} from "../../modules/api"
 import { getAudioUrl } from "../../modules/apiURL"
 import AudioPlayer from "react-modular-audio-player"
 import styled from "styled-components"
-import Button from "./../atoms/Button/Button"
-import theme from "./../../theme.json"
-import { runInThisContext } from "vm";
+import SubmitButton from "./../atoms/Button/SubmitButton"
+import { Field, reduxForm } from "redux-form"
 
 const StyledContainer = styled.div`
     display: grid;
@@ -23,6 +26,47 @@ const Label = styled.label `
     text-shadow: 0px 1px 4px rgb(75, 75, 75);
     color: rgb(200, 200, 200)
 `;
+
+let rearrangedPlayer = [
+    {
+        className: "tier-top",
+        style: { margin: "0.3rem" },
+        innerComponents: [
+            {
+                type: "play",
+                style: { width: "fit-content" }
+            },
+            {
+                type: "forward",
+                style: { width: "fit-content" }
+            },
+            {
+                type: "loop",
+                style: { width: "fit-content" }
+            },
+            {
+                type: "name",
+                style: { width: "fit-content" }
+            },
+            {
+                type: "volume"
+            }
+        ]
+    },
+    {
+        className: "tier-bottom",
+        style: { margin: "0rem 0.3rem 0.3rem 0.3rem" },
+        innerComponents: [
+            {
+                type: "time",
+                style: { width: "fit-content" }
+            },
+            {
+                type: "seek"
+            }
+        ]
+    }
+]
 
 class Playlist extends React.Component {
     constructor(props){
@@ -45,8 +89,6 @@ class Playlist extends React.Component {
         this.setPlaylistInformations();
         this.setLienPlaylist(this.state.indexCurrentCreation);
         this.setPlaylist();
-        
-        this.addNextListener();
     }
 
     setPlaylistInformations() {
@@ -79,23 +121,19 @@ class Playlist extends React.Component {
     }
 
     setPlaylist(){
-        
         this.setState({
             playlist: <div id={this.props.numPlaylist}><AudioPlayer
                 audioFiles={this.state.playlistInformations}
                 iconSize="2rem"
                 fontSize="1rem"
-                playerWidth="50rem"
+                playerWidth="40rem"
+                rearrange={rearrangedPlayer}
                 ref={element => {
                     this.rap = element
                 }}
             /></div>
         })
         this.rap.audioRef.addEventListener("loadeddata", e => {
-            this.setState({ indexCurrentCreation: ((this.state.indexCurrentCreation + 1) % this.state.playlistInformations.length) })
-            this.setLienPlaylist(this.state.indexCurrentCreation);
-        })
-        this.rap.audioRef.addEventListener("ended", e => {
             this.setState({ indexCurrentCreation: ((this.state.indexCurrentCreation + 1) % this.state.playlistInformations.length) })
             this.setLienPlaylist(this.state.indexCurrentCreation);
         })
@@ -121,8 +159,9 @@ class Playlist extends React.Component {
                     audioFiles={subSrcAudio}
                     iconSize="2rem"
                     fontSize="1rem"
-                    playerWidth="50rem"
+                    playerWidth="40rem"
                     playIcon=""
+                    rearrange={rearrangedPlayer}
                     ref={element => {
                         this.rap = element
                     }}
@@ -157,15 +196,6 @@ class Playlist extends React.Component {
         return newArrayOrdered;
     }
 
-    addNextListener() {
-        const imgNext = document.getElementById(this.props.numPlaylist).querySelector("img#forward-icon");
-        imgNext.addEventListener("click", e => {
-            this.setState({ indexCurrentCreation: ((this.state.indexCurrentCreation + 1) % this.state.playlistInformations.length) })
-            this.setLienPlaylist(this.state.indexCurrentCreation);
-        });
-        
-    }
-
     render() {
         return(
             <MainContainer title={this.props.nom}>
@@ -176,7 +206,9 @@ class Playlist extends React.Component {
     }
 }
 
+
 /**----------------------------------------------------------------------------------------------------**/
+
 
 export default class Playlists extends React.Component {
     constructor(props){
@@ -186,10 +218,10 @@ export default class Playlists extends React.Component {
             nomsPlaylist: [],
             nomsCreation: [],
             nouvellePlaylist: "",
-            formulaire: [],
-            showForm: false
+            showForm: false,
+            playlistDatalist: null
         }
-        this.nouvellePlaylist = this.nouvellePlaylist.bind(this)
+        this.showPlaylist = this.showPlaylist.bind(this)
     }
 
     async componentDidMount(){
@@ -200,12 +232,18 @@ export default class Playlists extends React.Component {
         })
     }
 
-    nouvellePlaylist(){
+    showPlaylist(event){
         this.setState({ showForm: !this.state.showForm});
+        this.setDatalist();
     }
 
-    submit(){
-
+    setDatalist(){
+        const datalist = <datalist id="playlists">
+            {this.state.nomsPlaylist.map((c, index) => (
+                <option value={c.nom} />
+            ))}
+        </datalist>
+        this.setState({playlistDatalist: datalist})
     }
 
     render(){
@@ -214,7 +252,7 @@ export default class Playlists extends React.Component {
                 <StyledContainer>
                     {this.state.auth?(
                             <center>
-                                <label onClick={this.nouvellePlaylist}>
+                                <label onClick={this.showPlaylist}>
                                     <MainContainer>NOUVELLE PLAYLIST</MainContainer>
                                 </label>
                             </center>
@@ -225,11 +263,7 @@ export default class Playlists extends React.Component {
                         <form onSubmit={this.submit}>
                             <label>Noms des playlists: </label>
                             <input list="playlists" name="playlist" />
-                            <datalist id="playlists">
-                                {this.state.nomsPlaylist.map((c, index) => (
-                                    <option value={c.nom} />
-                                ))}
-                            </datalist>
+                            {this.state.playlistDatalist}
 
                             <label>Tite des creations: </label>
                             <input list="nomcreation" />
@@ -239,11 +273,7 @@ export default class Playlists extends React.Component {
                                 ))}
                             </datalist>
 
-                            <Button
-                            type="submit"
-                            children="Enregistrer playlist"
-                            bgColor={theme.color.grey1}
-                            />
+                            <SubmitButton type="submit" children="Enregistrer playlist" />
                         </form>
                     </MainContainer>
                     ):null}

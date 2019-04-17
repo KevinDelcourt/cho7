@@ -37,7 +37,7 @@ export const getEtatsAvancement = (idCreation, cb) =>
     })
 
 export const getCreationsFinies = cb =>
-    getRequest("/creations/done", res => {
+    getRequest("/creations/date/asc", res => {
         for (let item of res.body) {
             isValidCreation(item)
             expect(item.nomfichier).to.be.not.null

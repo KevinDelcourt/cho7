@@ -2,26 +2,81 @@ import React, { Component } from "react"
 import styled from "styled-components"
 import { hasRole, deleteCreation } from "../../modules/api"
 import { getAudioUrl } from "../../modules/apiURL"
-import { Link, Redirect } from "react-router-dom"
+import Link from "../atoms/Link/Link"
+import { Redirect } from "react-router-dom"
 import { connect } from "react-redux"
 import { bindActionCreators } from "redux"
 import { msgAction } from "../../modules/actionsAndReducers"
 import { ajoutEcoute } from "../../modules/api"
-import theme from "./../../theme.json"
+import DescriptionContainer from "./../atoms/Container/DescriptionContainer"
 import AudioPlayer from "react-modular-audio-player"
-
-const DescriptionContainer = styled.div`
-    margin: 10px 0;
-    padding: 5px 10px;
-    background: ${theme.color.lightgrey1};
-    border-radius: 10px;
-    overflow-wrap: break-word;
-`
 
 const EditOptionsContainer = styled.div`
     display: flex;
     justify-content: flex-end;
 `
+const Fragment = styled.div`
+    .audio-player {
+        background-color: #b7b7b7;
+        padding: 0.5rem;
+        border-radius: 10px;
+        filter: invert(100%);
+    }
+
+    .audio-player-time {
+        color: black;
+    }
+
+    .marquee {
+        color: black;
+    }
+`
+
+let rearrangedPlayer = [
+    {
+        className: "tier-top",
+        style: { margin: "0.3rem" },
+        innerComponents: [
+            {
+                type: "play",
+                style: { width: "fit-content" }
+            },
+
+            {
+                type: "rewind",
+                style: { width: "fit-content" }
+            },
+            {
+                type: "forward",
+                style: { width: "fit-content" }
+            },
+            {
+                type: "loop",
+                style: { width: "fit-content" }
+            },
+            {
+                type: "name",
+                style: { width: "fit-content" }
+            },
+            {
+                type: "volume"
+            }
+        ]
+    },
+    {
+        className: "tier-bottom",
+        style: { margin: "0rem 0.3rem 0.3rem 0.3rem" },
+        innerComponents: [
+            {
+                type: "time",
+                style: { width: "fit-content" }
+            },
+            {
+                type: "seek"
+            }
+        ]
+    }
+]
 
 class Creation extends Component {
     state = {
@@ -80,14 +135,12 @@ class Creation extends Component {
                 <DescriptionContainer>
                     {this.props.creation.description}
                     <EditOptionsContainer>
-                        <Link
-                            className="fas fa-edit"
-                            to={"/updateCreation/" + this.props.valueId}
-                        />
-                        <button
-                            className="far fa-times-circle fa-2x deleteButton"
-                            onClick={this.handleDeleteClick}
-                        />
+                        <Link to={"/updateCreation/" + this.props.valueId}>
+                            <i className="fas fa-edit" />
+                        </Link>
+                        <Link to="/" onClick={this.handleDeleteClick}>
+                            <i className="far fa-times-circle" />
+                        </Link>
                     </EditOptionsContainer>
                 </DescriptionContainer>
             )
@@ -104,7 +157,7 @@ class Creation extends Component {
         const path = getAudioUrl() + this.props.creation.nomfichier
 
         return (
-            <React.Fragment>
+            <Fragment>
                 <AudioPlayer
                     audioFiles={[
                         {
@@ -118,12 +171,13 @@ class Creation extends Component {
                     }}
                     iconSize="2rem"
                     fontSize="1rem"
-                    playerWidth="30rem"
+                    playerWidth="100%"
+                    rearrange={rearrangedPlayer}
                 />
 
                 {this.displayDetails()}
                 {this.state.redirect}
-            </React.Fragment>
+            </Fragment>
         )
     }
 }
