@@ -11,6 +11,7 @@ class HeaderTemplate extends React.Component {
             <div>
                 <center>
                     <Link to="/">
+<<<<<<< HEAD
                         <Banniere
                             src={
                                 this.props.banniereFile
@@ -21,6 +22,9 @@ class HeaderTemplate extends React.Component {
                             }
                             alt="banniere"
                         />
+=======
+                        <Banniere data-cypress="banierre" src={banniere} alt="banniere" />
+>>>>>>> 1b2ed6913e5cd5154e89d3fb1f61f0a9828ed303
                     </Link>
                 </center>
                 <BarreMenu />
