@@ -1,7 +1,7 @@
 import React from "react"
 import { getCreationsInProgress, getCreations } from "../../modules/api"
 import MainContainer from "../molecules/MainContainer"
-import { Link } from "react-router-dom"
+import Link from "../atoms/Link/Link"
 import { deleteCreation } from "../../modules/api"
 
 class Creations extends React.Component {
@@ -37,13 +37,14 @@ class Creations extends React.Component {
                                     </Link>
                                 </td>
                                 <td>
-                                    <button
+                                    <Link
                                         class="deleteButton"
+                                        to="/creations"
                                         onClick={() =>
                                             this.handleDeleteClick(c.id)
                                         }>
                                         Supprimer
-                                    </button>
+                                    </Link>
                                 </td>
                             </tr>
                         ))}
