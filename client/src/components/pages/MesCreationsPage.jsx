@@ -12,6 +12,13 @@ const SubContainer = styled.div`
     grid-template-columns: 100%;
 `
 
+const StyledLink = styled(Link)`
+    &:hover {
+        color: #714512;
+        text-shadow: 1px 1px black;
+    }
+`
+
 class MesCreationsPage extends React.Component {
     state = { auth: false, loaded: false }
 
@@ -28,11 +35,11 @@ class MesCreationsPage extends React.Component {
                     <SubContainer>
                         <MainContainer>
                             <center>
-                                <Link
+                                <StyledLink
                                     to="/newCreation"
-                                    style={{ fontSize: 35 + "px" }}>
-                                    NOUVELLE CRÉATION
-                                </Link>
+                                    style={{ fontSize: 35 + "px" }}
+                                    children="NOUVELLE CRÉATION"
+                                />
                             </center>
                         </MainContainer>
                         <Creations etat="wip" />

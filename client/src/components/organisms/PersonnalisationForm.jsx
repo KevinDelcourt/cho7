@@ -8,7 +8,18 @@ import DescriptionContainer from "./../atoms/Container/DescriptionContainer"
 import SiteTitle from "../atoms/Title/SiteTitle"
 import ThemeImageInput from "../molecules/ThemeImageInput"
 import Logo from "../atoms/Logo"
+import styled from "styled-components"
 
+const StyledSelect = styled.select`
+    margin: 5px;
+    color: black;
+    &: hover {
+        box-shadow: 0px 1px 5px rgb(47, 29, 8);
+    }
+    &&: focus {
+        box-shadow: 0px 1px 17px rgb(47, 29, 8);
+    }
+`
 class PersonnalisationForm extends Component {
     polices = ["Roluko", "Sevillana", "Almendra SC", "Arial", "Comic Sans MS"]
 
@@ -57,9 +68,8 @@ class PersonnalisationForm extends Component {
             <React.Fragment key={name}>
                 <Label>{label}</Label>
                 <Field
-                    component={"select"}
+                    component={StyledSelect}
                     name={name}
-                    style={{ color: "black" }}
                     onChange={e => this.changeThemeProp(name, e.target.value)}>
                     {options}
                 </Field>

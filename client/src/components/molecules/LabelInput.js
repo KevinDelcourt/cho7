@@ -15,10 +15,10 @@ const LabelInput = props => (
         <FieldContainer>
             <Label children={props.label} />
             <Input
+                data-cypress={props.dataCypress}
                 {...props.input}
                 type={props.type}
                 name={props.name}
-                data-cypress={props.dataCypress}
                 placeholder={props.placeholder}
             />
             {props.meta.error && props.meta.touched ? props.meta.error : ""}
