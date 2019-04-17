@@ -32,7 +32,7 @@ module.exports = (app, connection) => {
         ) {
             switch (tri) {
                 case "date":
-                    tri = "miseajour"
+                    tri = "id"
                     break
                 case "note":
                     tri = "sommenotes / nbnote"
