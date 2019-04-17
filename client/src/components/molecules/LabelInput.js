@@ -16,6 +16,7 @@ const LabelInput = props => (
         <FieldContainer>
             <Label font={theme.fontFamily.ruluko} children={props.label} />
             <Input
+                data-cypress={props.dataCypress}
                 {...props.input}
                 type={props.type}
                 name={props.name}

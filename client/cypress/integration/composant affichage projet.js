@@ -1,7 +1,7 @@
 import reset_db from "../utils/reset_db"
 import { beginAndLoginAsCreateur } from "../utils/web/authentification"
 import { goToMesCreations, goToModification } from "../utils/web/navigation"
-import { ModifierCreation } from "../utils/web/creation"
+import { modifierCreation } from "../utils/web/creation"
 
 describe("composant affichage projet", () => {
     before(() => reset_db())
@@ -11,6 +11,6 @@ describe("composant affichage projet", () => {
 
         goToModification()
 
-        ModifierCreation()
+        modifierCreation()
     })
 })

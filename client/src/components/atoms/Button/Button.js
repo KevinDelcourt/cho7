@@ -6,8 +6,8 @@ const Button = styled.button`
     border-radius: 5px;
     padding: 5px 15px;
     height: 35px;
-    font-size:18px;
-    color:${props => props.color || "black"}
-`;
+    font-size: 18px;
+    color: ${props => props.color || "black"};
+`
 
 export default Button
