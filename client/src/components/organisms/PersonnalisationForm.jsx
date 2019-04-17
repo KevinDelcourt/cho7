@@ -154,6 +154,7 @@ class PersonnalisationForm extends Component {
 
             {this.fileFields.map((field, index) => (
                 <Field
+                    key={index}
                     component={ThemeImageInput}
                     name={field.name}
                     label={field.label}

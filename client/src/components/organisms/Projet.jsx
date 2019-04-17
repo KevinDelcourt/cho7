@@ -72,7 +72,7 @@ class Projet extends React.Component {
                     <MainContainer key={index} title={c[0].titre}>
                         {c.map((etat, index) => (
                             <AvancementBar
-                                kay={index}
+                                key={index}
                                 value={etat.valeuravancement}
                                 label={etat.libelle}
                             />

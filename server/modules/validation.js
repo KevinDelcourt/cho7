@@ -53,7 +53,54 @@ const hasGoodId = (req, res, next) => {
     return res.send(false)
 }
 
-module.exports = {
+const newUserValidator = [
+    requiredCheck("username", "Pseudo requis"),
+    requiredCheck("password", "Mot de passe requis"),
+    body("email")
+        .isEmail()
+        .withMessage("Mail valide requis")
+]
+
+const userUpdateValidator = [
+    requiredCheck("username", "Pseudo requis"),
+    body("email")
+        .isEmail()
+        .withMessage("Mail valide requis")
+]
+
+const creationValidator = [
+    body("titre")
+        .isLength({ min: 1 })
+        .withMessage("Titre requis"),
+    body("creation")
+        .custom((value, { req }) => {
+            if (req.file && req.file.mimetype.split("/")[0] != "audio")
+                throw new Error("Seuls les fichiers audios sont acceptés")
+            return true
+        })
+        .custom((value, { req }) => {
+            if (req.file && req.file.originalname.length > 50)
+                throw new Error(
+                    "Nom de fichier trop long, maximum 50 caractères"
+                )
+            return true
+        })
+]
+
+const etatAvancementValidator = [
+    body("libelle.*")
+        .isString()
+        .isLength({ min: 1 })
+        .withMessage("Le label de l'état est obligatoire")
+        .isLength({ max: 50 })
+        .withMessage("Le titre doit faire un maximum de 50 caractères"),
+    body("idEtat.*").isInt({
+        min: 0,
+        max: 99999999999
+    })
+]
+
+const validator = {
     responseFromValidatorError,
     getErrors,
     hasNoErrors,
@@ -61,5 +108,11 @@ module.exports = {
     requiredCheck,
     maxLenValidator,
     isLoggedIn,
-    hasGoodId
+    hasGoodId,
+    newUserValidator,
+    userUpdateValidator,
+    creationValidator,
+    etatAvancementValidator
 }
+
+module.exports = validator
