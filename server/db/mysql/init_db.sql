@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS etat_avancement, users, creation, theme;
+DROP TABLE IF EXISTS etat_avancement, users, creation, theme, faq;
 
 CREATE TABLE users (
   id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -39,7 +39,7 @@ CREATE TABLE etat_avancement (
   FOREIGN KEY (idcreation) REFERENCES creation(id) ON DELETE CASCADE
 );
 
-INSERT INTO etat_avancement (libelle,valeuravancement,idcreation)
+INSERT INTO etat_avancement (libelle, valeuravancement, idcreation)
 VALUES 
   ('avancement 1 1',10,2),
   ('avancement 2 1',3,2),
