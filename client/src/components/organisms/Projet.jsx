@@ -3,7 +3,6 @@ import React from "react"
 import { getAvancement } from "../../modules/api"
 import { Redirect } from "react-router-dom"
 import Link from "../atoms/Link/Link"
-
 import { hasRole, deleteCreation } from "../../modules/api"
 import MainContainer from "./../molecules/MainContainer"
 import DescriptionContainer from "./../atoms/Container/DescriptionContainer"
@@ -68,7 +67,10 @@ class Projet extends React.Component {
         return (
             <MainContainer title="Projets en cours">
                 {this.state.avancement.map((c, index) => (
-                    <MainContainer key={index} title={c[0].titre}>
+                    <MainContainer
+                        key={index}
+                        title={c[0].titre}
+                        dataCypressTitle={c[0].titre}>
                         {c.map((etat, index) => (
                             <div key={index}>
                                 <label>{etat.libelle + " : "}</label>

@@ -57,3 +57,8 @@ export const modifierCreation = () => {
 
     cy.url().should("eq", "http://localhost:3000/")
 }
+
+export const verifierModification = () => {
+    cy.log("Verifier que la création a bien été modifiée")
+    cy.get('[data-cypress="la fureur du posti-it IV - a new warior"]')
+}
