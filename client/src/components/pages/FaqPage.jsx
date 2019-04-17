@@ -22,7 +22,8 @@ import Collapse from "react-css-collapse"
 
 const QuestionContainer = styled(DescriptionContainer)`
     cursor: pointer;
-    border-radius: 10px;
+    border-radius: ${props => props.borderRadius};
+    border: ${props => props.borderSize} solid;
     background-color: ${props => props.bgColor};
     display: flex;
     align-items: center;
@@ -43,7 +44,6 @@ const NavContainer = styled(Container)`
     background-color: ${props => props.bgColor};
     border-radius: ${props => props.borderRadius};
     border: ${props => props.borderSize} solid;
-    border-radius: 5px;
     font-size: 1.2em;
     padding: 15px;
 `
@@ -127,6 +127,8 @@ class FaqPage extends React.Component {
                         <>
                             <QuestionContainer
                                 bgColor={this.props.descriptionBgColor}
+                                borderSize={this.props.borderSize}
+                                borderRadius={this.props.borderRadius}
                                 onClick={() => this.change(index, c.id)}>
                                 <Question children={c.question} />
                                 {this.displayDeleteButton(c.id)}
@@ -158,6 +160,8 @@ class FaqPage extends React.Component {
                     <>
                         <QuestionContainer
                             bgColor={this.props.descriptionBgColor}
+                            borderSize={this.props.borderSize}
+                            borderRadius={this.props.borderRadius}
                             onClick={() => this.change(index, c.id)}>
                             <Question children={c.question} />
                             {this.displayDeleteButton(c.id)}
