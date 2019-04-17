@@ -27,15 +27,19 @@ class StarRating extends React.Component {
     getStar = (i, coche) => {
         if (coche)
             return (
-                <Star key={i} onClick={() => this.changeStar(i)}>
-                    &#9733;
-                </Star>
+                <Star
+                    key={i}
+                    onClick={() => this.changeStar(i)}
+                    children="&#9733;"
+                />
             )
         else
             return (
-                <Star key={i} onClick={() => this.changeStar(i)}>
-                    &#9734;
-                </Star>
+                <Star
+                    key={i}
+                    onClick={() => this.changeStar(i)}
+                    children="&#9734;"
+                />
             )
     }
 
