@@ -31,8 +31,8 @@ class UploadForm extends React.Component {
                         type="text"
                         label="Titre *"
                         validate={[required]}
+                        dataCypress="titre"
                     />
-
                     <Field
                         component={AudioInput}
                         name="creation"
@@ -42,13 +42,11 @@ class UploadForm extends React.Component {
                                 : ""
                         }
                     />
-
                     <FieldArray
                         component={EtatsAvancementInput}
                         name="etats"
                         lock={this.props.lock}
                     />
-
                     <Field
                         component={LabelTextarea}
                         name="description"
@@ -56,7 +54,6 @@ class UploadForm extends React.Component {
                         row="10"
                         col="120"
                     />
-
                     <Field
                         component={LabelInput}
                         name="twitter"
@@ -64,7 +61,11 @@ class UploadForm extends React.Component {
                         label="Envoyer un tweet"
                     />
 
-                    <SubmitButton type="submit" children="Publier" />
+                    <SubmitButton
+                        data-cypress="submit"
+                        type="submit"
+                        children="Publier"
+                    />
                 </StyledUploadForm>
             </MainContainer>
         )

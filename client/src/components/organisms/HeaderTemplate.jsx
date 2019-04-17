@@ -12,6 +12,7 @@ class HeaderTemplate extends React.Component {
                 <center>
                     <Link to="/">
                         <Banniere
+                            data-cypress="banierre"
                             src={
                                 this.props.banniereFile
                                     ? URL.createObjectURL(
