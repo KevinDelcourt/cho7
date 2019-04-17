@@ -293,6 +293,58 @@ module.exports = (app, passport) => {
         )
     })
 
+    /* NOUVELLE QUESTION */
+
+    app.post("/addQuestion", (req, res) => {
+        connection.query(
+            "INSERT INTO faq (question) VALUES (?)",
+            [req.body.question],
+            (err, rows) => {
+                return err ? res.send(err) : res.send(true)
+            }
+        )
+    })
+
+    /* NOUVELLE REPONSE */
+
+    app.post("/addReponse/:id", (req, res) => {
+        connection.query(
+            "UPDATE faq SET reponse = ? WHERE id = ?",
+            [req.body.reponse, req.params.id],
+            (err, rows) => {
+                return err ? res.send(err) : res.send(true)
+            }
+        )
+    })
+
+    /* RECUPERER QUESTIONS SANS REPONSES */
+
+    app.get("/questions", (req, res) => {
+        connection.query(
+            "SELECT * FROM faq WHERE reponse IS NULL",
+            (err, rows) => {
+                if (err) res.send(err)
+                res.send(rows)
+            }
+        )
+    })
+
+    /* SUPPRIMER QUESTION/REPONSE(FAQ) */
+
+    app.get("/deleteFaq/:id", isLoggedIn, (req, res) => {
+        const idFaq = req.params.id
+
+        if (/^(0|[1-9]\d*)$/.test(idFaq)) {
+            connection.query(
+                "DELETE FROM faq WHERE id = ?",
+                [idFaq],
+                (err, rows) => {
+                    return err ? res.send(err) : res.send(true)
+                }
+            )
+        }
+    })
+
     app.post("/cptEcoute", (req, res) => {
         connection.query(
             "SELECT nbecoute FROM creation WHERE id=?",

@@ -72,4 +72,16 @@ module.exports = (app, connection) => {
             }
         )
     })
+
+    /* RECUPERER QUESTIONS/REPONSES(FAQ) */
+
+    app.get("/questionsreponses", (req, res) => {
+        connection.query(
+            "SELECT * FROM faq WHERE reponse IS NOT NULL",
+            (err, rows) => {
+                if (err) res.send(err)
+                res.send(rows)
+            }
+        )
+    })
 }

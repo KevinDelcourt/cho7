@@ -2,7 +2,9 @@ import React from "react"
 import styled from "styled-components"
 import { postStarRating } from "../../modules/api"
 
-const Star = styled.div``
+const Star = styled.div`
+    cursor: pointer;
+`
 
 class StarRating extends React.Component {
     constructor(props) {
@@ -40,11 +42,10 @@ class StarRating extends React.Component {
             starTab.push(this.getStar(index + 1, index < this.state.cont))
 
         return (
-            <Star>
-                {starTab}
-                {this.state.cont !== 0 ? this.state.cont : ""} /5 <br />
+            <>
+                <Star children={starTab} />
                 {Math.floor(this.props.noteMoyenne * 10) / 10}/5
-            </Star>
+            </>
         )
     }
 }
