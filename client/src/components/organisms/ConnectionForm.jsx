@@ -13,7 +13,7 @@ const StyledButton = styled(Button)`
     margin: 20px auto;
     font-size: 18px;
     font-family: "Almendra SC", Ruluko, Arial, Sans-serif;
-    background-color: #916d43;
+    background-color: rgb(145, 109, 67);
     border: none;
     border-radius: 10px;
     color: black;

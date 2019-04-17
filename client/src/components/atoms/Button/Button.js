@@ -6,6 +6,10 @@ const Button = styled.button`
     border: ${props => props.borderSize} solid;
     border-radius: ${props => props.borderRadius};
     padding: 5px 15px;
+    margin-right: 5px;
+    &: hover {
+        box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.8);
+    }
 `
 
 const mapStateToProps = state => {
