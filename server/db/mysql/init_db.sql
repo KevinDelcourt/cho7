@@ -11,7 +11,7 @@ CREATE TABLE users (
 );
 
 INSERT INTO users (username,password,email,presentation,role,avatar)
-VALUES ('Admin','Admin','artiste.art@genie.nl','je suis un artiste et je fait de lart de génie','ROLE_CREATEUR','avatar_createur.png');
+VALUES ('Admin','sha1$f384dd89$1$c350803491e73924609fdcdc338d7fd27da49464','artiste.art@genie.nl','je suis un artiste et je fait de lart de génie','ROLE_CREATEUR','avatar_createur.png');
 
 CREATE TABLE creation (
   id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,

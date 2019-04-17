@@ -17,7 +17,11 @@ module.exports = connection => {
         createNewUser: (req, res) => {
             connection.query(
                 "INSERT INTO users (username,password,email,role) VALUES (?,?,?,'ROLE_USER')",
-                [req.body.username, req.body.password, req.body.email],
+                [
+                    req.body.username,
+                    require("password-hash").generate(req.body.password),
+                    req.body.email
+                ],
                 (err, rows) => queryCallback(err, res, () => res.send(true))
             )
         },
@@ -53,7 +57,10 @@ module.exports = connection => {
                 email: req.body.email
             }
 
-            if (req.body.password) updateData.password = req.body.password
+            if (req.body.password)
+                updateData.password = require("password-hash").generate(
+                    req.body.password
+                )
 
             if (req.body.presentation || req.body.presentation === "")
                 updateData.presentation = req.body.presentation
