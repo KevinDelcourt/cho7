@@ -8,7 +8,7 @@ const ALink = styled(Link)`
 
     &:hover {
         cursor: pointer;
-        color: ${props => props.hoverColor};
+        color: ${props => props.hovercolor};
     }
 `
 
@@ -16,7 +16,7 @@ const mapStateToProps = state => {
     return {
         font: state.app.theme.fontBase,
         color: state.app.theme.colorText,
-        hoverColor: state.app.theme.colorSubmitBtn
+        hovercolor: state.app.theme.colorSubmitBtn
     }
 }
 

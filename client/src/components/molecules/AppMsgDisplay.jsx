@@ -15,7 +15,7 @@ class AppMsgDisplay extends Component {
     }
     render = () =>
         this.state.display ? (
-            <Fragment
+            <div
                 style={{
                     position: "fixed",
                     bottom: "5px",
@@ -30,7 +30,7 @@ class AppMsgDisplay extends Component {
                         </Button>
                     </Container>
                 </center>
-            </Fragment>
+            </div>
         ) : (
             ""
         )
