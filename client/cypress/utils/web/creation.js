@@ -15,11 +15,7 @@ const nouvelEtat = value => {
 
 const typeDescription = value => {
     cy.log("ecrire description")
-<<<<<<< HEAD
-    cy.get(".sc-hSdWYo").type(value)
-=======
     cy.get(".sc-kkGfuU").type(value)
->>>>>>> 1b2ed6913e5cd5154e89d3fb1f61f0a9828ed303
 }
 
 const validCreation = () => {
