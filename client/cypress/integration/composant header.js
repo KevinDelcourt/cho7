@@ -17,11 +17,7 @@ describe("composant header", () => {
         goToMesCreations()
 
         cy.log("cilck sur l'image")
-<<<<<<< HEAD
-        cy.get(".sc-gqjmRU").click()
-=======
         cy.get("[data-cypress=banierre]").click()
->>>>>>> 1b2ed6913e5cd5154e89d3fb1f61f0a9828ed303
         cy.url().should("eq", "http://localhost:3000/")
 
         goToAccueil()

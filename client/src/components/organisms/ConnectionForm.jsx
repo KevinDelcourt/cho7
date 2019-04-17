@@ -54,15 +54,11 @@ class ConnectionForm extends Component {
                         label="Mot de passe *"
                         validate={[required]}
                     />
-<<<<<<< HEAD
-                    <StyledButton children="Se connecter" />
-=======
                     <StyledButton
                         data-cypress="submit"
                         children="Se connecter"
                         bgColor={theme.color.brown2}
                     />
->>>>>>> 1b2ed6913e5cd5154e89d3fb1f61f0a9828ed303
                 </form>
             </FormContainer>
         )
@@ -74,5 +70,3 @@ ConnectionForm = reduxForm({
 })(ConnectionForm)
 
 export default ConnectionForm
-
-//cy.get('[data-cypress="field1"]')
