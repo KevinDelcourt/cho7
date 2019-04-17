@@ -3,7 +3,6 @@ import Template from "./Template"
 import { getCreation } from "../../modules/api"
 import Creation from "./../molecules/Creation"
 import MainContainer from "../molecules/MainContainer"
-import { Link } from "react-router-dom"
 
 export default class CreationPage extends React.Component {
     state = { creation: [] }

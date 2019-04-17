@@ -99,3 +99,9 @@ export const postUpdateCreation = formData =>
     defaultPost("/updateCreation", formData)
 
 export const ajoutEcoute = id => defaultPost("/cptEcoute", {id: id})
+
+export const getNomsPlaylist = () => defaultPost("/nomsplaylist")
+
+export const getCreationsToPlaylist = nom => defaultPost('/creationsToPlaylist', {nom: nom})
+
+export const getNomCreation = () => defaultPost("/nomcreation")
