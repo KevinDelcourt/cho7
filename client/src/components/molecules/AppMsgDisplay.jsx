@@ -1,4 +1,4 @@
-import React, { Component } from "react"
+import React, { Fragment, Component } from "react"
 import { connect } from "react-redux"
 import Container from "../atoms/Container/Container"
 import Button from "../atoms/Button/Button"
@@ -15,7 +15,7 @@ class AppMsgDisplay extends Component {
     }
     render = () =>
         this.state.display ? (
-            <div
+            <Fragment
                 style={{
                     position: "fixed",
                     bottom: "5px",
@@ -30,7 +30,7 @@ class AppMsgDisplay extends Component {
                         </Button>
                     </Container>
                 </center>
-            </div>
+            </Fragment>
         ) : (
             ""
         )

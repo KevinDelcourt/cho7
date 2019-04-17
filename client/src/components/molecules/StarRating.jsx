@@ -1,8 +1,13 @@
-import React from "react"
-import styled from "styled-components"
+import React, { Fragment } from "react"
 import { postStarRating } from "../../modules/api"
+import styled from "styled-components"
 
-const Star = styled.div``
+const Star = styled.span`
+    color: #fcde96;
+    &: hover {
+        text-shadow: 0px 1px 4px rgb(255, 255, 255);
+    }
+`
 
 class StarRating extends React.Component {
     constructor(props) {
@@ -22,15 +27,15 @@ class StarRating extends React.Component {
     getStar = (i, coche) => {
         if (coche)
             return (
-                <span key={i} onClick={() => this.changeStar(i)}>
+                <Star key={i} onClick={() => this.changeStar(i)}>
                     &#9733;
-                </span>
+                </Star>
             )
         else
             return (
-                <span key={i} onClick={() => this.changeStar(i)}>
+                <Star key={i} onClick={() => this.changeStar(i)}>
                     &#9734;
-                </span>
+                </Star>
             )
     }
 
@@ -40,11 +45,11 @@ class StarRating extends React.Component {
             starTab.push(this.getStar(index + 1, index < this.state.cont))
 
         return (
-            <Star>
+            <Fragment>
                 {starTab}
                 {this.state.cont !== 0 ? this.state.cont : ""} /5 <br />
                 {Math.floor(this.props.noteMoyenne * 10) / 10}/5
-            </Star>
+            </Fragment>
         )
     }
 }
