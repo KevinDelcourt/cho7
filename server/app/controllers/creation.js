@@ -9,6 +9,11 @@ let twitterClient = new Twitter({
     access_token_secret: "sGCgbhzfTBLzaWdGD37Q4RkIa7vHMDBVZxW4j7rFCBgp8"
 })
 
+const affichageDescription = description => {
+    if (description.length > 100) return description.slice(0, 99) + "..."
+    return description
+}
+
 const validateLibelleValeur = body =>
     body.libelle &&
     body.valeur &&
@@ -87,18 +92,13 @@ const creationController = connection => {
 
         addCreation: (req, res) => {
             if (req.body.twitter && req.body.twitter === "true")
-                twitterClient.post(
-                    "statuses/update",
-                    {
-                        status:
-                            "Nouvelle création: " +
-                            req.body.titre +
-                            "! test.com"
-                    },
-                    error => {
-                        if (error) return res.send(error)
-                    }
-                )
+                twitterClient.post("statuses/update", {
+                    status:
+                        "Nouvelle création: " +
+                        req.body.titre +
+                        "! " +
+                        affichageDescription(req.body.description)
+                })
 
             if (req.file)
                 connection.query(
@@ -139,16 +139,13 @@ const creationController = connection => {
 
         updateCreation: (req, res) => {
             if (req.body.twitter && req.body.twitter === "true")
-                twitterClient.post(
-                    "statuses/update",
-                    {
-                        status:
-                            "Nouvelle update: " + req.body.titre + "! test.com"
-                    },
-                    error => {
-                        if (error) return res.send(error)
-                    }
-                )
+                twitterClient.post("statuses/update", {
+                    status:
+                        "Nouvelle update: " +
+                        req.body.titre +
+                        "! " +
+                        affichageDescription(req.body.description)
+                })
             if (req.file)
                 connection.query(
                     "DELETE FROM etat_avancement WHERE idcreation = ?",
