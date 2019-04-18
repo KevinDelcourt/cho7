@@ -9,7 +9,11 @@ const MainContainer = props => {
             boxShadow={props.boxShadow}
             width={props.width}
             borderRadius={props.borderRadius}>
-            <Title font={props.font} children={props.title} />
+            <Title
+                font={props.font}
+                children={props.title}
+                data-cypress={props.dataCypressTitle}
+            />
             {props.children}
         </Container>
     )

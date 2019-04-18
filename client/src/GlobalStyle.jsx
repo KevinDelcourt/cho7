@@ -42,6 +42,7 @@ th {
     padding: 8px;
 }
 
+
 .deleteButton {
     border: 0;
     font-size: 100%;

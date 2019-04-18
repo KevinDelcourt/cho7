@@ -13,7 +13,7 @@ const StyledButton = styled(Button)`
     margin: 20px auto;
     font-size: 18px;
     font-family: "Almendra SC", Ruluko, Arial, Sans-serif;
-    background-color: #916d43;
+    background-color: rgb(145, 109, 67);
     border: none;
     border-radius: 10px;
     color: black;
@@ -38,6 +38,7 @@ class ConnectionForm extends Component {
                 <StyledTitle size="41px" children="Connexion" />
                 <form onSubmit={this.props.handleSubmit}>
                     <Field
+                        dataCypress="field1"
                         name="username"
                         component={LabelInput}
                         type="text"
@@ -46,13 +47,17 @@ class ConnectionForm extends Component {
                         validate={[required]}
                     />
                     <Field
+                        dataCypress="field2"
                         name="password"
                         component={LabelInput}
                         type="password"
                         label="Mot de passe *"
                         validate={[required]}
                     />
-                    <StyledButton children="Se connecter" />
+                    <StyledButton
+                        data-cypress="submit"
+                        children="Se connecter"
+                    />
                 </form>
             </FormContainer>
         )

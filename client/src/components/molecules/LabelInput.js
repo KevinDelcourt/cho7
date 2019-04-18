@@ -15,6 +15,7 @@ const LabelInput = props => (
         <FieldContainer>
             <Label children={props.label} />
             <Input
+                data-cypress={props.dataCypress}
                 {...props.input}
                 type={props.type}
                 name={props.name}

@@ -10,6 +10,9 @@ const DescriptionContainer = styled(Container)`
     margin: 10px 0;
     padding: 5px 10px;
     overflow-wrap: break-word;
+    &: hover {
+        box-shadow: 0px 1px 11px rgba(0, 0, 0, 0.4);
+    }
 `
 
 const mapStateToProps = state => {

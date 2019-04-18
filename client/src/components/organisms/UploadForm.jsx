@@ -17,6 +17,10 @@ const StyledUploadForm = styled.form`
     margin: 5%;
 `
 
+const Div = styled.div`
+    justify-self: end;
+`
+
 class UploadForm extends React.Component {
     render() {
         return (
@@ -31,8 +35,8 @@ class UploadForm extends React.Component {
                         type="text"
                         label="Titre *"
                         validate={[required]}
+                        dataCypress="titre"
                     />
-
                     <Field
                         component={AudioInput}
                         name="creation"
@@ -42,13 +46,11 @@ class UploadForm extends React.Component {
                                 : ""
                         }
                     />
-
                     <FieldArray
                         component={EtatsAvancementInput}
                         name="etats"
                         lock={this.props.lock}
                     />
-
                     <Field
                         component={LabelTextarea}
                         name="description"
@@ -56,15 +58,19 @@ class UploadForm extends React.Component {
                         row="10"
                         col="120"
                     />
-
                     <Field
                         component={LabelInput}
                         name="twitter"
                         type="checkbox"
                         label="Envoyer un tweet"
                     />
-
-                    <SubmitButton type="submit" children="Publier" />
+                    <Div>
+                        <SubmitButton
+                            data-cypress="submit"
+                            type="submit"
+                            children="Publier"
+                        />
+                    </Div>
                 </StyledUploadForm>
             </MainContainer>
         )

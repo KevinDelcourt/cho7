@@ -7,6 +7,12 @@ const Input = styled.input`
     color: black;
     padding: 5px;
     margin-bottom: 7px;
+    &: hover {
+        box-shadow: 0px 1px 5px rgb(47, 29, 8);
+    }
+    &&: focus {
+        box-shadow: 0px 1px 17px rgb(47, 29, 8);
+    }
 `
 
 const mapStateToProps = state => {

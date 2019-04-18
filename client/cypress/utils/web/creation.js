@@ -1,8 +1,9 @@
 const typeTitre = value => {
     cy.log("titre")
-    cy.get(".sc-bxivhb")
+    cy.get('[data-cypress="titre"]')
         .first()
         .type(value)
+    //    dataCypress = "titre"
 }
 
 const nouvelEtat = value => {
@@ -15,7 +16,7 @@ const nouvelEtat = value => {
 
 const typeDescription = value => {
     cy.log("ecrire description")
-    cy.get(".sc-hSdWYo").type(value)
+    cy.get(".sc-jAaTju").type(value)
 }
 
 const validCreation = () => {
@@ -43,4 +44,21 @@ export const populateCreationForm = {
 export const validerCreationForm = () => {
     cy.log("validation")
     cy.contains("Publier").click()
+}
+
+export const modifierCreation = () => {
+    cy.log("ModifierCreation")
+    //click sur le titre
+    cy.get('[data-cypress="titre"]').clear()
+    cy.get('[data-cypress="titre"]').type(
+        "la fureur du posti-it IV - a new warior"
+    )
+    cy.get('[data-cypress="submit"]').click()
+
+    cy.url().should("eq", "http://localhost:3000/")
+}
+
+export const verifierModification = () => {
+    cy.log("Verifier que la création a bien été modifiée")
+    cy.get('[data-cypress="la fureur du posti-it IV - a new warior"]')
 }

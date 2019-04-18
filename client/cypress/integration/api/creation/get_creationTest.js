@@ -29,7 +29,7 @@ describe("get creations", () => {
     it("liste des créations finies", () =>
         getCreationsFinies(res => {
             expect(res.body.length).to.eql(2)
-            expect(res.body[1].id).to.be.lessThan(res.body[0].id)
+            expect(res.body[0].id).to.be.lessThan(res.body[1].id)
         }))
 
     it("liste des créations en cours", () =>

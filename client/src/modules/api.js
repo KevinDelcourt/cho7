@@ -64,7 +64,7 @@ export const hasRole = role =>
 
 export const getUser = () => defaultGet("/user/", { withCredentials: true })
 
-export const getCreateur = () => defaultGet("/users/1")
+export const getCreateur = () => defaultGet("/createur")
 
 export const getEtatsCreation = idCreation =>
     defaultGet("/etatsCreation/" + idCreation)
@@ -74,10 +74,8 @@ export const getCreation = id => defaultGet("/creation/" + id)
 export const deleteCreation = id =>
     defaultGet("/deleteCreation/" + id, { withCredentials: true })
 
-export const getCreations = () => defaultGet("/creations/done")
-
-export const getMeilleuresCreations = () =>
-    defaultGet("/creations/done/plusecoutes")
+export const getCreations = (tri, order) =>
+    defaultGet("/creations/" + tri + "/" + order)
 
 export const getCreationsInProgress = () => defaultGet("/creations/inprogress")
 
@@ -92,15 +90,28 @@ export const getAvancement = () =>
         }
     )
 
+export const getQuestionsReponses = () => defaultGet("/questionsreponses")
+
+export const getQuestions = () =>
+    defaultGet("/questions", { withCredentials: true })
+
 export const postProfilCreateur = formData => defaultPost("/users/1", formData)
 
 export const postNewCreation = formData => defaultPost("/addcreation", formData)
 
+export const postUpdateCreation = formData =>
+    defaultPost("/updateCreation", formData)
+
 export const postStarRating = (id, star) =>
     defaultPost("/StarRating/" + id, star)
 
-export const postUpdateCreation = formData =>
-    defaultPost("/updateCreation", formData)
+export const postQuestion = values => defaultPost("/addQuestion", values)
+
+export const postReponse = (values, id) =>
+    defaultPost("/addReponse/" + id, values)
+
+export const deleteFaq = id =>
+    defaultGet("/deleteFaq/" + id, { withCredentials: true })
 
 export const ajoutEcoute = id => defaultPost("/cptEcoute", { id: id })
 
