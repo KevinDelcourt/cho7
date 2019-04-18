@@ -11,6 +11,8 @@ const AvatarContainer = styled.div`
     height: 45vh;
 `
 
+const BrowserBtn = styled.input``
+
 class AvatarInput extends Component {
     state = {}
     fileSelect = evt => {
@@ -30,7 +32,7 @@ class AvatarInput extends Component {
                             : getImageUrl(this.props.avatar)
                     }
                 />
-                <input
+                <BrowserBtn
                     {...this.props.input}
                     type="file"
                     onChange={this.fileSelect}

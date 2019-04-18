@@ -21,6 +21,9 @@ const Fragment = styled.div`
         padding: 0.5rem;
         border-radius: 10px;
         filter: invert(100%);
+        &: hover {
+            box-shadow: 0px 1px 11px rgba(0, 0, 0, 0.8);
+        }
     }
 
     .audio-player-time {

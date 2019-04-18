@@ -60,47 +60,40 @@ class PlaylistForm extends React.Component {
         this.setState({ tabAddCreation: newTabCreation });
     }
 
-    removeCreation(event) {
-        /*let newTab = [];
-        
+    async removeCreation(event) {
+        let newTab = [];
+        const numClicked = event.target.id;
         let i = 0;
         while(i<this.state.tabAddCreation.length) {
-            let num = this.state.tabAddCreation[i].props.children[0].props.children.split(" ")[2];
-            if( numClicked != num ) {
+            let num = this.state.tabAddCreation[i].props.children[1].props.id.split("-")[1];
+            if( numClicked !== num ) {
                 newTab.push(this.creation(i));
             }
             i++;
-        }*/
-        const numClicked = event.target.id;
-        this.state.tabAddCreation.remove(numClicked);
-        this.setState({ tabAddCreation: this.state.tabAddCreation})
+        }
+        
+        await this.setState({ tabAddCreation: newTab})
+        console.log(this.state.tabAddCreation)
     }
 
     creation(index) {
         return (
             <div>
                 <Field component={Label} htmlFor="InputNomCreation" name={"labelNomCreation-"+index}>
-                    {"Création n° "+index}
+                    Création: 
                 </Field>
 
                 <Field
-                    name="InputNomCreation"
-                    type="text"
-                    component={Input}
-                    list={"creation-"+index}
-                />
-
-                <Field
-                    component={"datalist"}
-                    name="creation"
+                    component={"select"}
+                    name={"creation-"+index}
                     id={"creation-"+index}
                 >
+                    <option>-- Vide --</option>
                     {this.state.optionCreation ? (
                         this.state.optionCreation.map((c, index) => (
                             <option id={index}>{c}</option>
                         ))
                     ) : null}
-                    <option>{index}</option>
                 </Field>
 
                 <Button onClick={this.removeCreation} type="button" children="-" id={index}/>

@@ -9,7 +9,6 @@ import { hasRole,
 import { getAudioUrl } from "../../modules/apiURL";
 import AudioPlayer from "react-modular-audio-player";
 import styled from "styled-components";
-import SubmitButton from "./../atoms/Button/SubmitButton";
 import PlaylistForm from './../organisms/PlaylistForm';
 
 const StyledContainer = styled.div`
@@ -138,24 +137,26 @@ class Playlist extends React.Component {
     }
 
     setPlaylist(){
-        this.setState({
-            playlist: <StyleAudioPlayer id={this.props.numPlaylist}><AudioPlayer
-                audioFiles={this.state.playlistInformations}
-                iconSize="2rem"
-                fontSize="1rem"
-                playerWidth="40rem"
-                rearrange={rearrangedPlayer}
-                ref={element => {
-                    this.rap = element
-                }}
-            /></StyleAudioPlayer>
-        })
-        this.rap.audioRef.addEventListener("loadeddata", e => {
-            this.setState({ indexCurrentCreation: ((this.state.indexCurrentCreation + 1) % this.state.playlistInformations.length) })
+        if(this.state.playlistInformations.length!=0){
+            this.setState({
+                playlist: <StyleAudioPlayer id={this.props.numPlaylist}><AudioPlayer
+                    audioFiles={this.state.playlistInformations}
+                    iconSize="2rem"
+                    fontSize="1rem"
+                    playerWidth="40rem"
+                    rearrange={rearrangedPlayer}
+                    ref={element => {
+                        this.rap = element
+                    }}
+                /></StyleAudioPlayer>
+            })
+            this.rap.audioRef.addEventListener("loadeddata", e => {
+                this.setState({ indexCurrentCreation: ((this.state.indexCurrentCreation + 1) % this.state.playlistInformations.length) })
+                this.setLienPlaylist(this.state.indexCurrentCreation);
+            })
+            this.setState({ indexCurrentCreation: (this.state.indexCurrentCreation - 1) })
             this.setLienPlaylist(this.state.indexCurrentCreation);
-        })
-        this.setState({ indexCurrentCreation: (this.state.indexCurrentCreation - 1)  })
-        this.setLienPlaylist(this.state.indexCurrentCreation);
+        }
     }
 
     changeCurrentIndex(event){
@@ -271,9 +272,9 @@ export default class Playlists extends React.Component {
                     ):null}
 
                     <MainContainer title="Mes playlists">
-                        {this.state.nomsPlaylist.map((noms, index) => (
+                        {this.state.nomsPlaylist.map((noms) => (
                             <StyledContainer>
-                                <Playlist nom={noms.nom} numPlaylist={noms.id}/>
+                                <Playlist nom={noms.nom} numPlaylist={noms.id} />
                             </StyledContainer>
                         ))}
                     </MainContainer>

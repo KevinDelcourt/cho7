@@ -62,6 +62,14 @@ class RenseignerProfilForm extends Component {
                     />
 
                     <Field
+                        component={LabelInput}
+                        name="twitter"
+                        type="text"
+                        label="Compte Twitter"
+                        wInput="25"
+                    />
+
+                    <Field
                         component={LabelTextarea}
                         name="presentation"
                         label="Description :"

@@ -8,9 +8,36 @@ import DescriptionContainer from "./../atoms/Container/DescriptionContainer"
 import SiteTitle from "../atoms/Title/SiteTitle"
 import ThemeImageInput from "../molecules/ThemeImageInput"
 import Logo from "../atoms/Logo"
+//import styled from "styled-components"
+
+/*const StyledSelect = styled.select`
+    margin: 5px;
+    color: black;
+    &: hover {
+        box-shadow: 0px 1px 5px rgb(47, 29, 8);
+    }
+    &&: focus {
+        box-shadow: 0px 1px 17px rgb(47, 29, 8);
+    }
+`*/
 
 class PersonnalisationForm extends Component {
-    polices = ["Roluko", "Sevillana", "Almendra SC", "Arial", "Comic Sans MS"]
+    polices = [
+        "Verdana",
+        "Sevillana",
+        "Almendra SC",
+        "Arial",
+        "Comic Sans MS",
+        "Futura",
+        "Courier New",
+        "Cambria",
+        "Helvetica",
+        "Times New Roman",
+        "Impact",
+        "Eurostile",
+        "Palatino",
+        "Garamond"
+    ]
 
     colorFieldNames = [
         { name: "colorText", label: "Text color" },
@@ -58,8 +85,8 @@ class PersonnalisationForm extends Component {
                 <Label>{label}</Label>
                 <Field
                     component={"select"}
+                    style={{ color: "black", margin: "5px" }}
                     name={name}
-                    style={{ color: "black" }}
                     onChange={e => this.changeThemeProp(name, e.target.value)}>
                     {options}
                 </Field>
@@ -110,7 +137,7 @@ class PersonnalisationForm extends Component {
             {this.getSelectField(
                 "borderRadius",
                 "Rayon Bordure",
-                this.getOptions(0, 4, 0.5, "em")
+                this.getOptions(0, 2, 0.25, "em")
             )}
 
             {this.getSelectField(
@@ -154,6 +181,7 @@ class PersonnalisationForm extends Component {
 
             {this.fileFields.map((field, index) => (
                 <Field
+                    key={index}
                     component={ThemeImageInput}
                     name={field.name}
                     label={field.label}

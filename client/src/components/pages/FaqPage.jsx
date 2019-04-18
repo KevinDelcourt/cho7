@@ -19,12 +19,12 @@ import { connect } from "react-redux"
 import { bindActionCreators } from "redux"
 import styled from "styled-components"
 import Collapse from "react-css-collapse"
-import theme from "../../theme"
 
 const QuestionContainer = styled(DescriptionContainer)`
     cursor: pointer;
-    border-radius: 10px;
-    background-color: ${theme.colorDescriptionBg};
+    border-radius: ${props => props.borderRadius};
+    border: ${props => props.borderSize} solid;
+    background-color: ${props => props.bgColor};
     display: flex;
     align-items: center;
 `
@@ -41,8 +41,9 @@ const ReponseContainer = styled(Collapse)`
 const NavContainer = styled(Container)`
     display: grid;
     grid-template-columns: repeat(2, auto);
-    background-color: ${theme.colorMenuBarBg};
-    border-radius: 5px;
+    background-color: ${props => props.bgColor};
+    border-radius: ${props => props.borderRadius};
+    border: ${props => props.borderSize} solid;
     font-size: 1.2em;
     padding: 15px;
 `
@@ -125,6 +126,9 @@ class FaqPage extends React.Component {
                     {this.state.questionsReponses.map((c, index) => (
                         <>
                             <QuestionContainer
+                                bgColor={this.props.descriptionBgColor}
+                                borderSize={this.props.borderSize}
+                                borderRadius={this.props.borderRadius}
                                 onClick={() => this.change(index, c.id)}>
                                 <Question children={c.question} />
                                 {this.displayDeleteButton(c.id)}
@@ -155,6 +159,9 @@ class FaqPage extends React.Component {
                 {this.state.questions.map((c, index) => (
                     <>
                         <QuestionContainer
+                            bgColor={this.props.descriptionBgColor}
+                            borderSize={this.props.borderSize}
+                            borderRadius={this.props.borderRadius}
                             onClick={() => this.change(index, c.id)}>
                             <Question children={c.question} />
                             {this.displayDeleteButton(c.id)}
@@ -184,7 +191,10 @@ class FaqPage extends React.Component {
     displayNavBar = () => {
         if (this.state.auth)
             return (
-                <NavContainer>
+                <NavContainer
+                    bgColor={this.props.descriptionBgColor}
+                    borderRadius={this.props.borderRadius}
+                    borderSize={this.props.borderSize}>
                     <button
                         to="/faq"
                         onClick={() =>
@@ -230,11 +240,19 @@ class FaqPage extends React.Component {
     )
 }
 
+const mapStateToProps = state => {
+    return {
+        bgColor: state.app.theme.colorContainerBg,
+        descriptionBgColor: state.app.theme.colorDescriptionBg,
+        borderRadius: state.app.theme.borderRadius,
+        borderSize: state.app.theme.borderSize
+    }
+}
 const mapDispatchToProps = dispatch => {
     return bindActionCreators({ msgAction }, dispatch)
 }
 
 export default connect(
-    null,
+    mapStateToProps,
     mapDispatchToProps
 )(FaqPage)

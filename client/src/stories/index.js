@@ -21,6 +21,7 @@ storyButton.addDecorator(withKnobs)
 storyButton.add("Button", () => (
     <Button
         bgColor={text("Background-Color", "#ef7513")}
+        bgColorHover={text("Background-Color when hover", "#b8590c")}
         children={text("Value", "Se connecter")}
         border={text("Border", "1px solid #af540c")}
         color={text("Color", "#fff")}

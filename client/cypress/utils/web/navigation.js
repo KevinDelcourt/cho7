@@ -1,5 +1,5 @@
 export const goToRenseignerProfilPage = () => {
-    cy.log("click sur la profil")
+    cy.log("click sur le profil")
     cy.contains("Profil").click()
     cy.url().should("eq", "http://localhost:3000/RenseignerProfilPage")
 }

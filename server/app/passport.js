@@ -32,7 +32,13 @@ module.exports = function(passport) {
                     [username],
                     (err, rows) => {
                         if (err) return done(err)
-                        if (!rows.length || password != rows[0].password)
+                        if (
+                            !rows.length ||
+                            !require("password-hash").verify(
+                                password,
+                                rows[0].password
+                            )
+                        )
                             return done(null, false)
 
                         return done(null, rows[0])

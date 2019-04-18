@@ -7,7 +7,6 @@ import { createStore, combineReducers } from "redux"
 import { reducer as formReducer } from "redux-form"
 import { appReducer } from "./modules/actionsAndReducers"
 import AppMsgDisplay from "./components/molecules/AppMsgDisplay"
-import GlobalStyle from "./GlobalStyle"
 
 const reducers = {
     form: formReducer,
@@ -22,7 +21,6 @@ let store = createStore(
 
 ReactDOM.render(
     <Provider store={store}>
-        <GlobalStyle />
         <AppMsgDisplay />
         <App />
     </Provider>,

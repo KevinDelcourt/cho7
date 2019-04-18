@@ -64,7 +64,7 @@ export const hasRole = role =>
 
 export const getUser = () => defaultGet("/user/", { withCredentials: true })
 
-export const getCreateur = () => defaultGet("/users/1")
+export const getCreateur = () => defaultGet("/createur")
 
 export const getEtatsCreation = idCreation =>
     defaultGet("/etatsCreation/" + idCreation)

@@ -1,5 +1,5 @@
 import React from "react"
-import { getCreations } from "../../modules/api"
+import { getCreations, getCreateur } from "../../modules/api"
 import Creation from "../molecules/Creation"
 import MainContainer from "../molecules/MainContainer"
 import SocialNetwork from "../molecules/SocialNetwork"
@@ -7,6 +7,7 @@ import StarRating from "../molecules/StarRating"
 import Link from "../atoms/Link/Link"
 import Label from "../atoms/Label/Label"
 import styled from "styled-components"
+import { connect } from "react-redux"
 
 const SelectContainer = styled.div`
     margin-bottom: 15px;
@@ -14,12 +15,14 @@ const SelectContainer = styled.div`
 
 class NewsFeed extends React.Component {
     state = {
-        creations: []
+        creations: [],
+        createur: {}
     }
 
     async componentDidMount() {
         this.setState({
-            creations: await getCreations("date", "asc")
+            creations: await getCreations("date", "desc"),
+            createur: await getCreateur()
         })
     }
 
@@ -36,15 +39,17 @@ class NewsFeed extends React.Component {
             <MainContainer title="Dernières créations">
                 <SelectContainer>
                     <Label children="Trier par : " />
-                    <select onChange={this.handleChange}>
-                        <option value="date,asc">Plus récents</option>
-                        <option value="date,desc">Plus anciens</option>
+                    <select
+                        onChange={this.handleChange}
+                        style={{ backgroundColor: this.props.bgColor }}>
+                        <option value="date,desc">Plus récentes</option>
+                        <option value="date,asc">Plus anciennes</option>
                         <option value="titre,asc">Titre A -> Z</option>
                         <option value="titre,desc">Titre Z -> A</option>
-                        <option value="note,desc">Mieux notés</option>
-                        <option value="note,asc">Moins bien notés</option>
-                        <option value="ecoute,desc">Plus écoutés</option>
-                        <option value="ecoute,asc">Moins écoutés</option>
+                        <option value="note,desc">Mieux notées</option>
+                        <option value="note,asc">Moins bien notées</option>
+                        <option value="ecoute,desc">Plus écoutées</option>
+                        <option value="ecoute,asc">Moins écoutées</option>
                     </select>
                 </SelectContainer>
 
@@ -65,7 +70,20 @@ class NewsFeed extends React.Component {
                                 c.nbnote === 0 ? 0 : c.sommenotes / c.nbnote
                             }
                         />
-                        <SocialNetwork />
+                        <SocialNetwork
+                            text={
+                                c.titre +
+                                " " +
+                                window.location.href +
+                                "creation/" +
+                                c.id
+                            }
+                            twitterAccount={
+                                this.state.createur
+                                    ? this.state.createur.twitter
+                                    : ""
+                            }
+                        />
                     </MainContainer>
                 ))}
             </MainContainer>
@@ -73,4 +91,12 @@ class NewsFeed extends React.Component {
     }
 }
 
-export default NewsFeed
+const mapStateToProps = state => {
+    return {
+        bgColor: state.app.theme.colorDescriptionBg,
+        borderRadius: state.app.theme.borderRadius,
+        borderSize: state.app.theme.borderSize
+    }
+}
+
+export default connect(mapStateToProps)(NewsFeed)

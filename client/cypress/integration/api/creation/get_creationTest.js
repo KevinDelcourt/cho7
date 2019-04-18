@@ -15,13 +15,13 @@ describe("get creation", () => {
         }))
 
     it("peut retourner une création en cours", () =>
-        getCreation(2, res => {
+        getCreation(3, res => {
             expect(res.body.nomfichier).to.be.null
         }))
 
     it("peut retourner les etats d'avancement d'une création en cours", () =>
-        getEtatsAvancement(2, res => {
-            expect(res.body.length).to.eql(2)
+        getEtatsAvancement(3, res => {
+            expect(res.body.length).to.eql(3)
         }))
 })
 
@@ -29,6 +29,7 @@ describe("get creations", () => {
     it("liste des créations finies", () =>
         getCreationsFinies(res => {
             expect(res.body.length).to.eql(2)
+            expect(res.body[0].id).to.be.lessThan(res.body[1].id)
         }))
 
     it("liste des créations en cours", () =>

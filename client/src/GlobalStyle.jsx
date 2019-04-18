@@ -42,9 +42,6 @@ th {
     padding: 8px;
 }
 
-select, option {
-    font-family: Ruluko;
-}
 
 .deleteButton {
     border: 0;

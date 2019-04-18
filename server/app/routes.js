@@ -1,371 +1,66 @@
-const { updateCreateurQuery } = require("../modules/queries")
+const connection = require("mysql").createConnection(
+    require("../db/db-identifiants.json")
+)
+
 const {
-    responseFromValidatorError,
-    getErrors,
-    hasNoErrors,
-    requiredCheck,
-    maxLenValidator,
-    isLoggedIn
-} = require("../modules/validation")
-const mysql = require("mysql")
-const credentials = require("../db/db-identifiants.json")
-const connection = mysql.createConnection(credentials)
-const fs = require("fs")
-const multer = require("multer")
-const ip = require("ip")
+    uploadAudio,
+    uploadImageProfile,
+    uploadImageTheme
+} = require("../modules/multer")
 
-const { body, validationResult } = require("express-validator/check")
-const storageAudio = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, __dirname + "/../public/audio/")
-    },
-    filename: (req, file, cb) => {
-        cb(null, file.originalname)
-    }
-})
-let uploadAudio = multer({ storage: storageAudio })
-
-const storageImage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, __dirname + "/../public/images/")
-    },
-    filename: (req, file, cb) => {
-        cb(null, file.originalname)
-    }
-})
-let uploadImage = multer({ storage: storageImage })
-
-let Twitter = require("twitter")
-
-var twitterClient = new Twitter({
-    consumer_key: "kQpM9aLLltlKefBfF7C2jpjgj",
-    consumer_secret: "QBy76UuHc7Zp6rWC7RRAntlKfwQlGilq4xd2Ew8m4BbZn1qVsw",
-    access_token_key: "711901917358788608-03x2C8x0ii1uIxQL1AIL8EFSUvt9JIL",
-    access_token_secret: "sGCgbhzfTBLzaWdGD37Q4RkIa7vHMDBVZxW4j7rFCBgp8"
-})
-
-const creationValidator = [
-    body("titre")
-        .isLength({ min: 1 })
-        .withMessage("Titre requis"),
-    body("creation")
-        .custom((value, { req }) => {
-            if (!req.file) {
-                return true
-            } else if (req.file.mimetype.split("/")[0] != "audio") {
-                throw new Error("Seuls les fichiers audios sont acceptés")
-            } else {
-                return true
-            }
-        })
-        .custom((value, { req }) => {
-            if (!req.file) {
-                return true
-            } else if (req.file.originalname.length > 50) {
-                throw new Error(
-                    "Nom de fichier trop long, maximum 50 caractères"
-                )
-            } else {
-                return true
-            }
-        })
-]
-
-const etatAvancementValidator = [
-    body("libelle.*")
-        .isString()
-        .isLength({ min: 1 })
-        .withMessage("Le label de l'état est obligatoire")
-        .isLength({ max: 50 })
-        .withMessage("Le titre doit faire un maximum de 50 caractères"),
-    body("idEtat.*").isInt({
-        min: 0,
-        max: 99999999999
-    }) /*,
-    body("valeur.*", "Valeur invalide").isInt({ min: 0, max: 100 })*/
-]
+const validators = require("../modules/validation")
+const mainController = require("./controllers/main")(connection)
+const creationController = require("./controllers/creation")(connection)
+const themeController = require("./controllers/theme")(connection)
+const userController = require("./controllers/users")(connection)
+const faqController = require("./controllers/faq")(connection)
+const authController = require("./controllers/auth")()
 
 module.exports = (app, passport) => {
-    app.get("/", (req, res) => {
-        res.send(true)
-    })
-
-    /* NOUVELLE CREATION */
+    app.get("/", mainController.accueil)
 
     app.post(
         "/addcreation",
-        isLoggedIn,
+        validators.isLoggedIn,
         uploadAudio.single("creation"),
-        creationValidator,
-        etatAvancementValidator,
-        maxLenValidator(),
-        hasNoErrors,
-        (req, res) => {
-            if (req.body.twitter && req.body.twitter === "true")
-                twitterClient.post(
-                    "statuses/update",
-                    {
-                        status:
-                            "Nouvelle création: " +
-                            req.body.titre +
-                            "! test.com"
-                    },
-                    error => {
-                        if (error) return res.send(error)
-                    }
-                )
-
-            if (req.file)
-                connection.query(
-                    "INSERT INTO creation (nomfichier, titre, description) VALUES (?, ?, ?)",
-                    [
-                        req.file.originalname,
-                        req.body.titre,
-                        req.body.description
-                    ],
-                    err => {
-                        if (err) return res.send(err)
-                        return res.send(true)
-                    }
-                )
-            else if (
-                req.body.libelle &&
-                req.body.valeur &&
-                req.body.libelle.length > 0 &&
-                req.body.valeur.length > 0
-            )
-                connection.query(
-                    "INSERT INTO creation (titre,description) VALUES (?,?)",
-                    [req.body.titre, req.body.description],
-                    (err, rows) => {
-                        if (err) return res.send(err)
-                        req.body.libelle.map((l, index) => {
-                            if (req.body.valeur[index] == "undefined") {
-                                req.body.valeur[index] = 0
-                            }
-
-                            connection.query(
-                                "INSERT INTO etat_avancement (libelle, valeuravancement, idcreation) VALUES (?, ?, ?)",
-                                [l, req.body.valeur[index], rows.insertId]
-                            )
-                        })
-                        return res.send(true)
-                    }
-                )
-            else {
-                return res.send({
-                    libelle: "Au moins 1 etat requis",
-                    valeur: "Au moins une valeur requise",
-                    creation: "Un fichier ou un état requis"
-                })
-            }
-        }
+        validators.creationValidator,
+        validators.etatAvancementValidator,
+        validators.maxLenValidator(),
+        validators.hasNoErrors,
+        creationController.addCreation
     )
-
-    /* MODIFIER CREATION */
 
     app.post(
         "/updateCreation/",
-        isLoggedIn,
+        validators.isLoggedIn,
         uploadAudio.single("creation"),
-        creationValidator,
-        maxLenValidator(),
-        hasNoErrors,
-        (req, res) => {
-            console.log(req.body)
-            if (req.body.twitter && req.body.twitter === "true")
-                twitterClient.post(
-                    "statuses/update",
-                    {
-                        status:
-                            "Nouvelle update: " + req.body.titre + "! test.com"
-                    },
-                    error => {
-                        if (error) return res.send(error)
-                    }
-                )
-
-            const idCreation = req.body.id
-            if (req.file) {
-                connection.query(
-                    "DELETE FROM etat_avancement WHERE idcreation = ?",
-                    idCreation,
-                    err => {
-                        if (err) return res.send(err)
-                    }
-                )
-                connection.query(
-                    "UPDATE creation SET nomfichier = ?, titre = ?, description = ? WHERE id = ?",
-                    [
-                        req.file.originalname,
-                        req.body.titre,
-                        req.body.description,
-                        idCreation
-                    ],
-                    (err, rows) => {
-                        if (err) return res.send(err)
-
-                        res.send(true)
-                    }
-                )
-            } else {
-                connection.query(
-                    "UPDATE creation SET titre = ?, description = ? WHERE id = ?",
-                    [req.body.titre, req.body.description, idCreation],
-                    (err, rows) => {
-                        if (err) return res.send(err)
-
-                        if (
-                            req.body.libelle &&
-                            req.body.valeur &&
-                            req.body.libelle.length > 0 &&
-                            req.body.valeur.length > 0
-                        )
-                            req.body.valeur.map((val, index) => {
-                                connection.query(
-                                    "UPDATE etat_avancement SET valeuravancement = ?, libelle = ? WHERE id = ?",
-                                    [
-                                        val,
-                                        req.body.libelle[index],
-                                        req.body.idEtat[index]
-                                    ],
-                                    (err, rows) => {
-                                        if (err) return res.send(err)
-                                    }
-                                )
-                            })
-
-                        res.send(true)
-                    }
-                )
-            }
-        }
+        validators.creationValidator,
+        validators.maxLenValidator(),
+        validators.hasNoErrors,
+        creationController.updateCreation
     )
 
-    /* SUPPRIMER CREATION */
+    app.get(
+        "/deleteCreation/:id",
+        validators.isLoggedIn,
+        creationController.deleteCreation
+    )
 
-    app.get("/deleteCreation/:id", isLoggedIn, (req, res) => {
-        const idCreation = req.params.id
-        //let pathFinFichier;
-        // Avant recupere les titre a suprimer dans la bdd
-        // connection.query('SELECT nomfichier FROM creation WHERE id=?', [req.body.idCreation], (err, rows) => {});
+    app.post("/StarRating/:id", mainController.addNote)
 
-        if (/^(0|[1-9]\d*)$/.test(idCreation)) {
-            connection.query(
-                "DELETE FROM creation WHERE id = ?",
-                [idCreation],
-                (err, rows) => {
-                    /* pathFinFichier= rows[0].nomfichier;
-				console(rows[0].nomfichier);
-				let pathComplet=  __dirname + '/../public/audio/'+pathFinFichier; */
-                    // console.log(pathComplet);
-                    // fs.unlinkSync(pathComplet)
-                    return res.send(true)
-                }
-            )
-        } else {
-            return res.send(false)
-        }
-    })
+    app.post("/cptEcoute", mainController.addEcoute)
 
-    app.post("/StarRating/:id", (req, res) => {
-        console.log(req.body)
-        const idCreation = req.params.id
-        connection.query(
-            "SELECT sommenotes, nbnote FROM creation WHERE id=?",
-            [idCreation],
-            (err, rows) => {
-                if (err) return res.send(err)
-                connection.query(
-                    "UPDATE creation SET sommenotes = ?, nbnote = ? WHERE id=?",
-                    [
-                        rows[0].sommenotes + req.body.star,
-                        rows[0].nbnote + 1,
-                        idCreation
-                    ],
-                    (err, rows) => {
-                        if (err) return res.send(err)
-
-                        return res.send(true)
-                    }
-                )
-            }
-        )
-    })
-
-    /* NOUVELLE QUESTION */
-
-    app.post("/addQuestion", (req, res) => {
-        connection.query(
-            "INSERT INTO faq (question) VALUES (?)",
-            [req.body.question],
-            (err, rows) => {
-                return err ? res.send(err) : res.send(true)
-            }
-        )
-    })
-
-    /* NOUVELLE REPONSE */
-
-    app.post("/addReponse/:id", (req, res) => {
-        connection.query(
-            "UPDATE faq SET reponse = ? WHERE id = ?",
-            [req.body.reponse, req.params.id],
-            (err, rows) => {
-                return err ? res.send(err) : res.send(true)
-            }
-        )
-    })
-
-    /* RECUPERER QUESTIONS SANS REPONSES */
-
-    app.get("/questions", (req, res) => {
-        connection.query(
-            "SELECT * FROM faq WHERE reponse IS NULL",
-            (err, rows) => {
-                if (err) res.send(err)
-                res.send(rows)
-            }
-        )
-    })
-
-    /* SUPPRIMER QUESTION/REPONSE(FAQ) */
-
-    app.get("/deleteFaq/:id", isLoggedIn, (req, res) => {
-        const idFaq = req.params.id
-
-        if (/^(0|[1-9]\d*)$/.test(idFaq)) {
-            connection.query(
-                "DELETE FROM faq WHERE id = ?",
-                [idFaq],
-                (err, rows) => {
-                    return err ? res.send(err) : res.send(true)
-                }
-            )
-        }
-    })
-
-    app.post("/cptEcoute", (req, res) => {
-        connection.query(
-            "SELECT nbecoute FROM creation WHERE id=?",
-            [req.body.id],
-            (err, rows) => {
-                if (err) res.send(err)
-                const ecouteCourante = rows[0].nbecoute
-                connection.query(
-                    "UPDATE creation SET nbecoute=? WHERE id=?",
-                    [ecouteCourante + 1, req.body.id],
-                    (err, rows) => {
-                        if (err) res.send(err)
-                    }
-                )
-            }
-        )
-        res.send(true)
-    })
+    app.get("/theme", themeController.getTheme)
 
     app.post("/nomsplaylist", (req, res) => {
         connection.query("SELECT id, nom FROM playlist", (err, rows)=>{
+            if(err) res.send(err)
+            res.send(rows)
+        })
+    })
+
+    app.post("/nomcreation", (req, res) =>{
+        connection.query("SELECT id, titre FROM creation", (err, rows)=>{
             if(err) res.send(err)
             res.send(rows)
         })
@@ -382,63 +77,95 @@ module.exports = (app, passport) => {
         })
     })
 
-    app.post("/nomcreation", (req, res) =>{
-        connection.query("SELECT id, titre FROM creation", (err, rows)=>{
-            if(err) res.send(err)
-            res.send(rows)
-        })
-    })
-
-    app.get("/theme", (req, res) => {
-        connection.query("SELECT * FROM theme", (err, rows) => {
-            if (err) return res.send(err)
-
-            let theme = {}
-            rows.map(r => {
-                theme[r.style] = r.value
-            })
-
-            return res.send(theme)
-        })
-    })
-
     app.post(
         "/theme",
-        isLoggedIn,
-        uploadImage.fields([
+        validators.isLoggedIn,
+        uploadImageTheme.fields([
             { name: "logoFile", maxCount: 1 },
             { name: "banniereFile", maxCount: 1 },
             { name: "backgroundFile", maxCount: 1 }
         ]),
-        (req, res) => {
-            let query = "INSERT INTO theme (style,value) VALUES "
-            let dataTab = []
-            for (let key in req.body) {
-                console.log(req.body[key])
-                if (req.body[key] != "undefined") {
-                    query += "(?,?),"
-                    dataTab.push(key)
-                    dataTab.push(req.body[key])
-                }
-            }
-            for (let key in req.files) {
-                query += "(?,?),"
-                dataTab.push(key.slice(0, -4))
-                dataTab.push(req.files[key][0].originalname)
-            }
-
-            query = query.slice(0, -1)
-            connection.query("DELETE FROM theme", (err, rows) => {
-                if (err) return res.send(err)
-                connection.query(query, dataTab, (err, rows) => {
-                    if (err) return res.send(err)
-                    return res.send(true)
-                })
-            })
-        }
+        themeController.updateTheme
     )
 
-    require("./routes/auth")(app, passport)
-    require("./routes/users")(app, connection)
-    require("./routes/public_get")(app, connection)
+    app.get("/user", validators.isLoggedIn, userController.getLoggedInUser)
+
+    app.get("/users", userController.getUsers)
+
+    app.post(
+        "/users",
+        validators.newUserValidator,
+        validators.maxLenValidator(),
+        validators.hasNoErrors,
+        userController.createNewUser
+    )
+
+    app.get("/users/:id", userController.getUserFromId)
+
+    app.delete(
+        "/users/:id",
+        validators.isLoggedIn,
+        validators.hasGoodId,
+        userController.deleteUser
+    )
+
+    app.post(
+        "/users/:id",
+        validators.isLoggedIn,
+        validators.hasGoodId,
+        uploadImageProfile.single("fichierAvatar"),
+        validators.userUpdateValidator,
+        validators.maxLenValidator(),
+        validators.hasNoErrors,
+        userController.updateUser
+    )
+
+    app.get("/createur", userController.getCreateur)
+
+    app.get("/creation/:id", creationController.getCreation)
+
+    app.get(
+        "/creations/done/plusecoutes",
+        creationController.getCreationsPlusEcoutees
+    )
+
+    app.get(
+        "/creations/:tri/:order",
+        creationController.getCreationDuPlusAuMoinsRecent
+    )
+
+    app.get("/creations/inprogress", creationController.getCreationEnCours)
+
+    app.post("/addQuestion", faqController.addQuestion)
+
+    app.post("/addReponse/:id", faqController.addReponse)
+
+    app.get("/questions", faqController.getQuestions)
+
+    app.get("/deleteFaq/:id", validators.isLoggedIn, faqController.deleteFaq)
+
+    app.get("/questionsreponses", faqController.getQuestionReponse)
+
+    app.get("/avancement", creationController.getAvancement)
+
+    app.get(
+        "/etatsCreation/:idCreation",
+        creationController.getEtatFromCreationId
+    )
+
+    app.get(
+        "/has_role/:role",
+        validators.isLoggedIn,
+        authController.userHasRole
+    )
+
+    app.post(
+        "/login",
+        passport.authenticate("local", { failureRedirect: "/denied" }),
+        authController.loginAction
+    )
+
+    app.get("/logout", authController.logoutAction)
+
+    app.get("/denied", mainController.denied)
 }
