@@ -10,6 +10,11 @@ const jsonToArray = json => {
     for (let val in json) array.push(json[val])
     return array
 }
+
+const queryCallback = (err, res, cb) => {
+    if (err) return res.send(err)
+    cb()
+}
 module.exports = {
     updateCreateurQuery: (connexion, json, cb) => {
         connexion.query(
@@ -23,5 +28,7 @@ module.exports = {
 
     setBuilder: setBuilder,
 
-    jsonToArray: jsonToArray
+    jsonToArray: jsonToArray,
+
+    queryCallback: queryCallback
 }

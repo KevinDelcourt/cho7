@@ -7,14 +7,16 @@ const ALink = styled(Link)`
     transition: all 0.2s ease;
 
     &:hover {
-        filter: invert(100%);
+        cursor: pointer;
+        color: ${props => props.hovercolor};
     }
 `
 
 const mapStateToProps = state => {
     return {
         font: state.app.theme.fontBase,
-        color: state.app.theme.colorText
+        color: state.app.theme.colorText,
+        hovercolor: state.app.theme.colorSubmitBtn
     }
 }
 
