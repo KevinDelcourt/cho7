@@ -137,7 +137,7 @@ class PersonnalisationForm extends Component {
             {this.getSelectField(
                 "borderRadius",
                 "Rayon Bordure",
-                this.getOptions(0, 4, 0.5, "em")
+                this.getOptions(0, 2, 0.25, "em")
             )}
 
             {this.getSelectField(

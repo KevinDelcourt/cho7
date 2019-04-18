@@ -13,7 +13,7 @@
     "colorMenuBarBg": "rgba(213, 191, 159, 0.67)",
     "colorSubmitBtn": "rgba(196, 196, 196, 1)",
 
-    "borderRadius": "2em",
+    "borderRadius": "0.25em",
     "borderSize": "0px",
 
     "background": "backgroundCropped.jpg",
