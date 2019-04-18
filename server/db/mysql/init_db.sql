@@ -50,7 +50,7 @@ VALUES
 CREATE TABLE faq (
 	id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   question varchar (250) NOT NULL COLLATE utf8_general_ci,
-	reponse varchar (250) DEFAULT NULL
+	reponse varchar (250) DEFAULT NULL COLLATE utf8_general_ci
 );
 
 INSERT INTO faq (question, reponse)
