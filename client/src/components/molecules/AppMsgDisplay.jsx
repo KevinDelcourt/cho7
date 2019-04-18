@@ -28,10 +28,17 @@ class AppMsgDisplay extends Component {
                             width: "max-content"
                         }}>
                         <p>{this.props.msg}</p>
-                        <Button
-                            onClick={() => this.setState({ display: false })}>
-                            OK
-                        </Button>
+
+                        {this.props.msg !== "Upload en cours..." ? (
+                            <Button
+                                onClick={() =>
+                                    this.setState({ display: false })
+                                }>
+                                OK
+                            </Button>
+                        ) : (
+                            ""
+                        )}
                     </Container>
                 </center>
             </div>

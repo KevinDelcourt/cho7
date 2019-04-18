@@ -28,11 +28,13 @@ class UploadPage extends React.Component {
                 formData.append("valeur[" + index + "]", etat.valeuravancement)
             }
         }
+        this.props.msgAction("Upload en cours...")
         if ((await postNewCreation(formData)) === true) {
             this.setState({ redirect: <Redirect to="/" /> }, () => {
                 this.props.msgAction("Ajout effectué avec succès")
             })
         } else {
+            this.setState({ redirect: "" })
             this.props.msgAction("Erreur lors de l'ajout")
         }
     }
