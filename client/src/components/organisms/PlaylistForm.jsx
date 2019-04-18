@@ -28,7 +28,6 @@ class PlaylistForm extends React.Component {
             optionPlaylist: this.setOptionPlaylist(nomPlaylist),
             optionCreation: this.setOptionCreation(nomCreation)
         });
-        
     }
 
     setOptionPlaylist(nomPlaylist) {
@@ -42,7 +41,7 @@ class PlaylistForm extends React.Component {
     setOptionCreation(nomCreation) {
         let optionTab = [];
         nomCreation.map((c) => (
-            optionTab.push(c.titre)
+            optionTab.push(c)
         ))
         return optionTab;
     }
@@ -51,29 +50,18 @@ class PlaylistForm extends React.Component {
         this.setState({ nouvellePlaylist: !this.state.nouvellePlaylist });
     }
 
-    addCreation(event) {
-        let newTabCreation = [];
-        this.state.tabAddCreation.map((c, index) => (
-            newTabCreation.push(this.creation(index))
-        ));
-        newTabCreation.push(this.creation(this.state.tabAddCreation.length));
-        this.setState({ tabAddCreation: newTabCreation });
+    async addCreation(event) {
+        let newTabCreation = this.state.tabAddCreation.slice(0);
+        let dernier = this.creation(newTabCreation.length);
+        newTabCreation.push(dernier);
+        await this.setState({ tabAddCreation: newTabCreation });
     }
 
     async removeCreation(event) {
-        let newTab = [];
         const numClicked = event.target.id;
-        let i = 0;
-        while(i<this.state.tabAddCreation.length) {
-            let num = this.state.tabAddCreation[i].props.children[1].props.id.split("-")[1];
-            if( numClicked !== num ) {
-                newTab.push(this.creation(i));
-            }
-            i++;
-        }
-        
-        await this.setState({ tabAddCreation: newTab})
-        console.log(this.state.tabAddCreation)
+        let newTab = this.state.tabAddCreation.slice(0);
+        newTab.splice(numClicked, 1);
+        await this.setState({ tabAddCreation: newTab })
     }
 
     creation(index) {
@@ -88,10 +76,10 @@ class PlaylistForm extends React.Component {
                     name={"creation-"+index}
                     id={"creation-"+index}
                 >
-                    <option>-- Vide --</option>
+                    <option value="vide">-- Vide --</option>
                     {this.state.optionCreation ? (
                         this.state.optionCreation.map((c, index) => (
-                            <option id={index}>{c}</option>
+                            <option value={c.id}>{c.titre}</option>
                         ))
                     ) : null}
                 </Field>
@@ -142,6 +130,8 @@ class PlaylistForm extends React.Component {
                     </Field>
 
                     <Button type="button" onClick={this.addCreation} children="+" />
+                    {//ici
+                    }
 
                     { this.state.tabAddCreation }
                 </div>
