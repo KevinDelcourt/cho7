@@ -27,7 +27,7 @@ const expectedCreateur = {
     id: 1,
     username: "Admin",
     email: "artiste.art@genie.nl",
-    presentation: "je suis un artiste et je fait de lart de génie",
+    presentation: "Je suis un artiste et je fait de l'art de génie",
     avatar: "avatar_createur.png",
     role: "ROLE_CREATEUR"
 }

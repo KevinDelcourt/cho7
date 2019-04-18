@@ -65,6 +65,8 @@ module.exports = connection => {
             if (req.body.presentation || req.body.presentation === "")
                 updateData.presentation = req.body.presentation
 
+            if (req.body.twitter) updateData.twitter = req.body.twitter
+
             if (req.file)
                 updateData.avatar =
                     "avatar_createur." + req.file.filename.split(".").pop()

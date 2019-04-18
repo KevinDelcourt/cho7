@@ -26,6 +26,8 @@ class PersonnalisationPage extends React.Component {
             } else formData.append(key, values[key])
         }
 
+        this.props.msgAction("Upload en cours...")
+
         let response = await updateTheme(formData)
 
         if (response === true) {

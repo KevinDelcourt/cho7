@@ -1,8 +1,8 @@
 import renderer from "react-test-renderer"
 import "jest-styled-components"
-import ProfilCreateurPage from "./ProfilCreateurPage"
+import AccueilPage from "../AccueilPage"
 import testEnv from "../../../modules/jestUtil"
 
 test("renders without crashing", () => {
-    const tree = renderer.create(testEnv(ProfilCreateurPage)).toJSON()
+    const tree = renderer.create(testEnv(AccueilPage)).toJSON()
 })

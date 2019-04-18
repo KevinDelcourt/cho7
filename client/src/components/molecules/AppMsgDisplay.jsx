@@ -1,4 +1,4 @@
-import React, { Fragment, Component } from "react"
+import React, { Component } from "react"
 import { connect } from "react-redux"
 import Container from "../atoms/Container/Container"
 import Button from "../atoms/Button/Button"
@@ -19,15 +19,26 @@ class AppMsgDisplay extends Component {
                 style={{
                     position: "fixed",
                     bottom: "5px",
-                    width: "100%"
+                    width: "100%",
+                    zIndex: "1000"
                 }}>
                 <center>
-                    <Container style={{ width: "max-content" }}>
+                    <Container
+                        style={{
+                            width: "max-content"
+                        }}>
                         <p>{this.props.msg}</p>
-                        <Button
-                            onClick={() => this.setState({ display: false })}>
-                            OK
-                        </Button>
+
+                        {this.props.msg !== "Upload en cours..." ? (
+                            <Button
+                                onClick={() =>
+                                    this.setState({ display: false })
+                                }>
+                                OK
+                            </Button>
+                        ) : (
+                            ""
+                        )}
                     </Container>
                 </center>
             </div>

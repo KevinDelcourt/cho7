@@ -8,7 +8,7 @@ import DescriptionContainer from "./../atoms/Container/DescriptionContainer"
 import SiteTitle from "../atoms/Title/SiteTitle"
 import ThemeImageInput from "../molecules/ThemeImageInput"
 import Logo from "../atoms/Logo"
-import styled from "styled-components"
+//import styled from "styled-components"
 
 /*const StyledSelect = styled.select`
     margin: 5px;
@@ -137,7 +137,7 @@ class PersonnalisationForm extends Component {
             {this.getSelectField(
                 "borderRadius",
                 "Rayon Bordure",
-                this.getOptions(0, 4, 0.5, "em")
+                this.getOptions(0, 2, 0.25, "em")
             )}
 
             {this.getSelectField(

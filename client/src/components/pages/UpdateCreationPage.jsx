@@ -38,6 +38,7 @@ class UpdateCreationPage extends React.Component {
                 formData.append("idEtat[" + index + "]", etat.id)
             }
         }
+        this.props.msgAction("Upload en cours...")
         if ((await postUpdateCreation(formData)) === true) {
             this.setState({ redirect: <Redirect to="/" /> }, () => {
                 this.props.msgAction("Modification effectuée avec succès")
