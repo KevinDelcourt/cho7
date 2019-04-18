@@ -9,9 +9,12 @@ let twitterClient = new Twitter({
     access_token_secret: "sGCgbhzfTBLzaWdGD37Q4RkIa7vHMDBVZxW4j7rFCBgp8"
 })
 
-const affichageDescription = description => {
-    if (description.length > 100) return description.slice(0, 99) + "..."
-    return description
+const affichageDescription = body => {
+    if (body.description)
+        if (body.description.length && body.description.length > 100)
+            return body.description.slice(0, 99) + "..."
+        else return body.description
+    return ""
 }
 
 const validateLibelleValeur = body =>
@@ -97,7 +100,7 @@ const creationController = connection => {
                         "Nouvelle création: " +
                         req.body.titre +
                         "! " +
-                        affichageDescription(req.body.description)
+                        affichageDescription(req.body)
                 })
 
             if (req.file)
@@ -144,7 +147,7 @@ const creationController = connection => {
                         "Nouvelle update: " +
                         req.body.titre +
                         "! " +
-                        affichageDescription(req.body.description)
+                        affichageDescription(req.body)
                 })
             if (req.file)
                 connection.query(
