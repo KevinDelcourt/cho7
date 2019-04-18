@@ -1,22 +1,18 @@
 const typeTitre = value => {
     cy.log("titre")
-    cy.get('[data-cypress="titre"]')
-        .first()
-        .type(value)
+    cy.get('[data-cypress="titre"]').type(value)
     //    dataCypress = "titre"
 }
 
 const nouvelEtat = value => {
     cy.log("nouvel etat")
     cy.contains("Création en cours").click()
-    cy.get(":nth-child(1) > :nth-child(1) > .sc-ifAKCX > .sc-bxivhb").type(
-        value
-    )
+    cy.get('[data-cypress="9gag"]').type(value)
 }
 
 const typeDescription = value => {
     cy.log("ecrire description")
-    cy.get(".sc-jAaTju").type(value)
+    cy.get('[data-cypress="description"]').type(value)
 }
 
 const validCreation = () => {
@@ -26,6 +22,11 @@ const validCreation = () => {
     typeDescription(
         "c'est l'histoire d'un posti-it qui tombe amoureux d'une aluméte ... mais les choses vont tres vite se compliqué et notre posti-it devras s'en sortir face au démonique cisax"
     )
+}
+
+const tweeter = () => {
+    cy.log("on tweet")
+    cy.get('[data-cypress="inputtweet"]').click()
 }
 
 const creationSansEtats = () => {
@@ -38,11 +39,13 @@ const creationSansEtats = () => {
 
 export const populateCreationForm = {
     validCreation,
-    creationSansEtats
+    creationSansEtats,
+    tweeter
 }
 
 export const validerCreationForm = () => {
     cy.log("validation")
+    tweeter()
     cy.contains("Publier").click()
 }
 
@@ -53,6 +56,7 @@ export const modifierCreation = () => {
     cy.get('[data-cypress="titre"]').type(
         "la fureur du posti-it IV - a new warior"
     )
+
     cy.get('[data-cypress="submit"]').click()
 
     cy.url().should("eq", "http://localhost:3000/")

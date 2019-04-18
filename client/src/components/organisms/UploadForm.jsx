@@ -52,6 +52,7 @@ class UploadForm extends React.Component {
                         lock={this.props.lock}
                     />
                     <Field
+                        dataCypress="description"
                         component={LabelTextarea}
                         name="description"
                         label="Description :"
@@ -60,6 +61,7 @@ class UploadForm extends React.Component {
                     />
                     <Field
                         component={LabelInput}
+                        dataCypress="inputtweet"
                         name="twitter"
                         type="checkbox"
                         label="Envoyer un tweet"

@@ -9,6 +9,7 @@ const EtatsAvancementInput = ({ fields, lock }) => (
         {fields.map((code, index) => (
             <div key={index}>
                 <Field
+                    dataCypress="9gag"
                     name={code + ".libelle"}
                     type="text"
                     component={LabelInput}
