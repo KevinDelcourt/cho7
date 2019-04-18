@@ -55,6 +55,7 @@ class NewsFeed extends React.Component {
 
                 {this.state.creations.map((c, index) => (
                     <MainContainer
+                        dataCypressTitle="titreCreation"
                         title={<Link to={"/creation/" + c.id}>{c.titre}</Link>}
                         width="100%"
                         key={index}>
@@ -65,6 +66,7 @@ class NewsFeed extends React.Component {
                             valueId={c.id}
                         />
                         <StarRating
+                            dataCypress={c.titre}
                             creationID={c.id}
                             noteMoyenne={
                                 c.nbnote === 0 ? 0 : c.sommenotes / c.nbnote

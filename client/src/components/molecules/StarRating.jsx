@@ -47,6 +47,7 @@ class StarRating extends React.Component {
         else
             return (
                 <Star
+                    data-cypress={"star" + i}
                     key={i}
                     onClick={() => this.changeStar(i)}
                     children="&#9734;"

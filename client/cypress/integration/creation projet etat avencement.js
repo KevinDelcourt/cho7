@@ -20,7 +20,6 @@ describe("composant creation de projet sans fichier", () => {
         populateCreationForm.validCreation()
         validerCreationForm()
         cy.url().should("eq", "http://localhost:3000/")
-        cy.wait(10000)
     })
 
     it("je test la creation de projet sans etat d'avancement", () => {
