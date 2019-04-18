@@ -33,6 +33,7 @@ app.use(function(req, res, next) {
         "Access-Control-Allow-Headers",
         "X-Requested-With,content-type"
     )
+    res.setHeader("X-Content-Type-Options", "nosniff")
     res.setHeader("Access-Control-Allow-Credentials", true)
     res.setHeader("Access-Control-Allow-Origin", referrer)
     res.setHeader(
