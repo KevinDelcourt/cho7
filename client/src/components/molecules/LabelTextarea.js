@@ -16,6 +16,7 @@ class LabelTextarea extends React.Component {
             <LabelTextareaContainer>
                 <Label children={this.props.label} />
                 <TextareaBase
+                    data-cypress={this.props.dataCypress}
                     {...this.props.input}
                     rows={this.props.row}
                     cols={this.props.col}

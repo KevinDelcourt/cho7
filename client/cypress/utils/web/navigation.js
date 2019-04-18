@@ -10,9 +10,15 @@ export const goToMesCreations = () => {
     cy.url().should("eq", "http://localhost:3000/creations")
 }
 
-export const goToAccueil = () => {
+export const goToAccueilBouton = () => {
     cy.log("cilck sur l'accueil")
     cy.contains("Accueil").click()
+    cy.url().should("eq", "http://localhost:3000/")
+}
+
+export const goToAccueilImage = () => {
+    cy.log("cilck sur l'image")
+    cy.get("[data-cypress=banierre]").click()
     cy.url().should("eq", "http://localhost:3000/")
 }
 
@@ -27,4 +33,10 @@ export const goToModification = () => {
     cy.log("page de modification")
     cy.get('[href="/updateCreation/3"]').click()
     cy.url().should("eq", "http://localhost:3000/updateCreation/3")
+}
+
+export const goToDeconnexion = () => {
+    cy.log("click sur la deconnexion")
+    cy.contains("Déconnexion").click()
+    cy.url().should("eq", "http://localhost:3000/")
 }

@@ -3,7 +3,9 @@ import { beginAndLoginAsCreateur } from "../utils/web/authentification"
 import {
     goToRenseignerProfilPage,
     goToMesCreations,
-    goToAccueil
+    goToAccueilBouton,
+    goToAccueilImage,
+    goToDeconnexion
 } from "../utils/web/navigation"
 
 before(() => reset_db())
@@ -16,14 +18,10 @@ describe("composant header", () => {
 
         goToMesCreations()
 
-        cy.log("cilck sur l'image")
-        cy.get("[data-cypress=banierre]").click()
-        cy.url().should("eq", "http://localhost:3000/")
+        goToAccueilImage()
 
-        goToAccueil()
+        goToAccueilBouton()
 
-        cy.log("cilck sur la deconnexion")
-        cy.contains("Déconnexion").click()
-        cy.url().should("eq", "http://localhost:3000/")
+        goToDeconnexion()
     })
 })

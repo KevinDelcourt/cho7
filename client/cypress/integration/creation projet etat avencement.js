@@ -3,7 +3,8 @@ import { beginAndLoginAsCreateur } from "../utils/web/authentification"
 import { goToMesCreations, goToNouvelleCreation } from "../utils/web/navigation"
 import {
     populateCreationForm,
-    validerCreationForm
+    validerCreationForm,
+    tweeter
 } from "../utils/web/creation"
 before(() => reset_db())
 
@@ -19,6 +20,7 @@ describe("composant creation de projet sans fichier", () => {
         populateCreationForm.validCreation()
         validerCreationForm()
         cy.url().should("eq", "http://localhost:3000/")
+        cy.wait(10000)
     })
 
     it("je test la creation de projet sans etat d'avancement", () => {

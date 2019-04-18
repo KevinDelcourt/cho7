@@ -3,7 +3,7 @@ import { beginAndLoginAsCreateur } from "../utils/web/authentification"
 import {
     goToMesCreations,
     goToModification,
-    goToAccueil
+    goToAccueilBouton
 } from "../utils/web/navigation"
 import { modifierCreation, verifierModification } from "../utils/web/creation"
 
@@ -16,7 +16,7 @@ describe("composant affichage projet", () => {
         goToModification()
 
         modifierCreation()
-        goToAccueil()
+        goToAccueilBouton()
         verifierModification()
     })
 })
