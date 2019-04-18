@@ -27,9 +27,7 @@ const EtatsAvancementInput = ({ fields, lock }) => (
                 {lock ? (
                     ""
                 ) : (
-                    <Button type="button" onClick={() => fields.remove(index)}>
-                        -
-                    </Button>
+                    <Button type="button" onClick={() => fields.remove(index)} children="-" />
                 )}
             </div>
         ))}

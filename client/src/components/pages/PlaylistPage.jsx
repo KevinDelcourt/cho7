@@ -1,16 +1,16 @@
-import React from "react"
-import Template from "./Template"
-import MainContainer from "../molecules/MainContainer"
+import React from "react";
+import Template from "./Template";
+import MainContainer from "../molecules/MainContainer";
 import { hasRole,
     getNomsPlaylist,
     getCreationsToPlaylist,
     getNomCreation,
-    ajoutEcoute} from "../../modules/api"
-import { getAudioUrl } from "../../modules/apiURL"
-import AudioPlayer from "react-modular-audio-player"
-import styled from "styled-components"
-import SubmitButton from "./../atoms/Button/SubmitButton"
-import { Field, reduxForm } from "redux-form"
+    ajoutEcoute} from "../../modules/api";
+import { getAudioUrl } from "../../modules/apiURL";
+import AudioPlayer from "react-modular-audio-player";
+import styled from "styled-components";
+import SubmitButton from "./../atoms/Button/SubmitButton";
+import PlaylistForm from './../organisms/PlaylistForm';
 
 const StyledContainer = styled.div`
     display: grid;
@@ -26,6 +26,23 @@ const Label = styled.label `
     text-shadow: 0px 1px 4px rgb(75, 75, 75);
     color: rgb(200, 200, 200)
 `;
+
+const StyleAudioPlayer = styled.div`
+    .audio-player {
+        background-color: #b7b7b7;
+        padding: 0.5rem;
+        border-radius: 10px;
+        filter: invert(100%);
+    }
+
+    .audio-player-time {
+        color: black;
+    }
+
+    .marquee {
+        color: black;
+    }
+`
 
 let rearrangedPlayer = [
     {
@@ -122,7 +139,7 @@ class Playlist extends React.Component {
 
     setPlaylist(){
         this.setState({
-            playlist: <div id={this.props.numPlaylist}><AudioPlayer
+            playlist: <StyleAudioPlayer id={this.props.numPlaylist}><AudioPlayer
                 audioFiles={this.state.playlistInformations}
                 iconSize="2rem"
                 fontSize="1rem"
@@ -131,7 +148,7 @@ class Playlist extends React.Component {
                 ref={element => {
                     this.rap = element
                 }}
-            /></div>
+            /></StyleAudioPlayer>
         })
         this.rap.audioRef.addEventListener("loadeddata", e => {
             this.setState({ indexCurrentCreation: ((this.state.indexCurrentCreation + 1) % this.state.playlistInformations.length) })
@@ -155,7 +172,7 @@ class Playlist extends React.Component {
             let subSrcAudio = this.changeOrderArray(indexClicked, this.state.playlistInformations)
             await this.setState({playlist: null});
             await this.setState({
-                playlist: <div id={this.props.numPlaylist}><AudioPlayer
+                playlist: <StyleAudioPlayer id={this.props.numPlaylist}><AudioPlayer
                     audioFiles={subSrcAudio}
                     iconSize="2rem"
                     fontSize="1rem"
@@ -165,7 +182,7 @@ class Playlist extends React.Component {
                     ref={element => {
                         this.rap = element
                     }}
-                /></div>
+                /></StyleAudioPlayer>
             })
             this.rap.audioRef.addEventListener("loadeddata", e => {
                 this.setState({ indexCurrentCreation: ((this.state.indexCurrentCreation + 1) % this.state.playlistInformations.length) })
@@ -219,7 +236,6 @@ export default class Playlists extends React.Component {
             nomsCreation: [],
             nouvellePlaylist: "",
             showForm: false,
-            playlistDatalist: null
         }
         this.showPlaylist = this.showPlaylist.bind(this)
     }
@@ -234,16 +250,6 @@ export default class Playlists extends React.Component {
 
     showPlaylist(event){
         this.setState({ showForm: !this.state.showForm});
-        this.setDatalist();
-    }
-
-    setDatalist(){
-        const datalist = <datalist id="playlists">
-            {this.state.nomsPlaylist.map((c, index) => (
-                <option value={c.nom} />
-            ))}
-        </datalist>
-        this.setState({playlistDatalist: datalist})
     }
 
     render(){
@@ -259,22 +265,8 @@ export default class Playlists extends React.Component {
                         ):null
                     }
                     {this.state.showForm ? (
-                    <MainContainer>
-                        <form onSubmit={this.submit}>
-                            <label>Noms des playlists: </label>
-                            <input list="playlists" name="playlist" />
-                            {this.state.playlistDatalist}
-
-                            <label>Tite des creations: </label>
-                            <input list="nomcreation" />
-                            <datalist id="nomcreation">
-                                {this.state.nomsCreation.map((c, index) => (
-                                    <option value={c.titre} />
-                                ))}
-                            </datalist>
-
-                            <SubmitButton type="submit" children="Enregistrer playlist" />
-                        </form>
+                    <MainContainer title="Nouvelle Playlist">
+                        <PlaylistForm />
                     </MainContainer>
                     ):null}
 
