@@ -1,124 +1,153 @@
-import React from "react";
-import { Field, reduxForm } from "redux-form";
-import {getNomsPlaylist, getNomCreation } from "../../modules/api";
-import SubmitButton from "./../atoms/Button/SubmitButton";
-import Button from "./../atoms/Button/Button";
-import Label from "./../atoms/Label/Label";
-import Input from "./../atoms/Input/Input";
+import React from "react"
+import { Field, reduxForm } from "redux-form"
+import { getNomsPlaylist, getNomCreation } from "../../modules/api"
+import SubmitButton from "./../atoms/Button/SubmitButton"
+import Button from "./../atoms/Button/Button"
+import Label from "./../atoms/Label/Label"
+import Input from "./../atoms/Input/Input"
 
 class PlaylistForm extends React.Component {
-
-    constructor(props){
-        super(props);
+    constructor(props) {
+        super(props)
         this.state = {
             optionPlaylist: null,
             optionCreation: null,
             tabAddCreation: [],
+            indexMax: 0,
             nouvellePlaylist: false
         }
-        this.addPlaylist = this.addPlaylist.bind(this);
-        this.addCreation = this.addCreation.bind(this);
-        this.removeCreation = this.removeCreation.bind(this);
+        this.addPlaylist = this.addPlaylist.bind(this)
+        this.addCreation = this.addCreation.bind(this)
+        this.removeCreation = this.removeCreation.bind(this)
     }
-    
+
     async componentDidMount() {
-        const nomPlaylist = await getNomsPlaylist();
-        const nomCreation = await getNomCreation();
+        const nomPlaylist = await getNomsPlaylist()
+        const nomCreation = await getNomCreation()
         this.setState({
             optionPlaylist: this.setOptionPlaylist(nomPlaylist),
             optionCreation: this.setOptionCreation(nomCreation)
-        });
-        
+        })
     }
 
     setOptionPlaylist(nomPlaylist) {
-        let optionTab = [];
-        nomPlaylist.map((c) => (
-            optionTab.push(c.nom)
-        ))
-        return optionTab;
+        let optionTab = []
+        nomPlaylist.map(c => optionTab.push(c.nom))
+        return optionTab
     }
 
     setOptionCreation(nomCreation) {
-        let optionTab = [];
-        nomCreation.map((c) => (
-            optionTab.push(c.titre)
-        ))
-        return optionTab;
+        let optionTab = []
+        nomCreation.map(c => optionTab.push(c.titre))
+        return optionTab
     }
 
     addPlaylist(event) {
-        this.setState({ nouvellePlaylist: !this.state.nouvellePlaylist });
+        this.setState({ nouvellePlaylist: !this.state.nouvellePlaylist })
     }
 
-    addCreation(event) {
-        let newTabCreation = [];
-        this.state.tabAddCreation.map((c, index) => (
+    async addCreation(event) {
+        let newTabCreation = []
+        await this.setState({ indexMax: this.state.indexMax + 1 })
+        /*this.state.tabAddCreation.map((c, index) =>
             newTabCreation.push(this.creation(index))
-        ));
-        newTabCreation.push(this.creation(this.state.tabAddCreation.length));
-        this.setState({ tabAddCreation: newTabCreation });
+        )*/
+        newTabCreation = this.state.tabAddCreation.slice(0)
+        let bla = []
+        await this.setState({ tabAddCreation: bla })
+
+        newTabCreation.push(this.creation(this.state.indexMax - 1))
+        this.setState({ tabAddCreation: newTabCreation })
     }
 
     async removeCreation(event) {
-        let newTab = [];
-        const numClicked = event.target.id;
-        let i = 0;
-        while(i<this.state.tabAddCreation.length) {
-            let num = this.state.tabAddCreation[i].props.children[1].props.id.split("-")[1];
-            if( numClicked !== num ) {
-                newTab.push(this.creation(i));
+        let newTab = []
+        const numClicked = event.target.id
+        //console.log(numClicked)
+        /*let i = 0
+        while (i < this.state.tabAddCreation.length) {
+            let num = this.state.tabAddCreation[
+                i
+            ].props.children[1].props.id.split("-")[1]
+
+            if (numClicked !== num) {
+                console.log(num)
+                newTab.push(this.state.tabAddCreation[num])
             }
-            i++;
-        }
-        
-        await this.setState({ tabAddCreation: newTab})
+            i++
+        }*/
+        this.state.tabAddCreation.map((c, index) => {
+            var num = c.props.children[1].props.id.split("-")[1]
+            if (numClicked !== num) {
+                console.log(num)
+                newTab.push(c)
+            }
+        })
+
+        await this.setState({ tabAddCreation: newTab })
         console.log(this.state.tabAddCreation)
     }
 
     creation(index) {
         return (
             <div>
-                <Field component={Label} htmlFor="InputNomCreation" name={"labelNomCreation-"+index}>
-                    Création: 
+                <Field
+                    component={Label}
+                    htmlFor="InputNomCreation"
+                    name={"labelNomCreation-" + index}>
+                    Création:
                 </Field>
 
                 <Field
                     component={"select"}
-                    name={"creation-"+index}
-                    id={"creation-"+index}
-                >
+                    name={"creation-" + index}
+                    id={"creation-" + index}>
                     <option>-- Vide --</option>
-                    {this.state.optionCreation ? (
-                        this.state.optionCreation.map((c, index) => (
-                            <option id={index}>{c}</option>
-                        ))
-                    ) : null}
+                    {this.state.optionCreation
+                        ? this.state.optionCreation.map((c, index) => (
+                              <option id={index}>{c}</option>
+                          ))
+                        : null}
                 </Field>
 
-                <Button onClick={this.removeCreation} type="button" children="-" id={index}/>
+                <Button
+                    onClick={this.removeCreation}
+                    type="button"
+                    children="-"
+                    id={index}
+                />
             </div>
         )
     }
 
     formNouvellePlaylist() {
-        return(
+        return (
             <>
-                <Field component={Label} htmlFor="nouvellePlaylist" name="labelNomNouvellePlaylist">Nom de la Playlist:</Field>
-                <Field component={Input} type="text" name="InputNomNouvellePlaylist" />
+                <Field
+                    component={Label}
+                    htmlFor="nouvellePlaylist"
+                    name="labelNomNouvellePlaylist">
+                    Nom de la Playlist:
+                </Field>
+                <Field
+                    component={Input}
+                    type="text"
+                    name="InputNomNouvellePlaylist"
+                />
             </>
         )
     }
 
-    submit() {
+    submit() {}
 
-    }
-
-    render(){
-        return(
+    render() {
+        return (
             <form onSubmit={this.submit}>
                 <div>
-                    <Field component={Label} htmlFor="nomPlaylist" name="labelNomPlaylist">
+                    <Field
+                        component={Label}
+                        htmlFor="nomPlaylist"
+                        name="labelNomPlaylist">
                         Mes playlists:
                     </Field>
 
@@ -129,34 +158,34 @@ class PlaylistForm extends React.Component {
                         list="playlist"
                     />
 
-                    <Field
-                        component={"datalist"}
-                        name="playlist"
-                        id="playlist"
-                    >
-                        {this.state.optionPlaylist ? (
-                            this.state.optionPlaylist.map((c, index) => (
-                                <option id={index}>{c}</option>
-                            ))
-                        ) : null}
+                    <Field component={"datalist"} name="playlist" id="playlist">
+                        {this.state.optionPlaylist
+                            ? this.state.optionPlaylist.map((c, index) => (
+                                  <option id={index}>{c}</option>
+                              ))
+                            : null}
                     </Field>
 
-                    <Button type="button" onClick={this.addCreation} children="+" />
+                    <Button
+                        type="button"
+                        onClick={this.addCreation}
+                        children="+"
+                    />
 
-                    { this.state.tabAddCreation }
+                    {this.state.tabAddCreation}
                 </div>
-                
+
                 <div>
-                    <Button type="button" onClick={this.addPlaylist} children="NOUVELLE PLAYLIST" />
+                    <Button
+                        type="button"
+                        onClick={this.addPlaylist}
+                        children="NOUVELLE PLAYLIST"
+                    />
                 </div>
-                
-                {this.state.nouvellePlaylist ?
-                    (
-                        <div>
-                            { this.formNouvellePlaylist() }
-                        </div>
-                    ):null
-                }
+
+                {this.state.nouvellePlaylist ? (
+                    <div>{this.formNouvellePlaylist()}</div>
+                ) : null}
 
                 <SubmitButton type="submit" children="Enregistrer playlist" />
             </form>
@@ -166,6 +195,6 @@ class PlaylistForm extends React.Component {
 
 PlaylistForm = reduxForm({
     form: "Créer Playlist"
-})(PlaylistForm);
+})(PlaylistForm)
 
-export default PlaylistForm;
+export default PlaylistForm
