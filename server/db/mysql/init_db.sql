@@ -26,10 +26,10 @@ CREATE TABLE creation (
 
 INSERT INTO creation (nomfichier, titre, description)
 VALUES 
-  ('oui.mp3','oui','Abc'),
-  (null,'En cours','Son avec des etats'),
-  (null,'En cours 2',null),
-  ('201mdi.mp3','Un humour','efg');
+  ('oui.mp3','Episode 1',"Beaucoup d'aventure et d'eau fraîche !"),
+  ('201mdi.mp3','Episode 2','Des rebondissements à foison.'),
+  (null,'Episode 3',"L'enregistrement est bientôt fini, ça promets un bel épisode !"),
+  (null,'Episode 4',null);
 
 CREATE TABLE etat_avancement (
   id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -41,11 +41,11 @@ CREATE TABLE etat_avancement (
 
 INSERT INTO etat_avancement (libelle, valeuravancement, idcreation)
 VALUES 
-  ('Avancement 11',10,2),
-  ('Avancement 21',3,2),
-  ('Avancement 12',0,3),
-  ('Avancement 22',40,3),
-  ('Avancement 32',97,3);
+  ('Ecriture',97,3),
+  ('Enregistrement',40,3),
+  ('Montage',0,3),
+  ('Ecriture',22,4),
+  ('Mixage',12,4);
 
 CREATE TABLE faq (
 	id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,

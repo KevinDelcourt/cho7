@@ -20,7 +20,7 @@ class NewsFeed extends React.Component {
 
     async componentDidMount() {
         this.setState({
-            creations: await getCreations("date", "asc")
+            creations: await getCreations("date", "desc")
         })
     }
 
@@ -40,8 +40,8 @@ class NewsFeed extends React.Component {
                     <select
                         onChange={this.handleChange}
                         style={{ backgroundColor: this.props.bgColor }}>
-                        <option value="date,asc">Plus récentes</option>
-                        <option value="date,desc">Plus anciennes</option>
+                        <option value="date,desc">Plus récentes</option>
+                        <option value="date,asc">Plus anciennes</option>
                         <option value="titre,asc">Titre A -> Z</option>
                         <option value="titre,desc">Titre Z -> A</option>
                         <option value="note,desc">Mieux notées</option>
