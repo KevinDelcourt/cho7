@@ -192,13 +192,16 @@ const creationController = connection => {
         },
 
         deleteCreation: (req, res) => {
-            if (/^(0|[1-9]\d*)$/.test(req.params.id))
+            if (/^(0|[1-9]\d*)$/.test(req.params.id)) {
                 connection.query(
                     "DELETE FROM creation WHERE id = ?",
                     [req.params.id],
-                    (err, rows) => queryCallback(err, res, () => res.send(true))
+                    (err, rows) =>
+                        queryCallback(err, res, () => {
+                            return res.send(true)
+                        })
                 )
-            return res.send(false)
+            } else return res.send(false)
         }
     }
 }

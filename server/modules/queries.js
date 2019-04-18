@@ -13,7 +13,7 @@ const jsonToArray = json => {
 
 const queryCallback = (err, res, cb) => {
     if (err) return res.send(err)
-    cb()
+    else cb()
 }
 module.exports = {
     updateCreateurQuery: (connexion, json, cb) => {

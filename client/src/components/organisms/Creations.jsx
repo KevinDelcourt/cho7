@@ -11,7 +11,7 @@ class Creations extends React.Component {
         if (this.props.etat === "wip")
             this.setState({ creations: await getCreationsInProgress() })
         else if (this.props.etat === "done")
-            this.setState({ creations: await getCreations() })
+            this.setState({ creations: await getCreations("date", "desc") })
     }
 
     async handleDeleteClick(id) {
