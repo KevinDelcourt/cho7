@@ -25,6 +25,7 @@ class RenseignerProfilPage extends React.Component {
             if (obj === "fichierAvatar") formData.append(obj, values[obj][0])
             else formData.append(obj, values[obj])
         }
+        this.props.msgAction("Upload en cours...")
         let response = await postProfilCreateur(formData)
         if (response === true) {
             this.props.msgAction("Profil renseigné avec succès")
