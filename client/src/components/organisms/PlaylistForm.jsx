@@ -1,6 +1,6 @@
 import React from "react"
 import { Field, reduxForm } from "redux-form"
-import { getNomsPlaylist, getNomCreation } from "../../modules/api"
+import { getNomsPlaylist, getNomCreation, ajouterCreationPlaylist, creerPlaylist } from "../../modules/api"
 import SubmitButton from "./../atoms/Button/SubmitButton"
 import Button from "./../atoms/Button/Button"
 import Label from "./../atoms/Label/Label"
@@ -122,12 +122,18 @@ class PlaylistForm extends React.Component {
         )
     }
 
-    submit() {}
+    async ajouter() {
+       await ajouterCreationPlaylist();
+    }
+
+    creerPlaylist(){
+
+    }
 
     render() {
         return (
             <>
-            <form onSubmit={this.submit}>
+            <form onSubmit={this.ajouter}>
                 <div>
                     <Field
                         component={Label}
@@ -178,7 +184,7 @@ class PlaylistForm extends React.Component {
                 ) : null}
 
                 <div>
-                    <SubmitButton type="submit" children="Créer playlist" />
+                    <SubmitButton type="submit" children="Créer playlist" onClick={this.creerPlaylist} />
                 </div>              
             </form>
             </>

@@ -77,6 +77,10 @@ module.exports = (app, passport) => {
         })
     })
 
+    app.post("/ajouterCreation", (req, res) => {
+        console.log(req);
+    })
+
     app.post(
         "/theme",
         validators.isLoggedIn,

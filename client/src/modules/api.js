@@ -124,3 +124,11 @@ export const ajoutEcoute = id => defaultPost("/cptEcoute", { id: id })
 export const getTheme = () => defaultGet("/theme")
 
 export const updateTheme = theme => defaultPost("/theme", theme)
+
+/*----------*/
+
+export const ajouterCreationPlaylist = (idPlaylist, idCreation) => {
+    defaultPost("/ajouterCreation", {idPlaylist: idPlaylist, idCreation: idCreation })
+}
+
+export const creerPlaylist = (nomPlaylist) => defaultPost("/creerPlaylist")
