@@ -19,8 +19,10 @@ class Creations extends React.Component {
     }
 
     render() {
+        let title = this.props.etat === "wip" ? "en cours" : "terminées"
+
         return (
-            <MainContainer title="Mes créations en cours">
+            <MainContainer title={"Mes créations " + title}>
                 <table>
                     <tbody>
                         <tr>
