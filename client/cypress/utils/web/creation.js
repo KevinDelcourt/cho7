@@ -16,7 +16,7 @@ const nouvelEtat = value => {
 
 const typeDescription = value => {
     cy.log("ecrire description")
-    cy.get(".sc-eHgmQL").type(value)
+    cy.get(".sc-jAaTju").type(value)
 }
 
 const validCreation = () => {
@@ -56,4 +56,9 @@ export const modifierCreation = () => {
     cy.get('[data-cypress="submit"]').click()
 
     cy.url().should("eq", "http://localhost:3000/")
+}
+
+export const verifierModification = () => {
+    cy.log("Verifier que la création a bien été modifiée")
+    cy.get('[data-cypress="la fureur du posti-it IV - a new warior"]')
 }

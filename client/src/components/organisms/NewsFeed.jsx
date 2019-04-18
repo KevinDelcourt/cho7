@@ -7,6 +7,7 @@ import StarRating from "../molecules/StarRating"
 import Link from "../atoms/Link/Link"
 import Label from "../atoms/Label/Label"
 import styled from "styled-components"
+import { connect } from "react-redux"
 
 const SelectContainer = styled.div`
     margin-bottom: 15px;
@@ -36,7 +37,9 @@ class NewsFeed extends React.Component {
             <MainContainer title="Dernières créations">
                 <SelectContainer>
                     <Label children="Trier par : " />
-                    <select onChange={this.handleChange}>
+                    <select
+                        onChange={this.handleChange}
+                        style={{ backgroundColor: this.props.bgColor }}>
                         <option value="date,asc">Plus récents</option>
                         <option value="date,desc">Plus anciens</option>
                         <option value="titre,asc">Titre A -> Z</option>
@@ -73,4 +76,12 @@ class NewsFeed extends React.Component {
     }
 }
 
-export default NewsFeed
+const mapStateToProps = state => {
+    return {
+        bgColor: state.app.theme.colorDescriptionBg,
+        borderRadius: state.app.theme.borderRadius,
+        borderSize: state.app.theme.borderSize
+    }
+}
+
+export default connect(mapStateToProps)(NewsFeed)

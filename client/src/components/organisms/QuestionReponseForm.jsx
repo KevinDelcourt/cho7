@@ -2,11 +2,10 @@ import React, { Component } from "react"
 import { Field, reduxForm } from "redux-form"
 import { required } from "../../modules/validation"
 import LabelTextarea from "../molecules/LabelTextarea"
-import Button from "../atoms/Button/Button"
-import theme from "./../../theme.json"
+import StyledButton from "../atoms/Button/SubmitButton"
 import styled from "styled-components"
 
-const StyledButton = styled(Button)`
+const Div = styled.div`
     justify-self: end;
 `
 
@@ -26,12 +25,9 @@ class QuestionReponseForm extends Component {
                 col="120"
                 validate={[required]}
             />
-
-            <StyledButton
-                type="submit"
-                children="Envoyer"
-                bgColor={theme.colorDescriptionBg}
-            />
+            <Div>
+                <StyledButton type="submit" children="Envoyer" />
+            </Div>
         </StyledForm>
     )
 }

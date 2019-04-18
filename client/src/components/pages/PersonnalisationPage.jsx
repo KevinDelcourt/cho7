@@ -23,7 +23,6 @@ class PersonnalisationPage extends React.Component {
         for (let key in values) {
             if (key.slice(-4) === "File") {
                 formData.append(key, values[key][0])
-                console.log("a")
             } else formData.append(key, values[key])
         }
 

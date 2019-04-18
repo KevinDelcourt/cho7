@@ -1,9 +1,23 @@
 import React from "react"
-import styled from "styled-components"
 import { postStarRating } from "../../modules/api"
+import styled from "styled-components"
 
-const Star = styled.div`
+const Star = styled.span`
+    color: #fcde96;
+    &: hover {
+        text-shadow: 0px 1px 4px rgb(255, 255, 255);
+    }
     cursor: pointer;
+`
+
+const Barem = styled.span`
+    cursor: default;
+`
+
+const RatingContainer = styled.div`
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
 `
 
 class StarRating extends React.Component {
@@ -24,15 +38,19 @@ class StarRating extends React.Component {
     getStar = (i, coche) => {
         if (coche)
             return (
-                <span key={i} onClick={() => this.changeStar(i)}>
-                    &#9733;
-                </span>
+                <Star
+                    key={i}
+                    onClick={() => this.changeStar(i)}
+                    children="&#9733;"
+                />
             )
         else
             return (
-                <span key={i} onClick={() => this.changeStar(i)}>
-                    &#9734;
-                </span>
+                <Star
+                    key={i}
+                    onClick={() => this.changeStar(i)}
+                    children="&#9734;"
+                />
             )
     }
 
@@ -42,10 +60,15 @@ class StarRating extends React.Component {
             starTab.push(this.getStar(index + 1, index < this.state.cont))
 
         return (
-            <>
-                <Star children={starTab} />
-                {Math.floor(this.props.noteMoyenne * 10) / 10}/5
-            </>
+            <RatingContainer>
+                <div>{starTab} /5</div>
+                {this.state.cont !== 0 ? this.state.cont : ""}{" "}
+                <Barem
+                    children={
+                        Math.floor(this.props.noteMoyenne * 10) / 10 + "/5"
+                    }
+                />
+            </RatingContainer>
         )
     }
 }
