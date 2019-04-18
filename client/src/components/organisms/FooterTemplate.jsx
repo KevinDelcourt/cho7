@@ -9,6 +9,7 @@ const FooterContainer = styled.div`
     display: flex;
     justify-content: space-around;
     align-items: center;
+    padding: 10px;
 `
 
 class FooterTemplate extends Component {

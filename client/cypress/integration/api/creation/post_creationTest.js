@@ -80,7 +80,7 @@ const updateCreationFinie = {
 }
 
 const updateCreationEnCours = {
-    id: 2,
+    id: 3,
     titre: "pas fini",
     description: "bla bla bla",
     libelle: ["a", "b"],
@@ -109,12 +109,12 @@ describe("update creation sans fichier", () => {
         postUpdateCreation(updateCreationEnCours, res => {
             expect(res.body).to.be.true
         })
-        getCreation(2, res => {
+        getCreation(3, res => {
             expect(res.body).to.have.property("titre", "pas fini")
             expect(res.body).to.have.property("description", "bla bla bla")
         })
-        getEtatsAvancement(2, res => {
-            expect(res.body.length).to.eql(2)
+        getEtatsAvancement(3, res => {
+            expect(res.body.length).to.eql(3)
             expect(res.body[0]).to.have.property("libelle", "a")
             expect(res.body[1]).to.have.property("valeuravancement", 20)
         })
