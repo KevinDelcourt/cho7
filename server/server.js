@@ -7,6 +7,7 @@ const passport = require("passport")
 const flash = require("connect-flash")
 const ip = require("ip")
 const app = express()
+const csurf = require("csurf")
 
 app.use(morgan("dev"))
 app.use(cookieParser())
@@ -16,6 +17,8 @@ app.use(
         extended: true
     })
 )
+
+app.use(csrfMiddleware)
 
 app.use(
     session({
