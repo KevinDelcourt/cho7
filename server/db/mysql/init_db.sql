@@ -8,7 +8,7 @@ CREATE TABLE users (
   presentation varchar(512) COLLATE utf8_general_ci,
   avatar varchar(200) COLLATE utf8_general_ci,
   role varchar(20) NOT NULL COLLATE utf8_general_ci,
-  twitter varchar(50) NOT NULL COLLATE utf8_general_ci
+  twitter varchar(50) NOT NULL COLLATE utf8_general_ci DEFAULT "nomanil_lcdl"
 );
 
 INSERT INTO users (username,password,email,presentation,role,avatar,twitter)
