@@ -7,11 +7,12 @@ CREATE TABLE users (
   email varchar(254) NOT NULL COLLATE utf8_general_ci,
   presentation varchar(512) COLLATE utf8_general_ci,
   avatar varchar(200) COLLATE utf8_general_ci,
-  role varchar(20) NOT NULL COLLATE utf8_general_ci
+  role varchar(20) NOT NULL COLLATE utf8_general_ci,
+  twitter varchar(50) NOT NULL COLLATE utf8_general_ci
 );
 
-INSERT INTO users (username,password,email,presentation,role,avatar)
-VALUES ('Admin','sha1$f384dd89$1$c350803491e73924609fdcdc338d7fd27da49464','artiste.art@genie.nl',"Je suis un artiste et je fait de l'art de génie",'ROLE_CREATEUR','avatar_createur.png');
+INSERT INTO users (username,password,email,presentation,role,avatar,twitter)
+VALUES ('Admin','sha1$f384dd89$1$c350803491e73924609fdcdc338d7fd27da49464','artiste.art@genie.nl',"Je suis un artiste et je fait de l'art de génie",'ROLE_CREATEUR','avatar_createur.png',"Kmeru78");
 
 CREATE TABLE creation (
   id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,

@@ -1,5 +1,5 @@
 import React from "react"
-import { getCreations } from "../../modules/api"
+import { getCreations, getCreateur } from "../../modules/api"
 import Creation from "../molecules/Creation"
 import MainContainer from "../molecules/MainContainer"
 import SocialNetwork from "../molecules/SocialNetwork"
@@ -15,12 +15,14 @@ const SelectContainer = styled.div`
 
 class NewsFeed extends React.Component {
     state = {
-        creations: []
+        creations: [],
+        createur: {}
     }
 
     async componentDidMount() {
         this.setState({
-            creations: await getCreations("date", "desc")
+            creations: await getCreations("date", "desc"),
+            createur: await getCreateur()
         })
     }
 
@@ -68,7 +70,20 @@ class NewsFeed extends React.Component {
                                 c.nbnote === 0 ? 0 : c.sommenotes / c.nbnote
                             }
                         />
-                        <SocialNetwork />
+                        <SocialNetwork
+                            text={
+                                c.titre +
+                                " " +
+                                window.location.href +
+                                "creation/" +
+                                c.id
+                            }
+                            twitterAccount={
+                                this.state.createur
+                                    ? this.state.createur.twitter
+                                    : ""
+                            }
+                        />
                     </MainContainer>
                 ))}
             </MainContainer>
