@@ -266,7 +266,7 @@ export default class Playlists extends React.Component {
                         ):null
                     }
                     {this.state.showForm ? (
-                    <MainContainer title="Nouvelle Playlist">
+                    <MainContainer title="Playlists">
                         <PlaylistForm />
                     </MainContainer>
                     ):null}
