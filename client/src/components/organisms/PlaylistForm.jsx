@@ -1,6 +1,11 @@
 import React from "react"
 import { Field, reduxForm } from "redux-form"
-import { getNomsPlaylist, getNomCreation, ajouterCreationPlaylist, creerPlaylist } from "../../modules/api"
+import {
+    getNomsPlaylist,
+    getNomCreation,
+    ajouterCreationPlaylist,
+    creerPlaylist
+} from "../../modules/api"
 import SubmitButton from "./../atoms/Button/SubmitButton"
 import Button from "./../atoms/Button/Button"
 import Label from "./../atoms/Label/Label"
@@ -38,7 +43,7 @@ class PlaylistForm extends React.Component {
 
     setOptionCreation(nomCreation) {
         let optionTab = []
-        nomCreation.map(c => optionTab.push(c.titre))
+        nomCreation.map(c => optionTab.push(c))
         return optionTab
     }
 
@@ -89,7 +94,9 @@ class PlaylistForm extends React.Component {
                     <option>-- Vide --</option>
                     {this.state.optionCreation
                         ? this.state.optionCreation.map((c, index) => (
-                              <option id={index}>{c}</option>
+                              <option id={index} name={c.id} values={c.id}>
+                                  {c.titre}
+                              </option>
                           ))
                         : null}
                 </Field>
@@ -122,78 +129,88 @@ class PlaylistForm extends React.Component {
         )
     }
 
-    async ajouter() {
-       await ajouterCreationPlaylist();
+    ajouter = async values => {
+        await ajouterCreationPlaylist(values)
     }
 
-    creerPlaylist(){
-
-    }
+    creerPlaylist() {}
 
     render() {
         return (
             <>
-            <form onSubmit={this.ajouter}>
-                <div>
-                    <Field
-                        component={Label}
-                        htmlFor="nomPlaylist"
-                        name="labelNomPlaylist">
-                        Mes playlists:
-                    </Field>
+                <form onSubmit={this.ajouter}>
+                    <div>
+                        <Field
+                            component={Label}
+                            htmlFor="nomPlaylist"
+                            name="labelNomPlaylist">
+                            Mes playlists:
+                        </Field>
 
-                    <Field
-                        name="nomPlaylist"
-                        type="text"
-                        component={Input}
-                        list="playlist"
+                        <Field
+                            name="nomPlaylist"
+                            type="text"
+                            component={Input}
+                            list="playlist"
+                        />
+
+                        <Field
+                            component={"datalist"}
+                            name="playlist"
+                            id="playlist">
+                            {this.state.optionPlaylist
+                                ? this.state.optionPlaylist.map((c, index) => (
+                                      <option id={index} value={c.id}>
+                                          {c.nom}
+                                      </option>
+                                  ))
+                                : null}
+                        </Field>
+
+                        <Button
+                            type="button"
+                            onClick={this.addCreation}
+                            children="+"
+                        />
+
+                        {this.state.tabAddCreation}
+                    </div>
+
+                    <SubmitButton
+                        type="submit"
+                        children="Enregistrer playlist"
                     />
+                </form>
 
-                    <Field component={"datalist"} name="playlist" id="playlist">
-                        {this.state.optionPlaylist
-                            ? this.state.optionPlaylist.map((c, index) => (
-                                  <option id={index} value={c.id}>{c.nom}</option>
-                              ))
-                            : null}
-                    </Field>
+                <form onSubmit={this.creerNouvellePlaylist}>
+                    <div>
+                        <Button
+                            type="button"
+                            onClick={this.addPlaylist}
+                            children="NOUVELLE PLAYLIST"
+                        />
+                    </div>
 
-                    <Button
-                        type="button"
-                        onClick={this.addCreation}
-                        children="+"
-                    />
+                    {this.state.nouvellePlaylist ? (
+                        <div>{this.formNouvellePlaylist()}</div>
+                    ) : null}
 
-                    {this.state.tabAddCreation}
-                </div>
-
-                <SubmitButton type="submit" children="Enregistrer playlist" />
-            </form>
-
-            <form onSubmit={this.creerNouvellePlaylist}>
-                <div>
-                    <Button
-                        type="button"
-                        onClick={this.addPlaylist}
-                        children="NOUVELLE PLAYLIST"
-                    />
-
-                </div>
-
-                {this.state.nouvellePlaylist ? (
-                    <div>{this.formNouvellePlaylist()}</div>
-                ) : null}
-
-                <div>
-                    <SubmitButton type="submit" children="Créer playlist" onClick={this.creerPlaylist} />
-                </div>              
-            </form>
+                    <div>
+                        <SubmitButton
+                            type="submit"
+                            children="Créer playlist"
+                            onClick={this.creerPlaylist}
+                        />
+                    </div>
+                </form>
             </>
         )
     }
 }
 
 PlaylistForm = reduxForm({
-    form: "Créer Playlist"
+    form: "Enregistrer playlist"
+    //form: "Créer Playlist"
 })(PlaylistForm)
 
 export default PlaylistForm

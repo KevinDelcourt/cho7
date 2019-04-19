@@ -53,32 +53,35 @@ module.exports = (app, passport) => {
     app.get("/theme", themeController.getTheme)
 
     app.post("/nomsplaylist", (req, res) => {
-        connection.query("SELECT id, nom FROM playlist", (err, rows)=>{
-            if(err) res.send(err)
+        connection.query("SELECT id, nom FROM playlist", (err, rows) => {
+            if (err) res.send(err)
             res.send(rows)
         })
     })
 
-    app.post("/nomcreation", (req, res) =>{
-        connection.query("SELECT id, titre FROM creation", (err, rows)=>{
-            if(err) res.send(err)
+    app.post("/nomcreation", (req, res) => {
+        connection.query("SELECT id, titre FROM creation", (err, rows) => {
+            if (err) res.send(err)
             res.send(rows)
         })
     })
 
-    app.post("/creationsToPlaylist", (req,res) => {
-        connection.query("SELECT "+
-        "creation.id, nomfichier, titre, nbecoute "+
-        "FROM creation INNER JOIN avoircreation INNER JOIN playlist "+
-        "ON creation.id=avoircreation.id_crea AND avoircreation.id_play=playlist.id AND playlist.nom=?",[req.body.nom],
-        (err, rows)=>{
-            if(err) res.send(err)
-            res.send(rows)
-        })
+    app.post("/creationsToPlaylist", (req, res) => {
+        connection.query(
+            "SELECT " +
+                "creation.id, nomfichier, titre, nbecoute " +
+                "FROM creation INNER JOIN avoircreation INNER JOIN playlist " +
+                "ON creation.id=avoircreation.id_crea AND avoircreation.id_play=playlist.id AND playlist.nom=?",
+            [req.body.nom],
+            (err, rows) => {
+                if (err) res.send(err)
+                res.send(rows)
+            }
+        )
     })
 
     app.post("/ajouterCreation", (req, res) => {
-        console.log(req);
+        console.log(req.body)
     })
 
     app.post(

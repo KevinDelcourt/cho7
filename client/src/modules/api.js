@@ -102,14 +102,15 @@ export const postNewCreation = formData => defaultPost("/addcreation", formData)
 export const postUpdateCreation = formData =>
     defaultPost("/updateCreation", formData)
 
-
 export const getNomsPlaylist = () => defaultPost("/nomsplaylist")
 
-export const getCreationsToPlaylist = nom => defaultPost('/creationsToPlaylist', {nom: nom})
+export const getCreationsToPlaylist = nom =>
+    defaultPost("/creationsToPlaylist", { nom: nom })
 
 export const getNomCreation = () => defaultPost("/nomcreation")
 
-export const postStarRating = (id, star) => defaultPost("/StarRating/" + id, star)
+export const postStarRating = (id, star) =>
+    defaultPost("/StarRating/" + id, star)
 
 export const postQuestion = values => defaultPost("/addQuestion", values)
 
@@ -127,8 +128,8 @@ export const updateTheme = theme => defaultPost("/theme", theme)
 
 /*----------*/
 
-export const ajouterCreationPlaylist = (idPlaylist, idCreation) => {
-    defaultPost("/ajouterCreation", {idPlaylist: idPlaylist, idCreation: idCreation })
+export const ajouterCreationPlaylist = values => {
+    defaultPost("/ajouterCreation", values)
 }
 
-export const creerPlaylist = (nomPlaylist) => defaultPost("/creerPlaylist")
+export const creerPlaylist = nomPlaylist => defaultPost("/creerPlaylist")
